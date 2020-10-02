@@ -30,3 +30,12 @@ Referentes:
 * https://www.grimoldi.com/calzadomujer/#/zapatos-de-mujer: Sacamos la inspiración de las imágenes para separar las categorías. 
 * https://www.ladystork.com/ : A simple vista nos pareció que los productos están desordenados. Nos sirvió para decidir cómo ordenarlos, viendo la necesidad de seguir un criterio común para el grupo que se muestre en pantalla. 
 * https://www.viauno.com.ar/: Nos sirvió como inspiración para ver la importancia de seleccionar una paleta de colores y un estilo que se mantenga en toda la página.
+
+Diseño de la página web:
+* Tipografía:
+Manquis (Logo)
+Menús (BebasNeue)
+Estructura (RobotoMono)
+* Colores:
+#F72718
+#DCD5D3
