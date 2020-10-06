@@ -33,9 +33,9 @@ Referentes:
 
 Diseño de la página web:
 * Tipografía:
-Manquis (Logo)
-Menús (BebasNeue)
-Estructura (RobotoMono)
+    - Logo (ManquisCP)
+    - Menús (BebasNeue)
+    - Estructura (RobotoMono)
 * Colores:
-#F72718
-#DCD5D3
+    - #F72718
+    - #DCD5D3
