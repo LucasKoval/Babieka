@@ -15,7 +15,9 @@
 
 
         /* Header */
-
+        header nav {
+            border-bottom: 10px solid #F72718;
+        }
 
 
         /* Main */
@@ -23,7 +25,19 @@
 
 
         /* Footer */
+        footer {
+            background-color: #F72718;
+        }
 
+        footer p {
+            background-color: white;
+        }
+
+        footer img {
+            background-color: white;
+        }
+
+    
 
 
 /**
