@@ -1,6 +1,7 @@
 # grupo_1_babieka
 
 URL: https://github.com/LucasKoval/grupo_1_babieka.git
+Trello: https://trello.com/invite/b/XuWqh2Cn/40f64939702797788dcbca337f752b28/dh-grupo1babieka
 
 Nombre del Proyecto: Babieka
 
