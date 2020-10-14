@@ -3,11 +3,19 @@
 */
     /*----------// CLASS //----------*/
 
+    .banner {
+        display: flex;
+        font-family: 'Roboto', sans-serif;
+        border: 1px solid black;
+        justify-content: space-around;
+    }
 
 
     /*----------// ID //----------*/
 
-
+    #copyright {
+        color: #F72718;
+    }
 
     /*----------// TAG //----------*/
         /* Global */
@@ -17,6 +25,7 @@
         /* Header */
         header nav {
             border-bottom: 10px solid #F72718;
+            font-family: 'Bebas Neue', cursive;
         }
 
 
@@ -27,15 +36,23 @@
         /* Footer */
         footer {
             background-color: #F72718;
+            font-family: 'Roboto', sans-serif;
         }
 
-        footer p {
-            background-color: white;
+        footer section {
+            display: flex;
+            justify-content: space-between;
+            color: #ebebeb;
+        }
+
+        footer a {
+            color: #E0E0E0;
         }
 
         footer img {
             background-color: white;
         }
+
 
     
 
