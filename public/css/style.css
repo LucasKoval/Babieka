@@ -10,30 +10,67 @@
         justify-content: space-around;
     }
 
-
     /*----------// ID //----------*/
 
     #copyright {
         color: #F72718;
+        background-color: white;
+    }
+
+    #margir-cero {
+        margin-top: 0;
     }
 
     /*----------// TAG //----------*/
         /* Global */
         
-
+        a {
+            text-decoration: none;
+        }
 
         /* Header */
+        
         header nav {
             border-bottom: 10px solid #F72718;
             font-family: 'Bebas Neue', cursive;
         }
 
+        header nav img {
+            width: 5%;
+        }
+
+        header img {
+            width: 100%;
+        }
 
         /* Main */
 
+        main {
+            display: flex;
+            font-family: 'Bebas Neue', cursive;
+            flex-wrap: wrap;
+        }
 
+        main img {
+            width: 400px;
+        }
+
+        .main-box-1 {
+            display: flex;
+            width: 50%;
+        }
+        .main-box-2 {
+            display: flex;
+            width: 50%;
+            flex-direction: row;
+        }
+        .main-box-3 {
+            display: flex;
+            flex-direction: row;
+        }
 
         /* Footer */
+        
         footer {
             background-color: #F72718;
             font-family: 'Roboto', sans-serif;
@@ -41,16 +78,49 @@
 
         footer section {
             display: flex;
-            justify-content: space-between;
             color: #ebebeb;
+            padding: 20px;
+            justify-content: space-between;
+        }
+
+        footer section div {
+            display: flex;
+            flex-grow: 0.25;
         }
 
         footer a {
             color: #E0E0E0;
         }
 
+        .footer-box-1 {
+            display: flex;
+            flex-direction: column;
+        }
+        .footer-box-2 {
+            display: flex;
+            flex-direction: column; 
+            justify-content: space-around;
+        }
+        .footer-box-3 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+
+        }
+
+        footer section div p {
+            margin-top: 0px;
+        }
+
+        footer i {
+            font-size: 30px;
+        }
+
         footer img {
             background-color: white;
+            width: 100px;
+            border-radius: 8px;
         }
 
 
