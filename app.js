@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/views/index.html')
 });
 
-app.get('/producto', (req, res) => {
+app.get('/articulo', (req, res) => {
     res.sendFile(__dirname + '/views/productDetail.html')
 });
 
