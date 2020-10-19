@@ -1,145 +1,267 @@
 /*
 * INDEX.HTML 
 */
-    /*----------// CLASS //----------*/
+/*----------// CLASS //----------*/
 
     .banner {
         display: flex;
         font-family: 'Roboto', sans-serif;
-        border: 1px solid black;
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
         justify-content: space-around;
+        flex-wrap: wrap;
     }
 
-    /*----------// ID //----------*/
+
+    .menu {
+        background-color: #F72718;
+        color: white;
+        font-size: 20px;
+        padding: 3px 5px;
+        border-radius: 5px;
+    }
+    
+
+/*----------// ID //----------*/
 
     #copyright {
         color: #F72718;
         background-color: white;
+        display: flex;
+        align-items: center;
+        padding: 4px;
+        border-bottom: 1px solid black;
     }
 
     #margir-cero {
-        margin-top: 0;
+        margin: 0;
     }
 
-    /*----------// TAG //----------*/
-        /* Global */
+    #logo {
+        width: 100px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    #barra-nav {
+        display: flex;
+        justify-content: space-between;
+    }  
+ 
+
+    .space {
+        margin: 0 10px;
+    }
+   
+
+/*----------// TAG //----------*/
+/* GLOBAL */
+    
+    body {
+        margin: 0;
+        width: 100%;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+
+/* HEADER */
+
+    header {
+        width: 100%;
+    }
+
+    header nav {
+        font-family: 'Bebas Neue', cursive;
+        border-bottom: 10px solid #F72718;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    header img {
         
-        a {
-            text-decoration: none;
-        }
+        width: 100%;
+    }
 
-        /* Header */
+
+/* MAIN */
+
+    main {
+        display: flex;
+        font-family: 'Bebas Neue', cursive;
+        flex-wrap: wrap;
+    }
+
+    main img {
+        width: 400px;
+    }
+
+    .main-box-1 {
+        display: flex;
+        width: 50%;
+    }
+    .main-box-2 {
+        display: flex;
+        width: 50%;
+        flex-direction: row;
+    }
+    .main-box-3 {
+        display: flex;
+        flex-direction: row;
+    }
+
+
+/* FOOTER */
         
-        header nav {
-            border-bottom: 10px solid #F72718;
-            font-family: 'Bebas Neue', cursive;
-        }
+    footer {
+        background-color: #F72718;
+        font-family: 'Roboto', sans-serif;
+    }
 
-        header nav img {
-            width: 5%;
-        }
+    footer section {
+        display: flex;
+        color: #ebebeb;
+        padding: 20px;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
 
-        header img {
-            width: 100%;
-        }
+    footer section div {
+        display: flex;
+        flex-grow: 0.25;
+    }
 
-        /* Main */
+    footer a {
+        color: #E0E0E0;
+    }
 
-        main {
+    footer h3 {
+        margin: 0;
+    }
+
+    .footer-box-1 {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+
+    }
+    .footer-box-2 {
+        display: flex;
+        flex-direction: column; 
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    .footer-box-3 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+    }
+
+    footer section div p {
+        margin-top: 0px;
+    }
+
+    footer i {
+        font-size: 30px;
+    }
+
+    footer img {
+        background-color: white;
+        width: 100px;
+        border-radius: 8px;
+    }
+
+
+/*----------// MEDIA QUERIES //----------*/
+
+    @media (max-width: 768px){
+        #logo {
+            width: 100px;
             display: flex;
-            font-family: 'Bebas Neue', cursive;
-            flex-wrap: wrap;
+            justify-content: flex-start;
+            align-items: center;
+            order: 2;
         }
 
-        main img {
-            width: 400px;
-        }
-
-        .main-box-1 {
-            display: flex;
-            width: 50%;
-        }
-        .main-box-2 {
-            display: flex;
-            width: 50%;
-            flex-direction: row;
-        }
-        .main-box-3 {
-            display: flex;
-            flex-direction: row;
-        }
-
-        /* Footer */
-        
-        footer {
+        .menu {
             background-color: #F72718;
+            color: white;
+            font-size: 20px;
+            padding: 3px 5px;
+            border-radius: 5px;
+            order: 1;
+        }
+        
+        #barra-nav {
+            order: 3;
+        }
+        #barra-nav1 {
+            display: none;
+        }
+
+        .banner {
+            display: flex;
             font-family: 'Roboto', sans-serif;
+            border-top: 1px solid black;
+            border-bottom: 1px solid black;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
         }
 
         footer section {
             display: flex;
             color: #ebebeb;
             padding: 20px;
-            justify-content: space-between;
-        }
-
-        footer section div {
-            display: flex;
-            flex-grow: 0.25;
-        }
-
-        footer a {
-            color: #E0E0E0;
-        }
-
-        .footer-box-1 {
-            display: flex;
             flex-direction: column;
-        }
-        .footer-box-2 {
-            display: flex;
-            flex-direction: column; 
-            justify-content: space-around;
-        }
-        .footer-box-3 {
-            display: flex;
             justify-content: center;
-            align-items: center;
-            flex-direction: row;
-
-        }
-
-        footer section div p {
-            margin-top: 0px;
-        }
-
-        footer i {
-            font-size: 30px;
+            flex-wrap: wrap;
         }
 
         footer img {
             background-color: white;
-            width: 100px;
+            width: 60px;
             border-radius: 8px;
         }
-
-
+    }
     
+    @media (min-width: 769px){
+        #boton-menu {
+            display: none;
+        }
+    }
 
 
-/**
-* REGISTER.HTML - LOGIN.HTML *
+
+/*______________________________________________________________*/
+/*
+* REGISTER.HTML - LOGIN.HTML
 */
-    /*----------// CLASS //----------*/
+/*----------// CLASS //----------*/
 
 
 
-    /*----------// ID //----------*/
+/*----------// ID //----------*/
 
 
 
-    /*----------// TAG //----------*/
-        /* Global */
+/*----------// TAG //----------*/
+/* GLOBAL */
 
 
-        /* Main */
+
+/* MAIN */
+
+
+
+/*----------// MEDIA QUERIES //----------*/
+
+
+
+/*______________________________________________________________*/
