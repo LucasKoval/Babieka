@@ -42,29 +42,33 @@
                 </div>
 
             </nav>
-            <img src="/img/img_home_1.jpg" alt="img_header">
+           
 
         </header>
         
-        <section class="banner">
-            
-            <div class="banner-box">
-                <p><i class="far fa-credit-card"></i> 3, 6 y 12 cuotas sin interés!</p>
-            </div>
-            <div class="banner-box">
-                <p><i class="fas fa-plane"></i> Envíos a todo el país gratis a partir de $3000</p>
-            </div>
-            <div class="banner-box">
-                <p><i class="fas fa-money-bill-wave"></i> 10% descuento pagando con débito o transferencia</p>
-            </div>
-            <div class="banner-box">
-                <p><i class="fab fa-whatsapp"></i> Tenés dudas? Contactanos y te asesoramos</p>
-            </div>
-
-        </section>
         
-        <main>
+        <main class="loginmain">
+           
+            <img src="img/img_model_2.jpg" alt="imagen de una modelo" class="loginImage">
 
+            <section class= "formulariologin">
+                <h1>Ingresar con mail y contraseña</h1>
+
+                <form action="/" method="GET">
+                    <p><label for="email">Mail:</label></p>
+                    <p><input type="email" name="email" id="email" placeholder="Ej: maria@babieka.com"></p>
+                    <p><label for="password">Contraseña:</label></p>
+                    <p><input type="password" name="password" id="password"></p>
+
+                    <div class="forgotPass">
+                        <a href="">¿Olvidaste tu contraseña?</a>
+                    </div>
+
+                    <button type="submit">Ingresar</button>
+                </form>
+
+            </section>
+            
         </main>
         
         <footer>

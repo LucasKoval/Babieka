@@ -45,6 +45,7 @@
     .footer-box-1 {
         display: flex;
         flex-direction: column;
+        align-items: center;
     }
     .footer-box-2 {
         display: flex;
@@ -108,6 +109,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+
     }
 
     header img {
@@ -257,6 +259,42 @@
 */
 /*----------// CLASS //----------*/
 
+.formulariologin {
+    
+    padding: 10px;
+    margin: auto;
+    border: 2px solid #FA1E1E;
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+   
+}
+
+.loginmain {
+    background-color: #fafafa;
+}
+
+.loginImage {
+    width: 38%;
+}
+
+.forgotPass {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    padding-bottom: 15px;
+}
+
+
+
+.registermain {
+    background-color: #f7f6fa;
+}
+
+.registerimage {
+    width: 33%;
+}
+
+
 
 
 /*----------// ID //----------*/
@@ -264,6 +302,17 @@
 
 
 /*----------// TAG //----------*/
+button{
+    background-color: #FA1E1E;
+    color: #e0e0e0;
+    border-color: #e0e0e0;
+    border-radius: 5px;
+    border-style: hidden;
+    padding: 8px;
+    font-family: 'Roboto', sans-serif;
+}
+
+
 /* GLOBAL */
 
 
@@ -274,6 +323,17 @@
 
 /*----------// MEDIA QUERIES //----------*/
 
+@media(max-width:767px) {
+    .loginImage {
+        display: none;
+    }
+}
+
+@media(max-width:767px) {
+    .registerimage {
+        display: none;
+    }
+}
 
 
 /*______________________________________________________________*/
