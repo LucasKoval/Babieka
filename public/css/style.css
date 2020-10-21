@@ -274,23 +274,21 @@
     background-color: #fafafa;
 }
 
-.loginImage {
-    width: 38%;
-}
-
 .forgotPass {
     font-family: 'Roboto', sans-serif;
     font-size: 12px;
     padding-bottom: 15px;
 }
 
-
+.registerimage {
+    width: 32%;
+}
 
 .registermain {
     background-color: #f7f6fa;
 }
 
-.registerimage {
+/*.registerimage {
     width: 33%;
 }
 
@@ -334,6 +332,4 @@ button{
         display: none;
     }
 }
-
-
 /*______________________________________________________________*/
