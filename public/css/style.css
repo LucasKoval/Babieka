@@ -41,7 +41,6 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-
     }
 
     header img {
@@ -363,7 +362,27 @@
 
 /*______________________________________________________________*/
 /*
-* PRODUCTO.HTML - CARRITO.HTML
+* PRODUCTO.HTML
+*/
+/*----------// GLOBAL //----------*/
+
+
+
+/*----------// HEADER //----------*/
+
+
+
+/*----------// MAIN //----------*/
+
+
+
+/*----------// MEDIA QUERIES //----------*/
+
+
+
+/*______________________________________________________________*/
+/*
+* CARRITO.HTML
 */
 /*----------// GLOBAL //----------*/
 
@@ -375,14 +394,93 @@
 
 /*----------// MAIN //----------*/
     
+    .cart-mainbox {
+        display: block;
+        margin: auto;
+        background-color: #fafafa;
+    }
+    .cart-mainbox h1 {
+        text-align: center;
+        font-size: 32px;
+        padding: 50px 0;
+        margin-top: 0;
+    }
+    .cart-mainbox p {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
 
+    .col-main {
+        width: 95%;
+    }
+    .col-artic {
+        width: 50%;
+    }
+    .col-precio {
+        width: 50%;
+    }
 
-/*----------// FOOTER //----------*/
+    .cart-boxtitle {
+        display: flex;
+        margin: auto;
+    }
+    .cart-boxsubtitle {
+        display: flex;
+        justify-content: space-around;
+    }
+    .cart-boxtitle p {
+        font-size: 24px;
+    }
+
+    .cart-boxartic {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin: 20px auto;
+        border: 5px solid #fafafa;
+        background-color: white;
+    }
+    .cart-boxsubartic {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .new-artic {
+        display: flex;
+    }
+    .new-subartic {
+        align-self: center;
+    }
+
+    .cart-boxbuy {
+        margin: auto;
+        text-align: end;
+    }
+    
+    #artic {
+        text-align: center;
+    }
 
 
 
 /*----------// MEDIA QUERIES //----------*/
 
+    @media(max-width:768px) {
+            
+        .cart-img {
+            width: 50%;
+            background-color: white;
+        }
+    }
+
+    @media(min-width:769px) {
+            
+        .cart-img {
+            width: 30%;
+            background-color: white;
+        }
+    }
 
 
 /*______________________________________________________________*/
