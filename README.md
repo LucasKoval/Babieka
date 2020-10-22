@@ -39,5 +39,6 @@ Diseño de la página web:
     - Menús (BebasNeue)
     - Estructura (RobotoMono)
 * Colores:
-    - #F72718
-    - #DCD5D3
+    - #FA1E1E
+    - #EBEBEB
+    - #FAFAFA
