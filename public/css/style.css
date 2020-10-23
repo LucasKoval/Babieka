@@ -9,6 +9,7 @@
 
     a {
         text-decoration: none;
+        color: black;
     }
 
     .space {
@@ -77,6 +78,24 @@
     }
     #barra-nav2 {
         padding-left: 30px;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    /*----------// Menu desplegable registro //----------*/
+    #barra-nav2 ul {
+        list-style:none;
+         margin:0;
+        padding:0;
+    }
+    
+
+    #barra-nav2 ul li{
+        display:none;
+    }
+
+    #barra-nav2 ul:hover li{
+        display:block;  
     }
 
 
@@ -322,10 +341,13 @@
     
     .loginmain {
         background-color: #fafafa;
+        display: flex;
+        justify-content: center;
     }
     
     .loginImage {
         width: 38%;
+        padding: 0px;
     }
     
     .forgotPass {
@@ -336,14 +358,21 @@
     
     .registermain {
         background-color: #f7f6fa;
+        display: flex;
+        justify-content: center;
     }
     
     .registerimage {
-        width: 33%;
+        width: 32%;
+        padding: 0px;
     }
 
     .h1-size {
         font-size: 24px;
+    }
+
+    .formulariologin input {
+        width: 95%;
     }
 
 
@@ -357,6 +386,10 @@
 
         .registerimage {
             display: none;
+        }
+
+        .formulariologin {
+            margin: 10px;
         }
     }
 
