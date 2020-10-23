@@ -46,6 +46,7 @@
 
         </header>
         
+        <!--//
         <section class="banner">
             
             <div class="banner-box">
@@ -62,7 +63,8 @@
             </div>
 
         </section>
-        
+        //-->
+
         <main class="cart-mainbox">
 
             <h1>CARRITO</h1>
@@ -70,7 +72,7 @@
                 
                 <section class="cart-boxtitle col-main"> <!--// Box intermedio //-->
                 
-                    <div class="col-artic" id="artic">
+                    <div class="col-artic centrar">
                         <p>Articulo</p>
                     </div>
                     <div class="cart-boxsubtitle col-precio">
@@ -102,16 +104,16 @@
                                     a=0;
                                 </script>   
                                 <form action="" method="">
-                                    <a href="javascript:a--; update(a);"><i class="fas fa-minus"></i></a> 
-                                    <input type="text" id="a" size="1"/>
-                                    <a href="javascript:a++; update(a);"><i class="fas fa-plus"></i></a>
+                                    <a href="javascript:a--; updateA(a);"><i class="fas fa-minus icon-bord"></i></a> 
+                                    <input type="text" id="a" size="1" class="centrar"/>
+                                    <a href="javascript:a++; updateA(a);"><i class="fas fa-plus icon-bord"></i></a>
                                 </form>
                                 <script>
                                     input_a = document.getElementById('a');
-                                    function update(){
+                                    function updateA(){
                                         input_a.value=a;
                                     }
-                                    update();
+                                    updateA();
                                 </script>
                             </div>
                             <div> <!--// Precio //-->
@@ -135,19 +137,19 @@
                             </div>
                             <div> <!--// Botones de cantidad //-->
                                 <script>
-                                    a=0;
+                                    b=0;
                                 </script>   
                                 <form action="" method="">
-                                    <a href="javascript:a--; update(a);"><i class="fas fa-minus"></i></a> 
-                                    <input type="text" id="a" size="1"/>
-                                    <a href="javascript:a++; update(a);"><i class="fas fa-plus"></i></a>
+                                    <a href="javascript:b--; updateB(b);"><i class="fas fa-minus icon-bord"></i></a> 
+                                    <input type="text" id="b" size="1" class="centrar"/>
+                                    <a href="javascript:b++; updateB(b);"><i class="fas fa-plus icon-bord"></i></a>
                                 </form>
                                 <script>
-                                    input_a = document.getElementById('a');
-                                    function update(){
-                                        input_a.value=a;
+                                    input_b = document.getElementById('b');
+                                    function updateB(){
+                                        input_b.value=b;
                                     }
-                                    update();
+                                    updateB();
                                 </script>
                             </div>
                             <div> <!--// Precio //-->
@@ -171,19 +173,19 @@
                             </div>
                             <div> <!--// Botones de cantidad //-->
                                 <script>
-                                    a=0;
+                                    c=0;
                                 </script>   
                                 <form action="" method="">
-                                    <a href="javascript:a--; update(a);"><i class="fas fa-minus"></i></a> 
-                                    <input type="text" id="a" size="1"/>
-                                    <a href="javascript:a++; update(a);"><i class="fas fa-plus"></i></a>
+                                    <a href="javascript:c--; updateC(c);"><i class="fas fa-minus icon-bord"></i></a> 
+                                    <input type="text" id="c" size="1" class="centrar"/>
+                                    <a href="javascript:c++; updateC(c);"><i class="fas fa-plus icon-bord"></i></a>
                                 </form>
                                 <script>
-                                    input_a = document.getElementById('a');
-                                    function update(){
-                                        input_a.value=a;
+                                    input_c = document.getElementById('c');
+                                    function updateC(){
+                                        input_c.value=c;
                                     }
-                                    update();
+                                    updateC();
                                 </script>
                             </div>
                             <div> <!--// Precio //-->
@@ -193,29 +195,31 @@
                     </div>
                 </section>
 
-                <section class="cart-boxbuy col-main"> <!--// Box intermedio //-->
-                    
-                    <div>
-                        <p>Envío</p>
-                        <p>$5.000</p>
-                    </div>
-                    <div>
-                        <form action="">
-
-                        </form>
-                    </div>
-                    <div>
-                        <p>TOTAL</p>
-                        <p>$5.000</p>
-                    </div>
-                    <div>
-                        <div>
-                            <input type="submit" value="COMPLETAR LA COMPRA" class="boton-envio">
+                <section class="cart-boxbuy col-main padd-20"> <!--// Box intermedio //-->
+                    <div class="cart-formbox">
+                        <div class="flexi">
+                            <p>Envío</p>
+                            <p>$600</p>
                         </div>
-                    </div>
-
+                        <div class="flexi-button">
+                            <form action="" method="POST">     
+                                <div><input type="text" id="code" name="code" placeholder="Código de descuento" class="cart-form"><input type="submit" value="Aplicar" class="cart-button"></div>
+                            </form>
+                        </div>
+                        <div class="flexi">
+                            <p>TOTAL</p>
+                            <p>$13.100</p>
+                        </div>
+                        <div class="flexi-button">
+                            <div>
+                                <form action="" method="POST">
+                                    <div><input type="submit" value="Finalizar compra" class="cart-button"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div> 
                 </section>
-
+            
             </div>
 
         </main>
@@ -235,7 +239,7 @@
 
                 <div class="footer-box-2 padd-20">
                     
-                    <h3 class="margir-cero">SEGUINOS EN:</h3>
+                    <h3 class="marg-0">SEGUINOS EN:</h3>
                     <div>
                         <a href="https://www.instagram.com/babiekazapatos/?hl=es-la" class="space" target="_BLANK"><i class="fab fa-instagram"></i></a>
                         <a href="https://www.facebook.com/babiekazapatos/" class="space" target="_BLANK"><i class="fab fa-facebook-f"></i></a>
@@ -243,7 +247,7 @@
                 </div>
 
                 <div class="footer-box-2 padd-20">
-                    <h3 class="margir-cero">CONTACTANOS!</h3>
+                    <h3 class="marg-0">CONTACTANOS!</h3>
                     <div>
                         <a href="" class="space"><i class="fab fa-whatsapp"></i></a>
                         <a href="" class="space"><i class="far fa-envelope"></i></a>
@@ -259,7 +263,7 @@
             </section>
             
             <div id="copyright">
-                <p class="margir-cero">BABIEKA © 2020. Todos los derechos reservados.</p>
+                <p class="marg-0">BABIEKA © 2020. Todos los derechos reservados.</p>
             </div>
 
         </footer>
