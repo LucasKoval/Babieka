@@ -9,6 +9,7 @@
 
     a {
         text-decoration: none;
+        color: black;
     }
 
     .space {
@@ -78,6 +79,24 @@
     }
     #barra-nav2 {
         padding-left: 30px;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    /*----------// Menu desplegable registro //----------*/
+    #barra-nav2 ul {
+        list-style:none;
+         margin:0;
+        padding:0;
+    }
+    
+
+    #barra-nav2 ul li{
+        display:none;
+    }
+
+    #barra-nav2 ul:hover li{
+        display:block;  
     }
 
 
@@ -298,17 +317,6 @@
 */
 /*----------// GLOBAL //----------*/
 
-<<<<<<< HEAD
-.forgotPass {
-    font-family: 'Roboto', sans-serif;
-    font-size: 12px;
-    padding-bottom: 15px;
-}
-
-.registerimage {
-    width: 32%;
-}
-=======
 
 
 /*----------// MAIN //----------*/
@@ -334,10 +342,13 @@
     
     .loginmain {
         background-color: #fafafa;
+        display: flex;
+        justify-content: center;
     }
     
     .loginImage {
         width: 38%;
+        padding: 0px;
     }
     
     .forgotPass {
@@ -348,23 +359,23 @@
     
     .registermain {
         background-color: #f7f6fa;
+        display: flex;
+        justify-content: center;
     }
     
     .registerimage {
-        width: 33%;
+        width: 32%;
+        padding: 0px;
     }
->>>>>>> 90eee6825cdd867c033c04782efb5cf703b7b576
 
     .h1-size {
         font-size: 24px;
     }
 
-<<<<<<< HEAD
-/*.registerimage {
-    width: 33%;
-}
-=======
->>>>>>> 90eee6825cdd867c033c04782efb5cf703b7b576
+    .formulariologin input {
+        width: 95%;
+    }
+
 
 /*----------// MEDIA QUERIES //----------*/
 
@@ -376,6 +387,10 @@
 
         .registerimage {
             display: none;
+        }
+
+        .formulariologin {
+            margin: 10px;
         }
     }
 
@@ -401,20 +416,6 @@
 
 /*----------// MEDIA QUERIES //----------*/
 
-<<<<<<< HEAD
-@media(max-width:767px) {
-    .loginImage {
-        display: none;
-    }
-}
-
-@media(max-width:767px) {
-    .registerimage {
-        display: none;
-    }
-}
-=======
 
 
->>>>>>> 90eee6825cdd867c033c04782efb5cf703b7b576
 /*______________________________________________________________*/
