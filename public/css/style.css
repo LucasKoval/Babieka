@@ -142,6 +142,11 @@
         box-sizing: border-box;
     }
 
+    .casual-index {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
 /*----------// FOOTER //----------*/
         
