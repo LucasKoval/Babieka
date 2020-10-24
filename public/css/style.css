@@ -405,15 +405,95 @@
 * PRODUCTO.HTML
 */
 /*----------// GLOBAL //----------*/
+.letraGrande{
+    font-size:xx-large;
+    margin: 0 0;
+}
+.letra-del-precio {
+    font-size: x-large;
+    margin: 0 0;
+}
 
-
-
-/*----------// MAIN //----------*/
-
-
-
+.main-det {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.columna {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.sinborde {
+    margin: 0 0;
+}
+.boton1 {
+    background-color: #f7f6fa;
+    border: 1px solid black;
+}
+.boton2 {
+    background-color: black;
+    border: 1px solid black;
+}
+.boton3 button{
+    border: 1px solid black;
+    background-color: #FA1E1E;
+    color: #e0e0e0;
+    border-color: #e0e0e0;
+    border-radius: 5px;        
+    border-style: hidden;
+    padding: 8px;
+    font-family: 'Roboto', sans-serif;
+}
+.boton4 {
+    padding: 0 2px 3px 2px;
+    border: 1px solid black;
+    color: black;
+    text-align: center;
+}
+.boton5 {
+    margin: 5% 0;
+}
+.centrarletra{
+    text-align: center;
+}
+.cen-1 {
+    width: 50%;
+}
+.cen-2 {
+    width: 50%;
+    margin-top: 30px;
+}
+.borde-general {
+    margin: 4%;
+}
 /*----------// MEDIA QUERIES //----------*/
-
+@media (max-width: 768px) {
+    .columna {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .main-det {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center
+    }
+    .boton5 {
+        margin: 10px auto;
+        width: 90%;
+        display: flex;
+        justify-content: center;
+    }
+    .cen-1 {
+        width: 100%;
+    }
+    .cen-2 {
+        width: 100%;
+    }
+}
 
 
 /*______________________________________________________________*/
