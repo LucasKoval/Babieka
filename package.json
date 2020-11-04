@@ -1,23 +1,16 @@
 {
-  "name": "grupo_1_babieka",
-  "version": "1.0.0",
-  "description": "Trabajo Integrador - Ecommerce",
-  "main": "app.js",
+  "name": "nuevobabieka",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon ./bin/www"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/LucasKoval/grupo_1_babieka.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/LucasKoval/grupo_1_babieka/issues"
-  },
-  "homepage": "https://github.com/LucasKoval/grupo_1_babieka#readme",
   "dependencies": {
-    "express": "^4.17.1",
-    "nodemon": "^2.0.6"
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1"
   }
 }

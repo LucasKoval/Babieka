@@ -1,0 +1,33 @@
+<%- include('../partials/head') %>
+    <body>
+        
+        <%- include('../partials/header') %>
+        
+        <main class="loginmain">
+           
+            <img src="img/img_model_2.jpg" alt="imagen de una modelo" class="loginImage">
+
+            <section class= "formulariologin">
+                <h1 class="h1-size">Ingresar con mail y contraseña</h1>
+
+                <form action="/" method="GET">
+                    <p><label for="email">Email:</label></p>
+                    <p><input type="email" name="email" id="email" placeholder="Ej: maria@babieka.com"></p>
+                    <p><label for="password">Contraseña:</label></p>
+                    <p><input type="password" name="password" id="password"></p>
+
+                    <div class="forgotPass">
+                        <a href="">¿Olvidaste tu contraseña?</a>
+                    </div>
+
+                    <button type="submit">Ingresar</button>
+                </form>
+
+            </section>
+            
+        </main>
+        
+        <%- include('../partials/footer') %>
+        
+    </body>
+</html>

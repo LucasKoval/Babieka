@@ -1,0 +1,35 @@
+<%- include('../partials/head') %>
+    <body>
+        
+        <%- include('../partials/header') %>
+        
+    
+        <main class="registermain">
+
+           <img src="img/img_model_1.jpg" alt="imagen de una modelo" class="registerimage">
+    
+            <section class= "formulariologin">
+                <h1 class="h1-size">Ingresar con mail y contraseña</h1>
+    
+                <form action="/" method="GET">
+                    <p><label for="nombre">Nombre</label></p>
+                    <p><input type="text" name="nombre" id="nombre"></p>
+                    <p><label for="email">Email:</label></p>
+                    <p><input type="email" name="email" id="email" placeholder="Ej: maria@babieka.com"></p>
+                    <p><label for="password">Contraseña:</label></p>
+                    <p><input type="password" name="password" id="password"></p>
+                    <p><label for="repeatpassword">Repita su contraseña:</label></p>
+                    <p><input type="password" name="repeatpassword" id="repeatpassword"></p>
+    
+                    <button type="submit">Crear cuenta</button>
+                </form>
+    
+            </section>
+    
+        </main>
+        
+        
+        <%- include('../partials/footer') %>
+        
+    </body>
+</html>

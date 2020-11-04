@@ -1,36 +1,51 @@
-// Requerir las librerías Express y fs
+const createError = require('http-errors');
 const express = require('express');
-const fs = require('fs');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const fs = require ('fs');
 
-// Declarar la app de Express y el puerto
+const indexRouter = require('./routes/index');
+const loginRouter = require('./routes/login');
+const cartRouter = require('./routes/cart');
+const detailRouter = require ('./routes/detail');
+const registerRouter = require ('./routes/register');
+
+
 const app = express();
-const port = 3000;
 
-// Levantar el servidor local
-app.listen(port, () => {
-    console.log('Servido corriendo en: http://localhost:3000/');
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+//app routes
+app.use('/', indexRouter);
+app.use('/login', loginRouter);
+app.use('/cart', cartRouter);
+app.use('/detail', detailRouter);
+app.use('/register', registerRouter);
+
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  next(createError(404));
 });
 
-// Definir la carpeta 'public' como root
-app.use(express.static('public'));
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-// Métodos GET para las páginas del sitio
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/views/index.html')
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
 });
 
-app.get('/articulo', (req, res) => {
-    res.sendFile(__dirname + '/views/productDetail.html')
-});
-
-app.get('/carrito', (req, res) => {
-    res.sendFile(__dirname + '/views/productCart.html')
-});
-
-app.get('/registro', (req, res) => {
-    res.sendFile(__dirname + '/views/register.html')
-});
-
-app.get('/login', (req, res) => {
-    res.sendFile(__dirname + '/views/login.html')
-});
+module.exports = app;

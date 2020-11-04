@@ -1,0 +1,73 @@
+<%- include('../partials/head') %>
+    <body>
+        
+        <%- include('../partials/header') %>
+        
+        <main class="">
+            <div class="main-det borde-general">       
+                <div class="main-det cen-1">
+                        <article class="main-det sinborde bordeImagen">
+                            <img src="/img/img_Bernarda.jpg" alt="Señorita Home">
+                        </article>
+                </div>
+                    <div class="cen-2 columna Detalle sinborde">
+                        <!--Descripcion y opciones del producto-->
+                            <p class="letraGrande">Sandalia bernarda</p>
+                            <p class="letra-del-precio">$4000</p>
+                            <div><p>Color del producto</p></div>
+                                <article class="sinborde">
+                                    <form action="">
+                                        <button class="boton1"> </button>
+                                        <button class="boton2"> </button>
+                                        <button class="boton3"> </button>
+                                    </form>
+                                </article>
+                            <p>Talle del producto</p>
+                            <div class="sinborde">
+                                <form action="" class="boton3">
+                                    <button>35</button>
+                                    <button>36</button>
+                                    <button>37</button>
+                                    <button>38</button>
+                                    <button>39</button>
+                                    <button>40</button>
+                                </form>
+                            </div>
+                            <div><p>Cantidad</p></div> 
+                        
+                            <!--Boton para colocar la cantidad-->
+                           
+                            <div class="main-det columna sinborde">           
+                                <script>
+                                    a=1;
+                                </script>
+                                <form action="" method="" >
+                                    <a href="javascript:a--; update(a);"><i class="fas fa-minus boton4"></i></a> 
+                                        <input type="text" id="a" size="1" class="centrarletra"/>
+                                    <a href="javascript:a++; update(a);"><i class="fas fa-plus boton4"></i></a>
+                                </form>
+                                <script>
+                                    input_a = document.getElementById('a');
+                                    function update(){
+                                        input_a.value=a;
+                                        }
+                                        update();
+                                </script>
+                            </div> 
+                            
+                            <!--Boton Comprar-->
+                            <div>
+                                <form action="" class="">
+                                    <button class="boton5">Agregar a la bolsa</button>
+                                </form>
+                            </div>
+                            
+                    </div>
+            </div> 
+    
+            </main>
+        
+            <%- include('../partials/footer') %>
+        
+    </body>
+</html>
