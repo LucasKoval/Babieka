@@ -16,8 +16,16 @@
         margin: 0 10px;
     }
     
+    .marg-auto {
+        margin: auto;
+    }
+
     .marg-0 {
         margin: 0;
+    }
+
+    .marg-20 {
+        margin: 20;
     }
 
     .padd-0 {
@@ -41,6 +49,14 @@
         cursor: pointer;
     }
 
+    .imagen70 {
+        width: 70%;
+    }
+    
+    .d-flex {
+        display: flex;
+        flex-wrap: wrap;
+    }
 
 /*----------// HEADER //----------*/
 
@@ -354,6 +370,14 @@
         display: flex;
         flex-direction: column;
     }
+
+    .formulario-upload {
+        padding: 10px;
+        margin: 10px auto;
+        border: 2px solid #FA1E1E;
+        display: flex;
+        flex-direction: column;
+    }
     
     .loginmain {
         background-color: #fafafa;
@@ -391,6 +415,10 @@
         width: 95%;
     }
 
+    .formulario-upload input {
+        width: 95%;
+    }
+
 
 /*----------// MEDIA QUERIES //----------*/
 
@@ -405,6 +433,10 @@
         }
 
         .formulariologin {
+            margin: 10px;
+        }
+
+        .formulario-upload {
             margin: 10px;
         }
     }

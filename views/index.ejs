@@ -1,10 +1,14 @@
-<%- include('./partials/head') %>
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/head') %>   <!--// partial Head //-->
     <body>
         
-        <%- include('./partials/header') %>
-        <div><img class= 'imagenbabieka' src="/img/img_home_1.jpg" alt="img_header"></div>
+        <%- include('./partials/header') %>   <!--// partial Header //-->
         
-        <section class="banner">
+        <div>
+            <img class= 'imagenbabieka' src="/img/img_home_1.jpg" alt="img_header">
+        </div>
+        <section class="banner">   <!--// Banner //-->
             
             <div class="banner-box">
                 <p><i class="far fa-credit-card"></i> 3, 6 y 12 cuotas sin interés!</p>
@@ -26,67 +30,67 @@
             
             <div class="main-block">
                    
-                    <div class="main-block main-box-1">
-                        <h1>MIRA LO MAS VENDIDO!</h1>
+                <div class="main-block main-box-1">   <!--// sección Lo mas vendido //-->
+                    <h1>MIRA LO MAS VENDIDO!</h1>
+                    <article class="main-block">
+                        <img src="/img/img_model_home.jpg" alt="Señorita Home">
+                    </article>
+                </div>
+
+                <div class="main-block main-box-2">   <!--// sección Casual //-->
+                    <h2>CASUAL</h2>
+                    <div>
                         <article class="main-block">
-                            <img src="/img/img_model_home.jpg" alt="Señorita Home">
+                            <div class="casual-index opac-img">
+                                <img src="/img/img_Melisa.jpg" alt="Sandalia Melisa">
+                                <p class="marg-0">Sandalia Melisa</p>
+                                <p class="marg-0">$4000</p>
+                            </div>
+                        </article>
+                        <article class="main-block">
+                            <div class="casual-index opac-img">
+                                <img src="/img/img_Fiama2.jpg" alt="Sandalia Fiama">
+                                <p class="marg-0">Sandalia Fiama</p>
+                                <p class="marg-0">$4000</p>
+                            </div>
                         </article>
                     </div>
-
-                    <div class="main-block main-box-2">
-                        <h2>CASUAL</h2>
-                        <div>
-                            <article class="main-block">
-                                <div class="casual-index opac-img">
-                                    <img src="/img/img_Melisa.jpg" alt="Sandalia Melisa">
-                                    <p class="marg-0">Sandalia Melisa</p>
-                                    <p class="marg-0">$4000</p>
-                                </div>
-                            </article>
-                            <article class="main-block">
-                                <div class="casual-index opac-img">
-                                    <img src="/img/img_Fiama2.jpg" alt="Sandalia Fiama">
-                                    <p class="marg-0">Sandalia Fiama</p>
-                                    <p class="marg-0">$4000</p>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
+                </div>
 
             </div>
                 
-            <div class="main-block">
+            <div class="main-block">   <!--// sección Fiesta //-->
                    
-                    <h2>FIESTA</h2>
-                    <div" class="main-block">
-                        <article class="main-block main-box-3">
-                            <div class="casual-index opac-img">
-                                <img src="/img/img_Bianca.jpg" alt="Sandalia Bianca">
-                                <p class="marg-0">Sandalia Bianca</p>
-                                <p class="marg-0">$4000</p>
-                            </div>
-                        </article>
-                        <article class="main-block main-box-3">    
-                            <div class="casual-index opac-img">
-                                <img src="/img/img_Bernarda.jpg" alt="Sandalia Bernarda">
-                                <p class="marg-0">Sandalia Bernarda</p>
-                                <p class="marg-0">$4000</p>
-                            </div>
-                        </article>
-                        <article class="main-block main-box-3">
-                            <div class="casual-index opac-img">
-                                <img src="/img/img_Berenice.jpg" alt="Sandalia Berenice" >
-                                <p class="marg-0">Sandalia Berenice</p>
-                                <p class="marg-0">$4000</p>
-                            </div>
-                        </article>
-                    </div>
+                <h2>FIESTA</h2>
+                <div" class="main-block">
+                    <article class="main-block main-box-3">
+                        <div class="casual-index opac-img">
+                            <img src="/img/img_Bianca.jpg" alt="Sandalia Bianca">
+                            <p class="marg-0">Sandalia Bianca</p>
+                            <p class="marg-0">$4000</p>
+                        </div>
+                    </article>
+                    <article class="main-block main-box-3">    
+                        <div class="casual-index opac-img">
+                            <img src="/img/img_Bernarda.jpg" alt="Sandalia Bernarda">
+                            <p class="marg-0">Sandalia Bernarda</p>
+                            <p class="marg-0">$4000</p>
+                        </div>
+                    </article>
+                    <article class="main-block main-box-3">
+                        <div class="casual-index opac-img">
+                            <img src="/img/img_Berenice.jpg" alt="Sandalia Berenice" >
+                            <p class="marg-0">Sandalia Berenice</p>
+                            <p class="marg-0">$4000</p>
+                        </div>
+                    </article>
+                </div>
 
             </div>  
 
         </main>
         
-        <%- include('./partials/footer') %>
-        
+        <%- include('./partials/footer') %>   <!--// partial Footer //-->
+
     </body>
 </html>
