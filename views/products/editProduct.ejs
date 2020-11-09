@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/head') %>   <!--// partial Head //-->
+    <body>
+        
+        <%- include('../partials/header') %>   <!--// partial Header //-->
+        
+        <main class="registermain">
+    
+            <section class= "formulario-upload">
+               
+                <h1 class="h1-size marg-0 centrar">Editar artículo</h1>
+                <form action="/" method="GET">    <!--// Formulario Edición de Artículo //-->
+                    
+                    <label for="nombreArticulo"></label>    <!--// Nombre //-->
+                    <p><input type="text" name="nombreArticulo" id="nombreArticulo" placeholder="Nombre del artículo"></p>
+                    
+                    <label for="codigoArticulo"></label>    <!--// Código //-->
+                    <p><input type="text" name="codigoArticulo" id="codigoArticulo" placeholder="Código del artículo"></p>
+                    
+                    <p><select name="tipoArticulo">Tipo de artículo    <!--// Tipo //-->
+                        <option value="sandCas">Sandalia casual</option> 
+                        <option value="sandFiesta">Sandalia fiesta</option>
+                        <option value="bota">Bota</option>
+                        <option value="borcego">Borcego</option>
+                    </select></p>
+                    
+                    <p><select name="talleArticulo">Tipo de artículo    <!--// Talle //-->
+                        <option value="talle35">35</option> 
+                        <option value="talle36">36</option>
+                        <option value="talle37">37</option>
+                        <option value="talle38">38</option>
+                        <option value="talle39">39</option>
+                        <option value="talle40">40</option>
+                    </select></p>
+
+                    <p><select name="colorArticulo">Tipo de artículo    <!--// Color //-->
+                        <option value="negro">Negro</option> 
+                        <option value="marron">Marrón</option>
+                        <option value="blanco">Blanco</option>
+                        <option value="rojo">Rojo</option>
+                    </select></p>
+                    
+                    <label for="descripcArticulo"></label>    <!--// Descripción //-->
+                    <textarea name="descripcArticulo" id="descripcArticulo" cols="30" rows="3" placeholder="Añada una breve descripción del artículo y sus materiales"></textarea>
+
+                    <p>    <!--// Imagen //-->
+                        <input type="file" name="imagenArticulo" accept="image/png, .jpeg, .jpg, image/gif"> 
+                        <input type="submit" value="Subir Imagen">  
+                    </p>
+
+                    <label for="precioArticulo"></label>    <!--// Precio //-->
+                    <p><input type="text" name="precioArticulo" id="precioArticulo" placeholder="Precio"></p>    
+
+                    <button type="submit">Crear artículo</button>    <!--// Botón Crear //-->
+
+                </form>
+    
+            </section>
+    
+        </main>
+        
+        <%- include('../partials/footer') %>   <!--// partial Footer //-->
+        
+    </body>
+</html>
