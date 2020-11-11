@@ -6,7 +6,7 @@ const path = require('path');
 //----------* FUNCTIONS *----------//
 function getAllUsers() {    //-> Función que contiene a todos los usuarios
     const usersFilePath = path.join(__dirname, '../data/usersDataBase.json');
-    const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
+    return JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
 }
 
 

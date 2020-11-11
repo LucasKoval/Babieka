@@ -6,7 +6,7 @@ const path = require('path');
 //----------* FUNCTIONS *----------//
 function getAllProducts() {    //-> Función que contiene a todos los productos
     const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
-    const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+    return JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 }
 
 
@@ -15,6 +15,10 @@ const productsController = {
     //Renderiza la vista Colección
     list: (req, res) => {        
         res.render('products/productsList');
+    },
+    //Renderiza la vista Edición de artículo
+    sale: (req, res) => {        
+        res.render('products/productsSale');
     },
     //Renderiza la vista Detalle de producto
     detail: (req, res) => {        
