@@ -5,6 +5,7 @@ const mainController = require('../controllers/mainController');
 
 //----------* MAIN ROUTES *----------//
 router.get('/', mainController.index);
+router.get('/busqueda', mainController.search);
 router.get('/nosotros', mainController.aboutUs);
 router.get('/como-comprar', mainController.howToBuy);
 

@@ -3,11 +3,26 @@ const fs = require('fs');
 const path = require('path');
 
 
+//----------* VARIABLE'S *----------//
+const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
+
+
 //----------* FUNCTIONS *----------//
 function getAllProducts() {    //-> Función que contiene a todos los productos
-    const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
     return JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 }
+
+function getNewId(){
+	const products = getAllProducts();
+	return products.pop().id + 1;
+}
+
+function writeProducts(array) {
+	const productsJson = JSON.stringify(array, null, " ");
+	fs.writeFileSync(productsFilePath, productsJson);
+}
+
 
 
 //----------* PRODUCTS CONTROLLER *----------//

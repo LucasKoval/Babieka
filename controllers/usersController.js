@@ -3,10 +3,23 @@ const fs = require('fs');
 const path = require('path');
 
 
+//----------* VARIABLE'S *----------//
+const usersFilePath = path.join(__dirname, '../data/usersDataBase.json');
+
+
 //----------* FUNCTIONS *----------//
 function getAllUsers() {    //-> Función que contiene a todos los usuarios
-    const usersFilePath = path.join(__dirname, '../data/usersDataBase.json');
     return JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
+}
+
+function getNewId(){
+	const users = getAllUsers();
+	return users.pop().id + 1;
+}
+
+function writeUsers(array) {
+	const usersJson = JSON.stringify(array, null, " ");
+	fs.writeFileSync(usersFilePath, usersJson);
 }
 
 
