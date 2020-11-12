@@ -2,13 +2,47 @@
 <html lang="en">
     <%- include('../partials/head') %>   <!--// partial Head //-->
     <body>
-
+        
         <%- include('../partials/header') %>   <!--// partial Header //-->
         
-        <h1 class="centrar padd-20">COLECCIÓN</h1>
-        <img src="img\img_sitio-construccion.jpg" alt="Sitio en construcción" class="marg-auto imagen70 d-flex">
+        <div>
+            <img class= 'imagenbabieka' src="/img/img_home_1.jpg" alt="img_header">
+        </div>
+        
+        <%- include('../partials/banner') %>   <!--// partial Banner //-->
+
+        <main>
+        
+            
+
+            <div class="d-flex fd-col">
+                <div class="centrar">
+                    <h1 class="centrar" >COLECCIÓN</h1>
+                </div>
+                <div class="d-flex fd-row">
+                    
+                    <!-- < % for (product of products) { %> -->
+                        <div>
+                            <section>
+                                <a href="/producto/detalle/:ID">
+                                    <figure>
+                                        <img src="/img/articulos/IMAGEN" alt="imagen de producto">
+                                    </figure>
+                                    <article>
+                                        <h2>$ PRECIO</h2>
+                                        <span>DESCUENTO %OFF</span>
+                                        <p>NOMBRE</p>
+                                    </article>
+                                </a>
+                            </section>
+                        </div>
+                    <!-- < % } %> -->
+                </div>
+            </div>          
+        
+        </main>
 
         <%- include('../partials/footer') %>   <!--// partial Footer //-->
-        
+
     </body>
 </html>

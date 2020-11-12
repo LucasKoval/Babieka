@@ -54,6 +54,14 @@ a {
     flex-wrap: wrap;
 }
 
+.fd-col {
+    flex-direction: column;
+}
+
+.fd-row {
+    flex-direction: row;
+}
+
 .opac-img img:hover{
     opacity: 0.7;
     cursor: pointer;

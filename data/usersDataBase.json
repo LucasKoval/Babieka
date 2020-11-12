@@ -19,5 +19,12 @@
      "email": "fede@email.com",
      "password": "******",
      "category": "admin"
+    },
+    {
+        "id": 4,
+        "nombre": "Cosme Fulanito",
+        "email": "cosme@email.com",
+        "password": "******",
+        "category": "client"
     }
 ]
