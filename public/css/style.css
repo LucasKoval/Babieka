@@ -367,12 +367,73 @@ main h1 {
 
 
 /*----------// ABOUT-US <MAIN> //----------*/
+.imageUs {
+    width: 45%;
+    margin: 10px;
+    padding: 0;
+}
 
+.imageUs img {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+}
+
+.mainUs {
+    align-items: center;
+    justify-content: space-around;
+}
+
+.usSection {
+    padding-bottom: 50px;
+    width: 45%;
+    justify-content: space-around;
+
+}
+
+.usSection div {
+    font-family: 'Roboto';
+}
 
 
 /*----------// HOW-TO-BUY <MAIN> //----------*/
 
+.imageHowTB {
+    width: 35%;
+    margin: 5px 5px 0px 5px;
+    padding: 0;
+}
 
+.imageHowTB img {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+}
+
+.mainHowTB {
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row-reverse;
+    background-color: #fafafa;
+}
+
+.howTBSection {
+    padding-bottom: 5px;
+    margin-left: 10px;
+    width: 62%;
+    justify-content: space-around;
+
+}
+
+.howTBSection div {
+    font-family: 'Roboto';
+}
+
+.mainHowTB h1{
+    margin-top: 10px;
+}
 
 /*----------// MEDIA QUERIES //----------*/
 
@@ -463,14 +524,6 @@ button{
 /*----------// MEDIA QUERIES //----------*/
 
 @media(max-width:768px) {
-    
-    .loginImage {
-        display: none;
-    }
-
-    .registerimage {
-        display: none;
-    }
 
     .formulariologin {
         margin: 10px;
@@ -479,9 +532,32 @@ button{
     .formulario-upload {
         margin: 10px;
     }
+    .registerimage {
+        display: none;
+    }
 }
 
+@media(max-width:425px) {
+    .loginImage {
+        display: none;
+    }
 
+    .imageUs {
+        display: none;
+    }
+
+    .imageHowTB {
+        display: none;
+    }
+
+    .howTBSection {
+        width: 95%;
+    }
+    .usSection {
+        justify-content: center;
+        width: 95%;
+    }
+}
 /*=====================================================================*/
 /**
 * PRODUCTS VIEWS

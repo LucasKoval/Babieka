@@ -2,23 +2,43 @@
 <html lang="en">
     <%- include('../partials/head') %>   <!--// partial Head //-->
     <body>
-        
+
         <%- include('../partials/header') %>   <!--// partial Header //-->
-        
-        <div>
-            <img class= 'imagenbabieka' src="/img/img_home_1.jpg" alt="img_header">
-        </div>
-        
-        <%- include('../partials/banner') %>   <!--// partial Banner //-->
 
-        <main class="fd-col">
+    <main class="mainHowTB">
         
-            <h1 class="centrar padd-20">COMO COMPRAR</h1>
-            <img src="img\img_sitio-construccion.jpg" alt="Sitio en construcción" class="marg-auto imagen70 d-flex">    
+        <div class="imageHowTB">
+            <img src="img\img_HowToBuy.jpg" alt="imagen de modelo"  >
+        </div>     
+         
+        <div class="howTBSection">
+            <section >
+
+                <h1 class="centrar">¿Cómo comprar?</h1>
+
+                <article>
+                    <h2>Pasos para realizar tu compra:</h2>
+                    <div >
+                        <p>Elige el modelo que deseas comprar, selecciona talle y color. Haz clic en el botón de "Agregar al carrito". Esto agregará el producto a tu carrito y lo mostrará en la esquina superior derecha. Puedes seguir agregando otros productos al carrito o hacer click en "Iniciar Compra". </p>
+                        <p>Completa tus datos de contacto y luego los datos del envío, ingresando la dirección a donde deseas recibir el producto. Luego elige el medio de pago. </p>
+                        <p> Finalmente en la página de Confirmación de compra puedes revisar toda la información de la misma. Ahí serás redirigido a otra pantalla para que completes los datos sobre la forma de pago elegida. Una vez confirmada y finalizada la compra recibirás un correo de nuestra parte. </p>   
+                        <p> Cuando se acredite el pago, te enviaremos un mail de confirmación y se despachara tu pedido en los próximos 2 días hábiles.</p>
+                    </div>
+                </article>
+
+                
+                <article>
+                    <h2>Métodos de envío:</h2>
+                    <div>
+                        <p>En caso de que el envió sea a través de OCA, te enviaremos un email con el número de envío para que puedas hacer un seguimiento del mismo. Usualmente la entrega demora entre 4 y 6 días hábiles, dependiendo de los plazos de OCA. </p>
+                        <p>En fechas especiales como Hot Sale, Black Friday o Cyber Monday, suele haber mayor demora en los envíos, entre 9 a 12 días hábiles debido a la cantidad de envíos que se realizan por Oca.</p>
+                        <p>Si elegís el envío a través de Treggo , nos ponemos en contacto con vos para coordinarlo.</p>
+                    </div>    
+                </article>
+            </section>
+        </div>    
+    </main>   
+    <%- include('../partials/footer') %>   <!--// partial Footer //-->
         
-        </main>
-
-        <%- include('../partials/footer') %>   <!--// partial Footer //-->
-
     </body>
 </html>
