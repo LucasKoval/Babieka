@@ -36,8 +36,10 @@ const productsController = {
         res.render('products/productsSale');
     },
     //Renderiza la vista Detalle de producto
-    detail: (req, res) => {        
-        res.render('products/productDetail');
+    detail: (req, res) => {   
+        let productos = getAllProducts();
+        let producto = productos.find(elemento => elemento.id == req.params.id);     
+        res.render('products/productDetail', { producto : producto });
     },
     //Renderiza la vista Carrito
     cart: (req, res) => {        

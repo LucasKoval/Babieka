@@ -641,50 +641,59 @@ button{
 
 /*----------// DETAIL <MAIN> //----------*/
 .letraGrande{
-font-size:xx-large;
-margin: 0 0;
+    font-size:xx-large;
+    margin: 0 0;
 }
+
 .letra-del-precio {
-font-size: x-large;
-margin: 0 0;
+    font-size: x-large;
+    margin: 0 0;
 }
 
 .main-det {
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 .columna {
-display: flex;
-flex-direction: column;
-flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
 .sinborde {
-margin: 0 0;
+    margin: 0 0;
 }
+
 .boton1 {
-background-color: #f7f6fa;
-border: 1px solid black;
+    background-color: #f7f6fa;
+    border: 1px solid black;
 }
+
 .boton2 {
-background-color: black;
-border: 1px solid black;
+    background-color: black;
+    border: 1px solid black;
 }
+
 .boton3 button{
-border: 1px solid black;
-background-color: #FA1E1E;
-color: #e0e0e0;
-border-color: #e0e0e0;
-border-radius: 5px;        
-border-style: hidden;
-padding: 8px;
-font-family: 'Roboto', sans-serif;
+    border: 1px solid black;
+    background-color: #FA1E1E;
+    color: #e0e0e0;
+    border-color: #e0e0e0;
+    border-radius: 5px;        
+    border-style: hidden;
+    padding: 8px;
+    font-family: 'Roboto', sans-serif;
 }
+
 .boton4 {
-padding: 0 2px 3px 2px;
-border: 1px solid black;
-color: black;
-text-align: center;
+    padding: 0 2px 3px 2px;
+    border: 1px solid black;
+    color: black;
+    text-align: center;
+}
+
+.imagendetail{
+    width: 100%;
 }
 .boton5 {
 margin: 5% 0;
@@ -693,11 +702,11 @@ margin: 5% 0;
 text-align: center;
 }
 .cen-1 {
-width: 50%;
+width: 45%;
 }
 .cen-2 {
-width: 50%;
-margin-top: 30px;
+width: 40%;
+margin:20px 30px;
 }
 .borde-general {
 margin: 4%;
