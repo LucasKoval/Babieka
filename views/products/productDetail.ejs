@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('../partials/head') %>   <!--// partial Head //-->
+    <%- include('../partials/head', {title: 'detalle del producto' + producto.name}) %>   <!--// partial Head //-->
     <body>
         
         <%- include('../partials/header') %>   <!--// partial Header //-->
         
-        <main class="">
+        <main class="mainUs">
             
             <div class="main-det borde-general">       
                 
                 <div class="main-det cen-1">
                     <article class="main-det sinborde bordeImagen">
-                        <img src="/img/products/img_Bernarda.jpg" alt="Señorita Home">
+                        <img class = "imagendetail" src="/img/products/<%= producto.image %>" alt="Señorita Home">
                     </article>
                 </div>
 
                 <div class="cen-2 columna Detalle sinborde">   <!--// Descripcion y opciones del artículo //-->
-                    <p class="letraGrande">Sandalia bernarda</p>
-                    <p class="letra-del-precio">$4000</p>
+                    <p class="letraGrande"><%= producto.name %></p>
+                    <p class="letra-del-precio">$<%= producto.price %></p>
                     
                     <div>
                         <p>Color del producto</p>
@@ -41,7 +41,10 @@
                             <button>40</button>
                         </form>
                     </div>
-
+                    <div>
+                        <p><strong>Descripcion</strong></p>
+                        <p><%= producto.description %></p>
+                    </div>
                     <div>
                         <p>Cantidad</p>
                     </div>        

@@ -1,0 +1,7 @@
+Weekly.md:
+
+* 28/10: Primer encuentro del Sprint 3. Reunión para definir roles para las nuevas tareas y horarios de trabajo grupal. Decidimos esperar a la clase correspondiente para implementar las template engines EJS, separar las vistas y componentes repetidos. Finalizamos la retrospectiva del Sprint 2. Federico propone ser quien implemente templates engine. 
+
+* 4/11: Revisamos el código del nuevo ruteo grupalmente. Incluimos los partials en cada una de las vistas. Corregimos la ubicación de la imagen del index, quitándola del header. Nos proponemos revisar las clases implementadas en el css para hacerlas más específicas. Surge problema al querer hacer el merge, acordamos consultar en clase como resolverlo y hacemos lista de dudas. Se decide hacer las páginas de carga y edición de producto grupalmente luego de tener solucionado el merge. 
+
+* 11/11: Modificamos el css, creamos las vistas faltantes (“results”, “nosotros”). Definimos como organizar las nuevas vistas y cómo armar la base de datos del Json. Modificamos los formularios de carga y edición para que fueran acordes a las categorías de la base de datos. Julieta se encarga de armar la base de datos con la información e imágenes correspondientes y de finalizar las vistas “nosotros” y “cómo comprar”. Lucas finaliza la maquetación de las páginas “colección” y “sale”.
