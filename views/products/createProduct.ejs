@@ -18,13 +18,20 @@
                     <label for="codigoArticulo"></label>    <!--// Código //-->
                     <p><input type="text" name="codigoArticulo" id="codigoArticulo" placeholder="Código del artículo"></p>
                     
-                    <p><select name="Categoriarticulo">Categoría del artículo    <!--// Categoria //-->
-                        <option value="sandCas">Casual</option> 
-                        <option value="sandFiesta">Fiesta</option>
-                        <option value="bota">Sale</option>
-                    </select></p>
+                    <p>
+                        <label for="categoriaArticulo">Categoría del artículo: </label>
+                        <select name="categoriaArticulo">   <!--// Categoria //-->
+                            <option value="selecciona"  selected disabled>Selecciona...</option>
+                            <option value="sandCas">Casual</option> 
+                            <option value="sandFiesta">Fiesta</option>
+                            <option value="bota">Sale</option>
+                        </select>
+                    </p>
                    
-                    <p><select name="tipoArticulo">Tipo de artículo    <!--// Tipo //-->
+                    <p>
+                        <label for="tipoArticulo">Tipo de artículo: </label> <!--// Tipo //-->
+                        <select name="tipoArticulo"> 
+                        <option value="selecciona"  selected disabled>Selecciona...</option> 
                         <option value="sandCas">Sandalia casual</option> 
                         <option value="sandFiesta">Sandalia fiesta</option>
                         <option value="bota">Bota</option>
@@ -34,20 +41,29 @@
                         <option value="borcego">Mule</option>
                     </select></p>
                     
-                    <p><select name="talleArticulo">Talle de artículo    <!--// Talle //-->
-                        <option value="talle35">35</option> 
-                        <option value="talle36">36</option>
-                        <option value="talle37">37</option>
-                        <option value="talle38">38</option>
-                        <option value="talle39">39</option>
-                        <option value="talle40">40</option>
-                    </select></p>
+                    <p>
+                        <label for="talleArticulo">Talle de artículo: </label> <!--// Talle //-->
+                        <select name="talleArticulo">    
+                            <option value="selecciona"  selected disabled>Selecciona...</option> 
+                            <option value="talle35">35</option> 
+                            <option value="talle36">36</option>
+                            <option value="talle37">37</option>
+                            <option value="talle38">38</option>
+                            <option value="talle39">39</option>
+                            <option value="talle40">40</option>
+                        </select>
+                    </p>
 
-                    <p><select name="colorArticulo">Color del artículo    <!--// Color //-->
+                    <p>
+                        <label for="colorArticulo">Color del artículo: </label> <!--// Color //-->
+                        <select name="colorArticulo">   
+                        <option value="selecciona"  selected disabled>Selecciona...</option> 
                         <option value="negro">Negro</option> 
                         <option value="marron">Marrón</option>
                         <option value="blanco">Blanco</option>
                         <option value="rojo">Rojo</option>
+                        <option value="oro">Oro</option>
+                        <option value="plata">Plata</option>
                     </select></p>
                     
                     <label for="descripcArticulo"></label>    <!--// Descripción //-->
