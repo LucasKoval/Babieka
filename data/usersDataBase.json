@@ -1,24 +1,24 @@
 [
     {
-     "id": 1,
-     "nombre": "Julieta Retamoza",
-     "email": "juli@email.com",
-     "password": "******",
-     "category": "admin"
+        "id": 1,
+        "nombre": "Julieta Retamoza",
+        "email": "juli@email.com",
+        "password": "******",
+        "category": "admin"
     },
     {
-     "id": 2,
-     "nombre": "Lucas Koval",
-     "email": "lucas@email.com",
-     "password": "******",
-     "category": "admin"
+        "id": 2,
+        "nombre": "Lucas Koval",
+        "email": "lucas@email.com",
+        "password": "******",
+        "category": "admin"
     },
     {
-     "id": 3,
-     "nombre": "Federico Gomez",
-     "email": "fede@email.com",
-     "password": "******",
-     "category": "admin"
+        "id": 3,
+        "nombre": "Federico Gomez",
+        "email": "fede@email.com",
+        "password": "******",
+        "category": "admin"
     },
     {
         "id": 4,
