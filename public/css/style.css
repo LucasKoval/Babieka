@@ -45,6 +45,10 @@ a {
     margin: 0 10px;
 }
 
+.marg-nonside {
+    margin: 100px 0;
+}
+
 .width-100 {
     width: 100%;
 }
@@ -69,6 +73,24 @@ a {
 
 .imagen70 {
     width: 70%;
+}
+
+.price-size {
+    font-size: 32px;
+}
+
+.name-size {
+    font-size: 24px;
+}
+
+.justify-center {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.tachado {
+    text-decoration: line-through;
 }
 
 
@@ -563,6 +585,58 @@ button{
 * PRODUCTS VIEWS
 */
 /*----------// LIST <MAIN> //----------*/
+
+.lk-title-list {
+    text-align: center;
+    margin: 50px 10px 10px 10px;
+}
+
+.lk-mainbox-list {
+    margin: 80px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.lk-articlebox-list {
+    margin: 20px 10px;
+    width: 23%;
+}
+
+/*----------// LIST MEDIA QUERIES //----------*/
+
+@media(max-width:425px) {
+    
+    .lk-title-list {
+        font-size: 42px;
+    }
+
+    .lk-mainbox-list {
+        margin: 10px 0;
+        justify-content: center;
+    }
+    
+    .lk-articlebox-list {
+        width: 40%;
+    }
+}
+
+@media(min-width:426px) and (max-width:768px) {
+
+    .lk-title-list {
+        font-size: 42px;
+    }
+
+    .lk-mainbox-list {
+        margin: 30px 0;
+        justify-content: flex-start;
+    }
+
+    .lk-articlebox-list {
+        margin: 10px;
+        width: 30%;
+    }
+}
 
 
 /*----------// DETAIL <MAIN> //----------*/
