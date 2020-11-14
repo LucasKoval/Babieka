@@ -96,30 +96,6 @@
         "image": "img_Briana.jpg"
     },
     {
-        "id": 9,
-        "name": "Sandalia Brisa",
-        "price": 7000,
-        "discount": 0,
-        "color": "Negro",
-        "size": 38,
-        "category": "Fiesta",
-        "type": "Sandalia",
-        "description": "Sandalia de fiesta con plataforma alta. Capellada de raso con aplique de piedras, y taco forrado en el mismo material. La suela es de material rígido sintético, con tope de goma en el taco. Plataforma de 5 cm de alto y 11 cm de taco.",
-        "image": "img_Brisa.jpg"
-    },
-    {
-        "id": 10,
-        "name": "Bota Cadiz",
-        "price": 7000,
-        "discount": 25,
-        "color": "Negro",
-        "size": 36,
-        "category": "Sale",
-        "type": "Bota",
-        "description": "Bota Bucanera de tela de lycra con taco. El interior se encuentra forrado en tela. La suela es de goma antideslizante, con tope en el taco, 4 cm de alto.",
-        "image": "img_Cadiz.jpg"
-    },
-    {
         "id": 11,
         "name": "Botineta Colonia",
         "price": 7000,
@@ -153,7 +129,7 @@
         "category": "Casual",
         "type": "Sandalia",
         "description": "Sandalia de Plataforma de cuero. Base de goma, 4cm de plataforma y 11cm de taco ",
-        "image": "img_Faira,jpg"
+        "image": "img_Faira.jpg"
     },
     {
         "id": 14,
@@ -274,18 +250,6 @@
         "type": "Sandalia",
         "description": "Sandalia cruzada de cuero con detalle de tachas en la capellada. Fondo de goma, 5 cm de alto.",
         "image": "img_Pilar.jpg"
-    },
-    {
-        "id": 24,
-        "name": "Sandalia Soledad",
-        "price": 6000,
-        "discount": 0,
-        "color": "Negro",
-        "size": 38,
-        "category": "Casual",
-        "type": "Sandalia",
-        "description": "Sandalia de cuero, con aplique de tachas. Suela de goma, altura 3cm.",
-        "image": "img_Soldead.jpg"
     },
     {
         "id": 25,
