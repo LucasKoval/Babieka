@@ -28,12 +28,30 @@ function writeProducts(array) {
 //----------* PRODUCTS CONTROLLER *----------//
 const productsController = {
     //Renderiza la vista Colección
-    list: (req, res) => {        
-        res.render('products/productsList');
+    list: (req, res) => {
+        const products = getAllProducts();
+		const fiesta = products.filter((product) => {
+			return product.category == 'Fiesta';
+		});
+		const casual = products.filter((product) => {
+			return product.category == 'Casual';
+        });
+
+		res.render('products/productsList', {
+			fiestaProducts: fiesta,
+			casualProducts: casual
+		});        
     },
-    //Renderiza la vista Edición de artículo
+    //Renderiza la vista Sale
     sale: (req, res) => {        
-        res.render('products/productsSale');
+        const products = getAllProducts();
+        const sale = products.filter((product) => {
+			return product.category == 'Sale';
+		});
+
+		res.render('products/productsSale', {
+			saleProducts: sale
+		});  
     },
     //Renderiza la vista Detalle de producto
     detail: (req, res) => {   

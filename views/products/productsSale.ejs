@@ -14,115 +14,24 @@
         <main class="d-flex fd-col">
         
             <h1 class="lk-title-list">SALE</h1>
-            <!-- < % for (product of products) { %> -->
-                <div class="lk-mainbox-list">
+            <div class="lk-mainbox-list">
+                <% for (product of saleProducts) { %>
                     <article class="lk-articlebox-list">
-                        <a href="/producto/detalle/:ID">
+                        <a href="/producto/detalle/<%= product.id %>">
                             <div class="justify-center opac-img">
-                                <img src="/img/products/img_Bianca.jpg" alt="imagen de producto">
+                                <img src="/img/products/<%= product.image %>" alt="imagen de producto">
                             </div>
                             <div class="casual-index">
-                                <p class="marg-0 name-size">Sandalia Bianca</p>
-                                <p class="marg-0 price-size tachado">$ 3400</p>
-                                <span class="marg-0">50 %OFF</span>
-                                <p class="marg-0 price-size">$ 1700</p>
+                                <p class="marg-0 name-size"><%= product.name %></p>
+                                <p class="marg-0 price-size tachado">$ <%= product.price %></p>
+                                <span class="marg-0"><%= product.discount %> %OFF</span>
+                                <p class="marg-0 price-size">$ <%= product.price-((product.price*product.discount)/100) %></p>
                             </div>
                         </a>
                     </article>
-                    <article class="lk-articlebox-list">
-                        <a href="/producto/detalle/:ID">
-                            <div class="justify-center opac-img">
-                                <img src="/img/products/img_Bianca.jpg" alt="imagen de producto">
-                            </div>
-                            <div class="casual-index">
-                                <p class="marg-0 name-size">Sandalia Bianca</p>
-                                <p class="marg-0 price-size tachado">$ 3400</p>
-                                <span class="marg-0">50 %OFF</span>
-                                <p class="marg-0 price-size">$ 1700</p>
-                            </div>
-                        </a>
-                    </article>
-                    <article class="lk-articlebox-list">
-                        <a href="/producto/detalle/:ID">
-                            <div class="justify-center opac-img">
-                                <img src="/img/products/img_Bianca.jpg" alt="imagen de producto">
-                            </div>
-                            <div class="casual-index">
-                                <p class="marg-0 name-size">Sandalia Bianca</p>
-                                <p class="marg-0 price-size tachado">$ 3400</p>
-                                <span class="marg-0">50 %OFF</span>
-                                <p class="marg-0 price-size">$ 1700</p>
-                            </div>
-                        </a>
-                    </article>
-                    <article class="lk-articlebox-list">
-                        <a href="/producto/detalle/:ID">
-                            <div class="justify-center opac-img">
-                                <img src="/img/products/img_Bianca.jpg" alt="imagen de producto">
-                            </div>
-                            <div class="casual-index">
-                                <p class="marg-0 name-size">Sandalia Bianca</p>
-                                <p class="marg-0 price-size tachado">$ 3400</p>
-                                <span class="marg-0">50 %OFF</span>
-                                <p class="marg-0 price-size">$ 1700</p>
-                            </div>
-                        </a>
-                    </article>
-                    <article class="lk-articlebox-list">
-                        <a href="/producto/detalle/:ID">
-                            <div class="justify-center opac-img">
-                                <img src="/img/products/img_Bianca.jpg" alt="imagen de producto">
-                            </div>
-                            <div class="casual-index">
-                                <p class="marg-0 name-size">Sandalia Bianca</p>
-                                <p class="marg-0 price-size tachado">$ 3400</p>
-                                <span class="marg-0">50 %OFF</span>
-                                <p class="marg-0 price-size">$ 1700</p>
-                            </div>
-                        </a>
-                    </article>
-                    <article class="lk-articlebox-list">
-                        <a href="/producto/detalle/:ID">
-                            <div class="justify-center opac-img">
-                                <img src="/img/products/img_Bianca.jpg" alt="imagen de producto">
-                            </div>
-                            <div class="casual-index">
-                                <p class="marg-0 name-size">Sandalia Bianca</p>
-                                <p class="marg-0 price-size tachado">$ 3400</p>
-                                <span class="marg-0">50 %OFF</span>
-                                <p class="marg-0 price-size">$ 1700</p>
-                            </div>
-                        </a>
-                    </article>
-                    <article class="lk-articlebox-list">
-                        <a href="/producto/detalle/:ID">
-                            <div class="justify-center opac-img">
-                                <img src="/img/products/img_Bianca.jpg" alt="imagen de producto">
-                            </div>
-                            <div class="casual-index">
-                                <p class="marg-0 name-size">Sandalia Bianca</p>
-                                <p class="marg-0 price-size tachado">$ 3400</p>
-                                <span class="marg-0">50 %OFF</span>
-                                <p class="marg-0 price-size">$ 1700</p>
-                            </div>
-                        </a>
-                    </article>
-                    <article class="lk-articlebox-list">
-                        <a href="/producto/detalle/:ID">
-                            <div class="justify-center opac-img">
-                                <img src="/img/products/img_Bianca.jpg" alt="imagen de producto">
-                            </div>
-                            <div class="casual-index">
-                                <p class="marg-0 name-size">Sandalia Bianca</p>
-                                <p class="marg-0 price-size tachado">$ 3400</p>
-                                <span class="marg-0">50 %OFF</span>
-                                <p class="marg-0 price-size">$ 1700</p>
-                            </div>
-                        </a>
-                    </article>
-                </div>
-            <!-- < % } %> -->       
-            
+                <% } %>
+            </div>
+        
         </main>
 
         <%- include('../partials/footer') %>   <!--// partial Footer //-->
