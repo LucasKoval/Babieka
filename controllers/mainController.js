@@ -5,7 +5,7 @@ const path = require('path');
 
 //----------* VARIABLE'S *----------//
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
+const productsFilePath = path.join(__dirname, '../data/products.json');
 
 
 //----------* FUNCTIONS *----------//

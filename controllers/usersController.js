@@ -4,7 +4,7 @@ const path = require('path');
 
 
 //----------* VARIABLE'S *----------//
-const usersFilePath = path.join(__dirname, '../data/usersDataBase.json');
+const usersFilePath = path.join(__dirname, '../data/users.json');
 
 
 //----------* FUNCTIONS *----------//

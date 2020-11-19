@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "nombre": "Julieta",
+        "apellido": "Retamoza",
+        "email": "juli@email.com",
+        "password": "******",
+        "category": "admin",
+        "image": ""
+    },
+    {
+        "id": 2,
+        "nombre": "Lucas",
+        "apellido": "Koval",
+        "email": "lucas@email.com",
+        "password": "******",
+        "category": "admin",
+        "image": ""
+    },
+    {
+        "id": 3,
+        "nombre": "Federico",
+        "apellido": "Gomez",
+        "email": "fede@email.com",
+        "password": "******",
+        "category": "admin",
+        "image": ""
+    },
+    {
+        "id": 4,
+        "nombre": "Cosme",
+        "apellido": "Fulanito",
+        "email": "cosme@email.com",
+        "password": "******",
+        "category": "client",
+        "image": ""
+    }
+]
