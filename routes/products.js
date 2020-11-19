@@ -4,12 +4,13 @@ const router = express.Router();
 const productsController = require('../controllers/productsController');
 
 //----------* PRODUCTS ROUTES *----------//
-router.get('/', productsController.list);
-router.get('/sale', productsController.sale);
-router.get('/detalle/:id', productsController.detail);
-router.get('/carrito', productsController.cart);
-router.get('/cargar', productsController.create);
-router.get('/editar', productsController.edit);
+router.get('/', productsController.list);              //-> Listar productos 
+router.get('/sale', productsController.sale);          //-> Listar productos sale
+router.get('/:id', productsController.detail); //-> Detalle  de producto
+router.get('/carrito', productsController.cart);          
+router.get('/crear', productsController.createForm);
+//router.post('/crear', productsController.create);
+router.get('/:id/editar', productsController.edit);
 
 
 //----------* EXPORTS ROUTER *----------//
