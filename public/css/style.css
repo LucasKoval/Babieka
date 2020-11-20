@@ -13,6 +13,10 @@ a {
     color: black;
 }
 
+textarea {
+    font-family: 'Roboto', sans-serif;
+}
+
 .marg-auto {
     margin: auto;
 }

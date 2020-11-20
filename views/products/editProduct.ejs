@@ -10,13 +10,10 @@
             <section class= "formulario-upload">
                
                 <h1 class="h1-size marg-0 centrar">Editar artículo</h1>
-                <form action="/" method="GET">    <!--// Formulario Nuevo Artículo //-->
+                <form action="/<%=producto.id%>/editar?_method=PUT" method="POST">    <!--// Formulario Nuevo Artículo //-->
                     
                     <label for="nombreArticulo"></label>    <!--// Nombre //-->
-                    <p><input type="text" name="nombreArticulo" id="nombreArticulo" placeholder="Nombre del artículo"></p>
-                    
-                    <label for="codigoArticulo"></label>    <!--// Código //-->
-                    <p><input type="text" name="codigoArticulo" id="codigoArticulo" placeholder="Código del artículo"></p>
+                    <p><input type="text" name="nombreArticulo" id="nombreArticulo" value="<%=producto.name%>"></p>
                     
                     <p>
                         <label for="categoriaArticulo">Categoría del artículo: </label>
@@ -30,8 +27,7 @@
                     <p>
                         <label for="tipoArticulo">Tipo de artículo: </label> <!--// Tipo //-->
                         <select name="tipoArticulo">  
-                        <option value="sandCas">Sandalia casual</option> 
-                        <option value="sandFiesta">Sandalia fiesta</option>
+                        <option value="sandFiesta">Sandalia</option>
                         <option value="bota">Bota</option>
                         <option value="borcego">Borcego</option>
                         <option value="borcego">Botineta</option>
@@ -63,7 +59,7 @@
                     </select></p>
                     
                     <label for="descripcArticulo"></label>    <!--// Descripción //-->
-                    <textarea name="descripcArticulo" id="descripcArticulo" cols="30" rows="3" placeholder="Añada una breve descripción del artículo y sus materiales"></textarea>
+                    <textarea name="descripcArticulo" id="descripcArticulo" cols="52" rows="4"><%=producto.description%></textarea>
 
                     <p>    <!--// Imagen //-->
                         <input type="file" name="imagenArticulo" accept="image/png, .jpeg, .jpg, image/gif"> 
@@ -71,9 +67,12 @@
                     </p>
 
                     <label for="precioArticulo"></label>    <!--// Precio //-->
-                    <p><input type="text" name="precioArticulo" id="precioArticulo" placeholder="Precio"></p>    
+                    <p><input type="text" name="precioArticulo" id="precioArticulo" value="<%=producto.price%>"></p>    
 
-                    <button type="submit">Editar artículo</button>  <button type="submit">Eliminar artículo</button>   <!--// Botón Crear //-->
+                    <button type="submit">Editar artículo</button>  <!--// Botón Editar producto //-->
+                    <form action="/:id/editar?_method=DELETE" method="POST"> <!--// Botón Editar producto //-->
+                        <button type="submit">Eliminar artículo</button> 
+                    </form>
 
                 </form>
     

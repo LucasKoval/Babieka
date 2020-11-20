@@ -1,8 +1,8 @@
 [
     {
         "id": 1,
-        "nombre": "Julieta",
-        "apellido": "Retamoza",
+        "firstName": "Julieta",
+        "lastName": "Retamoza",
         "email": "juli@email.com",
         "password": "******",
         "category": "admin",
@@ -10,8 +10,8 @@
     },
     {
         "id": 2,
-        "nombre": "Lucas",
-        "apellido": "Koval",
+        "firstName": "Lucas",
+        "lastName": "Koval",
         "email": "lucas@email.com",
         "password": "******",
         "category": "admin",
@@ -19,8 +19,8 @@
     },
     {
         "id": 3,
-        "nombre": "Federico",
-        "apellido": "Gomez",
+        "firstName": "Federico",
+        "lastName": "Gomez",
         "email": "fede@email.com",
         "password": "******",
         "category": "admin",
@@ -28,8 +28,8 @@
     },
     {
         "id": 4,
-        "nombre": "Cosme",
-        "apellido": "Fulanito",
+        "firstName": "Cosme",
+        "lastName": "Fulanito",
         "email": "cosme@email.com",
         "password": "******",
         "category": "client",
