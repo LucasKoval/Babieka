@@ -68,12 +68,18 @@ const productsController = {
         res.render('products/createProduct');
     },
     //Renderiza la vista Edición de artículo
-    edit: (req, res) => {        
-        res.render('products/editProduct');
+    editForm: (req, res) => { 
+        let productos = getAllProducts();
+        let producto = productos.find(elemento => elemento.id == req.params.id);     
+        res.render('products/editProduct', { producto : producto });       
     },
     //Elimina el registro de un artículo
     delete: (req, res) => {        
-        //código
+        //obtener el producto del id del req
+        //Obtener todod los productos de la DB
+        //Comparar para encontrar el que coincide 
+        //Eliminar el producto que machea con el de la DB
+        //qué devuelve la página? redirect o render?, mensaje prompt? 
     }
 };
 
