@@ -1,6 +1,6 @@
 [
     {
-        "id": 1,
+        "id": "1",
         "firstName": "Julieta",
         "lastName": "Retamoza",
         "email": "juli@email.com",
@@ -9,7 +9,7 @@
         "image": ""
     },
     {
-        "id": 2,
+        "id": "2",
         "firstName": "Lucas",
         "lastName": "Koval",
         "email": "lucas@email.com",
@@ -18,7 +18,7 @@
         "image": ""
     },
     {
-        "id": 3,
+        "id": "3",
         "firstName": "Federico",
         "lastName": "Gomez",
         "email": "fede@email.com",
@@ -27,7 +27,7 @@
         "image": ""
     },
     {
-        "id": 4,
+        "id": "4",
         "firstName": "Cosme",
         "lastName": "Fulanito",
         "email": "cosme@email.com",
