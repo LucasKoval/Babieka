@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('../partials/head', {title: 'detalle del producto' + producto.name}) %>   <!--// partial Head //-->
+    <%- include('../partials/head', /*{title: 'detalle del producto' + producto.name}*/) %>   <!--// partial Head //-->
     <body>
         
         <%- include('../partials/header') %>   <!--// partial Header //-->
@@ -11,7 +11,7 @@
                 
                 <div class="main-det cen-1">
                     <article class="main-det sinborde bordeImagen">
-                        <img class = "imagendetail" src="/img/products/<%= producto.image %>" alt="Señorita Home">
+                        <img class = "width-100" src="/img/products/<%= producto.image %>" alt="Señorita Home">
                     </article>
                 </div>
 
