@@ -56,7 +56,7 @@ const productsController = {
 		});  
     },
 
-
+    
     //Renderiza la vista Detalle de producto
     detail: (req, res) => {   
         let productos = getAllProducts();
@@ -64,12 +64,12 @@ const productsController = {
         res.render('products/productDetail', { producto : producto });
     },
 
-
+    
     //Renderiza la vista Carrito
     cart: (req, res) => {        
         res.render('products/productCart');
     },
-
+    
 
     //Renderiza la vista Nuevo artículo
     createForm: (req, res) => {        
@@ -106,7 +106,7 @@ const productsController = {
             } 
             return producto
         })
-
+        
         writeProducts(productoEditado);
         res.redirect('/producto/'+ req.params.id);
     },
