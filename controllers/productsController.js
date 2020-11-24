@@ -1,35 +1,15 @@
 //----------* REQUIRE'S *----------//
-const fs = require('fs');
-const path = require('path');
-
+const helperProducts = require('../helpers/helperProducts');
 
 //----------* VARIABLE'S *----------//
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-const productsFilePath = path.join(__dirname, '../data/products.json');
-
-
-//----------* FUNCTIONS *----------//
-function getAllProducts() {    //-> Función que contiene a todos los productos
-    return JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
-}
-
-function getNewId(){
-	const products = getAllProducts();
-	return products.pop().id + 1;
-}
-
-function writeProducts(array) {
-	const productsJson = JSON.stringify(array, null, " ");
-	fs.writeFileSync(productsFilePath, productsJson);
-}
-
 
 
 //----------* PRODUCTS CONTROLLER *----------//
 const productsController = {
     //Renderiza la vista Colección
     list: (req, res) => {
-        const products = getAllProducts();
+        const products = helperProducts.getAllProducts();
 		const fiesta = products.filter((product) => {
 			return product.category == 'Fiesta';
 		});
@@ -46,7 +26,7 @@ const productsController = {
 
     //Renderiza la vista Sale
     sale: (req, res) => {        
-        const products = getAllProducts();
+        const products = helperProducts.getAllProducts();
         const sale = products.filter((product) => {
 			return product.category == 'Sale';
 		});
@@ -56,20 +36,26 @@ const productsController = {
 		});  
     },
 
-    
+
     //Renderiza la vista Detalle de producto
     detail: (req, res) => {   
-        let productos = getAllProducts();
+        let productos = helperProducts.getAllProducts();
         let producto = productos.find(elemento => elemento.id == req.params.id);     
         res.render('products/productDetail', { producto : producto });
     },
 
-    
+
     //Renderiza la vista Carrito
-    cart: (req, res) => {        
-        res.render('products/productCart');
+    cart: (req, res) => {       
+        const products = helperProducts.getAllProducts();
+		const fiesta = products.filter((product) => {
+			return product.category == 'Fiesta';
+		});
+		res.render('products/productCart', {
+			fiestaProducts: fiesta,
+		}); 
     },
-    
+
 
     //Renderiza la vista Nuevo artículo
     createForm: (req, res) => {        
@@ -106,7 +92,7 @@ const productsController = {
 
     //Renderiza la vista Edición de artículo
     editForm: (req, res) => { 
-        let productos = getAllProducts();
+        let productos = helperProducts.getAllProducts();
         let producto = productos.find(elemento => elemento.id == req.params.id);     
         res.render('products/editProduct', { producto : producto });       
     },
@@ -114,7 +100,7 @@ const productsController = {
 
     //Editar artículo (PUT)
     edit: (req, res) => {        
-        let productos = getAllProducts();
+        let productos = helperProducts.getAllProducts();
         const productoEditado = productos.map(function(producto){
             if (producto.id == req.params.id) {
                 producto.name=req.body.name; 
@@ -128,18 +114,23 @@ const productsController = {
             } 
             return producto
         })
-        
-        writeProducts(productoEditado);
+
+        helperProducts.writeProducts(productoEditado);
         res.redirect('/producto/'+ req.params.id);
     },
 
+
     //Elimina el registro de un artículo
     delete: (req, res) => {        
-        //obtener el producto del id del req
-        //Obtener todod los productos de la DB
-        //Comparar para encontrar el que coincide 
-        //Eliminar el producto que machea con el de la DB
-        //qué devuelve la página? redirect o render?, mensaje prompt? 
+        console.log(req.params.id);
+        const products = helperProducts.getAllProducts();
+        console.log(products);
+        const remainingProducts = products.filter((product) => {
+			return product.id !== req.params.id;
+        });
+        console.log(remainingProducts);
+        helperProducts.writeProducts(remainingProducts);
+        return res.redirect('/');
     }
 };
 

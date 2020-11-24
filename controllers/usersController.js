@@ -1,26 +1,7 @@
 //----------* REQUIRE'S *----------//
-const fs = require('fs');
-const path = require('path');
-
+const helperUsers = require('../helpers/helperUsers');
 
 //----------* VARIABLE'S *----------//
-const usersFilePath = path.join(__dirname, '../data/users.json');
-
-
-//----------* FUNCTIONS *----------//
-function getAllUsers() {    //-> Función que contiene a todos los usuarios
-    return JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
-}
-
-function getNewId(){
-	const users = getAllUsers();
-	return users.pop().id + 1;
-}
-
-function writeUsers(array) {
-	const usersJson = JSON.stringify(array, null, " ");
-	fs.writeFileSync(usersFilePath, usersJson);
-}
 
 
 //----------* USERS CONTROLLER *----------//
