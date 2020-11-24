@@ -24,115 +24,49 @@
                 </section>
                 
                 <section>   <!--// Box intermedio //-->
-                    
-                    <div class="cart-boxartic col-main">    
-                        <article class="new-artic col-artic">   <!--// Artículo 1 //-->
-                            <img src="/img/products/img_Berenice.jpg" alt="Sandalias Berenice" class="cart-img">
-                            <div class="new-subartic">
-                                <p>Sandalias Berenice</p>
-                                <br>
-                                <p>Detalle: Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos quibusdam.</p>
-                            </div>
-                        </article>
-                        
-                        <div class="cart-boxsubartic col-precio">
-                            <div>   <!--// Precio unitario //-->
-                                <p>$4.700</p>
-                            </div>
-                            <div>   <!--// Botones de cantidad //-->
-                                <script>
-                                    a=1;
-                                </script>   
-                                <form action="" method="">
-                                    <a href="javascript:a--; updateA(a);"><i class="fas fa-minus icon-bord"></i></a> 
-                                    <input type="text" id="a" size="1" class="centrar"/>
-                                    <a href="javascript:a++; updateA(a);"><i class="fas fa-plus icon-bord"></i></a>
-                                </form>
-                                <script>
-                                    input_a = document.getElementById('a');
-                                    function updateA(){
-                                        input_a.value=a;
-                                    }
-                                    updateA();
-                                </script>
-                            </div>
-                            <div>   <!--// Precio //-->
-                                <p>$4.700</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cart-boxartic col-main">    
-                        <article class="new-artic col-artic">   <!--// Artículo 2 //-->
-                            <img src="/img/products/img_Bernarda.jpg" alt="Sandalias Bernarda" class="cart-img">
-                            <div class="new-subartic">
-                                <p>Sandalias Bernarda</p>
-                                <br>
-                                <p>Detalle: Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos quibusdam.</p>
-                            </div>
-                        </article>
-                        
-                        <div class="cart-boxsubartic col-precio">
-                            <div>   <!--// Precio unitario //-->
-                                <p>$3.600</p>
-                            </div>
-                            <div>   <!--// Botones de cantidad //-->
-                                <script>
-                                    b=1;
-                                </script>   
-                                <form action="" method="">
-                                    <a href="javascript:b--; updateB(b);"><i class="fas fa-minus icon-bord"></i></a> 
-                                    <input type="text" id="b" size="1" class="centrar"/>
-                                    <a href="javascript:b++; updateB(b);"><i class="fas fa-plus icon-bord"></i></a>
-                                </form>
-                                <script>
-                                    input_b = document.getElementById('b');
-                                    function updateB(){
-                                        input_b.value=b;
-                                    }
-                                    updateB();
-                                </script>
-                            </div>
-                            <div>   <!--// Precio //-->
-                                <p>$3.600</p>
+                    <% let precioFinal = 0; %>
+                    <% let i=1; %>
+                    <% for (product of fiestaProducts) { %>
+                        <div class="cart-boxartic col-main">   
+                            <article class="new-artic col-artic">
+                                <img src="/img/products/<%= product.image %>" alt="Imagen del artículo" class="cart-img">
+                                <div class="new-subartic">
+                                    <p><%= product.name %></p>
+                                    <br>
+                                    <p><%= product.description %></p>
+                                </div>
+                            </article>
+                            
+                            <div class="cart-boxsubartic col-precio">
+                                <div>   <!--// Precio unitario //-->
+                                    <p>$<%= product.price %></p>
+                                </div>
+                                <div>   <!--// Botones de cantidad //-->
+                                    <script>
+                                        a=1;
+                                    </script>   
+                                    <form action="" method="">
+                                        <a href="javascript:a--; updateA(a);"><i class="fas fa-minus icon-bord"></i></a> 
+                                        <input type="text" id="a" size="1" class="centrar"/>
+                                        <a href="javascript:a++; updateA(a);"><i class="fas fa-plus icon-bord"></i></a>
+                                    </form>
+                                    <script>
+                                        input_a = document.getElementById('a');
+                                        function updateA(){
+                                            input_a.value=a;
+                                        }
+                                        updateA();
+                                    </script>
+                                </div>
+                                <div>   <!--// Precio //-->
+                                    <p>$<%= product.price %></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="cart-boxartic col-main">    
-                        <article class="new-artic col-artic">   <!--// Artículo 3 //-->
-                            <img src="/img/products/img_Bianca.jpg" alt="Sandalias Bianca" class="cart-img">
-                            <div class="new-subartic">
-                                <p>Sandalias Bianca</p>
-                                <br>
-                                <p>Detalle: Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos quibusdam.</p>
-                            </div>
-                        </article>
-                        
-                        <div class="cart-boxsubartic col-precio">
-                            <div>   <!--// Precio unitario //-->
-                                <p>$4.200</p>
-                            </div>
-                            <div>   <!--// Botones de cantidad //-->
-                                <script>
-                                    c=1;
-                                </script>   
-                                <form action="" method="">
-                                    <a href="javascript:c--; updateC(c);"><i class="fas fa-minus icon-bord"></i></a> 
-                                    <input type="text" id="c" size="1" class="centrar"/>
-                                    <a href="javascript:c++; updateC(c);"><i class="fas fa-plus icon-bord"></i></a>
-                                </form>
-                                <script>
-                                    input_c = document.getElementById('c');
-                                    function updateC(){
-                                        input_c.value=c;
-                                    }
-                                    updateC();
-                                </script>
-                            </div>
-                            <div>   <!--// Precio //-->
-                                <p>$4.200</p>
-                            </div>
-                        </div>
-                    </div>
+                        <% precioFinal = i * product.price; %>
+                        <% i++; %>
+                    <% } %>
+
                 </section>
 
                 <section class="cart-boxbuy col-main padd-20">   <!--// Box intermedio //-->
@@ -148,7 +82,7 @@
                         </div>
                         <div class="flexi">
                             <p>TOTAL</p>
-                            <p>$13.100</p>
+                            <p>$ <%= precioFinal+600 %></p>
                         </div>
                         <div class="flexi-button">
                             <div>
