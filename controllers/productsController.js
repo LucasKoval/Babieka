@@ -61,28 +61,31 @@ const productsController = {
     createForm: (req, res) => {        
         res.render('products/createProduct');
     },
-    /*
+    
     //Editar artículo (POST)
     create: (req, res) => {        
         let productos = getAllProducts();
         const productoEditado = productos.map(function(producto){
-            if (producto.id == req.params.id) {
-                producto.name=req.body.name; 
-                producto.type=req.body.type;
-                producto.size=req.body.size;
-                producto.category =req.body.category;
-                producto.color=req.body.color;
-                producto.description=req.body.description;
-                //producto.image=req.body.image;
-                producto.price=req.body.price;
-            } 
+            let product = {
+                producto.id == req.params.id) 
+            producto.name=req.body.name; 
+            producto.type=req.body.type;
+            producto.size=req.body.size;
+            producto.category =req.body.category;
+            producto.color=req.body.color;
+            producto.description=req.body.description;
+            //producto.image=req.body.image;
+            producto.price=req.body.price;
+            }
+            
+            
             return producto
         })
-        *
+        
         writeProducts(productoEditado);
         res.redirect('/producto/'+ req.params.id);
     },
-    */
+    
 
     //Crear Nuevo artículo
     store: (req, res) => {        
