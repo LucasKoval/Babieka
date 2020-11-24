@@ -61,10 +61,14 @@ const productsController = {
     createForm: (req, res) => {        
         res.render('products/createProduct');
     },
-    /*
+
+    //Crear Nuevo artículo
+    store: (req, res) => {        
+        res.render('products/createProduct');
+          /*
     //Editar artículo (POST)
     create: (req, res) => {        
-        let productos = getAllProducts();
+        let productos = helperProducts.getAllProducts();
         const productoEditado = productos.map(function(producto){
             if (producto.id == req.params.id) {
                 producto.name=req.body.name; 
@@ -73,7 +77,7 @@ const productsController = {
                 producto.category =req.body.category;
                 producto.color=req.body.color;
                 producto.description=req.body.description;
-                //producto.image=req.body.image;
+                producto.image=req.files[0].filename;
                 producto.price=req.body.price;
             } 
             return producto
@@ -83,10 +87,6 @@ const productsController = {
         res.redirect('/producto/'+ req.params.id);
     },
     */
-
-    //Crear Nuevo artículo
-    store: (req, res) => {        
-        res.render('products/createProduct');
     },
 
 
@@ -109,7 +109,7 @@ const productsController = {
                 producto.size=req.body.size;
                 producto.color=req.body.color;
                 producto.description=req.body.description;
-                //producto.image=req.body.image;
+                producto.image=req.files[0].filename;
                 producto.price=req.body.price;
             } 
             return producto
