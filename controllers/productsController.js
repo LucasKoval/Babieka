@@ -62,36 +62,24 @@ const productsController = {
         res.render('products/createProduct');
     },
     
-    //Editar artículo (POST)
-    create: (req, res) => {        
-        let productos = getAllProducts();
-        const productoEditado = productos.map(function(producto){
-            let product = {
-                producto.id == req.params.id) 
-            producto.name=req.body.name; 
-            producto.type=req.body.type;
-            producto.size=req.body.size;
-            producto.category =req.body.category;
-            producto.color=req.body.color;
-            producto.description=req.body.description;
-            //producto.image=req.body.image;
-            producto.price=req.body.price;
-            }
-            
-            
-            return producto
-        })
-        
-        writeProducts(productoEditado);
-        res.redirect('/producto/'+ req.params.id);
-    },
-    
-
-    //Crear Nuevo artículo
+    //Crear artículo (POST)
     store: (req, res) => {        
-        res.render('products/createProduct');
+        let product = {
+            id: helperProducts.getNewId(),
+            name: req.body.name,
+            price: req.body.price,
+            discount: req.body.discount,
+            color: req.body.color,
+            size: req.body.size,
+            category: req.body.category,
+            type: req.body.type,
+            description: req.body.description,
+            image: req.files[0].filename
+        }
+        helperProducts.writeProducts(product);
+        return res.redirect('/');
     },
-
+   
 
     //Renderiza la vista Edición de artículo
     editForm: (req, res) => { 
@@ -112,7 +100,7 @@ const productsController = {
                 producto.size=req.body.size;
                 producto.color=req.body.color;
                 producto.description=req.body.description;
-                //producto.image=req.body.image;
+                producto.image=req.files[0].filename;
                 producto.price=req.body.price;
             } 
             return producto

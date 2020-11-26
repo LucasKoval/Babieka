@@ -10,7 +10,7 @@
             <section class= "formulario-upload">
                
                 <h1 class="h1-size marg-0 centrar">Nuevo artículo</h1>
-                <form action="/" method="GET">    <!--// Formulario Nuevo Artículo //-->
+                <form action="/producto/crear" method="POST" enctype="multipart/form-data">    <!--// Formulario Nuevo Artículo //-->
                     
                     <label for="nombreArticulo"></label>    <!--// Nombre //-->
                     <p><input type="text" name="name" id="nombreArticulo" placeholder="Nombre del artículo"></p>
@@ -29,7 +29,7 @@
                         <label for="tipoArticulo">Tipo de artículo: </label> <!--// Tipo //-->
                         <select name="type"> 
                             <option value="selecciona"  selected disabled>Selecciona...</option> 
-                            <option value="Sandalia">Sandalia fiesta</option>
+                            <option value="Sandalia">Sandalia</option>
                             <option value="Bota">Bota</option>
                             <option value="Borcego">Borcego</option>
                             <option value="Botineta">Botineta</option>
@@ -65,15 +65,18 @@
                     </p>
                     
                     <label for="descripcArticulo"></label>    <!--// Descripción //-->
-                    <textarea name="descripcArticulo" id="descripcArticulo" cols="30" rows="3" placeholder="Añada una breve descripción del artículo y sus materiales"></textarea>
+                    <textarea name="description" id="descripcArticulo" cols="30" rows="3" placeholder="Añada una breve descripción del artículo y sus materiales"></textarea>
 
                     <p>    <!--// Imagen //-->
                         <input type="file" name="imagenArticulo" accept="image/png, .jpeg, .jpg, image/gif"> 
                         <input type="submit" value="Subir Imagen">  
                     </p>
 
+                    <label for="discount"></label>    <!--// El Discount //-->
+                    <p><input type="text" name="discount" id="discount" placeholder="discount"></p>   
+                    
                     <label for="precioArticulo"></label>    <!--// Precio //-->
-                    <p><input type="text" name="precioArticulo" id="precioArticulo" placeholder="Precio"></p>    
+                    <p><input type="text" name="price" id="precioArticulo" placeholder="Precio"></p>    
 
                     <button type="submit">Crear artículo</button>    <!--// Botón Crear //-->
 

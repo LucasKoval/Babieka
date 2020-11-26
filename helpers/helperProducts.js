@@ -14,11 +14,13 @@ const helperProducts = {
         return JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));        
     },
     getNewId: () => {
-        const products = getAllProducts();
-	    return products.pop().id + 1;       
+        const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+	    return products.pop().id++ + 1;       
     },
-    writeProducts: (array) => {
-        const productsJson = JSON.stringify(array, null, " ");
+    writeProducts: (product) => {
+        const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+	    const productToSave = [...products, product];
+        const productsJson = JSON.stringify(productToSave, null, " ");
 	    fs.writeFileSync(productsFilePath, productsJson);  
     },
 }
