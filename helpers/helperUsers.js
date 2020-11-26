@@ -14,7 +14,7 @@ const helperUsers = {
     },
     getNewId: () => {
         const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));  
-	    return users.pop().id + 1;     
+	    return users.pop().id++ + 1;     
     },
     writeUsers: (user) => {
         const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));  

@@ -1,6 +1,6 @@
 //----------* REQUIRE'S *----------//
 const helperUsers = require('../helpers/helperUsers');
-const bcryptjs = require('bcryptjs');
+const bcryptjs = require('bcrypt');
 
 //----------* VARIABLE'S *----------//
 
@@ -18,7 +18,7 @@ const usersController = {
         let user = {
             id: helperUsers.getNewId(),
             firstName: req.body.firstName,
-            lastName: req.body.lastname, 
+            lastName: req.body.lastName, 
             email: req.body.email,
             password: passwordHashed,
             image: req.files[0].filename
