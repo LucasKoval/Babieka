@@ -13,11 +13,13 @@ const helperUsers = {
         return JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));      
     },
     getNewId: () => {
-        const users = getAllUsers();
+        const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));  
 	    return users.pop().id + 1;     
     },
-    writeUsers: (array) => {
-        const usersJson = JSON.stringify(array, null, " ");
+    writeUsers: (user) => {
+        const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));  
+        const usersToSave = [...users,user]
+        const usersJson = JSON.stringify(usersToSave, null, " ");
 	    fs.writeFileSync(usersFilePath, usersJson); 
     },
 }
