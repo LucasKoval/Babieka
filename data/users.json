@@ -1,38 +1,38 @@
 [
-    {
-        "id": "1",
-        "firstName": "Julieta",
-        "lastName": "Retamoza",
-        "email": "juli@email.com",
-        "password": "******",
-        "category": "admin",
-        "image": ""
-    },
-    {
-        "id": "2",
-        "firstName": "Lucas",
-        "lastName": "Koval",
-        "email": "lucas@email.com",
-        "password": "******",
-        "category": "admin",
-        "image": ""
-    },
-    {
-        "id": "3",
-        "firstName": "Federico",
-        "lastName": "Gomez",
-        "email": "fede@email.com",
-        "password": "******",
-        "category": "admin",
-        "image": ""
-    },
-    {
-        "id": "4",
-        "firstName": "Cosme",
-        "lastName": "Fulanito",
-        "email": "cosme@email.com",
-        "password": "******",
-        "category": "client",
-        "image": ""
-    }
+ {
+  "id": "1",
+  "firstName": "Julieta",
+  "lastName": "Retamoza",
+  "email": "juli@email.com",
+  "password": "******",
+  "category": "admin",
+  "image": ""
+ },
+ {
+  "id": "2",
+  "firstName": "Lucas",
+  "lastName": "Koval",
+  "email": "lucas@email.com",
+  "password": "******",
+  "category": "admin",
+  "image": ""
+ },
+ {
+  "id": "3",
+  "firstName": "Federico",
+  "lastName": "Gomez",
+  "email": "fede@email.com",
+  "password": "******",
+  "category": "admin",
+  "image": ""
+ },
+ {
+  "id": "4",
+  "firstName": "Cosme",
+  "lastName": "Fulanito",
+  "email": "cosme@email.com",
+  "password": "******",
+  "category": "client",
+  "image": ""
+ }
 ]

@@ -13,7 +13,7 @@
             <section class= "formulariologin">
                 <h1 class="h1-size">Ingresar con mail y contraseña</h1>
     
-                <form action="/registro" method="POST" enctype="multipart/form-data">
+                <form action="/usuario/registro" method="POST" enctype="multipart/form-data">
                     <p><label for="firstName">Nombre</label></p>
                     <p><input type="text" name="firstName" id="firstName"></p>
                     <p><label for="lastName">Apellido</label></p>
@@ -25,7 +25,7 @@
                     <p><label for="repeatpassword">Repita su contraseña:</label></p>
                     <p><input type="password" name="repeatpassword" id="repeatpassword"></p>
                     <p>    <!--// Imagen //-->
-                        <input type="file" name="imagenArticulo" accept="image/png, .jpeg, .jpg, image/gif"> 
+                        <input type="file" name="avatar" accept="image/png, .jpeg, .jpg, image/gif"> 
                         <input type="submit" value="Subir Imagen">  
                     </p>
     
