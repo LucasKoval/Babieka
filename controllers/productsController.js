@@ -61,34 +61,25 @@ const productsController = {
     createForm: (req, res) => {        
         res.render('products/createProduct');
     },
-
-    //Crear Nuevo artículo
+    
+    //Crear artículo (POST)
     store: (req, res) => {        
-        res.render('products/createProduct');
-          /*
-    //Editar artículo (POST)
-    create: (req, res) => {        
-        let productos = helperProducts.getAllProducts();
-        const productoEditado = productos.map(function(producto){
-            if (producto.id == req.params.id) {
-                producto.name=req.body.name; 
-                producto.type=req.body.type;
-                producto.size=req.body.size;
-                producto.category =req.body.category;
-                producto.color=req.body.color;
-                producto.description=req.body.description;
-                producto.image=req.files[0].filename;
-                producto.price=req.body.price;
-            } 
-            return producto
-        })
-        *
-        writeProducts(productoEditado);
-        res.redirect('/producto/'+ req.params.id);
+        let product = {
+            id: helperProducts.getNewId(),
+            name: req.body.name,
+            price: req.body.price,
+            discount: req.body.discount,
+            color: req.body.color,
+            size: req.body.size,
+            category: req.body.category,
+            type: req.body.type,
+            description: req.body.description,
+            image: req.files[0].filename
+        }
+        helperProducts.writeProducts(product);
+        return res.redirect('/');
     },
-    */
-    },
-
+   
 
     //Renderiza la vista Edición de artículo
     editForm: (req, res) => { 
