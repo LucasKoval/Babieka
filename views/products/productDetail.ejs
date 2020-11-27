@@ -11,13 +11,13 @@
                 
                 <div class="main-det cen-1">
                     <article class="main-det sinborde bordeImagen">
-                        <img class = "width-100" src="/img/products/<%= producto.image %>" alt="Señorita Home">
+                        <img class = "width-100" src="/img/products/<%= product.image %>" alt="Imagen del artículo">
                     </article>
                 </div>
 
                 <div class="cen-2 columna Detalle sinborde">   <!--// Descripcion y opciones del artículo //-->
-                    <p class="letraGrande"><%= producto.name %></p>
-                    <p class="letra-del-precio">$<%= producto.price %></p>
+                    <p class="letraGrande"><%= product.name %></p>
+                    <p class="letra-del-precio">$<%= product.price %></p>
                     
                     <div>
                         <p>Color del producto</p>
@@ -43,7 +43,7 @@
                     </div>
                     <div>
                         <p class="letra-del-precio">Descripcion</p>
-                        <p><%= producto.description %></p>
+                        <p><%= product.description %></p>
                     </div>
                     <div>
                         <p>Cantidad</p>
@@ -67,10 +67,10 @@
                     </div> 
                             
                     <div>   <!--// Botón Comprar //-->
-                        <form action="" class="">
-                            <button class="boton5">Agregar a la bolsa</button>
+                        <form action="/producto/<%=product.id%>/agregar" method="POST">
+                            <button type="submit" class="boton5">Agregar a la bolsa</button>
                         </form>
-                    </div>     
+                    </div>       
                 </div>
 
             </div> 
