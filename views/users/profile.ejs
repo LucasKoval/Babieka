@@ -5,8 +5,26 @@
 
         <%- include('../partials/header') %>   <!--// partial Header //-->
         
-        <h1 class="centrar padd-20">PERFIL DE USUARIO</h1>
-        <img src="/img\img_sitio-construccion.jpg" alt="Sitio en construcción" class="marg-auto imagen70 d-flex">
+        <div style="margin-top: 40px;">
+            <div class="centrar marg-nonside">
+                <h2>Hola <%= user.firstName %></h2>
+                <img src="/img/users/user.jpg" width="20%">
+                <br>
+                <br>
+                <div><%= user.email %></div>
+            </div>
+
+            <div class="centrar">
+                <form action="/usuario/<%=user.id%>/perfil?_method=PUT" method="POST" enctype="multipart/form-data">
+                    <button type="submit">Editar usuario</button>
+                </form>
+            </div>
+            <div class="centrar marg-20">
+                <form action="/usuario/<%=user.id%>/eliminar?_method=DELETE" method="POST"> <!--// Botón Eliminar producto //-->
+                    <button type="submit">Eliminar usuario</button> 
+                </form>
+            </div>
+        </div>
 
         <%- include('../partials/footer') %>   <!--// partial Footer //-->
         

@@ -10,10 +10,10 @@
             <section class= "formulario-upload">
                
                 <h1 class="h1-size marg-0 centrar">Editar artículo</h1>
-                <form action="/producto/<%=producto.id%>/editar?_method=PUT" method="POST" enctype="multipart/form-data">    <!--// Formulario Nuevo Artículo //-->
+                <form action="/producto/<%=product.id%>/editar?_method=PUT" method="POST" enctype="multipart/form-data">    <!--// Formulario Nuevo Artículo //-->
                     
                     <label for="nombreArticulo"></label>    <!--// Nombre //-->
-                    <p><input type="text" name="name" id="nombreArticulo" value="<%=producto.name%>"></p>
+                    <p><input type="text" name="name" id="nombreArticulo" value="<%=product.name%>"></p>
                     
                     <p>
                         <label for="categoriaArticulo">Categoría del artículo: </label>
@@ -59,7 +59,7 @@
                     </select></p>
                     
                     <label for="descripcArticulo"></label>    <!--// Descripción //-->
-                    <textarea name="description" id="descripcArticulo" cols="52" rows="4"><%=producto.description%></textarea>
+                    <textarea name="description" id="descripcArticulo" cols="52" rows="4"><%=product.description%></textarea>
 
                     <p>    <!--// Imagen //-->
                         <input type="file" name="imagenArticulo" accept="image/png, .jpeg, .jpg, image/gif"> 
@@ -67,14 +67,14 @@
                     </p>
 
                     <label for="precioArticulo"></label>    <!--// Precio //-->
-                    <p><input type="text" name="price" id="precioArticulo" value="<%=producto.price%>"></p>    
+                    <p><input type="text" name="price" id="precioArticulo" value="<%=product.price%>"></p>    
 
                     <button type="submit">Editar artículo</button>  <!--// Botón Editar producto //-->
                     
                     
 
                 </form>
-                <form action="/producto/<%=producto.id%>/eliminar?_method=DELETE" method="POST"> <!--// Botón Eliminar producto //-->
+                <form action="/producto/<%=product.id%>/eliminar?_method=DELETE" method="POST"> <!--// Botón Eliminar producto //-->
                     <button type="submit">Eliminar artículo</button> 
                 </form>
             </section>
