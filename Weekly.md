@@ -1,7 +1,13 @@
-Weekly.md:
+Daily.md:
 
-* 28/10: Primer encuentro del Sprint 3. Reunión para definir roles para las nuevas tareas y horarios de trabajo grupal. Decidimos esperar a la clase correspondiente para implementar las template engines EJS, separar las vistas y componentes repetidos. Finalizamos la retrospectiva del Sprint 2. Federico propone ser quien implemente templates engine. 
+* 18/11: Nos reunimos para averiguar qué cosas debemos mejorar respecto del sprint anterior, leer los lineamientos del nuevo sprint y definir actividades a realizar, actualizando el tablero de trabajo.
 
-* 4/11: Revisamos el código del nuevo ruteo grupalmente. Incluimos los partials en cada una de las vistas. Corregimos la ubicación de la imagen del index, quitándola del header. Nos proponemos revisar las clases implementadas en el css para hacerlas más específicas. Surge problema al querer hacer el merge, acordamos consultar en clase como resolverlo y hacemos lista de dudas. Se decide hacer las páginas de carga y edición de producto grupalmente luego de tener solucionado el merge. 
+* 19/11: Realizamos grupalmente la retro. Definimos durante la mañana los primeros pasos para encarar el trabajo del sprint 4. Acordamos que Julieta realizaría la modificación pendiente del header para poder lograr que el menú fuera desplegable. A la tarde nos reuniremos grupalmente para escribir los pasos que se deben desarrollar en cada método del controlador, pudiendo establecer el orden de importancia o urgencia para poder avanzar con los siguientes métodos. También realizaremos grupalmente la creación de funciones de uso general en los métodos del controlador (buscar un producto, etc) y perfeccionamiento de ruteo.  
 
-* 11/11: Modificamos el css, creamos las vistas faltantes (“results”, “nosotros”). Definimos como organizar las nuevas vistas y cómo armar la base de datos del Json. Modificamos los formularios de carga y edición para que fueran acordes a las categorías de la base de datos. Julieta se encarga de armar la base de datos con la información e imágenes correspondientes y de finalizar las vistas “nosotros” y “cómo comprar”. Lucas finaliza la maquetación de las páginas “colección” y “sale”.
+* 20/11:Completamos la función edición por get, modificamos campos de formularios register y edit product. Agregamos método delete y put en editar producto. Modificamos los campos de database de usuarios y productos eliminando campos innecesarios y sumando los faltantes. Creamos las rutas faltantes y arreglamos las redirecciones de casual. 
+
+* 24/11: Agregamos multer al método put, queda finalizado. Creamos las rutas faltantes de users. Creamos carpeta helper con los métodos que usamos de forma recurrente en los distintos controladores. Finalizamos el método Delete. Carrito dinámico no funcional. 
+
+* 26/11: Se crea el archivo necesario de JSON para poder tener un carrito dinámico y funcional. Se crean los métodos post y delete de usuarios. 
+
+* 2/12: Se realizan las modificaciones de los títulos de las vistas y se corrige el menú desplegable. Acordamos qué cosas debemos mejorar para el siguiente sprint, como por ejemplo la vista de registro. 
