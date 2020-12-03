@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('../partials/head') %>   <!--// partial Head //-->
+    <%- include('../partials/head', {title: 'Crear producto'}) %>   <!--// partial Head //-->
     <body>
         
         <%- include('../partials/header') %>   <!--// partial Header //-->
@@ -65,7 +65,7 @@
                     </p>
                     
                     <label for="descripcArticulo"></label>    <!--// Descripción //-->
-                    <textarea name="description" id="descripcArticulo" cols="30" rows="3" placeholder="Añada una breve descripción del artículo y sus materiales"></textarea>
+                    <textarea name="description" id="descripcArticulo" cols="46" rows="4" placeholder="Añada una breve descripción del artículo y sus materiales"></textarea>
 
                     <p>    <!--// Imagen //-->
                         <input type="file" name="imagenArticulo" accept="image/png, .jpeg, .jpg, image/gif"> 
@@ -73,7 +73,7 @@
                     </p>
 
                     <label for="discount"></label>    <!--// El Discount //-->
-                    <p><input type="text" name="discount" id="discount" placeholder="discount"></p>   
+                    <p><input type="text" name="discount" id="discount" placeholder="Descuento"></p>   
                     
                     <label for="precioArticulo"></label>    <!--// Precio //-->
                     <p><input type="text" name="price" id="precioArticulo" placeholder="Precio"></p>    
