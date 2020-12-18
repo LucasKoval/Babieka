@@ -12,7 +12,7 @@
             <section class= "formulariologin">
                 <h1 class="h1-size">Ingresar con mail y contraseña</h1>
 
-                <form action="/" method="GET">
+                <form action="/usuario/login" method="POST">
                     <p><label for="email">Email:</label></p>
                     <p><input type="email" name="email" id="email" placeholder="Ej: maria@babieka.com"></p>
                     <p><label for="password">Contraseña:</label></p>
@@ -20,6 +20,11 @@
 
                     <div class="forgotPass">
                         <a href="">¿Olvidaste tu contraseña?</a>
+                    </div>
+
+                    <div>
+                        <label for="remember" class="form-label">Recuérdame</label>
+                        <input type="checkbox" id="remember" name="remember" class="form-check">
                     </div>
 
                     <button type="submit">Ingresar</button>

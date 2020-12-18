@@ -114,7 +114,7 @@ const productsController = {
     delete: (req, res) => {        
         const products = helper.getAllProducts();
         const remainingProducts = products.filter((product) => {
-			return product.id !== req.params.id;
+			return product.id != req.params.id;
         });
         helper.writeProducts(remainingProducts);
         return res.redirect('/');

@@ -5,6 +5,11 @@ const path = require('path');
 const multer = require('multer');
 const usersController = require('../controllers/usersController');
 
+//----------* MIDDLEWARES REQUIRE'S *----------//
+const registerMiddleware = require('../middlewares/registerMW');
+const loginMiddleware = require('../middlewares/loginMW');
+const authMiddlaware = require('../middlewares/authMW');
+const guestMiddlaware = require('../middlewares/guestMW');
 
 //----------* VARIABLE'S *----------//
 // Multer
@@ -20,14 +25,15 @@ const upload = multer({ storage: storage });
 
 
 //----------* USERS ROUTES *----------//
-router.get('/registro', usersController.register);                  //-> Formulario de registro
-router.post('/registro', upload.any(), usersController.createUser); //-> Crear un usuario 
-router.get('/login', usersController.login);                        //-> Formulario de inicio de sesión
-router.get('/:id', usersController.profile);                        //-> Perfil de usuario
-//router.get('/:id/editar', usersController.edit);                  //-> Mostrar formulario de edición de perfil
-//router.put('/:id/editar', usersController.editProfile);           //-> Editar perfil usuario
-router.delete('/:id/eliminar', usersController.delete);             //-> Borrar un usuario
-
+router.get('/registro', guestMiddlaware, usersController.registerForm);                  //-> Formulario de registro
+router.post('/registro', upload.any(), registerMiddleware, usersController.createUser); //-> Crear un usuario 
+router.get('/login', guestMiddlaware, usersController.loginForm);                        //-> Formulario de inicio de sesión
+router.post('/login', loginMiddleware, usersController.processLogin);                //-> Formulario de inicio de sesión
+router.get('/perfil', authMiddlaware, usersController.profile);                        //-> Perfil de usuario
+router.get('/editar', authMiddlaware, usersController.editForm);                //-> Mostrar formulario de edición de perfil
+router.put('/editar', usersController.editProfile);             //-> Editar perfil usuario
+router.delete('/eliminar', usersController.delete);             //-> Borrar un usuario
+router.get('/logout', authMiddlaware, usersController.logout);   // Cierra la sesión          
 
 //----------* EXPORTS ROUTER *----------//
 module.exports = router;

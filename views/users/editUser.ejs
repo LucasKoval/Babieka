@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('../partials/head', {title: 'Registrate'}) %>    <!--// Head //-->
+    <%- include('../partials/head', {title: 'Editar usuario'}) %>    <!--// Head //-->
     <body>
         
         <%- include('../partials/header') %>    <!--// Header //-->
@@ -11,22 +11,22 @@
            <img src="/img/img_model_1.jpg" alt="imagen de una modelo" class="registerimage">
     
             <section class= "formulariologin">
-                <h1 class="h1-size">¡Registrate!</h1>
+                <h1 class="h1-size">Editar datos</h1>
     
-                <form action="/usuario/registro" method="POST" enctype="multipart/form-data">
+                <form action="/:id/editar?_method=PUT" method="POST" enctype="multipart/form-data">
                     <p><label for="firstName">Nombre</label></p>
-                    <p><input type="text" name="firstName" id="firstName"></p>
+                    <p><input type="text" name="firstName" id="firstName" value="<%= user.firstName %>"></p>
                     <p><label for="lastName">Apellido</label></p>
-                    <p><input type="text" name="lastName" id="lastName"></p>
+                    <p><input type="text" name="lastName" id="lastName" value="<%= user.lastName %> "></p>
                     <p><label for="email">Email:</label></p>
-                    <p><input type="email" name="email" id="email" placeholder="Ej: maria@babieka.com"></p>
+                    <p><input type="email" name="email" id="email" value="<%= user.email %> "></p>
                     <p><label for="password">Contraseña:</label></p>
                     <p><input type="password" name="password" id="password"></p>
                     <p><label for="repeatpassword">Repita su contraseña:</label></p>
                     <p><input type="password" name="repeatpassword" id="repeatpassword"></p>
                     <p>    <!--// Imagen //-->
                         <input type="file" name="image" accept="image/png, .jpeg, .jpg, image/gif"> 
-                        <input type="submit" value="Subir Imagen">  
+                        <input type="submit" value="<%= user.image %>" >  
                     </p>
     
                     <button type="submit">Crear cuenta</button>
