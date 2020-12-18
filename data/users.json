@@ -18,14 +18,14 @@
   "image": ""
  },
  {
-    "id": "3",
-    "firstName": "Federico",
-    "lastName": "Gomez",
-    "email": "fede@email.com",
-    "password": "******",
-    "category": "admin",
-    "image": ""
-},
+  "id": "3",
+  "firstName": "Federico",
+  "lastName": "Gomez",
+  "email": "fede@email.com",
+  "password": "******",
+  "category": "admin",
+  "image": ""
+ },
  {
   "id": "4",
   "firstName": "Cosme",
@@ -34,5 +34,13 @@
   "password": "******",
   "category": "client",
   "image": ""
+ },
+ {
+  "id": 5,
+  "firstName": "Stephen",
+  "lastName": "King",
+  "email": "stephenking@terror.com",
+  "password": "$2a$05$O7zQ8sLOiPlVLil6ubB5G.LXByCG8zh3Xh4.oJdrW0/bsYrXn4U9.",
+  "image": "image-1608249218580.JPG"
  }
 ]

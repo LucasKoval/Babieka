@@ -23,9 +23,10 @@ const upload = multer({ storage: storage });
 router.get('/registro', usersController.register);                  //-> Formulario de registro
 router.post('/registro', upload.any(), usersController.createUser); //-> Crear un usuario 
 router.get('/login', usersController.login);                        //-> Formulario de inicio de sesión
+router.post('/login', usersController.processLogin);                //-> Formulario de inicio de sesión
 router.get('/:id', usersController.profile);                        //-> Perfil de usuario
-//router.get('/:id/editar', usersController.edit);                  //-> Mostrar formulario de edición de perfil
-//router.put('/:id/editar', usersController.editProfile);           //-> Editar perfil usuario
+router.get('/:id/editar', usersController.editForm);                //-> Mostrar formulario de edición de perfil
+router.put('/:id/editar', usersController.editProfile);             //-> Editar perfil usuario
 router.delete('/:id/eliminar', usersController.delete);             //-> Borrar un usuario
 
 
