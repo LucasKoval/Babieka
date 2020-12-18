@@ -26,7 +26,7 @@ textarea {
 }
 
 .marg-20 {
-    margin: 20;
+    margin: 20px;
 }
 
 .padd-0 {
@@ -51,6 +51,10 @@ textarea {
 
 .marg-nonside {
     margin: 100px 0;
+}
+
+.marg-nonside-10 {
+    margin: 10px , 0;
 }
 
 .width-100 {
@@ -120,6 +124,50 @@ header img {
     width: 100%;
 }
 
+ul {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+ul, ol {
+    list-style:none;
+}
+
+.nav {
+    margin: 0px;
+}
+
+.nav > li {
+    float:left;
+}
+
+.nav li a {
+    text-decoration:none;
+    padding:5px 6px;
+    display:block;
+}
+
+.nav li ul {
+    display:none;
+    position:absolute;
+    min-width:140px;
+}
+
+.nav li:hover > ul {
+    display:block;
+    background-color: #fafafa;
+}
+
+.nav li ul li {
+    position:relative;
+}
+
+.nav li ul li ul {
+    right: 100px;
+    top:0px;
+}
+
 .imagenbabieka {
     width: 100%;
 }
@@ -156,21 +204,6 @@ header img {
     padding-left: 30px;
     display: flex;
     justify-content: space-around;
-}
-
-/* // Menu desplegable registro // */
-#barra-nav2 ul {
-    list-style:none;
-    margin:0;
-    padding:0;
-}
-
-#barra-nav2 ul li{
-    display:none;
-}
-
-#barra-nav2 ul:hover li{
-    display:block;  
 }
 
 
@@ -549,6 +582,18 @@ button{
 
 /*----------// MEDIA QUERIES //----------*/
 
+@media(max-width:1024px) {
+
+    .formulariologin {
+        margin: 10px;
+    }
+
+    .formulario-upload {
+        margin: 10px;
+    }
+}
+
+
 @media(max-width:768px) {
 
     .formulariologin {
@@ -920,7 +965,7 @@ button{
 
 
 /*=====================================================================*/
-
+/*
 
 .buscar-caja { 
     position: absolute;
@@ -978,4 +1023,6 @@ button{
 .space2{
     margin: 10px 0 10px 0;
    
-}
+} 
+
+*/ 

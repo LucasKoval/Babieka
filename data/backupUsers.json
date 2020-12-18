@@ -18,14 +18,14 @@
   "image": ""
  },
  {
-    "id": "3",
-    "firstName": "Federico",
-    "lastName": "Gomez",
-    "email": "fede@email.com",
-    "password": "******",
-    "category": "admin",
-    "image": ""
-},
+  "id": "3",
+  "firstName": "Federico",
+  "lastName": "Gomez",
+  "email": "fede@email.com",
+  "password": "******",
+  "category": "admin",
+  "image": ""
+ },
  {
   "id": "4",
   "firstName": "Cosme",

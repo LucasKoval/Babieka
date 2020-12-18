@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('../partials/head') %>    <!--// Head //-->
+    <%- include('../partials/head', {title: 'Registrate'}) %>    <!--// Head //-->
     <body>
         
         <%- include('../partials/header') %>    <!--// Header //-->
         
     
         <main class="registermain">
-
+            
            <img src="/img/img_model_1.jpg" alt="imagen de una modelo" class="registerimage">
     
             <section class= "formulariologin">
-                <h1 class="h1-size">Ingresar con mail y contraseña</h1>
+                <h1 class="h1-size">¡Registrate!</h1>
     
                 <form action="/usuario/registro" method="POST" enctype="multipart/form-data">
                     <p><label for="firstName">Nombre</label></p>

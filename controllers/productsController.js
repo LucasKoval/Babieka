@@ -1,5 +1,5 @@
 //----------* REQUIRE'S *----------//
-const helperProducts = require('../helpers/helperProducts');
+const helper = require('../helpers/helper');
 
 //----------* VARIABLE'S *----------//
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -7,65 +7,67 @@ const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 //----------* PRODUCTS CONTROLLER *----------//
 const productsController = {
-    //Renderiza la vista Colección
+    // Renderiza la vista Colección
     list: (req, res) => {
-        const products = helperProducts.getAllProducts();
+        const products = helper.getAllProducts();
 		const fiesta = products.filter((product) => {
 			return product.category == 'Fiesta';
 		});
 		const casual = products.filter((product) => {
 			return product.category == 'Casual';
         });
-
 		res.render('products/productsList', {
 			fiestaProducts: fiesta,
 			casualProducts: casual
 		});        
     },
 
-
-    //Renderiza la vista Sale
+    // Renderiza la vista Sale
     sale: (req, res) => {        
-        const products = helperProducts.getAllProducts();
+        const products = helper.getAllProducts();
         const sale = products.filter((product) => {
 			return product.category == 'Sale';
 		});
-
 		res.render('products/productsSale', {
 			saleProducts: sale
 		});  
     },
 
-
-    //Renderiza la vista Detalle de producto
+    // Renderiza la vista Detalle de producto
     detail: (req, res) => {   
-        let productos = helperProducts.getAllProducts();
-        let producto = productos.find(elemento => elemento.id == req.params.id);     
-        res.render('products/productDetail', { producto : producto });
+        const products = helper.getAllProducts();
+        const product = products.find(product => product.id == req.params.id);     
+        res.render('products/productDetail', { product : product });
     },
 
+    // Agrega un articulo al Carrito
+    add: (req, res) => {
+        const products = helper.getAllProducts();
+        const cartProducts = helper.getCartProducts();
+        const productToAdd = products.find(products => products.id == req.params.id);
+        const productsToCart = [...cartProducts, productToAdd];
+        helper.writeToCart(productsToCart);
+        return res.redirect('/producto/carrito');
+    },
 
-    //Renderiza la vista Carrito
-    cart: (req, res) => {       
-        const products = helperProducts.getAllProducts();
-		const fiesta = products.filter((product) => {
-			return product.category == 'Fiesta';
-		});
+    // Renderiza la vista Carrito
+    cart: (req, res) => {     
+        const products = helper.getCartProducts();
 		res.render('products/productCart', {
-			fiestaProducts: fiesta,
+			cartProducts: products,
 		}); 
     },
 
-
-    //Renderiza la vista Nuevo artículo
+    // Renderiza la vista Nuevo artículo
     createForm: (req, res) => {        
         res.render('products/createProduct');
     },
     
-    //Crear artículo (POST)
-    store: (req, res) => {        
-        let product = {
-            id: helperProducts.getNewId(),
+    // Crea un artículo (POST)
+    store: (req, res) => {
+        const products = helper.getAllProducts();
+        const product = {
+            id: helper.getNewProductId(),
             name: req.body.name,
             price: req.body.price,
             discount: req.body.discount,
@@ -76,55 +78,48 @@ const productsController = {
             description: req.body.description,
             image: req.files[0].filename
         }
-        helperProducts.writeProducts(product);
-        return res.redirect('/');
+        const productToSave = [...products, product];
+        helper.writeProducts(productToSave);
+        return res.redirect('/producto');
     },
    
-
-    //Renderiza la vista Edición de artículo
+    // Renderiza la vista Edición de artículo
     editForm: (req, res) => { 
-        let productos = helperProducts.getAllProducts();
-        let producto = productos.find(elemento => elemento.id == req.params.id);     
-        res.render('products/editProduct', { producto : producto });       
+        const products = helper.getAllProducts();
+        const product = products.find(product => product.id == req.params.id);     
+        res.render('products/editProduct', { product : product });       
     },
 
-
-    //Editar artículo (PUT)
+    // Edita un artículo (PUT)
     edit: (req, res) => {        
-        let productos = helperProducts.getAllProducts();
-        const productoEditado = productos.map(function(producto){
-            if (producto.id == req.params.id) {
-                producto.name=req.body.name; 
-                producto.type=req.body.type;
-                producto.category =req.body.category;
-                producto.size=req.body.size;
-                producto.color=req.body.color;
-                producto.description=req.body.description;
-                producto.image=req.files[0].filename;
-                producto.price=req.body.price;
+        const products = helper.getAllProducts();
+        const editedProduct = products.map(function(product){
+            if (product.id == req.params.id) {
+                product.name=req.body.name; 
+                product.type=req.body.type;
+                product.category =req.body.category;
+                product.size=req.body.size;
+                product.color=req.body.color;
+                product.description=req.body.description;
+                product.image=req.files[0].filename;
+                product.price=req.body.price;
             } 
-            return producto
+            return product
         })
-
-        helperProducts.writeProducts(productoEditado);
+        helper.writeProducts(editedProduct);
         res.redirect('/producto/'+ req.params.id);
     },
 
-
-    //Elimina el registro de un artículo
+    //Elimina un artículo (DELETE)
     delete: (req, res) => {        
-        console.log(req.params.id);
-        const products = helperProducts.getAllProducts();
-        console.log(products);
+        const products = helper.getAllProducts();
         const remainingProducts = products.filter((product) => {
 			return product.id !== req.params.id;
         });
-        console.log(remainingProducts);
-        helperProducts.writeProducts(remainingProducts);
+        helper.writeProducts(remainingProducts);
         return res.redirect('/');
     }
 };
-
 
 //----------* EXPORTS CONTROLLER *----------//
 module.exports = productsController;

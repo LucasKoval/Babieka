@@ -9,6 +9,5 @@ router.get('/busqueda', mainController.search);
 router.get('/nosotros', mainController.aboutUs);
 router.get('/como-comprar', mainController.howToBuy);
 
-
 //----------* EXPORTS ROUTER *----------//
 module.exports = router;
