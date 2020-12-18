@@ -20,15 +20,15 @@ const upload = multer({ storage: storage });
 
 
 //----------* USERS ROUTES *----------//
-router.get('/registro', usersController.register);                  //-> Formulario de registro
+router.get('/registro', usersController.registerForm);                  //-> Formulario de registro
 router.post('/registro', upload.any(), usersController.createUser); //-> Crear un usuario 
-router.get('/login', usersController.login);                        //-> Formulario de inicio de sesión
+router.get('/login', usersController.loginForm);                        //-> Formulario de inicio de sesión
 router.post('/login', usersController.processLogin);                //-> Formulario de inicio de sesión
-router.get('/:id', usersController.profile);                        //-> Perfil de usuario
-router.get('/:id/editar', usersController.editForm);                //-> Mostrar formulario de edición de perfil
-router.put('/:id/editar', usersController.editProfile);             //-> Editar perfil usuario
-router.delete('/:id/eliminar', usersController.delete);             //-> Borrar un usuario
-
+router.get('/perfil', usersController.profile);                        //-> Perfil de usuario
+router.get('/editar', usersController.editForm);                //-> Mostrar formulario de edición de perfil
+router.put('/editar', usersController.editProfile);             //-> Editar perfil usuario
+router.delete('/eliminar', usersController.delete);             //-> Borrar un usuario
+router.get('/logout', authMiddlaware, userController.logout);   // Cierra la sesión          
 
 //----------* EXPORTS ROUTER *----------//
 module.exports = router;
