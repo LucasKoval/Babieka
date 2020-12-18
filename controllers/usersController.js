@@ -9,7 +9,7 @@ const helper = require('../helpers/helper');
 //----------* USERS CONTROLLER *----------//
 const usersController = {
     // Renderiza la vista Registro
-    register: (req, res) => {        
+    registerForm: (req, res) => {        
         res.render('users/register');
     },
 
@@ -31,14 +31,14 @@ const usersController = {
     },
 
     // Renderiza la vista Login
-    login: (req, res) => {        
+    loginForm: (req, res) => {        
         res.render('users/login');
     },
 
     processLogin: (req ,res) => {
         const users = helper.getAllUsers();
         const user = users.find(user => user.id == req.params.id);
-		res.redirect('/:id');
+		res.redirect('/usuario');
     },
 
     // Renderiza la vista Perfil de usuario
@@ -72,7 +72,7 @@ const usersController = {
             return user
         })
         helper.writeUsers(editedUser);
-        res.redirect('usuario/:id'+ req.params.id);       
+        res.redirect('/usuario/' + editedUser.id);       
     },
 
     // Elimina el perfil de un usuario
@@ -83,6 +83,10 @@ const usersController = {
         });
         helper.writeUsers(remainingUsers);
         return res.redirect('/usuario/registro');
+    },
+
+    logout: (req, res) => {        
+        //
     }
 };
 
