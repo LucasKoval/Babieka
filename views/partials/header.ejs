@@ -27,8 +27,13 @@
                     <li><a href="" class="space"><i class="fas fa-search"></i></a></li> <!--trabajar en este-->
                     <li><a href="" class="space"><i class="far fa-user-circle"></i></a>
                         <ul>
-                            <li><a href="/usuario/login">Ingresá</a></li>    
-                            <li><a href="/usuario/registro">Registrate</a></li>
+                            <% if (!loggedUser) { %>
+                                <li><a href="/usuario/login">Ingresá</a></li>    
+                                <li><a href="/usuario/registro">Registrate</a></li>
+                            <% } else {%>
+                                <li><a href="/usuario/perfil">Perfil</a></li>    
+                                <li><a href="/usuario/logout">Cerrar sesión</a></li>
+                            <% } %>
                         </ul>
                     </li>
                     <li><a href="/producto/carrito" class="space"><i class="fas fa-shopping-bag"></i></a></li>
