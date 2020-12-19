@@ -29,7 +29,6 @@ app.use(methodOverride('_method'));
 app.use(setLog);
 app.use(setLocals);
 
-
 //----------* VIEW ENGINE SETUP *----------//
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -49,9 +48,7 @@ app.use('/producto', productRouter);
 
 
 //----------* CATCH 404 *----------//
-app.use(function(req, res, next) {
-  next(createError(404));
-});
+app.use((req, res, next) => next(createError(404)));
 
 //----------* ERROR HANDLER *----------//
 app.use(function(err, req, res, next) {

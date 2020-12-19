@@ -4,9 +4,6 @@ const helper = require('../helpers/helper');
 const {check, validationResult, body} = require('express-validator');
 
 
-//----------* VARIABLE'S *----------//
-
-
 //----------* USERS CONTROLLER *----------//
 const usersController = {
     // Renderiza la vista Registro
@@ -58,13 +55,15 @@ const usersController = {
         const email = req.body.email;
 		const password = req.body.password;
         const users = helper.getAllUsers();
-        const userExist = users.find(user => user.email == req.params.email);
-
+        const userExist = users.find(user => user.email == email);
+        console.log('USUARIO ENCONTRADO: ' + userExist);
         // Ejecuta el login si existe el usuario en la DB y que las contraseñas coincidan
         if (userExist && bcrypt.compareSync(password, userExist.password)) {
             req.session.user = userExist;
+            console.log('USUARIO EN SESSION: ' + req.session.user);
             if (req.body.remember) {
-                res.cookie('user', userExist.id, { maxAge: 1000 * 60 * 30 });
+                res.cookie('user_Id', userExist.id, { maxAge: 1000 * 60 * 30 });
+                console.log('COOKIES: ' + req.cookies);
             }
             return res.redirect('/usuario/perfil');
         }
@@ -80,9 +79,10 @@ const usersController = {
 
     // Renderiza la vista Edición de Perfil
     editForm: (req, res) => {    
+        const email = req.body.email;
         const users = helper.getAllUsers();
-        const user = user.find(user => user.id == req.params.id)    
-        return res.render('/users/editUser', {user:user});
+        const user = users.find(user => user.email == email)    
+        return res.render('users/editUser', { user:user });
     },
 
     // Edita el perfil de un Usuario
@@ -115,7 +115,7 @@ const usersController = {
 
     logout: (req, res) => {        
         req.session.destroy();
-        res.clearCookie('user');
+        res.clearCookie('user_Id');
         return res.redirect('/usuario/login');
     }
 };
