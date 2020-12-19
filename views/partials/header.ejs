@@ -25,14 +25,19 @@
             <div id="barra-nav2">
                 <ul class="nav">
                     <li><a href="" class="space"><i class="fas fa-search"></i></a></li> <!--trabajar en este-->
-                    <li><a href="" class="space"><i class="far fa-user-circle"></i></a>
+                    <% if (loggedUser) { %>
+                        <li><a href="" class="space"><i class="fas fa-user-circle" style="color: #FA1E1E;"></i></a>
+                    <% } else {%>
+                        <li><a href="" class="space"><i class="far fa-user-circle"></i></a>
+                    <% } %>
                         <ul>
-                            <% if (!loggedUser) { %>
-                                <li><a href="/usuario/login">Ingresá</a></li>    
-                                <li><a href="/usuario/registro">Registrate</a></li>
-                            <% } else {%>
+                            <% if (loggedUser) { %>
+                                <li><a href="">Hola <%= loggedUser.firstName %>!</a></li> 
                                 <li><a href="/usuario/perfil">Perfil</a></li>    
                                 <li><a href="/usuario/logout">Cerrar sesión</a></li>
+                            <% } else {%>
+                                <li><a href="/usuario/login">Ingresá</a></li>    
+                                <li><a href="/usuario/registro">Registrate</a></li>
                             <% } %>
                         </ul>
                     </li>
