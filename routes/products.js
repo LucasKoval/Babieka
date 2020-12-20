@@ -22,6 +22,7 @@ const upload = multer({ storage: storage });
 //----------* PRODUCTS ROUTES *----------//
 router.get('/', productsController.list);                           //-> Listar productos Colección
 router.get('/sale', productsController.sale);                       //-> Listar productos Sale
+router.get('/listado', productsController.productsFullList);                       //-> Listar productos Listado Completo                       
 router.get('/carrito', productsController.cart);                    //-> Carrito
 router.post('/:id/agregar', productsController.add);                //-> Agregar al Carrito 
 router.get('/crear', productsController.createForm);                //-> Formulario de creación

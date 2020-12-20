@@ -24,6 +24,13 @@
                     <p><input type="password" name="password" id="password"></p>
                     <p><label for="repeatpassword">Repita su contraseña:</label></p>
                     <p><input type="password" name="repeatpassword" id="repeatpassword"></p>
+                    <% if (loggedUser.category == 'admin') { %>
+                        <p><label for="category">Categoria:</label></p>
+                        <p><input type="text" name="category" id="category"></p>
+                    <% } else {%>
+                        <p><label for="category" hidden>Categoria:</label></p>
+                        <p><input type="text" name="category" id="category" value="client" hidden></p>
+                    <% } %>
                     <p>    <!--// Imagen //-->
                         <input type="file" name="image" accept="image/png, .jpeg, .jpg, image/gif"> 
                         <input type="submit" value="Subir Imagen">  

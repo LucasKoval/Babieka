@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/head', {title: 'Colección'}) %>   <!--// partial Head //-->
+    <body>
+        
+        <%- include('../partials/header') %>   <!--// partial Header //-->
+        
+        <div>
+            <img class= 'imagenbabieka' src="/img/img_home_1.jpg" alt="img_header">
+        </div>
+        
+        <%- include('../partials/banner') %>   <!--// partial Banner //-->
+
+        <main class="d-flex fd-col">
+        
+            <h1 class="lk-title-list">USUARIOS</h1>
+            <h2 class="lk-title-list">Administradores</h2>
+            <div class="lk-mainbox-list">
+                <% for (user of adminUsers) { %>
+                    <article class="lk-articlebox-list">
+                        <a href="/">
+                            <div class="justify-center opac-img">
+                                <img src="/img/users/<%= adminUsers.image %>" alt="imagen de producto">
+                            </div>
+                            <div class="casual-index">
+                                <p class="marg-0 name-size"><%= adminUsers.firstName %><%= adminUsers.lastName %></p>
+                                <!-- <span class="marg-0">50 %OFF</span> -->
+                            </div>
+                        </a>
+                    </article>
+                <% } %>
+            </div>
+            
+            <h2 class="lk-title-list">Clientes</h2>
+            <div class="lk-mainbox-list">
+                <% for (user of clientUsers) { %>
+                    <article class="lk-articlebox-list">
+                        <a href="/">
+                            <div class="justify-center opac-img">
+                                <img src="/img/users/<%= clientUsers.image %>" alt="imagen de producto">
+                            </div>
+                            <div class="casual-index">
+                                <p class="marg-0 name-size"><%= clientUsers.firstName %><%= clientUsers.lastName %></p>
+                                <!-- <span class="marg-0">50 %OFF</span> -->
+                            </div>
+                        </a>
+                    </article>
+                <% } %>
+            </div>
+            
+        </main>
+
+        <%- include('../partials/footer') %>   <!--// partial Footer //-->
+
+    </body>
+</html>
