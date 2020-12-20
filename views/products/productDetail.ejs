@@ -66,11 +66,26 @@
                         </script>
                     </div> 
                             
-                    <div>   <!--// Botón Comprar //-->
-                        <form action="/producto/<%=product.id%>/agregar" method="POST">
-                            <button type="submit" class="boton5">Agregar a la bolsa</button>
-                        </form>
-                    </div>       
+                    <% if (loggedUser.category == 'admin') { %>
+                        <div>   <!--// Botón Comprar //-->
+                            <form action="" method="GET">
+                                <a href="/producto/<%=product.id%>/editar"><button type="button" class="boton5">Editar artículo</button></a>
+                            </form>
+                        </div>
+                        <div class="marg-20"></div>
+                        <div>
+                            <form action="/producto/<%=product.id%>/eliminar?_method=DELETE" method="POST"> <!--// Botón Eliminar producto //-->
+                                <button type="submit" class="marg-nonside-10">Eliminar artículo</button> 
+                            </form>
+                        </div>
+                    <% } else {%>
+                        <div>   <!--// Botón Comprar //-->
+                            <form action="/producto/<%=product.id%>/agregar" method="POST">
+                                <button type="submit" class="boton5">Agregar a la bolsa</button>
+                            </form>
+                        </div>
+                    <% } %>
+                          
                 </div>
 
             </div> 

@@ -33,6 +33,25 @@ const productsController = {
 		});  
     },
 
+    // Renderiza la vista Listado de Productos
+    productsFullList: (req, res) => {
+        const products = helper.getAllProducts();
+		const fiesta = products.filter((product) => {
+			return product.category == 'Fiesta';
+		});
+		const casual = products.filter((product) => {
+			return product.category == 'Casual';
+        });
+        const sale = products.filter((product) => {
+			return product.category == 'Sale';
+		});
+		res.render('products/productsFullList', {
+			fiestaProducts: fiesta,
+            casualProducts: casual,
+            saleProducts: sale
+		});        
+    },
+
     // Renderiza la vista Detalle de producto
     detail: (req, res) => {   
         const products = helper.getAllProducts();
@@ -80,7 +99,7 @@ const productsController = {
         }
         const productToSave = [...products, product];
         helper.writeProducts(productToSave);
-        return res.redirect('/producto');
+        return res.redirect('/producto/listado');
     },
    
     // Renderiza la vista Edición de artículo
@@ -117,7 +136,7 @@ const productsController = {
 			return product.id != req.params.id;
         });
         helper.writeProducts(remainingProducts);
-        return res.redirect('/');
+        return res.redirect('/producto/listado');
     }
 };
 
