@@ -717,7 +717,6 @@ button{
 
 .main-det {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
 }
 .columna {
@@ -764,15 +763,23 @@ button{
     text-align: center;
 }
 .cen-1 {
-    width: 45%;
+    width: 46%;
+    
 }
 .cen-2 {
-    width: 40%;
+    width: 46%;
     margin:20px 30px;
 }
 .borde-general {
     margin: 4%;
 }
+.aspecto{
+    object-fit: contain;
+}
+.margin-auto{
+    margin: auto;
+}
+
 
 /*----------// DETAIL MEDIA QUERIES //----------*/
 
@@ -800,6 +807,10 @@ button{
     }
     .cen-2 {
         width: 100%;
+    }
+    .aspecto{
+        object-fit: contain;
+        width: 90%;
     }
 }
 
@@ -981,4 +992,64 @@ button{
 
 
 /*=====================================================================*/
+/*
 
+.buscar-caja { 
+    position: absolute;
+    transform: translate(0%, -30%);
+    background:#FA1E1E;
+    height: 20px;
+    border-radius: 40px;
+    padding: 1px;
+}
+   
+.buscar-caja:hover > .buscar-txt {
+    width: 250px;
+    padding: 0 6px;
+}
+   
+.buscar-caja:hover > .buscar-btn {
+    background: white;
+    color: black;
+}
+   
+.buscar-btn {
+    
+    float: right;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s;
+    color:black;
+    cursor: pointer;
+}
+   
+.buscar-btn > i {
+    font-size: large;
+}
+   
+.buscar-txt {
+    border: none;
+    background: none;
+    outline: none;
+    float: right;
+    padding: 0;
+    color: white;
+    font-size: 10px;
+    transition: 0.4s;
+    line-height: 20px;
+    width: 1px;
+    font-family: 'Roboto', sans-serif;
+    
+}
+.space2{
+    margin: 10px 0 10px 0;
+   
+} 
+
+*/ 
