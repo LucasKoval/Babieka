@@ -717,7 +717,6 @@ button{
 
 .main-det {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
 }
 .columna {
@@ -764,15 +763,23 @@ button{
     text-align: center;
 }
 .cen-1 {
-    width: 45%;
+    width: 46%;
+    
 }
 .cen-2 {
-    width: 40%;
+    width: 46%;
     margin:20px 30px;
 }
 .borde-general {
     margin: 4%;
 }
+.aspecto{
+    object-fit: contain;
+}
+.margin-auto{
+    margin: auto;
+}
+
 
 /*----------// DETAIL MEDIA QUERIES //----------*/
 
@@ -800,6 +807,10 @@ button{
     }
     .cen-2 {
         width: 100%;
+    }
+    .aspecto{
+        object-fit: contain;
+        width: 90%;
     }
 }
 

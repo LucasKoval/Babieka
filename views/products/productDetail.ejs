@@ -5,17 +5,17 @@
         
         <%- include('../partials/header') %>   <!--// partial Header //-->
         
-        <main class="mainUs">
+        <main class="mainUs width-100">
             
-            <div class="main-det borde-general">       
+            <div class="main-det borde-general ">       
                 
-                <div class="main-det cen-1">
-                    <article class="main-det sinborde bordeImagen">
-                        <img class = "width-100" src="/img/products/<%= product.image %>" alt="Imagen del artículo">
-                    </article>
+                <div class="cen-1">
+                    <div class= "">
+                            <img class = "aspecto width-100" src="/img/products/<%= product.image %>" alt="Imagen del artículo">
+                    </div>    
                 </div>
 
-                <div class="cen-2 columna Detalle sinborde">   <!--// Descripcion y opciones del artículo //-->
+                <div class="cen-2 columna margin-auto">   <!--// Descripcion y opciones del artículo //-->
                     <p class="letraGrande"><%= product.name %></p>
                     <p class="letra-del-precio">$<%= product.price %></p>
                     
