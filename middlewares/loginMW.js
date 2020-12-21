@@ -14,7 +14,7 @@ const users = helper.getAllUsers();
 loginMiddleware=[
     body('email')
         .notEmpty()
-            .withMessage('Debe ingresar un email')
+            .withMessage('Debe ingresar su email')
             .bail()
         .isEmail()
             .withMessage('Debe ingresar un email válido')
@@ -27,8 +27,12 @@ loginMiddleware=[
                return false; 
             }
             })
-            .withMessage('Este mail no se encuentra registrado')
-            .bail()
+            .withMessage('El usuario o contraseña ingresados son incorrectos')
+            .bail(),
+    body('password')
+    .notEmpty()
+        .withMessage('Debe ingresar su contraseña')
+        .bail()
 ]
 
 //----------* EXPORTS MIDDLEWARE *----------//

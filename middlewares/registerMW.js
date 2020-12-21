@@ -11,6 +11,14 @@ const users = helper.getAllUsers();
 
 //----------* MIDDLEWARE *----------//
 registerMiddleware=[
+    body('firstName')
+        .notEmpty()
+            .withMessage('Debe ingresar su nombre')
+            .bail(),
+    body('lastName')
+    .notEmpty()
+        .withMessage('Debe ingresar su apellido')
+        .bail(),
     body('email')
         .notEmpty()
             .withMessage('Debe ingresar un email')
@@ -28,15 +36,15 @@ registerMiddleware=[
         .isLength({min:6})
             .withMessage('La contraseña debe tener como mínimo 6 caracteres')
             .bail()
-        /*.custom(function(value, { req }){
-            return value == req.body.retype
+        .custom(function(value, { req }){
+            return value == req.body.repeatpassword
         })
             .withMessage('Las contraseñas no coinciden')
             .bail(),
-    body('retype')
+    body('repeatpassword')
         .notEmpty()
             .withMessage('Debes repetir tu contraseña')
-            .bail()*/,
+            .bail(),
     body('image')
         .custom(function(value, { req }){
             return req.files[0];

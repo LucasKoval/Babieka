@@ -114,6 +114,12 @@ textarea {
     text-decoration: line-through;
 }
 
+.validationErrors {
+    font-family: 'Roboto', sans-serif;
+    color: #FA1E1E;
+    font-size: 10px;
+}
+
 
 /*=====================================================================*/
 /**
@@ -583,7 +589,7 @@ button{
     width: 95%;
 }
 
-.remenberme {
+.rememberme {
     margin: 10px 0px 20px 0px;
 }
 
