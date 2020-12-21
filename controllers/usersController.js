@@ -33,11 +33,11 @@ const usersController = {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.render('users/register', {
-                errors: errors.errors,
+                errors: errors.mapped(),
                 email : req.body.email
             })
         }
-
+        console.log(errors)
         const users = helper.getAllUsers();
         const passwordHashed = bcrypt.hashSync(req.body.password, 5);
         const user = {
@@ -64,7 +64,7 @@ const usersController = {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.render('users/login', {
-                errors: errors.errors,
+                errors: errors.mapped(),
                 email : req.body.email
             })
         }
@@ -110,8 +110,8 @@ const usersController = {
                 user.lastName = req.body.lastName;
                 user.email = req.body.email;
                 user.password = passwordHashed;
-                user.category = req.body.category;
-                user.image = req.files[0].filename;
+                user.category = user.category=='admin' ?  req.body.category : user.category;
+                user.image = req.files[0] ?  req.files[0].filename : user.image;
             } 
             return user
         })

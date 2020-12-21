@@ -120,7 +120,7 @@ const productsController = {
                 product.size=req.body.size;
                 product.color=req.body.color;
                 product.description=req.body.description;
-                product.image=req.files[0].filename;
+                product.image = req.files[0] ?  req.files[0].filename : product.image;
                 product.price=req.body.price;
             } 
             return product
