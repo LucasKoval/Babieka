@@ -54,7 +54,7 @@ registerMiddleware=[
         .custom(function(value, { req }){
             const ext = path.extname(req.files[0].originalname);
             const extValidas = [".jpg", ".jpeg", ".png"];
-            return extValidas.includes(ext.toLowerCase);
+            return extValidas.includes(ext.toLowerCase());
         })
             .withMessage('La imagen debe tener un fomato válido')
             .bail()

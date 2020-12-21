@@ -1,7 +1,7 @@
 //----------* MIDDLEWARE *----------//
 module.exports = (req, res, next) => {
-    if (req.session.user) {
-        res.redirect('/usuario/perfil');
+    if (req.session.user.category != "admin") {
+        res.redirect('/');
     }
     return next();
 }
