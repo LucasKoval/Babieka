@@ -18,21 +18,38 @@
                 <ul class="nav">
                     <li><a href="/producto" class="space">COLECCIÓN</a></li>
                     <li><a href="/producto/sale" class="space">SALE</a></li>
-                    <li><a href="/como-comprar" class="space">COMO COMPRAR</a></li>
-                    <li><a href="/nosotros" class="space">NOSOTROS</a></li>
+                    <% if (loggedUser.category == 'admin') { %>
+                        <li><a href="/producto/listado" class="space">LISTADO</a></li>
+                        <li><a href="" class="space">CARGAR</a>
+                            <ul> 
+                                <li><a href="/usuario/registro">USUARIO</a></li>    
+                                <li><a href="/producto/crear">ARTÍCULO</a></li>
+                            </ul>
+                        </li>
+                    <% } else {%>
+                        <li><a href="/como-comprar" class="space">COMO COMPRAR</a></li>
+                        <li><a href="/nosotros" class="space">NOSOTROS</a></li>
+                    <% } %>
                 </ul>
             </div>
             <div id="barra-nav2">
                 <ul class="nav">
                     <li><a href="" class="space"><i class="fas fa-search"></i></a></li> <!--trabajar en este-->
-                    <li><a href="" class="space"><i class="far fa-user-circle"></i></a>
+                    <% if (loggedUser.category == 'admin') { %>
+                        <li><a href="" class="space"><i class="fas fa-user-circle" style="color: goldenrod;"></i></a>
+                    <% } else if (loggedUser) {%>
+                        <li><a href="" class="space"><i class="fas fa-user-circle" style="color: #FA1E1E;"></i></a>
+                    <% } else {%>
+                        <li><a href="" class="space"><i class="far fa-user-circle"></i></a>
+                    <% } %>
                         <ul>
-                            <% if (!loggedUser) { %>
-                                <li><a href="/usuario/login">Ingresá</a></li>    
-                                <li><a href="/usuario/registro">Registrate</a></li>
-                            <% } else {%>
+                            <% if (loggedUser) { %>
+                                <li class="cursor-arrow"><a href="">Hola <%= loggedUser.firstName %>!</a></li> 
                                 <li><a href="/usuario/perfil">Perfil</a></li>    
                                 <li><a href="/usuario/logout">Cerrar sesión</a></li>
+                            <% } else {%>
+                                <li><a href="/usuario/login">Ingresá</a></li>    
+                                <li><a href="/usuario/registro">Registrate</a></li>
                             <% } %>
                         </ul>
                     </li>

@@ -7,20 +7,20 @@
         
         <div style="margin-top: 40px;">
             <div class="centrar marg-nonside">
-                <h2>Hola <%= user.firstName %></h2>
-                <img src="/img/users/<%= user.image %>" width="20%">
+                <h2>Hola <%= loggedUser.firstName %></h2>
+                <img src="/img/users/<%= loggedUser.image %>" width="20%">
                 <br>
                 <br>
-                <div><%= user.email %></div>
+                <div><%= loggedUser.email %></div>
             </div>
 
             <div class="centrar">
-                <form action="/usuario/<%=user.id%>/perfil?_method=PUT" method="POST" enctype="multipart/form-data">
+                <form action="/usuario/editar" method="GET" enctype="multipart/form-data">
                     <button type="submit">Editar usuario</button>
                 </form>
             </div>
             <div class="centrar marg-20">
-                <form action="/usuario/<%=user.id%>/eliminar?_method=DELETE" method="POST"> <!--// Botón Eliminar producto //-->
+                <form action="/usuario/eliminar?_method=DELETE" method="POST"> <!--// Botón Eliminar producto //-->
                     <button type="submit">Eliminar usuario</button> 
                 </form>
             </div>
