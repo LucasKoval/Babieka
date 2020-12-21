@@ -17,15 +17,15 @@
 
                 <form action="/usuario/registro" method="POST" enctype="multipart/form-data">
                     <p><label for="firstName">Nombre</label></p>
-                    <p><input type="text" name="firstName" id="firstName"></p>
-                    <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.firstName == 'undefined' ? '' : errors.firstName.msg %> </p>
+                    <p><input type="text" name="firstName" id="firstName" value="<%= typeof user == 'undefined' ? '' : user.firstName %>"></p>
+                    <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.firstName == 'undefined' ? '' : errors.firstName.msg %></p>
 
                     <p><label for="lastName">Apellido</label></p>
-                    <p><input type="text" name="lastName" id="lastName"></p>
+                    <p><input type="text" name="lastName" id="lastName" value="<%= typeof user == 'undefined' ? '' : user.lastName %>"></p>
                     <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.lastName == 'undefined' ? '' : errors.lastName.msg %></p>
                     
                     <p><label for="email">Email:</label></p>
-                    <p><input type="email" name="email" id="email" placeholder="Ej: maria@babieka.com"></p>
+                    <p><input type="email" name="email" id="email" placeholder="Ej: maria@babieka.com" value="<%= typeof user == 'undefined' ? '' : user.email %>"></p>
                     <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.email == 'undefined' ? '' : errors.email.msg %></p>
                     
                     <p><label for="password">Contraseña:</label></p>

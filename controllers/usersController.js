@@ -3,7 +3,6 @@ const bcrypt = require('bcryptjs');
 const helper = require('../helpers/helper');
 const {check, validationResult, body} = require('express-validator');
 
-
 //----------* USERS CONTROLLER *----------//
 const usersController = {
     // Renderiza la vista Listado de Usuarios
@@ -34,10 +33,10 @@ const usersController = {
         if (!errors.isEmpty()) {
             return res.render('users/register', {
                 errors: errors.mapped(),
-                email : req.body.email
+                user : req.body
             })
         }
-        console.log(errors)
+        
         const users = helper.getAllUsers();
         const passwordHashed = bcrypt.hashSync(req.body.password, 5);
         const user = {
@@ -109,7 +108,7 @@ const usersController = {
                 user.firstName = req.body.firstName; 
                 user.lastName = req.body.lastName;
                 user.email = req.body.email;
-                user.password = passwordHashed;
+                user.password = req.body.password ? passwordHashed : user.password;
                 user.category = user.category=='admin' ?  req.body.category : user.category;
                 user.image = req.files[0] ?  req.files[0].filename : user.image;
             } 
