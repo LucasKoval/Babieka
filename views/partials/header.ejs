@@ -19,7 +19,12 @@
                     <li><a href="/producto" class="space">COLECCIÓN</a></li>
                     <li><a href="/producto/sale" class="space">SALE</a></li>
                     <% if (loggedUser.category == 'admin') { %>
-                        <li><a href="/producto/listado" class="space">LISTADO</a></li>
+                        <li><a href="" class="space">LISTADO</a>
+                            <ul> 
+                                <li><a href="/usuario/listado">USUARIOS</a></li>    
+                                <li><a href="/producto/listado">ARTÍCULOS</a></li>
+                            </ul>
+                        </li>
                         <li><a href="" class="space">CARGAR</a>
                             <ul> 
                                 <li><a href="/usuario/registro">USUARIO</a></li>    
@@ -44,7 +49,7 @@
                     <% } %>
                         <ul>
                             <% if (loggedUser) { %>
-                                <li class="cursor-arrow"><a href="">Hola <%= loggedUser.firstName %>!</a></li> 
+                                <li class="cursor-arrow"><a href="" class="font-roboto font-size-12">Hola <%= loggedUser.firstName %>!</a></li> 
                                 <li><a href="/usuario/perfil">Perfil</a></li>    
                                 <li><a href="/usuario/logout">Cerrar sesión</a></li>
                             <% } else {%>

@@ -7,11 +7,13 @@
         
         <div style="margin-top: 40px;">
             <div class="centrar marg-nonside">
-                <h2>Hola <%= loggedUser.firstName %></h2>
+                <h1 class="font-bebas"><%= loggedUser.firstName %>  <%= loggedUser.lastName %></h1>
                 <img src="/img/users/<%= loggedUser.image %>" width="20%">
                 <br>
                 <br>
-                <div><%= loggedUser.email %></div>
+                <div>
+                    <h3 class="font-roboto"><%= loggedUser.email %></h3>
+                </div>
             </div>
 
             <div class="centrar">

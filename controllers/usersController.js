@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 const helper = require('../helpers/helper');
 const {check, validationResult, body} = require('express-validator');
 
+
 //----------* USERS CONTROLLER *----------//
 const usersController = {
     // Renderiza la vista Listado de Usuarios
@@ -17,9 +18,7 @@ const usersController = {
 		res.render('users/usersFullList', {
 			adminUsers: admin,
             clientUsers: client,
-        });
-        console.log('ADMINITRADORES: '+ adminUsers);
-        console.log('CLIENTES: '+ clientUsers);       
+        });      
     },
     
     // Renderiza la vista Registro
@@ -27,8 +26,9 @@ const usersController = {
         return res.render('users/register');
     },
 
-    // Crea un nuevo Usuario 
+    // Crea un nuevo Usuario (POST)
     createUser: (req, res) =>{
+        // Verifica que no existan errores al enviar el formulario de registro
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.render('users/register', {
@@ -36,7 +36,7 @@ const usersController = {
                 user : req.body
             })
         }
-        
+        // Crea un nuevo registro de usuario en la DB
         const users = helper.getAllUsers();
         const passwordHashed = bcrypt.hashSync(req.body.password, 5);
         const user = {
@@ -58,6 +58,7 @@ const usersController = {
         res.render('users/login');
     },
 
+    // Loguea un usuario (POST)
     processLogin: (req ,res) => {
         // Verifica que no existan errores al hacer el login
         const errors = validationResult(req);
@@ -67,21 +68,19 @@ const usersController = {
                 email : req.body.email
             })
         }
-
         // Verifica que exista el usuario en la DB
         const email = req.body.email;
 		const password = req.body.password;
         const users = helper.getAllUsers();
         const userExist = users.find(user => user.email == email);
-        // Ejecuta el login si existe el usuario en la DB y que las contraseñas coincidan
+        // Ejecuta el login si existe el usuario en la DB y las contraseñas coinciden
         if (userExist && bcrypt.compareSync(password, userExist.password)) {
             req.session.user = userExist;
             if (req.body.remember) {
-                res.cookie('user_Id', userExist.id, { maxAge: 1000 * 60 * 30 });
+                res.cookie('user_Id', userExist.id, { maxAge: 1000 * 60 * 60 });
             }
             return res.redirect('/usuario/perfil');
         }
-
         // En caso de ser "false", redirecciona al login
         res.redirect('/usuario/login');
     },
@@ -99,7 +98,7 @@ const usersController = {
         return res.render('users/editUser', { user:user });
     },
 
-    // Edita el perfil de un Usuario
+    // Edita el perfil de un Usuario (PUT)
     editProfile: (req, res) => { 
         const passwordHashed = bcrypt.hashSync(req.body.password, 5);
         const users = helper.getAllUsers();
@@ -118,7 +117,7 @@ const usersController = {
         res.redirect('/usuario/perfil');       
     },
 
-    // Elimina el perfil de un usuario
+    // Elimina el perfil de un usuario (DELETE)
     delete: (req, res) => {        
         const users = helper.getAllUsers();
         const remainingUsers = users.filter((user) => {
@@ -130,12 +129,14 @@ const usersController = {
         return res.redirect('/usuario/registro');
     },
 
+    // Cierra la sesión
     logout: (req, res) => {        
         req.session.destroy();
         res.clearCookie('user_Id');
         return res.redirect('/usuario/login');
     }
 };
+
 
 //----------* EXPORTS CONTROLLER *----------//
 module.exports = usersController;

@@ -4,12 +4,6 @@
     <body>
         
         <%- include('../partials/header') %>   <!--// partial Header //-->
-        
-        <div>
-            <img class= 'imagenbabieka' src="/img/img_home_1.jpg" alt="img_header">
-        </div>
-        
-        <%- include('../partials/banner') %>   <!--// partial Banner //-->
 
         <main class="d-flex fd-col">
         
@@ -20,11 +14,13 @@
                     <article class="lk-articlebox-list">
                         <a href="/">
                             <div class="justify-center opac-img">
-                                <img src="/img/users/<%= adminUsers.image %>" alt="imagen de producto">
+                                <img src="/img/users/<%= user.image %>" alt="imagen de usuario">
                             </div>
                             <div class="casual-index">
-                                <p class="marg-0 name-size"><%= adminUsers.firstName %><%= adminUsers.lastName %></p>
-                                <!-- <span class="marg-0">50 %OFF</span> -->
+                                <p class="marg-0 name-size"><%= user.firstName %> <%= user.lastName %></p>
+                            </div>
+                            <div class="casual-index">
+                                <p class="font-roboto "><%= user.email %></p>
                             </div>
                         </a>
                     </article>
@@ -37,17 +33,19 @@
                     <article class="lk-articlebox-list">
                         <a href="/">
                             <div class="justify-center opac-img">
-                                <img src="/img/users/<%= clientUsers.image %>" alt="imagen de producto">
+                                <img src="/img/users/<%= user.image %>" alt="imagen de usuario">
                             </div>
                             <div class="casual-index">
-                                <p class="marg-0 name-size"><%= clientUsers.firstName %><%= clientUsers.lastName %></p>
-                                <!-- <span class="marg-0">50 %OFF</span> -->
+                                <p class="marg-0 name-size"><%= user.firstName %> <%= user.lastName %></p>
+                            </div>
+                            <div class="casual-index">
+                                <p class="font-roboto "><%= user.email %></p>
                             </div>
                         </a>
                     </article>
                 <% } %>
             </div>
-            
+            <div class="marg-nonside-50"></div>
         </main>
 
         <%- include('../partials/footer') %>   <!--// partial Footer //-->
