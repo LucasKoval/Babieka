@@ -43,5 +43,14 @@
      "password": "$2a$05$doqw8BLnk3z2A.nQ7H9D.e9XBjmNvbR26tYfEVUWgeHu6560Az4fS",
      "category": "client",
      "image": "image-1608491725297.jpg"
+    },
+    {
+     "id": 6,
+     "firstName": "Maria Elena",
+     "lastName": "Fuseneco",
+     "email": "mariaelena@email.com",
+     "password": "$2a$05$DCdZkDjFXScL9P/ip8UD0uY5M5xNFX0BJgwpRDIRFgETMBLNeoMOS",
+     "category": "client",
+     "image": "image-1608637331149.jpg"
     }
    ]

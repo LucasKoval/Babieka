@@ -17,6 +17,18 @@ textarea {
     font-family: 'Roboto', sans-serif;
 }
 
+.font-roboto {
+    font-family: 'Roboto', sans-serif;
+}
+
+.font-bebas {
+    font-family: 'Bebas Neue', cursive;
+}
+
+.font-size-12 {
+    font-size: 13px;
+}
+
 .marg-auto {
     margin: auto;
 }
@@ -55,6 +67,10 @@ textarea {
 
 .marg-nonside-10 {
     margin: 10px , 0;
+}
+
+.marg-nonside-50 {
+    margin: 50px 0;
 }
 
 .width-100 {

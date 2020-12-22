@@ -1,5 +1,4 @@
 //----------* REQUIRE'S *----------//
-const fs = require('fs');
 const path = require('path');
 const {check,validationResult,body} = require('express-validator');
 const helper = require('../helpers/helper');
@@ -10,7 +9,7 @@ const users = helper.getAllUsers();
 
 
 //----------* MIDDLEWARE *----------//
-registerMiddleware=[
+registerValidator = [
     body('firstName')
         .notEmpty()
             .withMessage('Debe ingresar su nombre')
@@ -60,5 +59,6 @@ registerMiddleware=[
             .bail()
 ]
 
+
 //----------* EXPORTS MIDDLEWARE *----------//
-module.exports = registerMiddleware;
+module.exports = registerValidator;

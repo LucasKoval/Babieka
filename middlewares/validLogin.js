@@ -1,6 +1,4 @@
 //----------* REQUIRE'S *----------//
-const fs = require('fs');
-const path = require('path');
 const bcrypt = require('bcryptjs')
 const {check,validationResult,body} = require('express-validator');
 const helper = require('../helpers/helper');
@@ -11,7 +9,7 @@ const users = helper.getAllUsers();
 
 
 //----------* MIDDLEWARE *----------//
-loginMiddleware=[
+loginValidator = [
     body('email')
         .notEmpty()
             .withMessage('Debe ingresar su email')
@@ -35,5 +33,6 @@ loginMiddleware=[
         .bail()
 ]
 
+
 //----------* EXPORTS MIDDLEWARE *----------//
-module.exports = loginMiddleware;
+module.exports = loginValidator;

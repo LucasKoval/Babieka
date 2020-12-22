@@ -1,18 +1,19 @@
 //----------* REQUIRE'S *----------//
 const helper = require('../helpers/helper');
 
+
 //----------* VARIABLE'S *----------//
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 
 //----------* MAIN CONTROLLER *----------//
 const mainController = {
-    // Renderiza Homepage
+    // Renderiza la Homepage
     index: (req, res) => {        
         res.render('index');
     },
 
-    // Renderiza Resultado de busqueda
+    // Renderiza Resultado de busqueda (En construcción)
     search: (req, res) => {
         res.render('products/searchResults');
 		// obtener la info del formulario.
@@ -37,6 +38,7 @@ const mainController = {
         res.render('main/howToBuy');
     }
 };
+
 
 //----------* EXPORTS CONTROLLER *----------//
 module.exports = mainController;

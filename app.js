@@ -7,9 +7,9 @@ const logger = require('morgan');
 const path = require('path');
 const methodOverride =  require('method-override')
 
-//----------* REQUIRE MIDDLEWARES *----------//
+//----------* MIDDLEWARES REQUIRE *----------//
 const setLocals = require('./middlewares/setLocals');
-const setLog = require('./middlewares/setLog');
+const setAutoLog = require('./middlewares/setAutoLog');
 
 //----------* EXPRESS() *----------//
 const app = express();
@@ -20,19 +20,18 @@ app.use(express.urlencoded({ extended: false }));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(session({
-  secret: 'Sshhh',
+  secret: 'Babieka',
   resave: true,
   saveUninitialized: true
 }));
 app.use(cookieParser());
 app.use(methodOverride('_method'));
-app.use(setLog);
+app.use(setAutoLog);
 app.use(setLocals);
 
 //----------* VIEW ENGINE SETUP *----------//
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
 
 
 //----------* ROUTES REQUIRE *----------//
@@ -41,10 +40,9 @@ const usersRouter = require('./routes/users');
 const productRouter = require('./routes/products');
 
 //----------* ROUTES USE() *----------//
-app.use('/', mainRouter);
-app.use('/usuario', usersRouter);
-app.use('/producto', productRouter);
-
+app.use('/', mainRouter);                //-> Home y rutas globales
+app.use('/usuario', usersRouter);        //-> Rutas de Usuarios
+app.use('/producto', productRouter);     //-> Rutas de Productos
 
 
 //----------* CATCH 404 *----------//

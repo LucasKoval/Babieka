@@ -1,6 +1,7 @@
 //----------* REQUIRE'S *----------//
 const helper = require('../helpers/helper');
 
+
 //----------* VARIABLE'S *----------//
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
@@ -33,7 +34,7 @@ const productsController = {
 		});  
     },
 
-    // Renderiza la vista Listado de Productos
+    // Renderiza la vista Listado Completo
     productsFullList: (req, res) => {
         const products = helper.getAllProducts();
 		const fiesta = products.filter((product) => {
@@ -60,7 +61,7 @@ const productsController = {
     },
 
     // Agrega un articulo al Carrito
-    add: (req, res) => {
+    addToCart: (req, res) => {
         const products = helper.getAllProducts();
         const cartProducts = helper.getCartProducts();
         const productToAdd = products.find(products => products.id == req.params.id);
@@ -139,6 +140,7 @@ const productsController = {
         return res.redirect('/producto/listado');
     }
 };
+
 
 //----------* EXPORTS CONTROLLER *----------//
 module.exports = productsController;
