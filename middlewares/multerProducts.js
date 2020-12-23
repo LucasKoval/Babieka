@@ -20,7 +20,7 @@ module.exports = multer({
     storage,
     fileFilter: (req, file, cb) => {
         const acceptedExtensions = ['.jpg', '.jpeg', '.png'];
-        const isAccepted = acceptedExtensions.includes(path.extname(file.originalname));
+        const isAccepted = acceptedExtensions.includes(path.extname(file.originalname).toLowerCase());
         if(!isAccepted){
             req.files = [...req.files, file];
         }
