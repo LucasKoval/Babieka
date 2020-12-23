@@ -10,17 +10,17 @@
             <h1 class="lk-title-list">USUARIOS</h1>
             <h2 class="lk-title-list">Administradores</h2>
             <div class="lk-mainbox-list">
-                <% for (user of adminUsers) { %>
+                <% for ( adminUser of adminUsers) { %>
                     <article class="lk-articlebox-list">
                         <a href="/">
                             <div class="justify-center opac-img">
-                                <img src="/img/users/<%= user.image %>" alt="imagen de usuario">
+                                <img src="/img/users/<%= adminUser.image %>" alt="imagen de usuario">
                             </div>
                             <div class="casual-index">
-                                <p class="marg-0 name-size"><%= user.firstName %> <%= user.lastName %></p>
+                                <p class="marg-0 name-size"><%= adminUser.firstName %> <%= adminUser.lastName %></p>
                             </div>
                             <div class="casual-index">
-                                <p class="font-roboto "><%= user.email %></p>
+                                <p class="font-roboto "><%= adminUser.email %></p>
                             </div>
                         </a>
                     </article>
@@ -29,17 +29,17 @@
             
             <h2 class="lk-title-list">Clientes</h2>
             <div class="lk-mainbox-list">
-                <% for (user of clientUsers) { %>
+                <% for (clientUser of clientUsers) { %>
                     <article class="lk-articlebox-list">
                         <a href="/">
                             <div class="justify-center opac-img">
-                                <img src="/img/users/<%= user.image %>" alt="imagen de usuario">
+                                <img src="/img/users/<%= clientUser.image %>" alt="imagen de usuario">
                             </div>
                             <div class="casual-index">
-                                <p class="marg-0 name-size"><%= user.firstName %> <%= user.lastName %></p>
+                                <p class="marg-0 name-size"><%= clientUser.firstName %> <%= clientUser.lastName %></p>
                             </div>
                             <div class="casual-index">
-                                <p class="font-roboto "><%= user.email %></p>
+                                <p class="font-roboto "><%= clientUser.email %></p>
                             </div>
                         </a>
                     </article>
