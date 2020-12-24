@@ -15,7 +15,7 @@ const setAutoLog = require('./middlewares/setAutoLog');
 const app = express();
 
 //----------* MIDDLEWARES *----------//
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.urlencoded({ extended: false }));
 app.use(logger('dev'));
 app.use(express.json());
