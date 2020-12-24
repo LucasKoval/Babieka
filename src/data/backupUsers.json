@@ -52,5 +52,23 @@
      "password": "$2a$05$DCdZkDjFXScL9P/ip8UD0uY5M5xNFX0BJgwpRDIRFgETMBLNeoMOS",
      "category": "client",
      "image": "image-1608637331149.jpg"
+    },
+    {
+     "id": 7,
+     "firstName": "profe",
+     "lastName": "DH",
+     "email": "profe@email.com",
+     "password": "$2a$05$fBshBEv6MIu3tSi3mZ3uL.fzcguUKyb0WbDE2sVOVf2Q55DwyHU1i",
+     "category": "admin",
+     "image": "image-1608694620529.png"
+    },
+    {
+     "id": 8,
+     "firstName": "Cookie",
+     "lastName": "Maliciosa",
+     "email": "cookie@email.com",
+     "password": "$2a$05$gj.zapK2wpXreuQwFCiCieqsTcVt90ge1.R3.NomwwOprEsYbpoWC",
+     "category": "client",
+     "image": "image-1608765985166.jpg"
     }
    ]
