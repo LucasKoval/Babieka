@@ -40,6 +40,8 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
+public\img\products/
+public\img\users/
 
 # TypeScript v1 declaration files
 typings/
