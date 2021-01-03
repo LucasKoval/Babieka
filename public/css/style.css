@@ -17,6 +17,37 @@ textarea {
     font-family: 'Roboto', sans-serif;
 }
 
+.linea-med {
+    text-decoration: none;
+    background-image: linear-gradient(#FA1E1E,#FA1E1E);
+    background-position: 50% 90%;
+    background-repeat: no-repeat;
+    background-size: 0% 3px;
+    transition: background-size .3s;
+    
+}
+.linea-med:hover{
+    background-size: 100% 3px;
+}
+
+.linea-izq {
+    text-decoration: none;
+    background-image: linear-gradient(#FA1E1E,#FA1E1E);
+    background-position: 0% 90%;
+    background-repeat: no-repeat;
+    background-size: 0% 3px;
+    transition: background-size .3s;
+    
+}
+.linea-izq:hover{
+    background-size: 100% 3px;
+}
+
+.link:hover {
+  font-weight: 600;
+  cursor: pointer;
+}
+
 .font-roboto {
     font-family: 'Roboto', sans-serif;
 }
@@ -96,6 +127,11 @@ textarea {
 
 .opac-img img:hover{
     opacity: 0.7;
+    cursor: pointer;
+}
+
+.cursor-hand:hover{
+    opacity: 0.9;
     cursor: pointer;
 }
 
@@ -186,7 +222,7 @@ ul, ol {
 .nav li ul {
     display:none;
     position:absolute;
-    min-width:140px;
+    min-width:70px;
 }
 
 .nav li:hover > ul {

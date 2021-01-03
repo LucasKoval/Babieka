@@ -16,24 +16,24 @@
             
             <div id="barra-nav1">
                 <ul class="nav">
-                    <li><a href="/producto" class="space">COLECCIÓN</a></li>
-                    <li><a href="/producto/sale" class="space">SALE</a></li>
+                    <li><a href="/producto" class="space linea-med">COLECCIÓN</a></li>
+                    <li><a href="/producto/sale" class="space linea-med">SALE</a></li>
                     <% if (loggedUser.category == 'admin') { %>
-                        <li><a href="" class="space">LISTADO</a>
+                        <li><a href="" class="space linea-med">LISTADO</a>
                             <ul> 
-                                <li><a href="/usuario/listado">USUARIOS</a></li>    
-                                <li><a href="/producto/listado">ARTÍCULOS</a></li>
+                                <li><a href="/usuario/listado" class="linea-izq">USUARIOS</a></li>    
+                                <li><a href="/producto/listado" class="linea-izq">ARTÍCULOS</a></li>
                             </ul>
                         </li>
-                        <li><a href="" class="space">CARGAR</a>
+                        <li><a href="" class="space linea-med">CARGAR</a>
                             <ul> 
-                                <li><a href="/usuario/registro">USUARIO</a></li>    
-                                <li><a href="/producto/crear">ARTÍCULO</a></li>
+                                <li><a href="/usuario/registro" class="linea-izq">USUARIO</a></li>    
+                                <li><a href="/producto/crear" class="linea-izq">ARTÍCULO</a></li>
                             </ul>
                         </li>
                     <% } else {%>
-                        <li><a href="/como-comprar" class="space">COMO COMPRAR</a></li>
-                        <li><a href="/nosotros" class="space">NOSOTROS</a></li>
+                        <li><a href="/como-comprar" class="space linea-med">COMO COMPRAR</a></li>
+                        <li><a href="/nosotros" class="space linea-med">NOSOTROS</a></li>
                     <% } %>
                 </ul>
             </div>
@@ -50,11 +50,11 @@
                         <ul>
                             <% if (loggedUser) { %>
                                 <li class="cursor-arrow"><a href="" class="font-roboto font-size-12">Hola <%= loggedUser.firstName %>!</a></li> 
-                                <li><a href="/usuario/perfil">Perfil</a></li>    
-                                <li><a href="/usuario/logout">Cerrar sesión</a></li>
+                                <li><a href="/usuario/perfil" class="linea-izq">Perfil</a></li>    
+                                <li><a href="/usuario/logout" class="linea-izq">Cerrar sesión</a></li>
                             <% } else {%>
-                                <li><a href="/usuario/login">Ingresá</a></li>    
-                                <li><a href="/usuario/registro">Registrate</a></li>
+                                <li><a href="/usuario/login" class="linea-izq">Ingresá</a></li>    
+                                <li><a href="/usuario/registro" class="linea-izq">Registrate</a></li>
                             <% } %>
                         </ul>
                     </li>
