@@ -2,6 +2,7 @@
 const bcrypt = require('bcryptjs');
 const helper = require('../helpers/helper');
 const {check, validationResult, body} = require('express-validator');
+const db = require('../db/models');
 
 
 //----------* USERS CONTROLLER *----------//
@@ -27,6 +28,7 @@ const usersController = {
     },
 
     // Crea un nuevo Usuario (POST)
+
     createUser: (req, res) =>{
         // Verifica que no existan errores al enviar el formulario de registro
         const errors = validationResult(req);
@@ -37,21 +39,17 @@ const usersController = {
             })
         }
         // Crea un nuevo registro de usuario en la DB
-        const users = helper.getAllUsers();
-        const passwordHashed = bcrypt.hashSync(req.body.password, 5);
-        const user = {
-            id: helper.getNewUserId(),
+        db.User.create({
             firstName: req.body.firstName,
             lastName: req.body.lastName, 
             email: req.body.email,
-            password: passwordHashed,
+            password: bcrypt.hashSync(req.body.password, 5),
             category: req.body.category,
             image: req.files[0].filename
-        }
-        const usersToSave = [...users,user];
-        helper.writeUsers(usersToSave);
+        })
         return res.redirect('/usuario/login');
     },
+
 
     // Renderiza la vista Login
     loginForm: (req, res) => {        
