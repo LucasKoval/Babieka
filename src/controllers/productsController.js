@@ -56,8 +56,10 @@ const productsController = {
 
     // Renderiza la vista Detalle de producto
     detail: async (req, res) => {   
-        const products = await db.Product.findByPk(req.params.id/*, {relacion de la tabla usando su alias}*/) // <-- agregar las relaciones con las otras tablas 
-        res.render('products/productDetail', { products : products });
+        const product = await db.Product.findByPk(req.params.id, {
+            include: ["category", "color", "description", "discount","image", "model", "size", "type"]
+        });
+        res.render('products/productDetail', { product : product });
            
     },
 
@@ -87,7 +89,7 @@ const productsController = {
     // Crea un artículo (POST)
     
     store: (req, res) => {
-            db.Producto.create({
+            db.Product.create({
                 name: req.body.name,
                 price: req.body.price,
                 discount: req.body.discount,
