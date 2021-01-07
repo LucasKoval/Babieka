@@ -1,15 +1,24 @@
 module.exports = (sequelize ,DataTypes) =>{
-    const alias = "Model",
+    const alias = "Model";
     const cols  = {
         name: {
             type: DataTypes.STRING
         }
-    },
+    };
 
     const config = {
         tableName: "models"
-    }
+    };
     
-    const modelModel = sequelize.define(alias, cols, config)
-    return modelModel;
+    const Model = sequelize.define(alias, cols, config);
+
+    Model.associate = function(models) {
+        Model.hasMany(models.Product,{
+            as: "products",
+            foreignKey: "model_id"
+
+        })
+    };
+
+    return Model;
 }

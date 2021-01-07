@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const alias = "Order",
+    const alias = "Order";
     const cols  = {
         user_id: {
             type: DataTypes.INTEGER
@@ -10,12 +10,30 @@ module.exports = (sequelize, DataTypes) => {
         total: {
             type: DataTypes.STRING
         }
-    },
+    };
 
     const config = {
         tableName: "orders"
-    }
+    };
     
-    const orderModel = sequelize.define(alias, cols, config)
-    return orderModel;
+    const Order = sequelize.define(alias, cols, config);
+
+    Order.associate = function(models){
+
+        Order.belongsTo(models.User,{
+            as: "user",
+            foreignKey: "user_id"
+    
+        });
+        
+        Order.hasMany(models.Item,{
+            as: "items",
+            foreignKey: "order_id"
+
+        });
+    
+
+    };
+
+    return Order;
 }
