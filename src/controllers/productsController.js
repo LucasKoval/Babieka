@@ -1,5 +1,6 @@
 //----------* REQUIRE'S *----------//
 const helper = require('../helpers/helper');
+const db = require('../db/models');
 
 
 //----------* VARIABLE'S *----------//
@@ -54,10 +55,10 @@ const productsController = {
     },
 
     // Renderiza la vista Detalle de producto
-    detail: (req, res) => {   
-        const products = helper.getAllProducts();
-        const product = products.find(product => product.id == req.params.id);     
-        res.render('products/productDetail', { product : product });
+    detail: async (req, res) => {   
+        const products = await db.Product.findByPk(req.params.id/*, {relacion de la tabla usando su alias}*/) // <-- agregar las relaciones con las otras tablas 
+        res.render('products/productDetail', { products : products });
+           
     },
 
     // Agrega un articulo al Carrito
@@ -84,25 +85,22 @@ const productsController = {
     },
     
     // Crea un artículo (POST)
+    
     store: (req, res) => {
-        const products = helper.getAllProducts();
-        const product = {
-            id: helper.getNewProductId(),
-            name: req.body.name,
-            price: req.body.price,
-            discount: req.body.discount,
-            color: req.body.color,
-            size: req.body.size,
-            category: req.body.category,
-            type: req.body.type,
-            description: req.body.description,
-            image: req.files[0].filename
-        }
-        const productToSave = [...products, product];
-        helper.writeProducts(productToSave);
-        return res.redirect('/producto/listado');
-    },
-   
+            db.Producto.create({
+                name: req.body.name,
+                price: req.body.price,
+                discount: req.body.discount,
+                color: req.body.color,
+                size: req.body.size,
+                category: req.body.category,
+                type: req.body.type,
+                description: req.body.description,
+                image: req.files[0].filename
+            })  
+             return res.redirect('/producto/listado');
+        },
+
     // Renderiza la vista Edición de artículo
     editForm: (req, res) => { 
         const products = helper.getAllProducts();

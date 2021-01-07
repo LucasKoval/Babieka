@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('../partials/head', {title: product.name}) %>   <!--// partial Head //-->
+    <%- include('../partials/head', {title: products.name}) %>   <!--// partial Head //-->
     <body>
         
         <%- include('../partials/header') %>   <!--// partial Header //-->
@@ -11,26 +11,26 @@
                 
                 <div class="cen-1">
                     <div class= "">
-                            <img class = "aspecto width-100" src="/img/products/<%= product.image %>" alt="Imagen del artículo">
+                            <img class = "aspecto width-100" src="/img/products/<%= products.image %>" alt="Imagen del artículo">
                     </div>    
                 </div>
 
                 <div class="cen-2 columna margin-auto">   <!--// Descripcion y opciones del artículo //-->
-                    <p class="letraGrande"><%= product.name %></p>
-                    <p class="letra-del-precio">$<%= product.price %></p>
+                    <p class="letraGrande"><%= products.name %></p>
+                    <p class="letra-del-precio">$<%= products.price %></p>
                     
                     <div>
                         <p>Color del producto</p>
                     </div>
-                    <article class="sinborde">
+                    <div class="sinborde"> <!--// Botón de colores a seleccionar //-->
                         <form action="">
                             <button class="boton1"> </button>
                             <button class="boton2"> </button>
                             <button class="boton3"> </button>
                         </form>
-                    </article>
+                    </div>
                     
-                    <p>Talle del producto</p>
+                    <p>Talle del producto</p> <!--// Botón Talles a seleccionar //-->
                     <div class="sinborde">
                         <form action="" class="boton3">
                             <button>35</button>
@@ -41,14 +41,14 @@
                             <button>40</button>
                         </form>
                     </div>
-                    <div>
+                    <div>  <!--// Descripcion //-->
                         <p class="letra-del-precio">Descripcion</p>
-                        <p><%= product.description %></p>
+                        <p><%= products.description %></p>
                     </div>
                     <div>
                         <p>Cantidad</p>
                     </div>        
-                    <div class="main-det columna sinborde">   <!--// Botón cantidad //-->      
+                    <div class="main-det columna sinborde">   <!--// Botón cantidad (agregar su propio archivos Js)//-->      
                         <script>
                             a=1;
                         </script>
@@ -67,20 +67,20 @@
                     </div> 
                             
                     <% if (loggedUser.category == 'admin') { %>
-                        <div>   <!--// Botón Comprar //-->
+                        <div>   <!--// Botón Editar //-->
                             <form action="" method="GET">
-                                <a href="/producto/<%=product.id%>/editar"><button type="button" class="boton5">Editar artículo</button></a>
+                                <a href="/producto/<%=products.id%>/editar"><button type="button" class="boton5">Editar artículo</button></a>
                             </form>
                         </div>
                         <div class="marg-20"></div>
-                        <div>
-                            <form action="/producto/<%=product.id%>/eliminar?_method=DELETE" method="POST"> <!--// Botón Eliminar producto //-->
+                        <div>   <!--// Botón Eliminar producto //-->
+                            <form action="/producto/<%=products.id%>/eliminar?_method=DELETE" method="POST"> 
                                 <button type="submit" class="marg-nonside-10">Eliminar artículo</button> 
                             </form>
                         </div>
                     <% } else {%>
                         <div>   <!--// Botón Comprar //-->
-                            <form action="/producto/<%=product.id%>/agregar" method="POST">
+                            <form action="/producto/<%=products.id%>/agregar" method="POST">
                                 <button type="submit" class="boton5">Agregar a la bolsa</button>
                             </form>
                         </div>

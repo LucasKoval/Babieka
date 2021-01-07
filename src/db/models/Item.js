@@ -1,42 +1,42 @@
 module.exports = (sequelize, DataTypes) => {
-    const alias = "Product",
+    const alias = "Item",
     const cols  = {
-        category_id: {
+        user_id: {
             type: DataTypes.INTEGER
         },
-        type_id: {
+        product_id: {
             type: DataTypes.INTEGER
         },
-        model_id: {
+        name: {
+            type: DataTypes.STRING
+        },
+        description: {
+            type: DataTypes.STRING
+        },
+        image: {
+            type: DataTypes.STRING
+        },
+        unit_price: {
             type: DataTypes.INTEGER
         },
-        description_id: {
+        quantity: {
             type: DataTypes.INTEGER
         },
-        size_id: {
+        subTotal: {
             type: DataTypes.INTEGER
         },
-        color_id: {
+        status: {
             type: DataTypes.INTEGER
         },
-        image_id: {
-            type: DataTypes.INTEGER
-        },
-        discount_id: {
-            type: DataTypes.INTEGER
-        },
-        stock: {
-            type: DataTypes.INTEGER
-        },
-        price: {
+        order_id: {
             type: DataTypes.INTEGER
         }
     },
 
     const config = {
-        tableName: "products"
+        tableName: "items"
     }
     
-    const productModel = sequelize.define(alias, cols, config)
-    return productModel;
+    const itemModel = sequelize.define(alias, cols, config)
+    return itemModel;
 }

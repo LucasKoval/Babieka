@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const alias = "Category",
+    const alias = "Image",
     const cols  = {
         name: {
             type: DataTypes.STRING
@@ -7,9 +7,9 @@ module.exports = (sequelize, DataTypes) => {
     },
 
     const config = {
-        tableName:"categories"
+        tableName: "images"
     }
     
-    const categoryModel = sequelize.define(alias, cols, config)
-    return categoryModel;
+    const imageModel = sequelize.define(alias, cols, config)
+    return imageModel;
 }
