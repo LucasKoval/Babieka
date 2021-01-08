@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-    const alias = "Item";
-    const cols  = {
+    const alias = 'Item';
+    const cols = {
         user_id: {
             type: DataTypes.INTEGER
         },
@@ -32,28 +32,24 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER
         }
     };
-
     const config = {
-        tableName: "items"
+        tableName: 'items',
+        timestamps: false
     };
-    
     const Item = sequelize.define(alias, cols, config);
 
-    Item.associate = function(models){
-
-        Item.belongsTo(models.User,{
-            as: "user",
-            foreignKey: "user_id"
+    Item.associate = (models) => {
+        Item.belongsTo(models.User, {
+            as: 'user',
+            foreignKey: 'user_id'
     
         });
         
-        Item.belongsTo(models.Order,{
-            as: "order",
-            foreignKey: "order_id"
+        Item.belongsTo(models.Order, {
+            as: 'order',
+            foreignKey: 'order_id'
     
         });
-    
-
     };
 
     return Item;

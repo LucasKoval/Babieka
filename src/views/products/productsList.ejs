@@ -20,10 +20,10 @@
                         <article class="lk-articlebox-list">
                             <a href="/producto/<%= product.id %>">
                                 <div class="justify-center opac-img">
-                                    <img src="/img/products/<%= product.image %>" alt="imagen de producto">
+                                    <img src="/img/products/<%= product.image.name %>" alt="imagen de producto">
                                 </div>
                                 <div class="casual-index">
-                                    <p class="marg-0 name-size"><%= product.name %></p>
+                                    <p class="marg-0 name-size"><%= product.model.name %></p>
                                     <p class="marg-0 price-size">$ <%= product.price %></p>
                                     <!-- <span class="marg-0">50 %OFF</span> -->
                                 </div>
@@ -37,10 +37,10 @@
                         <article class="lk-articlebox-list">
                             <a href="/producto/<%= product.id %>">
                                 <div class="justify-center opac-img">
-                                    <img src="/img/products/<%= product.image %>" alt="imagen de producto">
+                                    <img src="/img/products/<%= product.image.name %>" alt="imagen de producto">
                                 </div>
                                 <div class="casual-index">
-                                    <p class="marg-0 name-size"><%= product.name %></p>
+                                    <p class="marg-0 name-size"><%= product.model.name %></p>
                                     <p class="marg-0 price-size">$ <%= product.price %></p>
                                     <!-- <span class="marg-0">50 %OFF</span> -->
                                 </div>

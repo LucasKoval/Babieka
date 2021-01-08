@@ -8,18 +8,20 @@ const db = require('../db/models');
 //----------* USERS CONTROLLER *----------//
 const usersController = {
     // Renderiza la vista Listado de Usuarios
-    usersFullList: (req, res) => {
-        const users = helper.getAllUsers();
-		const admin = users.filter((user) => {
-			return user.category == 'admin';
+    usersFullList: async (req, res) => {   
+        const users = await db.User.findAll({
+            include: ['role']
+        });
+        const admin = users.filter((user) => {
+			return user.role.name == 'admin';
 		});
 		const client = users.filter((user) => {
-			return user.category == 'client';
+			return user.role.name == 'client';
 		});
 		res.render('users/usersFullList', {
 			adminUsers: admin,
             clientUsers: client,
-        });      
+        });
     },
     
     // Renderiza la vista Registro
@@ -116,12 +118,12 @@ const usersController = {
     },
 
     // Elimina el perfil de un usuario (DELETE)
-    delete: (req, res) => {        
-        const users = helper.getAllUsers();
-        const remainingUsers = users.filter((user) => {
-			return user.id != req.session.user.id;
+    delete: async (req, res) => {   
+        await db.User.destroy({
+            where: {
+                id: req.session.user.id
+            }
         });
-        helper.writeUsers(remainingUsers);
         req.session.destroy();
         res.clearCookie('user_Id');
         return res.redirect('/usuario/registro');
