@@ -10,57 +10,62 @@ const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 //----------* PRODUCTS CONTROLLER *----------//
 const productsController = {
     // Renderiza la vista Colección
-    list: (req, res) => {
-        const products = helper.getAllProducts();
-		const fiesta = products.filter((product) => {
-			return product.category == 'Fiesta';
+    list: async (req, res) => {   
+        const products = await db.Product.findAll({
+            include: ['category', 'color', 'description', 'discount', 'image', 'model', 'size', 'type']
+        });
+        const fiesta = products.filter((product) => {
+			return product.category.name == 'Fiesta' && product.size.number == 35;
 		});
 		const casual = products.filter((product) => {
-			return product.category == 'Casual';
+			return product.category.name == 'Casual' && product.size.number == 35;
         });
 		res.render('products/productsList', {
 			fiestaProducts: fiesta,
-			casualProducts: casual
-		});        
+            casualProducts: casual
+		});
     },
 
     // Renderiza la vista Sale
-    sale: (req, res) => {        
-        const products = helper.getAllProducts();
+    sale: async (req, res) => {   
+        const products = await db.Product.findAll({
+            include: ['category', 'color', 'description', 'discount', 'image', 'model', 'size', 'type']
+        });
         const sale = products.filter((product) => {
-			return product.category == 'Sale';
+			return product.category.name == 'Sale' && product.size.number == 35;
 		});
 		res.render('products/productsSale', {
-			saleProducts: sale
-		});  
+            saleProducts: sale
+		});
     },
 
     // Renderiza la vista Listado Completo
-    productsFullList: (req, res) => {
-        const products = helper.getAllProducts();
-		const fiesta = products.filter((product) => {
-			return product.category == 'Fiesta';
+    productsFullList: async (req, res) => {   
+        const products = await db.Product.findAll({
+            include: ['category', 'color', 'description', 'discount', 'image', 'model', 'size', 'type']
+        });
+        const fiesta = products.filter((product) => {
+			return product.category.name == 'Fiesta' && product.size.number == 35;
 		});
 		const casual = products.filter((product) => {
-			return product.category == 'Casual';
+			return product.category.name == 'Casual' && product.size.number == 35;
         });
         const sale = products.filter((product) => {
-			return product.category == 'Sale';
+			return product.category.name == 'Sale' && product.size.number == 35;
 		});
 		res.render('products/productsFullList', {
 			fiestaProducts: fiesta,
             casualProducts: casual,
             saleProducts: sale
-		});        
+		});
     },
 
     // Renderiza la vista Detalle de producto
     detail: async (req, res) => {   
         const product = await db.Product.findByPk(req.params.id, {
-            include: ["category", "color", "description", "discount","image", "model", "size", "type"]
+            include: ['category', 'color', 'description', 'discount', 'image', 'model', 'size', 'type']
         });
-        res.render('products/productDetail', { product : product });
-           
+        res.render('products/productDetail', { product });  
     },
 
     // Agrega un articulo al Carrito
@@ -131,12 +136,12 @@ const productsController = {
     },
 
     //Elimina un artículo (DELETE)
-    delete: (req, res) => {        
-        const products = helper.getAllProducts();
-        const remainingProducts = products.filter((product) => {
-			return product.id != req.params.id;
+    delete: async (req, res) => {   
+        await db.Product.destroy({
+            where: {
+                id: req.params.id
+            }
         });
-        helper.writeProducts(remainingProducts);
         return res.redirect('/producto/listado');
     }
 };

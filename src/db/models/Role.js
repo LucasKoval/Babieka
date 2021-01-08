@@ -1,27 +1,23 @@
 module.exports = (sequelize ,DataTypes) => {
-    const alias = "Role";
-    const cols  = {
-        
-        value : {
-            type :DataTypes.INTEGER
-            
+    const alias = 'Role';
+    const cols = {
+        value: {
+            type: DataTypes.INTEGER
         },
-        name : {
-            type :DataTypes.STRING
+        name: {
+            type: DataTypes.STRING
         }
     };
-
     const config = {
-        tableName: "roles"
+        tableName: 'roles',
+        timestamps: false
     };
-
     const Role = sequelize.define(alias, cols, config);
 
-    Role.associate = function(models) {
-        Role.hasMany(models.User,{
-            as: "users",
-            foreignKey: "role_id"
-
+    Role.associate = (models) => {
+        Role.hasMany(models.User, {
+            as: 'users',
+            foreignKey: 'role_id'
         })
     };
 
