@@ -95,19 +95,28 @@ const productsController = {
     
     // Crea un artículo (POST)
     
-    store: (req, res) => {
-            db.Product.create({
-                name: req.body.name,
+    store: async (req, res) => {// poner todo en sus tablas correspondientes y relacionarlo con la tabla de Product
+            
+            const createDescrioption = await db.Description.create({text: req.body.description})
+            const createImage = await db.Image.create({name: req.files[0].filename})
+            const createModel = await db.Model.create({name: req.body.name})
+            
+            await db.Product.create({
+                model_id: createModel.id /*|| req.body.selectName*/, 
                 price: req.body.price,
-                discount: req.body.discount,
-                color: req.body.color,
-                size: req.body.size,
-                category: req.body.category,
-                type: req.body.type,
-                description: req.body.description,
-                image: req.files[0].filename
-            })  
-             return res.redirect('/producto/listado');
+                discount_id: req.body.discount,
+                stock: req.body.stock,
+                color_id: req.body.color,
+                size_id: req.body.size,
+                category_id: req.body.category,
+                type_id: req.body.type,
+                description_id:createDescrioption.id,
+                image_id: createImage.id
+            },
+            {include:["category", "color", "description", "discount","image", "model", "size", "type"]}
+            )
+        
+            return res.redirect('/producto/listado');
         },
 
     // Renderiza la vista Edición de artículo
