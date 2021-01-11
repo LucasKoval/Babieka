@@ -166,6 +166,11 @@ textarea {
     justify-content: center;
 }
 
+.lupa {
+    padding: 4px;
+    font-size: 12px;
+}
+
 .tachado {
     text-decoration: line-through;
 }
