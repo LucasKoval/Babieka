@@ -15,18 +15,17 @@ const mainController = {
     },
 
     // Renderiza Resultado de busqueda (En construcción)
-    search: (req, res) => {
-        res.render('products/searchResults');
-		// obtener la info del formulario.
-		// filtrar en la base de datos
-		// almacenar en una variable
-		// renderizar la vista
-        /*
-        const search = req.query.keywords;
-		const products = helper.getAllProducts();
-		const productFound = products.filter(product => product.name.toLowerCase().includes(search));
-		res.render('searchResults', {productFound : productFound});
-        */
+    search: async (req, res) => {
+        const search = req.query.search.toLowerCase();
+		const products = await db.Product.findAll({
+            include: ['category', 'color', 'description', 'discount', 'image', 'model', 'size', 'type']
+        });
+        const productFound = products.filter(product => {
+            return product.model.name.toLowerCase().includes(search) && product.size.number == 35;
+        });
+		res.render('products/searchResults', {
+            productFound: productFound
+		});
     },
     
     // Renderiza Nosotros

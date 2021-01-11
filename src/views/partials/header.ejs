@@ -16,6 +16,14 @@
             
             <div id="barra-nav1">
                 <ul class="nav">
+                    <li>
+                        <div class="form-inline f-search" style="font-size: 15px; color:black">
+                            <form action="/buscar" method="GET">
+                                <button class="lupa"><i class="fas fa-search"></i></button>
+                                <input name="search" type="text" placeholder="Buscar">
+                            </form>
+                        </div>
+                    </li>
                     <li><a href="/producto" class="space linea-med">COLECCIÓN</a></li>
                     <li><a href="/producto/sale" class="space linea-med">SALE</a></li>
                     <% if (loggedUser.category == 'admin') { %>
@@ -39,7 +47,7 @@
             </div>
             <div id="barra-nav2">
                 <ul class="nav">
-                    <li><a href="" class="space"><i class="fas fa-search"></i></a></li> <!--trabajar en este-->
+                    <!-- <li><a href="" class="space"><i class="fas fa-search"></i></a></li> -->
                     <% if (loggedUser.category == 'admin') { %>
                         <li><a href="" class="space"><i class="fas fa-user-circle" style="color: goldenrod;"></i></a>
                     <% } else if (loggedUser) {%>
