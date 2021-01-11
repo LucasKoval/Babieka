@@ -17,8 +17,12 @@
                                 <img src="/img/products/<%= product.image.name %>" alt="imagen de producto">
                             </div>
                             <div class="casual-index">
-                                <p class="marg-0 name-size"><%= product.model.name %></p>
-                                <p class="marg-0 price-size">$ <%= product.price %></p>
+                                <p class="marg-nonside-10 name-size"><%= product.model.name %></p>
+                                <p class="marg-0">[Talle - Stock]</p>
+                                <% for (size of sizes) { %>
+                                    <p class="talleVista">[<%= size.number %> - <%= product.stock %>]</p>
+                                <% } %>
+                                <p class="marg-nonside-10 price-size">$ <%= product.price %></p>
                                 <!-- <span class="marg-0">50 %OFF</span> -->
                             </div>
                         </a>
@@ -35,8 +39,12 @@
                                 <img src="/img/products/<%= product.image.name %>" alt="imagen de producto">
                             </div>
                             <div class="casual-index">
-                                <p class="marg-0 name-size"><%= product.model.name %></p>
-                                <p class="marg-0 price-size">$ <%= product.price %></p>
+                                <p class="marg-nonside-10 name-size"><%= product.model.name %></p>
+                                <p class="marg-0">[Talle - Stock]</p>
+                                <% for (size of sizes) { %>
+                                    <p class="talleVista">[<%= size.number %> - <%= product.stock %>]</p>
+                                <% } %>
+                                <p class="marg-nonside-10 price-size">$ <%= product.price %></p>
                                 <!-- <span class="marg-0">50 %OFF</span> -->
                             </div>
                         </a>
@@ -53,10 +61,14 @@
                                 <img src="/img/products/<%= product.image.name %>" alt="imagen de producto">
                             </div>
                             <div class="casual-index">
-                                <p class="marg-0 name-size"><%= product.model.name %></p>
-                                <p class="marg-0 price-size tachado">$ <%= product.price %></p>
-                                <span class="marg-0"><%= product.discount.number %> %OFF</span>
-                                <p class="marg-0 price-size">$ <%= product.price-((product.price*product.discount.number)/100) %></p>
+                                <p class="marg-nonside-10 name-size"><%= product.model.name %></p>
+                                <p class="marg-0">[Talle - Stock]</p>
+                                <% for (size of sizes) { %>
+                                    <p class="talleVista">[<%= size.number %> - <%= product.stock %>]</p>
+                                <% } %>
+                                <p class="marg-nonside-10 price-size tachado">$ <%= product.price %></p>
+                                <span class="marg-0">Descuento: <%= product.discount.number %>%</span>
+                                <p class="marg-nonside-10 price-size">$ <%= product.price-((product.price*product.discount.number)/100) %></p>
                             </div>
                         </a>
                     </article>

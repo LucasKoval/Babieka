@@ -44,6 +44,7 @@ const productsController = {
         const products = await db.Product.findAll({
             include: ['category', 'color', 'description', 'discount', 'image', 'model', 'size', 'type']
         });
+        const sizes = await db.Size.findAll();
         const fiesta = products.filter((product) => {
 			return product.category.name == 'Fiesta' && product.size.number == 35;
 		});
@@ -56,7 +57,8 @@ const productsController = {
 		res.render('products/productsFullList', {
 			fiestaProducts: fiesta,
             casualProducts: casual,
-            saleProducts: sale
+            saleProducts: sale,
+            sizes: sizes
 		});
     },
 
