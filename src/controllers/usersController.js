@@ -29,7 +29,7 @@ const usersController = {
 
     // Crea un nuevo Usuario (POST)
 
-    createUser: (req, res) =>{
+    createUser: async(req, res) =>{
         // Verifica que no existan errores al enviar el formulario de registro
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
@@ -39,13 +39,13 @@ const usersController = {
             })
         }
         // Crea un nuevo registro de usuario en la DB
-        db.User.create({
-            firstName: req.body.firstName,
-            lastName: req.body.lastName, 
-            email: req.body.email,
-            password: bcrypt.hashSync(req.body.password, 5),
-            category: req.body.category,
-            image: req.files[0].filename
+        await db.User.create({
+                firstName: req.body.firstName,
+                lastName: req.body.lastName, 
+                email: req.body.email,
+                password: bcrypt.hashSync(req.body.password, 5),
+                category: req.body.category,
+                image: req.files[0].filename
         })
         return res.redirect('/usuario/login');
     },

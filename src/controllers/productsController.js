@@ -90,21 +90,21 @@ const productsController = {
     
     store: async (req, res) => {// poner todo en sus tablas correspondientes y relacionarlo con la tabla de Product
             
-            creationDescrioption = await db.Description.create({text: req.params.description})
-            creationImage = await db.Image.create({name: req.files[0].filename})
-            creationModel = await db.Model.create({name: req.params.name})
+            const createDescrioption = await db.Description.create({text: req.body.description})
+            const createImage = await db.Image.create({name: req.files[0].filename})
+            const createModel = await db.Model.create({name: req.body.name})
             
             await db.Product.create({
-                model_id: creationModel.id || req.params.selectName, 
+                model_id: createModel.id /*|| req.body.selectName*/, 
                 price: req.body.price,
                 discount_id: req.body.discount,
-                stock: req.params.stock,
-                color_id: req.params.color,
-                size_id: req.params.size,
-                category_id: req.params.category,
-                type_id: req.params.type,
-                description_id:creationDescription.id,
-                image_id: creationImage.id
+                stock: req.body.stock,
+                color_id: req.body.color,
+                size_id: req.body.size,
+                category_id: req.body.category,
+                type_id: req.body.type,
+                description_id:createDescrioption.id,
+                image_id: createImage.id
             },
             {include:["category", "color", "description", "discount","image", "model", "size", "type"]}
             )
