@@ -97,7 +97,7 @@ textarea {
 }
 
 .marg-nonside-10 {
-    margin: 10px , 0;
+    margin: 10px 0;
 }
 
 .marg-nonside-50 {
@@ -123,6 +123,10 @@ textarea {
 
 .fd-row {
     flex-direction: row;
+}
+
+.talleVista{
+    display: contents;
 }
 
 .opac-img img:hover{
