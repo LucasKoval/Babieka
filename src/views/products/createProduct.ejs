@@ -14,6 +14,8 @@
                     
                     <label for="nombreArticulo"></label>    <!--// Nombre //-->
                     <p><input type="text" name="name" id="nombreArticulo" placeholder="Nombre del artículo"></p>
+
+                    <!--agregar un select con un for para seleccionar el nombre-->
                     
                     <p>
                         <label for="categoriaArticulo">Categoría del artículo: </label> <!--// Categoria //-->
@@ -29,12 +31,13 @@
                         <label for="tipoArticulo">Tipo de artículo: </label> <!--// Tipo //-->
                         <select name="type"> 
                             <option value="selecciona"  selected disabled>Selecciona...</option> 
-                            <option value="1">Sandalia</option>
+                            <option value="1">Borcego</option>
                             <option value="2">Bota</option>
-                            <option value="3">Borcego</option>
-                            <option value="4">Botineta</option>
-                            <option value="5">Zapato</option>
-                            <option value="6">Mule</option>
+                            <option value="3">Botineta</option>
+                            <option value="4">Mule</option>
+                            <option value="5">Sandalia</option>
+                            <option value="6">Zapato</option>
+                            
                         </select>
                     </p>
                     
@@ -55,18 +58,22 @@
                         <label for="colorArticulo">Color del artículo: </label> <!--// Color //-->
                         <select name="color">   
                             <option value="selecciona"  selected disabled>Selecciona...</option> 
-                            <option value="1">Negro</option> 
+                            <option value="1">Blanco</option>
                             <option value="2">Marrón</option>
-                            <option value="3">Blanco</option>
-                            <option value="4">Rojo</option>
+                            <option value="3">Negro</option> 
+                            <option value="4">Nude</option>
                             <option value="5">Oro</option>
                             <option value="6">Plata</option>
+                            <option value="7">Rojo</option>
                         </select>
                     </p>
                     
+                    <!--agregar un select con un for para seleccionar la descripcion-->
                     <label for="descripcArticulo"></label>    <!--// Descripción //-->
                     <textarea name="description" id="descripcArticulo" cols="46" rows="4" placeholder="Añada una breve descripción del artículo y sus materiales"></textarea>
 
+
+                    <!--agregar un select con un for para seleccionar la imagen-->
                     <p>    <!--// Imagen //-->
                         <input type="file" name="imagenArticulo" accept="image/png, .jpeg, .jpg, image/gif"> 
                         <input type="submit" value="Subir Imagen">  
