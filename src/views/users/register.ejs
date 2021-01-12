@@ -36,12 +36,12 @@
                     <p><input type="password" name="repeatpassword" id="repeatpassword"></p>
                     <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.repeatpassword == 'undefined' ? '' : errors.repeatpassword.msg %></p>
                    
-                    <% if (loggedUser.category == 'admin') { %>
-                        <p><label for="category">Categoria:</label></p>
-                        <p><input type="text" name="category" id="category"></p>
+                    <% if (loggedUser.role.name == 'admin') { %>
+                        <p><label for="role">Rol:</label></p>
+                        <p><input type="text" name="role" id="role"></p>
                     <% } else {%>
-                        <p><label for="category" hidden>Categoria:</label></p>
-                        <p><input type="text" name="category" id="category" value="client" hidden></p>
+                        <p><label for="role" hidden>Rol:</label></p>
+                        <p><input type="text" name="role" id="role" value="client" hidden></p>
                     <% } %>
 
                     <p>    <!--// Imagen //-->
