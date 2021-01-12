@@ -5,12 +5,10 @@
         
         <%- include('../partials/header') %>    <!--// Header //-->
         
-    
         <main class="registermain">
             <div class="imageUs">
                 <img src="/img/img_model_1.jpg" alt="imagen de una modelo" class="registerimage">
             </div>
-
 
             <section class= "formulariologin">
                 <h1 class="h1-size">¡Registrate!</h1>
@@ -36,20 +34,25 @@
                     <p><input type="password" name="repeatpassword" id="repeatpassword"></p>
                     <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.repeatpassword == 'undefined' ? '' : errors.repeatpassword.msg %></p>
                    
-                    <% if (loggedUser.role.name == 'admin') { %>
-                        <p><label for="role">Rol:</label></p>
-                        <p><input type="text" name="role" id="role"></p>
+                    <% if (loggedUser && loggedUser.role.name == 'admin') { %>
+                        <label for="role">Categoria:</label>    <!--// Category //-->
+                        <select name="role">   
+                            <option value="5" selected>Cliente</option>
+                            <option value="1">Manager</option>
+                            <option value="2">Administrador</option> 
+                            <option value="3">Programador</option>
+                            <option value="4">Tester</option>
+                        </select>
                     <% } else {%>
-                        <p><label for="role" hidden>Rol:</label></p>
-                        <p><input type="text" name="role" id="role" value="client" hidden></p>
+                        <p><label for="role" hidden>Categoria:</label></p>
+                        <p><input type="text" name="role" id="role" value="5" hidden></p>
                     <% } %>
 
                     <p>    <!--// Imagen //-->
                         <input type="file" name="image" accept="image/png, .jpeg, .jpg, image/gif"> 
                         <input type="submit" value="Subir Imagen">  
                     </p>
-                    <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.image == 'undefined' ? '' : errors.image.msg %></p>
-                    
+                    <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.image == 'undefined' ? '' : errors.image.msg %></p>                  
     
                     <button type="submit">Crear cuenta</button>
                 </form>
