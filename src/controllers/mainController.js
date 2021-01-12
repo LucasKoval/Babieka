@@ -1,5 +1,4 @@
 //----------* REQUIRE'S *----------//
-const helper = require('../helpers/helper');
 const db = require('../db/models');
 
 

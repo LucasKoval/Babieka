@@ -1,3 +1,30 @@
-<h1><%= message %></h1>
-<h2><%= error.status %></h2>
-<pre><%= error.stack %></pre>
+<!DOCTYPE html>
+<html lang="en">
+    
+    <%- include('./partials/head', {title: 'Nosotros'}) %>   <!--// partial Head //-->
+   
+    <body>
+        
+        <%- include('./partials/header') %>   <!--// partial Header //-->
+
+        <div>
+            
+            <div class="justify-center">
+                <img src="/img/img_error.jpg" alt="error">
+            </div>
+
+            <div class="marg-20 justify-center">
+                <div>
+                    <h1><%= message %> (<%= error.status %>)</h1>
+                    <h3>Error trying to access to: <b><%= path %></b></h3>
+                    <pre><%= error.stack %></pre>
+                </div>
+            </div>
+            
+        </div>
+            
+        <%- include('./partials/footer') %>   <!--// partial Footer //-->
+        
+    </body>
+
+</html>

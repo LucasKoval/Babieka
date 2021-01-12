@@ -1,6 +1,5 @@
 //----------* REQUIRE'S *----------//
 const bcrypt = require('bcryptjs');
-const helper = require('../helpers/helper');
 const {check, validationResult, body} = require('express-validator');
 const db = require('../db/models');
 
@@ -31,7 +30,7 @@ const usersController = {
 
     // Crea un nuevo Usuario (POST)
 
-    createUser: async(req, res) =>{
+    createUser: async (req, res) =>{
         // Verifica que no existan errores al enviar el formulario de registro
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
@@ -42,13 +41,14 @@ const usersController = {
         }
         // Crea un nuevo registro de usuario en la DB
         await db.User.create({
-                firstName: req.body.firstName,
-                lastName: req.body.lastName, 
+                first_name: req.body.first_name,
+                last_name: req.body.last_name, 
                 email: req.body.email,
                 password: bcrypt.hashSync(req.body.password, 5),
-                category: req.body.category,
+                role_id: req.body.role,
                 image: req.files[0].filename
-        })
+        },
+        {include: ['role']});
         return res.redirect('/usuario/login');
     },
 
@@ -59,7 +59,7 @@ const usersController = {
     },
 
     // Loguea un usuario (POST)
-    processLogin: (req ,res) => {
+    processLogin: async (req ,res) => {
         // Verifica que no existan errores al hacer el login
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
@@ -69,15 +69,16 @@ const usersController = {
             })
         }
         // Verifica que exista el usuario en la DB
-        const email = req.body.email;
 		const password = req.body.password;
-        const users = helper.getAllUsers();
-        const userExist = users.find(user => user.email == email);
+        const users = await db.User.findAll({
+            include: ['role']
+        });
+        const userExist = users.find(user => user.email == req.body.email);
         // Ejecuta el login si existe el usuario en la DB y las contraseñas coinciden
         if (userExist && bcrypt.compareSync(password, userExist.password)) {
             req.session.user = userExist;
             if (req.body.remember) {
-                res.cookie('user_Id', userExist.id, { maxAge: 1000 * 60 * 60 });
+                res.cookie('user_Id', userExist.id, { maxAge: 1000 * 60 * 120 });
             }
             return res.redirect('/usuario/perfil');
         }
@@ -91,29 +92,32 @@ const usersController = {
     },
 
     // Renderiza la vista Edición de Perfil
-    editForm: (req, res) => {    
+    editForm: async (req, res) => {    
         const email = req.body.email;
-        const users = helper.getAllUsers();
-        const user = users.find(user => user.email == email)    
-        return res.render('users/editUser', { user:user });
+        const users = await db.User.findAll({
+            include: ['role']
+        });
+        const user = users.find(user => user.email == email)
+        return res.render('users/editUser', { user });
     },
 
     // Edita el perfil de un Usuario (PUT)
-    editProfile: (req, res) => { 
+    editProfile: async (req, res) => { 
         const passwordHashed = bcrypt.hashSync(req.body.password, 5);
-        const users = helper.getAllUsers();
+        const users = await db.User.findAll({
+            include: ['role']
+        });
         const editedUser = users.map(function(user){
             if (req.session.user.id == user.id) {
-                user.firstName = req.body.firstName; 
-                user.lastName = req.body.lastName;
+                user.first_name = req.body.first_name; 
+                user.last_name = req.body.last_name;
                 user.email = req.body.email;
                 user.password = req.body.password ? passwordHashed : user.password;
-                user.category = user.category=='admin' ?  req.body.category : user.category;
+                user.role = user.role.name == 'admin' ?  req.body.role : user.role;
                 user.image = req.files[0] ?  req.files[0].filename : user.image;
             } 
             return user
         })
-        helper.writeUsers(editedUser);
         res.redirect('/usuario/perfil');       
     },
 

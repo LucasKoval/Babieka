@@ -4,10 +4,10 @@ module.exports = (sequelize, DataTypes) => {
         role_id: {
             type: DataTypes.INTEGER
         },
-        firstName: {
+        first_name: {
             type: DataTypes.STRING
         },
-        lastName: {
+        last_name: {
             type: DataTypes.STRING
         },
         email: {
@@ -21,8 +21,7 @@ module.exports = (sequelize, DataTypes) => {
         }
     };
     const config = {
-        tableName: 'users',
-        timestamps: false
+        tableName: 'users'
     };
     const User = sequelize.define(alias, cols, config);
 
