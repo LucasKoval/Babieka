@@ -34,12 +34,10 @@
                     <p><input type="password" name="repeatpassword" id="repeatpassword"></p>
                     <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.repeatpassword == 'undefined' ? '' : errors.repeatpassword.msg %></p>
                    
-                    <% if (loggedUser.role.name == 'admin') { %>
-                        <!--<p><label for="category">Categoria:</label></p>
-                        <p><input type="text" name="category" id="category"></p>-->
+                    <% if (loggedUser && loggedUser.role.name == 'admin') { %>
                         <label for="role">Categoria:</label>    <!--// Category //-->
                         <select name="role">   
-                            <option value="5" selected disabled>Cliente</option>
+                            <option value="5" selected>Cliente</option>
                             <option value="1">Manager</option>
                             <option value="2">Administrador</option> 
                             <option value="3">Programador</option>
