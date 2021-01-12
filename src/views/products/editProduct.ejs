@@ -13,53 +13,62 @@
                 <form action="/producto/<%=product.id%>/editar?_method=PUT" method="POST" enctype="multipart/form-data">    <!--// Formulario Nuevo Artículo //-->
                     
                     <label for="nombreArticulo"></label>    <!--// Nombre //-->
-                    <p><input type="text" name="name" id="nombreArticulo" value="<%=product.name%>"></p>
+                    <p><input type="text" name="model" id="nombreArticulo" value="<%=product.model.name%>"></p>
                     
                     <p>
-                        <label for="categoriaArticulo">Categoría del artículo: </label>
+                        <label for="categoriaArticulo"> Categoría del artículo: </label>
                         <select name="category">   <!--// Categoria //-->
-                            <option value="Casual">Casual</option> 
-                            <option value="Fiesta">Fiesta</option>
-                            <option value="Sale">Sale</option>
+                            <% for (category of categories) { %>
+                                <% if (category.name == product.category.name) { %>
+                                    <option value="<%= category.id %>" selected><%= category.name %></option>
+                                <% } else { %>
+                                    <option value="<%= category.id %>"><%= category.name %></option>
+                                <% } %> 
+                            <% } %> 
                         </select>
                     </p>
                    
                     <p>
                         <label for="tipoArticulo">Tipo de artículo: </label> <!--// Tipo //-->
                         <select name="type">  
-                        <option value="Sandalia">Sandalia</option>
-                        <option value="Bota">Bota</option>
-                        <option value="Borcego">Borcego</option>
-                        <option value="Borcego">Botineta</option>
-                        <option value="Zapato">Zapato</option>
-                        <option value="Mule">Mule</option>
-                    </select></p>
+                            <% for (type of types) { %>
+                                <% if (type.name == product.type.name) { %>
+                                    <option value="<%= type.id %>" selected><%= type.name %></option>
+                                <% } else { %>
+                                    <option value="<%= type.id %>"><%= type.name %></option>
+                                <% } %> 
+                            <% } %>
+                        </select>
+                    </p>
                     
                     <p>
                         <label for="talleArticulo">Talle de artículo: </label> <!--// Talle //-->
                         <select name="size">    
-                            <option value="35">35</option> 
-                            <option value="36">36</option>
-                            <option value="37">37</option>
-                            <option value="38">38</option>
-                            <option value="39">39</option>
-                            <option value="40">40</option>
+                            <% for (size of sizes) { %>
+                                <% if (size.number == product.size.number) { %>
+                                    <option value="<%= size.id %>" selected><%= size.number %></option>
+                                <% } else { %>
+                                    <option value="<%= size.id %>"><%= size.number %></option>
+                                <% } %>
+                            <% } %> 
                         </select>
                     </p>
 
                     <p>
                         <label for="colorArticulo">Color del artículo: </label> <!--// Color //-->
                         <select name="color">   
-                        <option value="Negro">Negro</option> 
-                        <option value="Marron">Marrón</option>
-                        <option value="Blanco">Blanco</option>
-                        <option value="Rojo">Rojo</option>
-                        <option value="Oro">Oro</option>
-                        <option value="Plata">Plata</option>
-                    </select></p>
+                            <% for (color of colors) { %>
+                                <% if (color.name == product.color.name) { %>
+                                    <option value="<%= color.id %>" selected><%= color.name %></option>
+                                <% } else { %>
+                                    <option value="<%= color.id %>"><%= color.name %></option>
+                                <% } %>         
+                            <% } %> 
+                        </select>
+                    </p>
                     
                     <label for="descripcArticulo"></label>    <!--// Descripción //-->
-                    <textarea name="description" id="descripcArticulo" cols="46" rows="4"><%=product.description%></textarea>
+                    <textarea name="description" id="descripcArticulo" cols="46" rows="4"><%=product.description.text%></textarea>
 
                     <p>    <!--// Imagen //-->
                         <input type="file" name="imagenArticulo" accept="image/png, .jpeg, .jpg, image/gif"> 
