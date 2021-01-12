@@ -5,7 +5,10 @@ const helper = require('../helpers/helper');
 
 
 //----------* VARIABLE'S *----------//
-const users = helper.getAllUsers();
+const db = require('../db/models');
+const users = db.User.findAll({
+    include: ['role']
+});
 
 
 //----------* MIDDLEWARE *----------//
@@ -17,8 +20,8 @@ loginValidator = [
         .isEmail()
             .withMessage('Debe ingresar un email válido')
             .bail()
-        .custom((value, {req})=> {
-            let userFound=users.find(user=>user.email==value)
+        .custom(async(value, {req})=> {
+            let userFound= await users.find({email:value})
             if(userFound && bcrypt.compareSync(req.body.password, userFound.password)){
                 return true; 
             }else{

@@ -92,10 +92,10 @@ const productsController = {
 
     // Renderiza la vista Nuevo artículo
     createForm: (req, res) => {  
-       /* const product = await db.Product.findAll({
+        const product = await db.Product.findAll({
             include: ['category', 'color', 'description', 'discount', 'image', 'model', 'size', 'type']
-        });   */   
-        res.render('products/createProduct'/*, { product }*/);
+        });    
+        res.render('products/createProduct', { product });
     },
     
     // Crea un artículo (POST)

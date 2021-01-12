@@ -28,48 +28,47 @@
                     </p>
                    
                     <p>
-                        <label for="tipoArticulo">Tipo de artículo: </label> <!--// Tipo //-->
-                        <select name="type"> 
-                            <option value="selecciona"  selected disabled>Selecciona...</option> 
-                            <option value="1">Borcego</option>
-                            <option value="2">Bota</option>
-                            <option value="3">Botineta</option>
-                            <option value="4">Mule</option>
-                            <option value="5">Sandalia</option>
-                            <option value="6">Zapato</option>
+                        <label for="tipoArticulo">Tipo de artículo:  </label> <!--// Tipo //-->
+                        <select name="type">
                             
+                            <% for (type of types) { %>
+                                <% if (type.name == product.type.name) { %>
+                                    <option value="<%= type.id %>" selected><%= type.name %></option>
+                                <% } else { %>
+                                    <option value="<%= size.id %>"><%= size.name %></option>
+                                <% } %>
+                            <% } %> 
                         </select>
                     </p>
                     
                     <p>
-                        <label for="talleArticulo">Talle de artículo: </label> <!--// Talle //-->
-                        <select name="size">    
-                            <option value="selecciona"  selected disabled>Selecciona...</option> 
-                            <option value="1">35</option> 
-                            <option value="2">36</option>
-                            <option value="3">37</option>
-                            <option value="4">38</option>
-                            <option value="5">39</option>
-                            <option value="6">40</option>
+                        <label for="talleArticulo">Talle de artículo:  </label> <!--// Talle //-->
+                        <select name="size">
+                            <% for (size of sizes) { %>
+                                <% if (size.number == product.size.number) { %>
+                                    <option value="<%= size.id %>" selected><%= size.name %></option>
+                                <% } else { %>
+                                    <option value="<%= size.id %>"><%= size.number %></option>
+                                <% } %>
+                            <% } %> 
                         </select>
                     </p>
 
                     <p>
                         <label for="colorArticulo">Color del artículo: </label> <!--// Color //-->
-                        <select name="color">   
-                            <option value="selecciona"  selected disabled>Selecciona...</option> 
-                            <option value="1">Blanco</option>
-                            <option value="2">Marrón</option>
-                            <option value="3">Negro</option> 
-                            <option value="4">Nude</option>
-                            <option value="5">Oro</option>
-                            <option value="6">Plata</option>
-                            <option value="7">Rojo</option>
+                        <select name="color">
+                            <% for (color of colors) { %>
+                                <% if (color.name == product.color.name) { %>
+                                    <option value="<%= color.id %>" selected><%= color.name %></option>
+                                <% } else { %>
+                                    <option value="<%= color.id %>"><%= color.name %></option>
+                                <% } %>
+                            <% } %> 
                         </select>
                     </p>
 
                     <!--ponga un numero de stock-->
-                    <label for="stock">Sotck:</label>    <!--// Descripción //-->
+                    <label for="stock">Stock:</label>    <!--// Descripción //-->
                     <p><input type="text" name="stock" id="stockArticulo" placeholder="20"></p>
 
                     
@@ -84,6 +83,18 @@
                         <input type="submit" value="Subir Imagen">  
                     </p>
                     <p>
+
+                        <label for="discount">Descuento: </label> <!--// discount //-->
+                        <select name="discount">
+                            <% for (color of colors) { %>
+                                <% if (color.name == product.color.name) { %>
+                                    <option value="<%= color.id %>" selected><%= color.name %></option>
+                                <% } else { %>
+                                    <option value="<%= color.id %>"><%= color.name %></option>
+                                <% } %>
+                            <% } %> 
+                        </select>
+
                         <label for="discount">Descuento:</label>    <!--// El Discount //-->
                         <select name="discount">   
                             <option value="1" selected disabled>0%</option>

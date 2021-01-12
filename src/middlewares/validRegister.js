@@ -5,7 +5,11 @@ const helper = require('../helpers/helper');
 
 
 //----------* VARIABLE'S *----------//
-const users = helper.getAllUsers();
+
+const db = require('../db/models');
+const users = db.User.findAll({
+    include: ['role']
+});
 
 
 //----------* MIDDLEWARE *----------//
@@ -25,8 +29,8 @@ registerValidator = [
         .isEmail()
             .withMessage('Debe ingresar un email válido')
             .bail()
-        .custom(value => {
-            let userFound=users.find(user=>user.email==value)
+        .custom(async value => {
+            let userFound= await users.find(user=>user.email==value)
             return !userFound; 
             })
             .withMessage('El email ya se encuentra registrado')
