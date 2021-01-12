@@ -89,15 +89,18 @@ const productsController = {
     },
 
     // Renderiza la vista Nuevo artículo
-    createForm: (req, res) => {        
-        res.render('products/createProduct');
+    createForm: (req, res) => {  
+       /* const product = await db.Product.findAll({
+            include: ['category', 'color', 'description', 'discount', 'image', 'model', 'size', 'type']
+        });   */   
+        res.render('products/createProduct'/*, { product }*/);
     },
     
     // Crea un artículo (POST)
     
     store: async (req, res) => {// poner todo en sus tablas correspondientes y relacionarlo con la tabla de Product
             
-            const createDescrioption = await db.Description.create({text: req.body.description})
+            const createDescription = await db.Description.create({text: req.body.description})
             const createImage = await db.Image.create({name: req.files[0].filename})
             const createModel = await db.Model.create({name: req.body.name})
             
@@ -110,8 +113,8 @@ const productsController = {
                 size_id: req.body.size,
                 category_id: req.body.category,
                 type_id: req.body.type,
-                description_id:createDescrioption.id,
-                image_id: createImage.id
+                description_id: createDescription.id /*|| req.body.selectDescription*/,
+                image_id: createImage.id /*|| req.body.selectImage*/
             },
             {include:["category", "color", "description", "discount","image", "model", "size", "type"]}
             )

@@ -31,7 +31,7 @@ const usersController = {
 
     // Crea un nuevo Usuario (POST)
 
-    createUser: async(req, res) =>{
+    createUser: async (req, res) =>{
         // Verifica que no existan errores al enviar el formulario de registro
         const errors = validationResult(req);
         if (!errors.isEmpty()) {

@@ -13,7 +13,7 @@
                 <form action="/producto/crear" method="POST" enctype="multipart/form-data">    <!--// Formulario Nuevo Artículo //-->
                     
                     <label for="nombreArticulo"></label>    <!--// Nombre //-->
-                    <p><input type="text" name="name" id="nombreArticulo" placeholder="Nombre del artículo"></p>
+                    <p><input type="text" name="name" id="nombreArticulo" placeholder="Nombre del modelo"></p>
 
                     <!--agregar un select con un for para seleccionar el nombre-->
                     
@@ -67,10 +67,15 @@
                             <option value="7">Rojo</option>
                         </select>
                     </p>
+
+                    <!--ponga un numero de stock-->
+                    <label for="stock">Sotck:</label>    <!--// Descripción //-->
+                    <p><input type="text" name="stock" id="stockArticulo" placeholder="20"></p>
+
                     
                     <!--agregar un select con un for para seleccionar la descripcion-->
-                    <label for="descripcArticulo"></label>    <!--// Descripción //-->
-                    <textarea name="description" id="descripcArticulo" cols="46" rows="4" placeholder="Añada una breve descripción del artículo y sus materiales"></textarea>
+                    <label for="descripcArticulo">Descripcion del producto:</label>    <!--// Descripción //-->
+                    <p><textarea name="description" id="descripcArticulo" cols="56" rows="5" placeholder="Lorem ipsum dolor sit amet consectetur, adipiscing elit volutpat netus inceptos, est parturient ut penatibus. Ac sagittis at sociosqu imperdiet venenatis lacinia ante dictum sodales blandit vivamus, scelerisque neque ornare tempus aliquet suspendisse conubia pharetra duis inceptos"></textarea></p>
 
 
                     <!--agregar un select con un for para seleccionar la imagen-->
@@ -78,26 +83,25 @@
                         <input type="file" name="imagenArticulo" accept="image/png, .jpeg, .jpg, image/gif"> 
                         <input type="submit" value="Subir Imagen">  
                     </p>
-
-                    <label for="discount"></label>    <!--// El Discount //-->
-                    <select name="discount">   
-                        <option value="selecciona"  selected disabled>Selecciona...</option> 
-                        <option value="1">0%</option>
-                        <option value="2">10%</option>
-                        <option value="3">15%</option> 
-                        <option value="4">20%</option>
-                        <option value="5">25%</option>
-                        <option value="6">30%</option>
-                        <option value="7">40%</option>
-                        <option value="8">50%</option>
-                        <option value="9">60%</option>
-                        <option value="10">70%</option>
-                        <option value="11">75%</option>
-                    </select>
-                       
+                    <p>
+                        <label for="discount">Descuento:</label>    <!--// El Discount //-->
+                        <select name="discount">   
+                            <option value="1" selected disabled>0%</option>
+                            <option value="2">10%</option>
+                            <option value="3">15%</option> 
+                            <option value="4">20%</option>
+                            <option value="5">25%</option>
+                            <option value="6">30%</option>
+                            <option value="7">40%</option>
+                            <option value="8">50%</option>
+                            <option value="9">60%</option>
+                            <option value="10">70%</option>
+                            <option value="11">75%</option>
+                        </select>
+                    </p>
                     
-                    <label for="precioArticulo"></label>    <!--// Precio //-->
-                    <p><input type="text" name="price" id="precioArticulo" placeholder="Precio"></p>    
+                    <label for="precioArticulo">Precio:</label>    <!--// Precio //-->
+                    <p><input type="text" name="price" id="precioArticulo" placeholder="$2.000"></p>    
 
                     <button type="submit">Crear artículo</button>    <!--// Botón Crear //-->
 
