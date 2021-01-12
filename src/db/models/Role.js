@@ -9,8 +9,7 @@ module.exports = (sequelize ,DataTypes) => {
         }
     };
     const config = {
-        tableName: 'roles',
-        timestamps: false
+        tableName: 'roles'
     };
     const Role = sequelize.define(alias, cols, config);
 

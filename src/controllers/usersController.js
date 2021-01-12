@@ -1,6 +1,5 @@
 //----------* REQUIRE'S *----------//
 const bcrypt = require('bcryptjs');
-const helper = require('../helpers/helper');
 const {check, validationResult, body} = require('express-validator');
 const db = require('../db/models');
 
@@ -42,13 +41,14 @@ const usersController = {
         }
         // Crea un nuevo registro de usuario en la DB
         await db.User.create({
-                firstName: req.body.firstName,
-                lastName: req.body.lastName, 
+                first_name: req.body.first_name,
+                last_name: req.body.last_name, 
                 email: req.body.email,
                 password: bcrypt.hashSync(req.body.password, 5),
-                role: req.body.role,
+                role_id: req.body.role,
                 image: req.files[0].filename
-        })
+        },
+        {include: ['role']});
         return res.redirect('/usuario/login');
     },
 
@@ -109,8 +109,8 @@ const usersController = {
         });
         const editedUser = users.map(function(user){
             if (req.session.user.id == user.id) {
-                user.firstName = req.body.firstName; 
-                user.lastName = req.body.lastName;
+                user.first_name = req.body.first_name; 
+                user.last_name = req.body.last_name;
                 user.email = req.body.email;
                 user.password = req.body.password ? passwordHashed : user.password;
                 user.role = user.role.name == 'admin' ?  req.body.role : user.role;

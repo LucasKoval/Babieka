@@ -10,11 +10,11 @@ const users = helper.getAllUsers();
 
 //----------* MIDDLEWARE *----------//
 registerValidator = [
-    body('firstName')
+    body('first_name')
         .notEmpty()
             .withMessage('Debe ingresar su nombre')
             .bail(),
-    body('lastName')
+    body('last_name')
     .notEmpty()
         .withMessage('Debe ingresar su apellido')
         .bail(),

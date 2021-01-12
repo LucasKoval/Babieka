@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
         quantity: {
             type: DataTypes.INTEGER
         },
-        subTotal: {
+        subtotal: {
             type: DataTypes.INTEGER
         },
         status: {
@@ -33,8 +33,7 @@ module.exports = (sequelize, DataTypes) => {
         }
     };
     const config = {
-        tableName: 'items',
-        timestamps: false
+        tableName: 'items'
     };
     const Item = sequelize.define(alias, cols, config);
 
@@ -42,15 +41,13 @@ module.exports = (sequelize, DataTypes) => {
         Item.belongsTo(models.User, {
             as: 'user',
             foreignKey: 'user_id'
-    
         });
         
         Item.belongsTo(models.Order, {
             as: 'order',
             foreignKey: 'order_id'
-    
         });
     };
-
+    
     return Item;
 }

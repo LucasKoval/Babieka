@@ -4,7 +4,6 @@
     <body>
         
         <%- include('../partials/header') %>    <!--// Header //-->
-        
     
         <main class="registermain">
             <div class="imageUs">
@@ -16,13 +15,13 @@
                 <h1 class="h1-size">¡Registrate!</h1>
 
                 <form action="/usuario/registro" method="POST" enctype="multipart/form-data">
-                    <p><label for="firstName">Nombre</label></p>
-                    <p><input type="text" name="firstName" id="firstName" value="<%= typeof user == 'undefined' ? '' : user.firstName %>"></p>
-                    <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.firstName == 'undefined' ? '' : errors.firstName.msg %></p>
+                    <p><label for="first_name">Nombre</label></p>
+                    <p><input type="text" name="first_name" id="first_name" value="<%= typeof user == 'undefined' ? '' : user.first_name %>"></p>
+                    <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.first_name == 'undefined' ? '' : errors.first_name.msg %></p>
 
-                    <p><label for="lastName">Apellido</label></p>
-                    <p><input type="text" name="lastName" id="lastName" value="<%= typeof user == 'undefined' ? '' : user.lastName %>"></p>
-                    <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.lastName == 'undefined' ? '' : errors.lastName.msg %></p>
+                    <p><label for="last_name">Apellido</label></p>
+                    <p><input type="text" name="last_name" id="last_name" value="<%= typeof user == 'undefined' ? '' : user.last_name %>"></p>
+                    <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.last_name == 'undefined' ? '' : errors.last_name.msg %></p>
                     
                     <p><label for="email">Email:</label></p>
                     <p><input type="email" name="email" id="email" placeholder="Ej: maria@babieka.com" value="<%= typeof user == 'undefined' ? '' : user.email %>"></p>
@@ -36,7 +35,7 @@
                     <p><input type="password" name="repeatpassword" id="repeatpassword"></p>
                     <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.repeatpassword == 'undefined' ? '' : errors.repeatpassword.msg %></p>
                    
-                    <% if (loggedUser.role.name == 'admin') { %>
+                    <% if (loggedUser && loggedUser.role.name == 'admin') { %>
                         <p><label for="role">Rol:</label></p>
                         <p><input type="text" name="role" id="role"></p>
                     <% } else {%>
@@ -57,7 +56,6 @@
             </section>
     
         </main>
-        
         
         <%- include('../partials/footer') %>    <!--// Footer //-->
         

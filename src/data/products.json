@@ -1,13 +1,13 @@
 [
  {
   "id": "1",
-  "name": "Sandalia Barbie",
-  "price": "7000",
+  "name": "Sandalia BarbieMOD",
+  "price": "5000",
   "discount": "0",
   "color": "Negro",
   "size": "35",
-  "category": "Fiesta",
-  "type": "Sandalida",
+  "category": "Casual",
+  "type": "Sandalia",
   "description": "Sandalia de fiesta con plataforma alta. Capellada de cuero con detalle reptil, y taco forrado en el mismo material. La suela es de material rígido sintético, con tope de goma en el taco. Plataforma de 5 cm de alto y 11 cm de taco.",
   "image": "img_Barbie.jpg"
  },
