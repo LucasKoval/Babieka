@@ -98,7 +98,7 @@ const productsController = {
     
     // Crea un artículo (POST)
     
-    store: async (req, res) => {// poner todo en sus tablas correspondientes y relacionarlo con la tabla de Product
+    store: async (req, res) => {t
             
             const createDescription = await db.Description.create({text: req.body.description})
             const createImage = await db.Image.create({name: req.files[0].filename})

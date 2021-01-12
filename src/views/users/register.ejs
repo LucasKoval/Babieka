@@ -34,11 +34,11 @@
                     <p><input type="password" name="repeatpassword" id="repeatpassword"></p>
                     <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.repeatpassword == 'undefined' ? '' : errors.repeatpassword.msg %></p>
                    
-                    <% if (loggedUser.category == 'admin') { %>
+                    <% if (loggedUser.role.name == 'admin') { %>
                         <!--<p><label for="category">Categoria:</label></p>
                         <p><input type="text" name="category" id="category"></p>-->
-                        <label for="category">Categoria:</label>    <!--// Category //-->
-                        <select name="category">   
+                        <label for="role">Categoria:</label>    <!--// Category //-->
+                        <select name="role">   
                             <option value="5" selected disabled>Cliente</option>
                             <option value="1">Manager</option>
                             <option value="2">Administrador</option> 
@@ -46,8 +46,8 @@
                             <option value="4">Tester</option>
                         </select>
                     <% } else {%>
-                        <p><label for="category" hidden>Categoria:</label></p>
-                        <p><input type="text" name="category" id="category" value="5" hidden></p>
+                        <p><label for="role" hidden>Categoria:</label></p>
+                        <p><input type="text" name="role" id="role" value="5" hidden></p>
                     <% } %>
 
                     <p>    <!--// Imagen //-->

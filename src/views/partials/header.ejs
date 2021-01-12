@@ -26,7 +26,7 @@
                     </li>
                     <li><a href="/producto" class="space linea-med">COLECCIÓN</a></li>
                     <li><a href="/producto/sale" class="space linea-med">SALE</a></li>
-                    <% if (loggedUser.category == 'admin') { %>
+                    <% if (loggedUser && loggedUser.role.name == 'admin') { %>
                         <li><a href="" class="space linea-med">LISTADO</a>
                             <ul> 
                                 <li><a href="/usuario/listado" class="linea-izq">USUARIOS</a></li>    
@@ -48,7 +48,7 @@
             <div id="barra-nav2">
                 <ul class="nav">
                     <!-- <li><a href="" class="space"><i class="fas fa-search"></i></a></li> -->
-                    <% if (loggedUser.category == 'admin') { %>
+                    <% if (loggedUser && loggedUser.role.name == 'admin') { %>
                         <li><a href="" class="space"><i class="fas fa-user-circle" style="color: goldenrod;"></i></a>
                     <% } else if (loggedUser) {%>
                         <li><a href="" class="space"><i class="fas fa-user-circle" style="color: #FA1E1E;"></i></a>
