@@ -35,12 +35,12 @@
                     <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.repeatpassword == 'undefined' ? '' : errors.repeatpassword.msg %></p>
                    
                     <% if (loggedUser && loggedUser.role.name == 'admin') { %>
-                        <% for (role of role) { %>
-                            <label for="role">Rol:</label>    <!--// Category //-->
-                            <select name="role">
+                        <label for="role">Rol:</label>    <!--// Category //-->
+                        <select name="role">
+                        <% for (role of roles) { %>
                                 <option value="<%= role.id %>" selected><%= role.name %></option>
-                            </select>
                         <% } %>
+                        </select>
                     <% } else {%>
                         <p><label for="role" hidden>Categoria:</label></p>
                         <p><input type="text" name="role" id="role" value="5" hidden></p>
