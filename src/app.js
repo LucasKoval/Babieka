@@ -8,8 +8,9 @@ const path = require('path');
 const methodOverride =  require('method-override')
 
 //----------* MIDDLEWARES REQUIRE *----------//
-const setLocals = require('./middlewares/setLocals');
 const setAutoLog = require('./middlewares/setAutoLog');
+const setLocals = require('./middlewares/setLocals');
+
 
 //----------* EXPRESS() *----------//
 const app = express();

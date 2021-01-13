@@ -152,6 +152,7 @@ const productsController = {
                 size_id: req.body.size,
                 color_id: req.body.color,
                 price: req.body.price,
+                stock: req.body.stock,
             },
             {
                 where: 
