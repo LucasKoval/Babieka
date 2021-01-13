@@ -35,7 +35,7 @@
                     <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.repeatpassword == 'undefined' ? '' : errors.repeatpassword.msg %></p>
                    
                     <% if (loggedUser && loggedUser.role.name == 'admin') { %>
-                        <label for="role">Rol:</label>    <!--// Category //-->
+                        <label for="role">Rol : </label>    <!--// Category //-->
                         <select name="role">
                         <% for (role of roles) { %>
                                 <option value="<%= role.id %>" selected><%= role.name %></option>

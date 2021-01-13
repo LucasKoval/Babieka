@@ -95,12 +95,10 @@ const productsController = {
         const sizes = await db.Size.findAll();
         const colors = await db.Color.findAll();
         const discounts = await db.Discount.findAll();
-
         res.render('products/createProduct', { categories, types, sizes, colors, discounts });
     },
     
     // Crea un artículo (POST)
-    
     store: async (req, res) => {t
         const newDescription = await db.Description.create({text: req.body.description});
         const newImage = await db.Image.create({name: req.files[0].filename});
@@ -133,8 +131,7 @@ const productsController = {
         const sizes = await db.Size.findAll();
         const colors = await db.Color.findAll();
         const discounts = await db.Discount.findAll();
-
-        res.render('products/editProduct', { product : product, categories : categories, types : types, sizes : sizes, colors : colors, discounts : discounts });       
+        res.render('products/editProduct', { product, categories, types, sizes, colors, discounts });       
     },
 
     // Edita un artículo (PUT)
@@ -146,6 +143,7 @@ const productsController = {
             size_id: req.body.size,
             color_id: req.body.color,
             price: req.body.price,
+            stock: req.body.stock
         },
         {where: {
             id: editedProduct.id
@@ -167,7 +165,7 @@ const productsController = {
         }});
 
         await db.Image.update({
-            name: req.files[0] ?  req.files[0].filename : this.name
+            name: req.files[0] ? req.files[0].filename : this.name
         },
         {where: {
             id: editedProduct.image_id
