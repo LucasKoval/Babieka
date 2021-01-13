@@ -6,6 +6,8 @@ const helper = require('../helpers/helper');
 
 //----------* VARIABLE'S *----------//
 const users = helper.getAllUsers();
+const db = require('../db/models');
+
 
 
 //----------* MIDDLEWARE *----------//
@@ -18,12 +20,12 @@ loginValidator = [
             .withMessage('Debe ingresar un email válido')
             .bail()
         .custom((value, {req})=> {
-            let userFound=users.find(user=>user.email==value)
-            if(userFound && bcrypt.compareSync(req.body.password, userFound.password)){
-                return true; 
-            }else{
-               return false; 
-            }
+                let userFound=users.find(user=>user.email==value)
+                if(userFound && bcrypt.compareSync(req.body.password, userFound.password)){
+                    return true; 
+                }else{
+                   return false; 
+                }
             })
             .withMessage('El usuario o contraseña ingresados son incorrectos')
             .bail(),

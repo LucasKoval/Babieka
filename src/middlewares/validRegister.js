@@ -6,6 +6,7 @@ const helper = require('../helpers/helper');
 
 //----------* VARIABLE'S *----------//
 const users = helper.getAllUsers();
+const db = require('../db/models');
 
 
 //----------* MIDDLEWARE *----------//
@@ -26,8 +27,8 @@ registerValidator = [
             .withMessage('Debe ingresar un email válido')
             .bail()
         .custom(value => {
-            let userFound=users.find(user=>user.email==value)
-            return !userFound; 
+                let userFound=users.find(user=>user.email==value)
+                return !userFound; 
             })
             .withMessage('El email ya se encuentra registrado')
             .bail(),

@@ -24,8 +24,9 @@ const usersController = {
     },
     
     // Renderiza la vista Registro
-    registerForm: (req, res) => {        
-        return res.render('users/register');
+    registerForm: async (req, res) => {   
+        const roles  = await db.Role.findAll();     
+        return res.render('users/register',{roles});
     },
 
     // Crea un nuevo Usuario (POST)
@@ -39,12 +40,13 @@ const usersController = {
                 user : req.body
             })
         }
+        const password = bcrypt.hashSync(req.body.password, 5)
         // Crea un nuevo registro de usuario en la DB
         await db.User.create({
                 first_name: req.body.first_name,
                 last_name: req.body.last_name, 
                 email: req.body.email,
-                password: bcrypt.hashSync(req.body.password, 5),
+                password: password,
                 role_id: req.body.role,
                 image: req.files[0].filename
         },

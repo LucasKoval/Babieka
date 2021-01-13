@@ -89,11 +89,14 @@ const productsController = {
     },
 
     // Renderiza la vista Nuevo artículo
-    createForm: (req, res) => {  
-       /* const product = await db.Product.findAll({
-            include: ['category', 'color', 'description', 'discount', 'image', 'model', 'size', 'type']
-        });   */   
-        res.render('products/createProduct'/*, { product }*/);
+    createForm: async (req, res) => { 
+        const categories  = await db.Category.findAll();
+        const types  = await db.Type.findAll();
+        const sizes = await db.Size.findAll();
+        const colors = await db.Color.findAll();
+        const discounts = await db.Discount.findAll();
+
+        res.render('products/createProduct', { categories, types, sizes, colors, discounts });
     },
     
     // Crea un artículo (POST)

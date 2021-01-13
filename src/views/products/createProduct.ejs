@@ -18,59 +18,61 @@
                     <!--agregar un select con un for para seleccionar el nombre-->
                     
                     <p>
-                        <label for="categoriaArticulo">Categoría del artículo : </label> <!--// Categoria //-->
-                        <select name="category"> 
-                            <option value="selecciona"  selected disabled>Selecciona...</option>
-                            <option value="1">Casual</option> 
-                            <option value="2">Fiesta</option>
-                            <option value="3">Sale</option>
+
+                        <label for="categoriaArticulo">Categoría del artículo:  </label> <!--// Categoria//-->
+                        <select name="category">
+                            <% for (category of categories) { %>
+                                <% if (category.name == category.name) { %>
+                                    <option value="<%= category.id %>" selected><%= category.name %></option>
+                                <% } else { %>
+                                    <option value="<%= category.id %>"><%= category.name %></option>
+                                <% } %>
+                            <% } %> 
                         </select>
                     </p>
                    
                     <p>
-                        <label for="tipoArticulo">Tipo de artículo : </label> <!--// Tipo //-->
-                        <select name="type"> 
-                            <option value="selecciona"  selected disabled>Selecciona...</option> 
-                            <option value="1">Borcego</option>
-                            <option value="2">Bota</option>
-                            <option value="3">Botineta</option>
-                            <option value="4">Mule</option>
-                            <option value="5">Sandalia</option>
-                            <option value="6">Zapato</option>
-                            
+                        <label for="tipoArticulo">Tipo de artículo:  </label> <!--// Tipo //-->
+                        <select name="type">
+                            <% for (type of types) { %>
+                                <% if (type.name == type.name) { %>
+                                    <option value="<%= type.id %>" selected><%= type.name %></option>
+                                <% } else { %>
+                                    <option value="<%= type.id %>"><%= type.name %></option>
+                                <% } %>
+                            <% } %> 
                         </select>
                     </p>
                     
                     <p>
-                        <label for="talleArticulo">Talle de artículo : </label> <!--// Talle //-->
-                        <select name="size">    
-                            <option value="selecciona"  selected disabled>Selecciona...</option> 
-                            <option value="1">35</option> 
-                            <option value="2">36</option>
-                            <option value="3">37</option>
-                            <option value="4">38</option>
-                            <option value="5">39</option>
-                            <option value="6">40</option>
+                        <label for="talleArticulo">Talle de artículo:  </label> <!--// Talle //-->
+                        <select name="size">
+                            <% for (size of sizes) { %>
+                                <% if (size.number == size.number) { %>
+                                    <option value="<%= size.id %>" selected><%= size.number %></option>
+                                <% } else { %>
+                                    <option value="<%= size.id %>"><%= size.number %></option>
+                                <% } %>
+                            <% } %> 
                         </select>
                     </p>
 
                     <p>
-                        <label for="colorArticulo">Color del artículo : </label> <!--// Color //-->
-                        <select name="color">   
-                            <option value="selecciona"  selected disabled>Selecciona...</option> 
-                            <option value="1">Blanco</option>
-                            <option value="2">Marrón</option>
-                            <option value="3">Negro</option> 
-                            <option value="4">Nude</option>
-                            <option value="5">Oro</option>
-                            <option value="6">Plata</option>
-                            <option value="7">Rojo</option>
+                        <label for="colorArticulo">Color del artículo: </label> <!--// Color //-->
+                        <select name="color">
+                            <% for (color of colors) { %>
+                                <% if (color.name == color.name) { %>
+                                    <option value="<%= color.id %>" selected><%= color.name %></option>
+                                <% } else { %>
+                                    <option value="<%= color.id %>"><%= color.name %></option>
+                                <% } %>
+                            <% } %> 
                         </select>
                     </p>
 
                     <!--ponga un numero de stock-->
-                    <label for="stock">Stock : </label>    <!--// Descripción //-->
-                    <p><input type="text" name="stock" id="stockArticulo" placeholder="10"></p>
+                    <label for="stock">Stock:</label>    <!--// Descripción //-->
+                    <p><input type="text" name="stock" id="stockArticulo" placeholder="20"></p>
 
                     
                     <!--agregar un select con un for para seleccionar la descripcion-->
@@ -84,19 +86,15 @@
                         <input type="submit" value="Subir Imagen">  
                     </p>
                     <p>
-                        <label for="discount">Descuento : </label>    <!--// El Discount //-->
-                        <select name="discount">   
-                            <option value="1" selected disabled>0%</option>
-                            <option value="2">10%</option>
-                            <option value="3">15%</option> 
-                            <option value="4">20%</option>
-                            <option value="5">25%</option>
-                            <option value="6">30%</option>
-                            <option value="7">40%</option>
-                            <option value="8">50%</option>
-                            <option value="9">60%</option>
-                            <option value="10">70%</option>
-                            <option value="11">75%</option>
+                        <label for="discount">Descuento: </label> <!--// discount //-->
+                        <select name="discount">
+                            <% for (discount of discounts) { %>
+                                <% if (discount.number == discount.number) { %>
+                                    <option value="<%= discount.id %>" selected><%= discount.number %></option>
+                                <% } else { %>
+                                    <option value="<%= discount.id %>"><%= discount.number %></option>
+                                <% } %>
+                            <% } %> 
                         </select>
                     </p>
                     
