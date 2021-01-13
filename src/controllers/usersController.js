@@ -30,7 +30,6 @@ const usersController = {
     },
 
     // Crea un nuevo Usuario (POST)
-
     createUser: async (req, res) =>{
         // Verifica que no existan errores al enviar el formulario de registro
         const errors = validationResult(req);
@@ -40,20 +39,18 @@ const usersController = {
                 user : req.body
             })
         }
-        const password = bcrypt.hashSync(req.body.password, 5)
         // Crea un nuevo registro de usuario en la DB
+        const password = bcrypt.hashSync(req.body.password, 5)
         await db.User.create({
-                first_name: req.body.first_name,
-                last_name: req.body.last_name, 
-                email: req.body.email,
-                password: password,
-                role_id: req.body.role,
-                image: req.files[0].filename
-        },
-        {include: ['role']});
+            first_name: req.body.first_name,
+            last_name: req.body.last_name, 
+            email: req.body.email,
+            password: password,
+            role_id: req.body.role,
+            image: req.files[0].filename
+        })
         return res.redirect('/usuario/login');
     },
-
 
     // Renderiza la vista Login
     loginForm: (req, res) => {        
@@ -99,27 +96,32 @@ const usersController = {
         const users = await db.User.findAll({
             include: ['role']
         });
+        const roles = await db.Role.findAll();
         const user = users.find(user => user.email == email)
-        return res.render('users/editUser', { user });
+        return res.render('users/editUser', { user , roles});
     },
 
     // Edita el perfil de un Usuario (PUT)
     editProfile: async (req, res) => { 
         const passwordHashed = bcrypt.hashSync(req.body.password, 5);
-        const users = await db.User.findAll({
+        const editedUser = await db.User.findByPk(req.session.user.id, {
             include: ['role']
         });
-        const editedUser = users.map(function(user){
-            if (req.session.user.id == user.id) {
-                user.first_name = req.body.first_name; 
-                user.last_name = req.body.last_name;
-                user.email = req.body.email;
-                user.password = req.body.password ? passwordHashed : user.password;
-                user.role = user.role.name == 'admin' ?  req.body.role : user.role;
-                user.image = req.files[0] ?  req.files[0].filename : user.image;
-            } 
-            return user
-        })
+        await db.User.update({
+            first_name: req.body.first_name,
+            last_name: req.body.last_name,
+            email: req.body.email,
+            password: req.body.password ? passwordHashed : this.password,
+            image: req.files[0] ?  req.files[0].filename : this.image,
+            role_id: editedUser.role_id != 5 ?  req.body.role : this.role
+        },
+        {where: {
+            id: editedUser.id
+        }},
+        {include: ['role']});
+        req.session.user = await db.User.findByPk(req.session.user.id, {
+            include: ['role']
+        });
         res.redirect('/usuario/perfil');       
     },
 

@@ -2,20 +2,20 @@
 const path = require('path');
 const {check,validationResult,body} = require('express-validator');
 const helper = require('../helpers/helper');
+const db = require('../db/models');
 
 
 //----------* VARIABLE'S *----------//
 const users = helper.getAllUsers();
-const db = require('../db/models');
 
 
 //----------* MIDDLEWARE *----------//
 registerValidator = [
-    body('first_name')
+    body('firstName')
         .notEmpty()
             .withMessage('Debe ingresar su nombre')
             .bail(),
-    body('last_name')
+    body('lastName')
     .notEmpty()
         .withMessage('Debe ingresar su apellido')
         .bail(),

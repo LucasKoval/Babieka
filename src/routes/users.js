@@ -16,9 +16,9 @@ const adminMW = require('../middlewares/adminMW');                   //-> Middle
 //----------* USERS ROUTES *----------//
 router.get('/listado', authMW, adminMW, usersController.usersFullList);              //-> Mostrar listado de usuarios
 router.get('/registro', guestMW, usersController.registerForm);                      //-> Formulario de registro
-router.post('/registro', multer.any(), validRegister, usersController.createUser);   //-> Crear un usuario 
+router.post('/registro', multer.any(), /* validRegister, */ usersController.createUser);   //-> Crear un usuario 
 router.get('/login', guestMW, usersController.loginForm);                            //-> Formulario de inicio de sesión
-router.post('/login'/*, validLogin*/, usersController.processLogin);                     //-> Inicia sesión
+router.post('/login', /* validLogin, */ usersController.processLogin);               //-> Inicia sesión
 router.get('/perfil', authMW, usersController.profile);                              //-> Perfil de usuario
 router.get('/editar', authMW, usersController.editForm);                             //-> Mostrar formulario de edición de usuario
 router.put('/editar', multer.any(), usersController.editProfile);                    //-> Editar un usuario

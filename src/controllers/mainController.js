@@ -13,7 +13,7 @@ const mainController = {
         res.render('index');
     },
 
-    // Renderiza Resultado de busqueda (En construcción)
+    // Renderiza Resultado de busqueda
     search: async (req, res) => {
         const search = req.query.search.toLowerCase();
 		const products = await db.Product.findAll({

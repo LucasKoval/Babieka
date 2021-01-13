@@ -2,12 +2,11 @@
 const bcrypt = require('bcryptjs')
 const {check,validationResult,body} = require('express-validator');
 const helper = require('../helpers/helper');
+const db = require('../db/models');
 
 
 //----------* VARIABLE'S *----------//
 const users = helper.getAllUsers();
-const db = require('../db/models');
-
 
 
 //----------* MIDDLEWARE *----------//
