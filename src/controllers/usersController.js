@@ -87,7 +87,7 @@ const usersController = {
 
     // Renderiza la vista Perfil de usuario
     profile: (req, res) => {
-		res.render('users/profile');
+        res.render('users/profile');
     },
 
     // Renderiza la vista Edición de Perfil
@@ -122,6 +122,7 @@ const usersController = {
         req.session.user = await db.User.findByPk(req.session.user.id, {
             include: ['role']
         });
+
         res.redirect('/usuario/perfil');       
     },
 

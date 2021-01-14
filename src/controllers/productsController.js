@@ -173,6 +173,7 @@ const productsController = {
             id: editedProduct.image_id
         }});
 
+
         res.redirect('/producto/'+ editedProduct.id);
     },
 
