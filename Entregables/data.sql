@@ -126,7 +126,7 @@ INSERT INTO discounts (number)
 VALUES (0), (10), (15), (20), (25), (30), (40), (50), (60), (70), (75);
 
 -- [TABLA USUARIOS]
-INSERT INTO users (role_id, firstName, lastName, email, password, image)
+INSERT INTO users (role_id, first_name, last_name, email, password, image)
 VALUES 
     (2, 'Julieta', 'Retamoza', 'juli@email.com', '$2a$05$7x4o7IpX04bwr.1aSiKNyOzWakhY1sSUtrzvbacOUO5A0CmEST9c2', 'image-1608491509126.png'),
 	(2, 'Lucas', 'Koval', 'lucas@email.com', '$2a$05$7/CTO0L3YOSHrN.JaDCxA.KW6H9sHphdOEfZSvWUx7FXF0uXKczSi', 'image-1608491464279.png'),

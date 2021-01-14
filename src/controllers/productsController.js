@@ -99,26 +99,28 @@ const productsController = {
     },
     
     // Crea un artículo (POST)
-    store: async (req, res) => {t
+    store: async (req, res) => {
         const newDescription = await db.Description.create({text: req.body.description});
         const newImage = await db.Image.create({name: req.files[0].filename});
-        const newModel = await db.Model.create({name: req.body.name});
+        const newModel = await db.Model.create({name: req.body.model});
+        console.log('newDescription: ' + newDescription);
+        console.log('newImage: ' + newImage);
+        console.log('newModel: ' + newModel);
         await db.Product.create({
             model_id: newModel.id, /* || req.body.selectName */
-            price: req.body.price,
-            discount_id: req.body.discount,
-            stock: req.body.stock,
-            color_id: req.body.color,
-            size_id: req.body.size,
             category_id: req.body.category,
             type_id: req.body.type,
+            size_id: req.body.size,
+            color_id: req.body.color,
             description_id: newDescription.id, /* || req.body.selectDescription */
-            image_id: newImage.id /* || req.body.selectImage */
+            image_id: newImage.id, /* || req.body.selectImage */
+            stock: req.body.stock,
+            discount_id: req.body.discount,
+            price: req.body.price
         },
         {include: ['category', 'color', 'description', 'discount', 'image', 'model', 'size', 'type']});
         return res.redirect('/producto/listado');
     },
-
 
     // Renderiza la vista Edición de artículo
     editForm: async (req, res) => { 
