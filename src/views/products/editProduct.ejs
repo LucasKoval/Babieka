@@ -12,11 +12,11 @@
                 <h1 class="h1-size marg-0 centrar">Editar artículo</h1>
                 <form action="/producto/<%=product.id%>/editar?_method=PUT" method="POST" enctype="multipart/form-data">    <!--// Formulario Nuevo Artículo //-->
                     
-                    <label for="nombreArticulo"></label>    <!--// Nombre //-->
-                    <p><input type="text" name="model" id="nombreArticulo" value="<%=product.model.name%>"></p>
+                    <label for="model"></label>    <!--// Nombre //-->
+                    <p><input type="text" name="model" id="model" value="<%=product.model.name%>"></p>
                     
                     <p>
-                        <label for="categoriaArticulo"> Categoría del artículo: </label>
+                        <label for="category"> Categoría del artículo : </label>
                         <select name="category">   <!--// Categoria //-->
                             <% for (category of categories) { %>
                                 <% if (category.name == product.category.name) { %>
@@ -29,7 +29,7 @@
                     </p>
                    
                     <p>
-                        <label for="tipoArticulo">Tipo de artículo: </label> <!--// Tipo //-->
+                        <label for="type">Tipo de artículo : </label> <!--// Tipo //-->
                         <select name="type">  
                             <% for (type of types) { %>
                                 <% if (type.name == product.type.name) { %>
@@ -42,7 +42,7 @@
                     </p>
                     
                     <p>
-                        <label for="talleArticulo">Talle de artículo: </label> <!--// Talle //-->
+                        <label for="size">Talle de artículo : </label> <!--// Talle //-->
                         <select name="size">    
                             <% for (size of sizes) { %>
                                 <% if (size.number == product.size.number) { %>
@@ -55,7 +55,7 @@
                     </p>
 
                     <p>
-                        <label for="colorArticulo">Color del artículo: </label> <!--// Color //-->
+                        <label for="color">Color del artículo : </label> <!--// Color //-->
                         <select name="color">   
                             <% for (color of colors) { %>
                                 <% if (color.name == product.color.name) { %>
@@ -68,25 +68,25 @@
                     </p>
 
                     <!--ponga un numero de stock-->
-                    <label for="stock">Stock:</label>    <!--// Descripción //-->
-                    <p><input type="text" name="stock" id="stockArticulo" placeholder="20"></p>
-                    
-                    <label for="descripcArticulo"></label>    <!--// Descripción //-->
-                    <textarea name="description" id="descripcArticulo" cols="46" rows="4"><%=product.description.text%></textarea>
+                    <label for="stock">Stock : </label>    <!--// Descripción //-->
+                    <p><input type="number" name="stock" id="stock" placeholder="10"></p>
+                
+                    <label for="description">Descripción del artículo : </label>    <!--// Descripción //-->
+                    <p><textarea name="description" id="description" cols="53" rows="5"><%=product.description.text%></textarea></p>
 
                     <p>    <!--// Imagen //-->
-                        <input type="file" name="imagenArticulo" accept="image/png, .jpeg, .jpg, image/gif"> 
+                        <input type="file" name="image" accept="image/png, .jpeg, .jpg, image/gif"> 
                         <input type="submit" value="Subir Imagen">  
                     </p>
 
                     <p>
-                        <label for="discount">Descuento:</label>    <!--// El Discount //-->
+                        <label for="discount">Descuento : </label>    <!--// El Discount //-->
                         <select name="discount">   
                             <% for (discount of discounts) { %>
                                 <% if (discount.number == product.discount.number) { %>
-                                    <option value="<%= discount.id %>" selected><%= discount.number %></option>
+                                    <option value="<%= discount.id %>" selected><%= discount.number %>%</option>
                                 <% } else { %>
-                                    <option value="<%= discount.id %>"><%= discount.number %></option>
+                                    <option value="<%= discount.id %>"><%= discount.number %>%</option>
                                 <% } %>         
                             <% } %> 
                         </select>
@@ -96,7 +96,6 @@
                     <p><input type="text" name="price" id="precioArticulo" value="<%=product.price%>"></p>    
 
                     <button type="submit">Editar artículo</button>  <!--// Botón Editar producto //-->
-                    
                     
                 </form>
                 <form action="/producto/<%=product.id%>/eliminar?_method=DELETE" method="POST"> <!--// Botón Eliminar producto //-->

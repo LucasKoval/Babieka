@@ -6,8 +6,7 @@ module.exports = (sequelize, DataTypes) => {
         }
     };
     const config = {
-        tableName: 'discounts',
-        timestamps: false
+        tableName: 'discounts'
     };
     const Discount = sequelize.define(alias, cols, config);
 
@@ -15,7 +14,6 @@ module.exports = (sequelize, DataTypes) => {
         Discount.hasMany(models.Product, {
             as: 'products',
             foreignKey: 'discount_id'
-
         })
     };
 

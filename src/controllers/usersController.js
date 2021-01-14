@@ -1,6 +1,5 @@
 //----------* REQUIRE'S *----------//
 const bcrypt = require('bcryptjs');
-const helper = require('../helpers/helper');
 const {check, validationResult, body} = require('express-validator');
 const db = require('../db/models');
 
@@ -31,7 +30,6 @@ const usersController = {
     },
 
     // Crea un nuevo Usuario (POST)
-
     createUser: async (req, res) =>{
         // Verifica que no existan errores al enviar el formulario de registro
         const errors = validationResult(req);
@@ -41,19 +39,18 @@ const usersController = {
                 user : req.body
             })
         }
-        const password = bcrypt.hashSync(req.body.password, 5)
         // Crea un nuevo registro de usuario en la DB
+        const password = bcrypt.hashSync(req.body.password, 5)
         await db.User.create({
-                firstName: req.body.firstName,
-                lastName: req.body.lastName, 
-                email: req.body.email,
-                password: password,
-                role_id: req.body.role,
-                image: req.files[0].filename
+            first_name: req.body.first_name,
+            last_name: req.body.last_name, 
+            email: req.body.email,
+            password: password,
+            role_id: req.body.role,
+            image: req.files[0].filename
         })
         return res.redirect('/usuario/login');
     },
-
 
     // Renderiza la vista Login
     loginForm: (req, res) => {        
@@ -107,27 +104,25 @@ const usersController = {
     // Edita el perfil de un Usuario (PUT)
     editProfile: async (req, res) => { 
         const passwordHashed = bcrypt.hashSync(req.body.password, 5);
-        const editedUser = await db.User.findByPk(req.session.user.id, {include : ['role']});
+        const editedUser = await db.User.findByPk(req.session.user.id, {
+            include: ['role']
+        });
+        await db.User.update({
+            first_name: req.body.first_name,
+            last_name: req.body.last_name,
+            email: req.body.email,
+            password: req.body.password ? passwordHashed : this.password,
+            image: req.files[0] ?  req.files[0].filename : this.image,
+            role_id: editedUser.role_id != 5 ?  req.body.role : this.role
+        },
+        {where: {
+            id: editedUser.id
+        }},
+        {include: ['role']});
+        req.session.user = await db.User.findByPk(req.session.user.id, {
+            include: ['role']
+        });
 
-        await db.User.update(
-            {
-                firstName: req.body.firstName,
-                lastName: req.body.lastName,
-                email: req.body.email,
-                password: req.body.password ? passwordHashed : this.password,
-                image: req.files[0] ?  req.files[0].filename : this.image,
-                role_id: editedUser.role_id != 5 ?  req.body.role : this.role
-            },
-            {
-                where: {id: editedUser.id}
-            },
-            {
-                include: ['role']
-            }
-        )
-
-        req.session.user = await db.User.findByPk(req.session.user.id, {include : ['role']});
-       
         res.redirect('/usuario/perfil');       
     },
 

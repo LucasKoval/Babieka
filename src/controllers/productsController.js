@@ -1,8 +1,6 @@
 //----------* REQUIRE'S *----------//
 const helper = require('../helpers/helper');
 const db = require('../db/models');
-const Category = require('../db/models/Category');
-const { name } = require('ejs');
 
 
 //----------* VARIABLE'S *----------//
@@ -97,35 +95,32 @@ const productsController = {
         const sizes = await db.Size.findAll();
         const colors = await db.Color.findAll();
         const discounts = await db.Discount.findAll();
-
         res.render('products/createProduct', { categories, types, sizes, colors, discounts });
     },
     
     // Crea un artículo (POST)
-    
-    store: async (req, res) => {t
-            
-            const createDescription = await db.Description.create({text: req.body.description})
-            const createImage = await db.Image.create({name: req.files[0].filename})
-            const createModel = await db.Model.create({name: req.body.name})
-            
-            await db.Product.create({
-                model_id: createModel.id /*|| req.body.selectName*/, 
-                price: req.body.price,
-                discount_id: req.body.discount,
-                stock: req.body.stock,
-                color_id: req.body.color,
-                size_id: req.body.size,
-                category_id: req.body.category,
-                type_id: req.body.type,
-                description_id: createDescription.id /*|| req.body.selectDescription*/,
-                image_id: createImage.id /*|| req.body.selectImage*/
-            },
-            {include:["category", "color", "description", "discount","image", "model", "size", "type"]}
-            )
-        
-            return res.redirect('/producto/listado');
+    store: async (req, res) => {
+        const newDescription = await db.Description.create({text: req.body.description});
+        const newImage = await db.Image.create({name: req.files[0].filename});
+        const newModel = await db.Model.create({name: req.body.model});
+        console.log('newDescription: ' + newDescription);
+        console.log('newImage: ' + newImage);
+        console.log('newModel: ' + newModel);
+        await db.Product.create({
+            model_id: newModel.id, /* || req.body.selectName */
+            category_id: req.body.category,
+            type_id: req.body.type,
+            size_id: req.body.size,
+            color_id: req.body.color,
+            description_id: newDescription.id, /* || req.body.selectDescription */
+            image_id: newImage.id, /* || req.body.selectImage */
+            stock: req.body.stock,
+            discount_id: req.body.discount,
+            price: req.body.price
         },
+        {include: ['category', 'color', 'description', 'discount', 'image', 'model', 'size', 'type']});
+        return res.redirect('/producto/listado');
+    },
 
     // Renderiza la vista Edición de artículo
     editForm: async (req, res) => { 
@@ -138,71 +133,46 @@ const productsController = {
         const sizes = await db.Size.findAll();
         const colors = await db.Color.findAll();
         const discounts = await db.Discount.findAll();
-
-        res.render('products/editProduct', { product : product, categories : categories, types : types, sizes : sizes, colors : colors, discounts : discounts });       
+        res.render('products/editProduct', { product, categories, types, sizes, colors, discounts });       
     },
 
     // Edita un artículo (PUT)
     edit: async (req, res) => {       
+        const editedProduct = await db.Product.findByPk(req.params.id);
+        await db.Product.update({                 
+            type_id: req.body.type,
+            category_id : req.body.category,
+            size_id: req.body.size,
+            color_id: req.body.color,
+            price: req.body.price,
+            stock: req.body.stock
+        },
+        {where: {
+            id: editedProduct.id
+        }},
+        {include: ['category', 'color', 'description', 'discount', 'image', 'model', 'size', 'type']});
+        
+        await db.Model.update({
+            name: req.body.model
+        },
+        {where: {
+            id: editedProduct.model_id
+        }});
 
-        const editedProduct = await db.Product.findByPk(req.params.id)
+        await db.Description.update({
+            text: req.body.description,
+        },
+        {where: {
+            id: editedProduct.description_id
+        }});
 
-        await db.Product.update(
-            {
-                 
-                type_id: req.body.type,
-                category_id : req.body.category,
-                size_id: req.body.size,
-                color_id: req.body.color,
-                price: req.body.price,
-                stock: req.body.stock,
-            },
-            {
-                where: 
-                {
-                    id : editedProduct.id
-                } 
-            },
-            {
-                include: ['category', 'color', 'description', 'discount', 'image', 'model', 'size', 'type']
-            }
-        )
+        await db.Image.update({
+            name: req.files[0] ? req.files[0].filename : this.name
+        },
+        {where: {
+            id: editedProduct.image_id
+        }});
 
-        await db.Model.update(
-            {
-                name: req.body.model
-            },
-            {
-                where: 
-                {
-                    id : editedProduct.model_id
-                } 
-            }
-        )
-
-        await db.Description.update(
-            {
-                text: req.body.description,
-            },
-            {
-                where: 
-                {
-                    id : editedProduct.description_id
-                } 
-            }
-        )
-
-        await db.Image.update(
-            {
-                name: req.files[0] ?  req.files[0].filename : this.name
-            },
-            {
-                where: 
-                {
-                    id : editedProduct.image_id
-                } 
-            }
-        )
 
         res.redirect('/producto/'+ editedProduct.id);
     },

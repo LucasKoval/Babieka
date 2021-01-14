@@ -6,8 +6,7 @@ module.exports = (sequelize ,DataTypes) => {
         }
     };
     const config = {
-        tableName:'types',
-        timestamps: false
+        tableName:'types'
     };
     const Type = sequelize.define(alias, cols, config);
 

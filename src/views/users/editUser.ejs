@@ -5,25 +5,24 @@
         
         <%- include('../partials/header') %>    <!--// Header //-->
         
-    
         <main class="registermain">
             <div class="imageUs"> 
                 <img src="/img/img_model_1.jpg" alt="imagen de una modelo" class="registerimage">
             </div>
     
             <section class= "formulariologin">
-                <h1 class="h1-size">Editar datos - <%= loggedUser.firstName %> <%= loggedUser.lastName %> </h1>
+                <h1 class="h1-size">Editar datos - <%= loggedUser.first_name %> <%= loggedUser.last_name %> </h1>
     
                 <form action="/usuario/editar?_method=PUT" method="POST" enctype="multipart/form-data">
-                    <p><label for="firstName">Nombre</label></p>
-                    <p><input type="text" name="firstName" id="firstName" value="<%= loggedUser.firstName %>"></p>
-                    <p><label for="lastName">Apellido</label></p>
-                    <p><input type="text" name="lastName" id="lastName" value="<%= loggedUser.lastName %>"></p>
-                    <p><label for="email">Email:</label></p>
+                    <p><label for="first_name">Nombre : </label></p>
+                    <p><input type="text" name="first_name" id="first_name" value="<%= loggedUser.first_name %>"></p>
+                    <p><label for="last_name">Apellido : </label></p>
+                    <p><input type="text" name="last_name" id="last_name" value="<%= loggedUser.last_name %>"></p>
+                    <p><label for="email">Email : </label></p>
                     <p><input type="email" name="email" id="email" value="<%= loggedUser.email %>"></p>
-                    <p><label for="password">Contraseña:</label></p>
+                    <p><label for="password">Contraseña : </label></p>
                     <p><input type="password" name="password" id="password"></p>
-                    <p><label for="repeatpassword">Repita su contraseña:</label></p>
+                    <p><label for="repeatpassword">Repita su contraseña : </label></p>
                     <p><input type="password" name="repeatpassword" id="repeatpassword"></p>
                     <% if (loggedUser && loggedUser.role.name == 'admin') { %>
                         <label for="role">Rol:</label>    <!--// Category //-->
@@ -47,7 +46,6 @@
             </section>
     
         </main>
-        
         
         <%- include('../partials/footer') %>    <!--// Footer //-->
         

@@ -169,6 +169,14 @@ textarea {
 .lupa {
     padding: 4px;
     font-size: 12px;
+    color: black;
+    background-color: white;
+}
+.lupa_red:hover {
+    padding: 4px;
+    font-size: 12px;
+    color: white;
+    background-color: #FA1E1E;
 }
 
 .tachado {

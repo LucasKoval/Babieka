@@ -17,9 +17,9 @@
             <div id="barra-nav1">
                 <ul class="nav">
                     <li>
-                        <div class="form-inline f-search" style="font-size: 15px; color:black">
-                            <form action="/buscar" method="GET">
-                                <button class="lupa"><i class="fas fa-search"></i></button>
+                        <div class="form-inline f-search space" style="font-size: 15px; color:black">
+                            <form action="/buscar" method="GET" class="lupa space">
+                                <button class="lupa lupa_red"><i class="fas fa-search"></i></button>
                                 <input name="search" type="text" placeholder="Buscar">
                             </form>
                         </div>
@@ -41,7 +41,7 @@
                         </li>
                     <% } else {%>
                         <li><a href="/como-comprar" class="space linea-med">COMO COMPRAR</a></li>
-                        <li><a href="/nosotros" class="space linea-med">NOSOTROS</a></li>
+                        <li><a href="/nosotros" class="linea-med">NOSOTROS</a></li>
                     <% } %>
                 </ul>
             </div>
@@ -57,7 +57,7 @@
                     <% } %>
                         <ul>
                             <% if (loggedUser) { %>
-                                <li class="cursor-arrow"><a href="" class="font-roboto font-size-12">Hola <%= loggedUser.firstName %>!</a></li> 
+                                <li class="cursor-arrow"><a href="" class="font-roboto font-size-12">Hola <%= loggedUser.first_name %>!</a></li> 
                                 <li><a href="/usuario/perfil" class="linea-izq">Perfil</a></li>    
                                 <li><a href="/usuario/logout" class="linea-izq">Cerrar sesión</a></li>
                             <% } else {%>
