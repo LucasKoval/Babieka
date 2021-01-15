@@ -25,7 +25,7 @@
                     </p>
                    
                     <p>
-                        <label for="tipoArticulo">Tipo de artículo : </label> <!--// Tipo //-->
+                        <label for="type">Tipo de artículo : </label> <!--// Tipo //-->
                         <select name="type">
                             <% for (type of types) { %>
                                 <option value="<%= type.id %>"><%= type.name %></option>
@@ -34,7 +34,7 @@
                     </p>
                     
                     <p>
-                        <label for="talleArticulo">Talle de artículo : </label> <!--// Talle //-->
+                        <label for="size">Talle de artículo : </label> <!--// Talle //-->
                         <select name="size">
                             <% for (size of sizes) { %>
                                 <option value="<%= size.id %>"><%= size.number %></option>
@@ -43,7 +43,7 @@
                     </p>
 
                     <p>
-                        <label for="colorArticulo">Color del artículo : </label> <!--// Color //-->
+                        <label for="color">Color del artículo : </label> <!--// Color //-->
                         <select name="color">
                             <% for (color of colors) { %>
                                 
@@ -62,7 +62,7 @@
                     </p>
               
                     <label for="stock">Stock : </label>    <!--// Descripción //-->
-                    <p><input type="number" name="stock" id="stock" placeholder="10"></p>
+                    <p><input type="number" name="stock" id="stock" placeholder="0"></p>
 
                     <p>
                         <label for="discount">Descuento : </label> <!--// discount //-->

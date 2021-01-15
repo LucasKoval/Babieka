@@ -1,5 +1,4 @@
 //----------* REQUIRE'S *----------//
-const helper = require('../helpers/helper');
 const db = require('../db/models');
 
 
@@ -68,24 +67,6 @@ const productsController = {
             include: ['category', 'color', 'description', 'discount', 'image', 'model', 'size', 'type']
         });
         res.render('products/productDetail', { product });  
-    },
-
-    // Agrega un articulo al Carrito
-    addToCart: (req, res) => {
-        const products = helper.getAllProducts();
-        const cartProducts = helper.getCartProducts();
-        const productToAdd = products.find(products => products.id == req.params.id);
-        const productsToCart = [...cartProducts, productToAdd];
-        helper.writeToCart(productsToCart);
-        return res.redirect('/producto/carrito');
-    },
-
-    // Renderiza la vista Carrito
-    cart: (req, res) => {     
-        const products = helper.getCartProducts();
-		res.render('products/productCart', {
-			cartProducts: products,
-		}); 
     },
 
     // Renderiza la vista Nuevo artículo
