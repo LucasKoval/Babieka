@@ -67,10 +67,6 @@
                         </select>
                     </p>
 
-                    <!--ponga un numero de stock-->
-                    <label for="stock">Stock : </label>    <!--// Descripción //-->
-                    <p><input type="number" name="stock" id="stock" placeholder="10"></p>
-                
                     <label for="description">Descripción del artículo : </label>    <!--// Descripción //-->
                     <p><textarea name="description" id="description" cols="53" rows="5"><%=product.description.text%></textarea></p>
 
@@ -78,6 +74,9 @@
                         <input type="file" name="image" accept="image/png, .jpeg, .jpg, image/gif"> 
                         <input type="submit" value="Subir Imagen">  
                     </p>
+
+                    <label for="stock">Stock : </label>    <!--// Stock //-->
+                    <p><input type="number" name="stock" id="stock" placeholder="0"></p>
 
                     <p>
                         <label for="discount">Descuento : </label>    <!--// El Discount //-->
@@ -92,15 +91,17 @@
                         </select>
                     </p>
 
-                    <label for="precioArticulo"></label>    <!--// Precio //-->
+                    <label for="price">Precio : </label>    <!--// Precio //-->
                     <p><input type="text" name="price" id="precioArticulo" value="<%=product.price%>"></p>    
 
                     <button type="submit">Editar artículo</button>  <!--// Botón Editar producto //-->
                     
                 </form>
+
                 <form action="/producto/<%=product.id%>/eliminar?_method=DELETE" method="POST"> <!--// Botón Eliminar producto //-->
                     <button type="submit" class="marg-nonside-10">Eliminar artículo</button> 
                 </form>
+                
             </section>
     
         </main>

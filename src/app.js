@@ -39,11 +39,13 @@ app.set('view engine', 'ejs');
 const mainRouter = require('./routes/main');
 const usersRouter = require('./routes/users');
 const productRouter = require('./routes/products');
+const cartRouter = require('./routes/cart');
 
 //----------* ROUTES USE() *----------//
 app.use('/', mainRouter);                //-> Home y rutas globales
 app.use('/usuario', usersRouter);        //-> Rutas de Usuarios
 app.use('/producto', productRouter);     //-> Rutas de Productos
+app.use('/carrito', cartRouter);         //-> Rutas del Carrito
 
 
 //----------* CATCH 404 *----------//
