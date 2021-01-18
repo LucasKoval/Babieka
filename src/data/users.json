@@ -1,0 +1,74 @@
+[
+ {
+  "id": 1,
+  "firstName": "Julieta",
+  "lastName": "Retamoza",
+  "email": "juli@email.com",
+  "password": "$2a$05$7x4o7IpX04bwr.1aSiKNyOzWakhY1sSUtrzvbacOUO5A0CmEST9c2",
+  "category": "admin",
+  "image": "image-1608491509126.png"
+ },
+ {
+  "id": 2,
+  "firstName": "Lucas",
+  "lastName": "Koval",
+  "email": "lucas@email.com",
+  "password": "$2a$05$7/CTO0L3YOSHrN.JaDCxA.KW6H9sHphdOEfZSvWUx7FXF0uXKczSi",
+  "category": "admin",
+  "image": "image-1608491464279.png"
+ },
+ {
+  "id": 3,
+  "firstName": "Federico",
+  "lastName": "Gomez",
+  "email": "fede@email.com",
+  "password": "$2a$05$1rX5hP2rJSFpWJ7JVp8M/uoXGP6Aqmnl3Vv0K8rHSdfdNDmY8h/c.",
+  "category": "admin",
+  "image": "image-1608491558165.png"
+ },
+ {
+  "id": 4,
+  "firstName": "Cosme",
+  "lastName": "Fulanito",
+  "email": "cosme@email.com",
+  "password": "$2a$05$LOGlgX9hEcSqyvGa1ZFmgOVrEqf00MAePsKA.tvKTO8wpyYZjI4Ce",
+  "category": "client",
+  "image": "image-1608491620495.jpg"
+ },
+ {
+  "id": 5,
+  "firstName": "Stephen",
+  "lastName": "King",
+  "email": "king@email.com",
+  "password": "$2a$05$doqw8BLnk3z2A.nQ7H9D.e9XBjmNvbR26tYfEVUWgeHu6560Az4fS",
+  "category": "client",
+  "image": "image-1608491725297.jpg"
+ },
+ {
+  "id": 6,
+  "firstName": "Maria Elena",
+  "lastName": "Fuseneco",
+  "email": "mariaelena@email.com",
+  "password": "$2a$05$DCdZkDjFXScL9P/ip8UD0uY5M5xNFX0BJgwpRDIRFgETMBLNeoMOS",
+  "category": "client",
+  "image": "image-1608637331149.jpg"
+ },
+ {
+  "id": 7,
+  "firstName": "profe",
+  "lastName": "DH",
+  "email": "profe@email.com",
+  "password": "$2a$05$fBshBEv6MIu3tSi3mZ3uL.fzcguUKyb0WbDE2sVOVf2Q55DwyHU1i",
+  "category": "admin",
+  "image": "image-1608694620529.png"
+ },
+ {
+  "id": 8,
+  "firstName": "Cookie",
+  "lastName": "Maliciosa",
+  "email": "cookie@email.com",
+  "password": "$2a$05$gj.zapK2wpXreuQwFCiCieqsTcVt90ge1.R3.NomwwOprEsYbpoWC",
+  "category": "client",
+  "image": "image-1608765985166.jpg"
+ }
+]
