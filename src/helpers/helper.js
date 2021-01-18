@@ -13,7 +13,7 @@ const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 //----------* FUNCTIONS *----------//
 const helper = {
     // USUARIOS
-    /* getAllUsers: () => {   
+    getAllUsers: () => {   
         return JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));      
     }, //-> Obtiene todos los usuarios
 
@@ -27,11 +27,11 @@ const helper = {
     writeUsers: (array) => {   
         const usersJson = JSON.stringify(array, null, " ");
 	    fs.writeFileSync(usersFilePath, usersJson); 
-    }, */ //-> Sobreescribe la database de Usuarios
+    }, //-> Sobreescribe la database de Usuarios
 
     
     // PRODUCTOS
-    /* getAllProducts: () => {
+    getAllProducts: () => {
         return JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));        
     }, //-> Obtiene todos los productos
 
@@ -45,7 +45,7 @@ const helper = {
     writeProducts: (array) => {
         const productsJson = JSON.stringify(array, null, " ");
 	    fs.writeFileSync(productsFilePath, productsJson);  
-    }, */ //-> Sobreescribe la database de Productos
+    }, //-> Sobreescribe la database de Productos
 
 
     // CARRITO
