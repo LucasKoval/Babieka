@@ -20,7 +20,7 @@ const mainController = {
             include: ['category', 'color', 'description', 'discount', 'image', 'model', 'size', 'type']
         });
         const productFound = products.filter(product => {
-            return product.model.name.toLowerCase().includes(search) && product.size.number == 35;
+            return (product.category.name.toLowerCase().includes(search) || product.model.name.toLowerCase().includes(search)|| product.color.name.toLowerCase().includes(search)) && product.size.number == 35;
         });
 		res.render('products/searchResults', {
             productFound: productFound
