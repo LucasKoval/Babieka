@@ -1,21 +1,16 @@
 //----------* REQUIRE'S *----------//
 const path = require('path');
 const {check,validationResult,body} = require('express-validator');
-const helper = require('../helpers/helper');
-const db = require('../db/models');
-
-
-//----------* VARIABLE'S *----------//
-const users = helper.getAllUsers();
+const { User } = require('../db/models');
 
 
 //----------* MIDDLEWARE *----------//
 registerValidator = [
-    body('firstName')
+    body('first_name')
         .notEmpty()
             .withMessage('Debe ingresar su nombre')
             .bail(),
-    body('lastName')
+    body('last_name')
     .notEmpty()
         .withMessage('Debe ingresar su apellido')
         .bail(),
@@ -27,11 +22,15 @@ registerValidator = [
             .withMessage('Debe ingresar un email válido')
             .bail()
         .custom(value => {
-                let userFound=users.find(user=>user.email==value)
-                return !userFound; 
+            return User.findOne({ 
+                where: 
+                { email: value }
+            }).then(user => {
+                if (user) {
+                return Promise.reject('El email ya se encuentra registrado');
+                }
             })
-            .withMessage('El email ya se encuentra registrado')
-            .bail(),
+        }),
     body('password')
         .isLength({min:6})
             .withMessage('La contraseña debe tener como mínimo 6 caracteres')
