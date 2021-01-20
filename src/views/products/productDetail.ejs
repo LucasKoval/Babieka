@@ -66,7 +66,7 @@
                         </script>
                     </div> 
                             
-                    <% if (loggedUser.role.name == 'admin') { %>
+                    <% if (loggedUser && loggedUser.role.name == 'admin') { %>
                         <div>   <!--// Botón Editar //-->
                             <form action="" method="GET">
                                 <a href="/producto/<%=product.id%>/editar"><button type="button" class="boton5">Editar artículo</button></a>
@@ -80,7 +80,7 @@
                         </div>
                     <% } else {%>
                         <div>   <!--// Botón Comprar //-->
-                            <form action="/producto/<%=product.id%>/agregar" method="POST">
+                            <form action="/carrito/<%=product.id%>/agregar" method="POST">
                                 <button type="submit" class="boton5">Agregar a la bolsa</button>
                             </form>
                         </div>

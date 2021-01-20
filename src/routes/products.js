@@ -14,8 +14,6 @@ const adminMW = require('../middlewares/adminMW');                         //-> 
 router.get('/', productsController.list);                                       //-> Listar productos Colección
 router.get('/sale', productsController.sale);                                   //-> Listar productos Sale
 router.get('/listado', authMW, adminMW, productsController.productsFullList);   //-> Listado Completo                       
-router.get('/carrito', productsController.cart);                                //-> Carrito
-router.post('/:id/agregar', productsController.addToCart);                      //-> Agregar al Carrito 
 router.get('/crear', authMW, adminMW, productsController.createForm);           //-> Formulario de creación
 router.post('/crear', multer.any(), productsController.store);                  //-> Almacenar el producto
 router.get('/:id/editar', authMW, adminMW, productsController.editForm);        //-> Mostrar formulario de edición un producto

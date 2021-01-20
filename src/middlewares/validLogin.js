@@ -1,12 +1,7 @@
 //----------* REQUIRE'S *----------//
 const bcrypt = require('bcryptjs')
 const {check,validationResult,body} = require('express-validator');
-const helper = require('../helpers/helper');
-const db = require('../db/models');
-
-
-//----------* VARIABLE'S *----------//
-const users = helper.getAllUsers();
+const { User } = require('../db/models');
 
 
 //----------* MIDDLEWARE *----------//
@@ -18,16 +13,16 @@ loginValidator = [
         .isEmail()
             .withMessage('Debe ingresar un email válido')
             .bail()
-        .custom((value, {req})=> {
-                let userFound=users.find(user=>user.email==value)
-                if(userFound && bcrypt.compareSync(req.body.password, userFound.password)){
-                    return true; 
-                }else{
-                   return false; 
+        .custom((value , {req} )=> {
+            return User.findOne({ 
+                where: 
+                { email: value }
+            }).then(user => {
+                if (!user || !bcrypt.compareSync(req.body.password, user.password)) {
+                return Promise.reject('El usuario o contraseña ingresados son incorrectos');
                 }
             })
-            .withMessage('El usuario o contraseña ingresados son incorrectos')
-            .bail(),
+        }),
     body('password')
     .notEmpty()
         .withMessage('Debe ingresar su contraseña')
