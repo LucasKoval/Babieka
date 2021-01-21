@@ -2,7 +2,7 @@ module.exports = (sequelize, DataTypes) => {
     const alias = 'Discount';
     const cols = {
         number: {
-            type: DataTypes.STRING
+            type: DataTypes.INTEGER
         }
     };
     const config = {
@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
         Discount.hasMany(models.Product, {
             as: 'products',
             foreignKey: 'discount_id'
-        })
+        });
     };
 
     return Discount;

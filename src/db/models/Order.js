@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER
         },
         total: {
-            type: DataTypes.STRING
+            type: DataTypes.INTEGER
         }
     };
     const config = {
