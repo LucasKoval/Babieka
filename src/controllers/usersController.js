@@ -112,8 +112,8 @@ const usersController = {
             last_name: req.body.last_name,
             email: req.body.email,
             password: req.body.password ? passwordHashed : this.password,
-            image: req.files[0] ?  req.files[0].filename : this.image,
-            role_id: editedUser.role_id != 5 ?  req.body.role : this.role
+            image: req.files[0] ? req.files[0].filename : this.image,
+            role_id: editedUser.role_id != 5 ? req.body.role : this.role
         },
         {where: {
             id: editedUser.id

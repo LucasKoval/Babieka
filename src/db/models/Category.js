@@ -11,10 +11,10 @@ module.exports = (sequelize, DataTypes) => {
     const Category = sequelize.define(alias, cols, config);
 
     Category.associate = (models) => {
-        Category.hasMany(models.Product, {
-            as: 'products',
+        Category.hasMany(models.Model, {
+            as: 'models',
             foreignKey: 'category_id'
-        })
+        });
     };
     
     return Category;

@@ -7,13 +7,13 @@ module.exports = (sequelize, DataTypes) => {
         product_id: {
             type: DataTypes.INTEGER
         },
-        name: {
+        model_name: {
             type: DataTypes.STRING
         },
-        description: {
+        model_description: {
             type: DataTypes.STRING
         },
-        image: {
+        model_image: {
             type: DataTypes.STRING
         },
         unit_price: {
@@ -41,6 +41,11 @@ module.exports = (sequelize, DataTypes) => {
         Item.belongsTo(models.User, {
             as: 'user',
             foreignKey: 'user_id'
+        });
+
+        Item.belongsTo(models.Product, {
+            as: 'product',
+            foreignKey: 'product_id'
         });
         
         Item.belongsTo(models.Order, {
