@@ -25,14 +25,14 @@
                     <p><label for="repeatpassword">Repita su contraseña : </label></p>
                     <p><input type="password" name="repeatpassword" id="repeatpassword"></p>
                     <% if (loggedUser && loggedUser.role.name == 'admin') { %>
-                        <label for="role">Rol:</label>    <!--// Category //-->
+                        <label for="role">Rol : </label>    <!--// Category //-->
                         <select name="role">
                             <% for (role of roles) { %>   
                                     <option value="<%= role.id %>" selected><%= role.name %></option>
                             <% } %>
                         </select>
                     <% } else {%>
-                        <p><label for="role" hidden>Categoria:</label></p>
+                        <p><label for="role" hidden>Rol : </label></p>
                         <p><input type="text" name="role" id="role" value="5" hidden></p>
                     <% } %>
                     <p>    <!--// Imagen //-->

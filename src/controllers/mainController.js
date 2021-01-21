@@ -16,14 +16,14 @@ const mainController = {
     // Renderiza Resultado de busqueda
     search: async (req, res) => {
         const search = req.query.search.toLowerCase();
-		const products = await db.Product.findAll({
-            include: ['category', 'color', 'description', 'discount', 'image', 'model', 'size', 'type']
+		const models = await db.Model.findAll({
+            include: ['category', 'color', 'image', 'type']
         });
-        const productFound = products.filter(product => {
-            return (product.category.name.toLowerCase().includes(search) || product.model.name.toLowerCase().includes(search)|| product.color.name.toLowerCase().includes(search)) && product.size.number == 35;
+        const productFound = models.filter(model => {
+            return model.category.name.toLowerCase().includes(search) || model.name.toLowerCase().includes(search)|| model.color.name.toLowerCase().includes(search);
         });
 		res.render('products/searchResults', {
-            productFound: productFound
+            productFound: productFound,
 		});
     },
     

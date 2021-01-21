@@ -17,7 +17,7 @@ module.exports = (sequelize ,DataTypes) => {
         Role.hasMany(models.User, {
             as: 'users',
             foreignKey: 'role_id'
-        })
+        });
     };
 
     return Role;
