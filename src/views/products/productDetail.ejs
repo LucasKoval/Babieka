@@ -11,13 +11,21 @@
                 
                 <div class="cen-1">
                     <div class= "">
-                            <img class = "aspecto width-100" src="/img/products/<%= product.image.name %>" alt="Imagen del artículo">
+                            <img class = "aspecto width-100" src="/img/products/<%= product.model.image.name %>" alt="Imagen del artículo">
                     </div>    
                 </div>
 
                 <div class="cen-2 columna margin-auto">   <!--// Descripcion y opciones del artículo //-->
-                    <p class="letraGrande"><%= product.model.name %></p>
-                    <p class="letra-del-precio">$<%= product.price %></p>
+                    
+                    <% if (product.model.category.name == 'Sale') { %>
+                        <p class="letraGrande"><%= product.model.name %></p>
+                        <p class="marg-0 price-size tachado">$ <%= product.price %></p>
+                        <span class="marg-0"><%= product.discount.number %> %OFF</span>
+                        <p class="marg-0 price-size">$ <%= product.price-((product.price*product.discount.number)/100) %></p>
+                    <% } else { %>
+                        <p class="letraGrande"><%= product.model.name %></p>
+                        <p class="letra-del-precio">$<%= product.price %></p>
+                    <% } %>
                     
                     <div>
                         <p>Color del artículo</p>
@@ -43,7 +51,7 @@
                     </div>
                     <div>  <!--// Descripcion //-->
                         <p class="letra-del-precio">Descripción</p>
-                        <p><%= product.description.text %></p>
+                        <p><%= product.model.description %></p>
                     </div>
                     <div>
                         <p>Cantidad</p>
