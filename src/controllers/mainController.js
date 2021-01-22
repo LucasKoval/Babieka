@@ -16,15 +16,20 @@ const mainController = {
     // Renderiza Resultado de busqueda
     search: async (req, res) => {
         const search = req.query.search.toLowerCase();
-		const models = await db.Model.findAll({
-            include: ['category', 'color', 'image', 'type']
+		const products = await db.Product.findAll({
+            include: [{
+                all: true,
+                nested: true
+            }],
+            order: [
+                ['id']
+            ],
+            group: ['model.id']
         });
-        const productFound = models.filter(model => {
-            return model.category.name.toLowerCase().includes(search) || model.name.toLowerCase().includes(search)|| model.color.name.toLowerCase().includes(search);
+        const productFound = products.filter(product => {
+            return product.model.category.name.toLowerCase().includes(search) || product.model.name.toLowerCase().includes(search) || product.model.color.name.toLowerCase().includes(search);
         });
-		res.render('products/searchResults', {
-            productFound: productFound,
-		});
+		res.render('products/searchResults', { productFound	});
     },
     
     // Renderiza Nosotros

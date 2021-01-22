@@ -5,6 +5,8 @@
         
         <%- include('../partials/header') %>   <!--// partial Header //-->
 
+        <%- include('../partials/banner') %>   <!--// partial Banner //-->
+
         <main class="d-flex fd-col">
         
             <h1 class="lk-title-list">ARTICULOS ENCONTRADOS</h1>
@@ -13,12 +15,18 @@
                     <article class="lk-articlebox-list">
                         <a href="/producto/<%= product.id %>">
                             <div class="justify-center opac-img">
-                                <img src="/img/products/<%= product.image.name %>" alt="imagen de producto">
+                                <img src="/img/products/<%= product.model.image.name %>" alt="imagen de producto">
                             </div>
                             <div class="casual-index">
-                                <p class="marg-nonside-10 name-size"><%= product.name %></p>                
-                                <p class="marg-nonside-10 price-size">$ <%= product.price %></p>
-                                <!-- <span class="marg-0">50 %OFF</span> -->
+                                <% if (product.model.category.name == 'Sale') { %>
+                                    <p class="marg-0 name-size"><%= product.model.name %></p>
+                                    <p class="marg-0 price-size tachado">$ <%= product.price %></p>
+                                    <span class="marg-0"><%= product.discount.number %> %OFF</span>
+                                    <p class="marg-0 price-size">$ <%= product.price-((product.price*product.discount.number)/100) %></p>
+                                <% } else { %>
+                                    <p class="marg-nonside-10 name-size"><%= product.model.name %></p>                
+                                    <p class="marg-nonside-10 price-size">$ <%= product.price %></p>
+                                <% } %>
                             </div>
                         </a>
                     </article>
