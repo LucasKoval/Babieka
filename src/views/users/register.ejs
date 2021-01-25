@@ -35,8 +35,9 @@
                     <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.repeatpassword == 'undefined' ? '' : errors.repeatpassword.msg %></p>
                    
                     <% if (loggedUser && loggedUser.role.name == 'admin') { %>
-                        <label for="role">Rol : </label>    <!--// Category //-->
+                        <label for="role">Rol : </label>    <!--// Role //-->
                         <select name="role">
+                        <option value="" disabled selected>Seleciona...</option>
                         <% for (role of roles) { %>
                                 <option value="<%= role.id %>"><%= role.name %></option>
                         <% } %>
@@ -45,7 +46,7 @@
                         <p><label for="role" hidden>Rol : </label></p>
                         <p><input type="text" name="role" id="role" value="5" hidden></p>
                     <% } %>
-
+                    <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.role == 'undefined' ? '' : errors.role.msg %></p>   
                     <p>    <!--// Imagen //-->
                         <input type="file" name="image" accept="image/png, .jpeg, .jpg, image/gif"> 
                         <input type="submit" value="Subir Imagen">  

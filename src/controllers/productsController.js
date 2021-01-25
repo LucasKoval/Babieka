@@ -1,5 +1,6 @@
 //----------* REQUIRE'S *----------//
 const db = require('../db/models');
+const {check,validationResult,body} = require('express-validator');
 
 
 //----------* VARIABLE'S *----------//
@@ -108,26 +109,42 @@ const productsController = {
     },
     
     // Crea un artículo (POST)
-    store: async (req, res) => {
-        const newDescription = await db.Description.create({text: req.body.description});
+    store: async (req, res) => {     
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            const categories  = await db.Category.findAll();
+            const types  = await db.Type.findAll();
+            const sizes = await db.Size.findAll();
+            const colors = await db.Color.findAll();
+            const discounts = await db.Discount.findAll();
+            return res.render('products/createProduct', {
+                errors: errors.mapped(),
+                products : req.body,
+                categories,
+                types,
+                sizes,
+                colors,
+                discounts
+            })
+        }
         const newImage = await db.Image.create({name: req.files[0].filename});
-        const newModel = await db.Model.create({name: req.body.model});
-        console.log('newDescription: ' + newDescription);
-        console.log('newImage: ' + newImage);
-        console.log('newModel: ' + newModel);
-        await db.Product.create({
-            model_id: newModel.id, /* || req.body.selectName */
+        const newModel = await db.Model.create({
             category_id: req.body.category,
             type_id: req.body.type,
-            size_id: req.body.size,
+            name : req.body.name,
+            description : req.body.description,
             color_id: req.body.color,
-            description_id: newDescription.id, /* || req.body.selectDescription */
-            image_id: newImage.id, /* || req.body.selectImage */
-            stock: req.body.stock,
+            image_id: newImage.id /* || req.body.selectImage */
+        },
+        {include: ['category', 'color', 'image', 'type']});
+        await db.Product.create({
+            model_id: newModel.id, /* || req.body.selectName */
+            size_id: req.body.size,
             discount_id: req.body.discount,
+            stock: req.body.stock,
             price: req.body.price
         },
-        {include: ['category', 'color', 'description', 'discount', 'image', 'model', 'size', 'type']});
+        {include: ['discount', 'model', 'size']});
         return res.redirect('/producto/listado');
     },
 

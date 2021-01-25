@@ -13,68 +13,81 @@
                 <form action="/producto/crear" method="POST" enctype="multipart/form-data">    <!--// Formulario Nuevo Artículo //-->
                     
                     <label for="model"></label>    <!--// Nombre //-->
-                    <p><input type="text" name="model" id="model" placeholder="Nombre del modelo"></p>
+                    <p><input type="text" name="name" id="name" placeholder="Nombre del modelo" value="<%= typeof products == 'undefined' ? '' : products.name %>"></p>
+                    <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.name == 'undefined' ? '' : errors.name.msg %></p>
 
                     <p>
                         <label for="category">Categoría del artículo : </label> <!--// Categoria//-->
                         <select name="category">
+                            <option value=""  disabled selected>Seleciona...</option>
                             <% for (category of categories) { %>
                                 <option value="<%= category.id %>"><%= category.name %></option>
                             <% } %> 
                         </select>
+                        <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.category == 'undefined' ? '' : errors.category.msg %></p>
                     </p>
                    
                     <p>
                         <label for="type">Tipo de artículo : </label> <!--// Tipo //-->
                         <select name="type">
+                            <option value="" disabled selected>Seleciona...</option>
                             <% for (type of types) { %>
                                 <option value="<%= type.id %>"><%= type.name %></option>
                             <% } %> 
                         </select>
+                        <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.type == 'undefined' ? '' : errors.type.msg %></p>
                     </p>
                     
                     <p>
                         <label for="size">Talle de artículo : </label> <!--// Talle //-->
                         <select name="size">
+                            <option value="" disabled selected>Seleciona...</option>
                             <% for (size of sizes) { %>
                                 <option value="<%= size.id %>"><%= size.number %></option>
                             <% } %> 
                         </select>
+                        <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.size == 'undefined' ? '' : errors.size.msg %></p>
                     </p>
 
                     <p>
                         <label for="color">Color del artículo : </label> <!--// Color //-->
                         <select name="color">
+                            <option value=""  disabled selected>Seleciona...</option>
                             <% for (color of colors) { %>
-                                
                                     <option value="<%= color.id %>"><%= color.name %></option>
-                                
                             <% } %> 
                         </select>
+                        <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.color == 'undefined' ? '' : errors.color.msg %></p>
                     </p>
 
                     <label for="description">Descripción del artículo : </label>    <!--// Descripción //-->
-                    <p><textarea name="description" id="description" cols="53" rows="5" placeholder="Ingrese una breve descripción del artículo..."></textarea></p>
+                    <p><textarea name="description" id="description" cols="53" rows="5" placeholder="Ingrese una breve descripción del artículo..." ></textarea></p>
+                    <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.description == 'undefined' ? '' : errors.description.msg %></p>
 
                     <p>    <!--// Imagen //-->
                         <input type="file" name="image" accept="image/png, .jpeg, .jpg, image/gif"> 
                         <input type="submit" value="Subir Imagen">  
                     </p>
+                    <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.image == 'undefined' ? '' : errors.image.msg %></p>
               
-                    <label for="stock">Stock : </label>    <!--// Descripción //-->
-                    <p><input type="number" name="stock" id="stock" placeholder="0"></p>
+                    <label for="stock">Stock : </label>    <!--// Stock //-->
+                    <p><input type="number" name="stock" id="stock" placeholder="0" value="<%= typeof products == 'undefined' ? '' : products.stock %>"></p>
+                    <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.stock == 'undefined' ? '' : errors.stock.msg %></p>
 
                     <p>
                         <label for="discount">Descuento : </label> <!--// discount //-->
                         <select name="discount">
+                            <option value="" disabled selected>Seleciona...</option>
                             <% for (discount of discounts) { %>
                                 <option value="<%= discount.id %>"><%= discount.number %>%</option>
                             <% } %> 
                         </select>
+                        <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.discount == 'undefined' ? '' : errors.discount.msg %></p>
                     </p>
                     
                     <label for="price">Precio : </label>    <!--// Precio //-->
-                    <p><input type="text" name="price" id="price" placeholder="$5.000"></p>    
+                    <p><input type="text" name="price" id="price" placeholder="$5.000" value="<%= typeof products == 'undefined' ? '' : products.price %>"></p> 
+                    <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.price == 'undefined' ? '' : errors.price.msg %></p>   
 
                     <button type="submit">Crear artículo</button>    <!--// Botón Crear //-->
 

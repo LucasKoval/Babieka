@@ -47,6 +47,11 @@ module.exports={
             .notEmpty()
                 .withMessage('Debes repetir tu contraseña')
                 .bail(),
+        body('role')
+                .notEmpty()
+                    .withMessage('Debes seleccionar un rol')
+                    .bail(),
+
         body('image')
             .custom(function(value, { req }){
                 return req.files[0];

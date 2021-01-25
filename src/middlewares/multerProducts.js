@@ -19,7 +19,7 @@ const storage = multer.diskStorage({
 module.exports = multer({
     storage,
     fileFilter: (req, file, cb) => {
-        const acceptedExtensions = ['.jpg', '.jpeg', '.png'];
+        const acceptedExtensions = ['.jpg', '.jpeg', '.png', '.gif'];
         const isAccepted = acceptedExtensions.includes(path.extname(file.originalname).toLowerCase());
         if(!isAccepted){
             req.files = [...req.files, file];
