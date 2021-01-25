@@ -12,10 +12,16 @@ module.exports={
         body('first_name')
             .notEmpty()
                 .withMessage('Debe ingresar su nombre')
+                .bail()
+            .isLength({min: 2})
+                .withMessage('El nombre ingresado debe tener al menos dos caracteres')
                 .bail(),
         body('last_name')
         .notEmpty()
             .withMessage('Debe ingresar su apellido')
+            .bail()
+        .isLength({min: 2})
+            .withMessage('El apellido ingresado debe tener al menos dos caracteres')
             .bail(),
         body('email')
             .notEmpty()
@@ -35,8 +41,8 @@ module.exports={
                 })
             }),
         body('password')
-            .isLength({min:6})
-                .withMessage('La contraseña debe tener como mínimo 6 caracteres')
+            .isLength({min:8})
+                .withMessage('La contraseña debe tener como mínimo 8 caracteres')
                 .bail()
             .custom(function(value, { req }){
                 return value == req.body.repeatpassword
@@ -55,11 +61,48 @@ module.exports={
                 .bail()
             .custom(function(value, { req }){
                 const ext = path.extname(req.files[0].originalname);
-                const extValidas = [".jpg", ".jpeg", ".png"];
+                const extValidas = [".jpg", ".jpeg", ".png" , ".gif"];
                 return extValidas.includes(ext.toLowerCase());
             })
                 .withMessage('La imagen debe tener un fomato válido')
                 .bail()
+    ],
+    edit: [
+        body('first_name')
+            .notEmpty()
+                .withMessage('El campo nombre es obligatorio')
+                .bail()
+            .isLength({min: 2})
+                .withMessage('El nombre ingresado debe tener al menos dos caracteres')
+                .bail(),
+        body('last_name')
+            .notEmpty()
+                .withMessage('El campo apellido es obligatorio')
+                .bail()
+            .isLength({min: 2})
+                .withMessage('El apellido ingresado debe tener al menos dos caracteres')
+                .bail(),
+        body('email')
+            .notEmpty()
+                .withMessage('Debe ingresar un email')
+                .bail()
+            .isEmail()
+                .withMessage('El email ingresado debe ser válido')
+                .bail(),
+        body('password')
+            .notEmpty()
+                .withMessage('Debe ingresar su contraseña para poder editar sus datos')
+                .bail()
+            .custom((value , {req} )=> {
+                return User.findOne({ 
+                    where: 
+                    { email: req.body.email }
+                }).then(user => {
+                    if (!bcrypt.compareSync(req.body.password, user.password)) {
+                    return Promise.reject('La contraseña ingresada es incorrecta');
+                    }
+                })
+            })
     ],
     
     login: [
@@ -83,6 +126,49 @@ module.exports={
         body('password')
         .notEmpty()
             .withMessage('Debe ingresar su contraseña')
+            .bail()
+    ],
+
+    newPass: [
+        body('oldPassword')
+        .notEmpty()
+            .withMessage('Debe ingresar su contraseña actual')
+            .bail()
+        .custom((value , {req} )=> {
+            return User.findOne({ 
+                where: 
+                { id: req.session.user.id }
+            }).then(user => {
+                if (!bcrypt.compareSync(value, user.password)) {
+                return Promise.reject('La contraseña ingresada es incorrecta');
+                }
+            })
+        }),
+        body('newPassword')
+            .notEmpty()
+                .withMessage('Debe ingresar una nueva contraseña')
+                .bail()
+            .custom((value , {req} )=> {
+                return User.findOne({ 
+                    where: 
+                    { id: req.session.user.id }
+                }).then(user => {
+                    if (bcrypt.compareSync(value, user.password)) {
+                    return Promise.reject('La nueva contraseña debe ser distinta a la anterior');
+                    }
+                })
+            })
+            .isLength({min:8})
+                .withMessage('La contraseña debe tener como mínimo 8 caracteres')
+                .bail(),
+        body('repeatNewPassword')
+        .notEmpty()
+            .withMessage('Debe volver a ingresar su nueva contraseña')
+            .bail()
+        .custom(function(value, { req }){
+            return value == req.body.newPassword
+        })
+            .withMessage('Las contraseñas no coinciden')
             .bail()
     ]
 }

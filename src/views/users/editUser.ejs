@@ -13,17 +13,19 @@
             <section class= "formulariologin">
                 <h1 class="h1-size">Editar datos - <%= loggedUser.first_name %> <%= loggedUser.last_name %> </h1>
     
-                <form action="/usuario/editar?_method=PUT" method="POST" enctype="multipart/form-data">
+                <form action="/usuario/editar" method="POST" enctype="multipart/form-data">
                     <p><label for="first_name">Nombre : </label></p>
-                    <p><input type="text" name="first_name" id="first_name" value="<%= loggedUser.first_name %>"></p>
+                    <p><input type="text" name="first_name" id="first_name" value="<%= typeof user == 'undefined' ? loggedUser.first_name : user.first_name %>"></p>
+                    <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.first_name == 'undefined' ? '' : errors.first_name.msg %></p>
+
                     <p><label for="last_name">Apellido : </label></p>
-                    <p><input type="text" name="last_name" id="last_name" value="<%= loggedUser.last_name %>"></p>
+                    <p><input type="text" name="last_name" id="last_name" value="<%= typeof user == 'undefined' ? loggedUser.last_name : user.last_name %>"></p>
+                    <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.last_name == 'undefined' ? '' : errors.last_name.msg %></p>
+
                     <p><label for="email">Email : </label></p>
-                    <p><input type="email" name="email" id="email" value="<%= loggedUser.email %>"></p>
-                    <p><label for="password">Contraseña : </label></p>
-                    <p><input type="password" name="password" id="password"></p>
-                    <p><label for="repeatpassword">Repita su contraseña : </label></p>
-                    <p><input type="password" name="repeatpassword" id="repeatpassword"></p>
+                    <p><input type="email" name="email" id="email" value="<%= typeof user == 'undefined' ? loggedUser.email : user.email %>"></p>
+                    <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.email == 'undefined' ? '' : errors.email.msg %></p>
+                    
                     <% if (loggedUser && loggedUser.role.name == 'admin') { %>
                         <label for="role">Rol : </label>    <!--// Category //-->
                         <select name="role">
@@ -35,11 +37,18 @@
                         <p><label for="role" hidden>Rol : </label></p>
                         <p><input type="text" name="role" id="role" value="5" hidden></p>
                     <% } %>
-                    <p>    <!--// Imagen //-->
+                    
+                    <!--// Imagen //-->
+                    <p>   
                         <input type="file" name="image" accept="image/png, .jpeg, .jpg, image/gif"> 
-                        <input type="submit" value="<%= loggedUser.image %>" >  
+                        <input type="submit" value="<%=typeof user == 'undefined' ? loggedUser.image : "Subir Imagen" %>" >  
                     </p>
+                    <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.image == 'undefined' ? '' : errors.image.msg %></p>                  
     
+                    <p><label for="password">Ingrese su contraseña : </label></p>
+                    <p><input type="password" name="password" id="password"></p>
+                    <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.password == 'undefined' ? '' : errors.password.msg %></p>
+
                     <button type="submit">Actualizar datos</button>
                 </form>
     

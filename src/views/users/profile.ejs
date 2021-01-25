@@ -17,13 +17,19 @@
             </div>
 
             <div class="centrar">
-                <form action="/usuario/editar" method="GET" enctype="multipart/form-data">
-                    <button type="submit" class="cursor-hand">Editar usuario</button>
+                <form action="/usuario/editar" method="GET" enctype="multipart/form-data"> <!--// Botón Editar usuario //-->
+                    <button type="submit" class="cursor-hand">Editar mi perfil</button>
                 </form>
             </div>
             <div class="centrar marg-20">
-                <form action="/usuario/eliminar?_method=DELETE" method="POST"> <!--// Botón Eliminar producto //-->
-                    <button type="submit" class="cursor-hand">Eliminar usuario</button> 
+                <form action="/usuario/eliminar?_method=DELETE" method="POST"> <!--// Botón Eliminar usuario //-->
+                    <button type="submit" class="cursor-hand">Eliminar mi perfil</button> 
+                </form>
+            </div>
+
+            <div class="centrar marg-20">
+                <form action="/usuario/change-password" method="GET"> <!--// Botón cambiar contraseña //-->
+                    <button type="submit" class="cursor-hand">Cambiar mi contraseña</button> 
                 </form>
             </div>
         </div>
