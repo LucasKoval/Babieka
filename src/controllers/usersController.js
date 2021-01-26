@@ -33,10 +33,13 @@ const usersController = {
     createUser: async (req, res) =>{
         // Verifica que no existan errores al enviar el formulario de registro
         const errors = validationResult(req);
+
         if (!errors.isEmpty()) {
+            const roles  = await db.Role.findAll();
             return res.render('users/register', {
                 errors: errors.mapped(),
-                user : req.body
+                user : req.body,
+                roles 
             })
         }
         // Crea un nuevo registro de usuario en la DB
