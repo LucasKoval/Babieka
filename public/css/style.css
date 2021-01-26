@@ -4,6 +4,17 @@
 *
 /*-------------------*/
 
+:root {
+    --blanco: #FFFFFF;
+    --marron: #804000;
+    --negro: #000000;
+    --nude: #EBC8B2;
+    --oro: #E6BE00;
+    --plata: #BEC2CB;
+    --rojo: #FF0000;
+    --rojobbk: #FA1E1E;
+}
+
 body {
     margin: 0;
 }

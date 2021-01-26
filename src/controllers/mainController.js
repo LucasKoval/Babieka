@@ -17,14 +17,19 @@ const mainController = {
     search: async (req, res) => {
         const search = req.query.search.toLowerCase();
 		const products = await db.Product.findAll({
-            include: ['category', 'color', 'description', 'discount', 'image', 'model', 'size', 'type']
+            include: [{
+                all: true,
+                nested: true
+            }],
+            order: [
+                ['id']
+            ],
+            group: ['model.id']
         });
         const productFound = products.filter(product => {
-            return (product.category.name.toLowerCase().includes(search) || product.model.name.toLowerCase().includes(search)|| product.color.name.toLowerCase().includes(search)) && product.size.number == 35;
+            return product.model.category.name.toLowerCase().includes(search) || product.model.name.toLowerCase().includes(search) || product.model.color.name.toLowerCase().includes(search);
         });
-		res.render('products/searchResults', {
-            productFound: productFound
-		});
+		res.render('products/searchResults', { productFound	});
     },
     
     // Renderiza Nosotros
