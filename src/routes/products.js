@@ -9,6 +9,7 @@ const multer = require('../middlewares/multerProducts');                   //-> 
 const authMW = require('../middlewares/authMW');                           //-> Middleware para usuario sin Login
 const adminMW = require('../middlewares/adminMW');                         //-> Middleware para usuario Admin
 const productsValidator =require('../middlewares/productsValidator')
+const editValidator =require('../middlewares/editValidator')
 
 //----------* PRODUCTS ROUTES *----------//
 router.get('/', productsController.list);                                         //-> Listar productos Colección
@@ -17,7 +18,7 @@ router.get('/listado', authMW, adminMW, productsController.productsFullList);   
 router.get('/crear', authMW, adminMW, productsController.createForm);             //-> Formulario de creación
 router.post('/crear', multer.any(), productsValidator, productsController.store); //-> Almacenar el producto
 router.get('/:id/editar', authMW, adminMW, productsController.editForm);          //-> Mostrar formulario de edición un producto
-router.put('/:id/editar', multer.any(), productsController.edit);                 //-> Editar un producto
+router.put('/:id/editar', multer.any(),editValidator, productsController.edit);                 //-> Editar un producto
 router.delete('/:id/eliminar', productsController.delete);                        //-> Borrar un producto
 router.get('/:id', productsController.detail);                                    //-> Detalle de producto
 

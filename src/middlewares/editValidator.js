@@ -5,7 +5,7 @@ const { Product } = require('../db/models');
 
 
 //----------* MIDDLEWARE *----------//
-productsValidator = [
+editValidator = [
     body('name')
         .notEmpty()
             .withMessage('Debe ingresar el nombre del modelo')
@@ -34,15 +34,14 @@ productsValidator = [
             .withMessage('Debe ingresar mas información sobre este artículo')
             .bail(),
     body('image')
-        .custom(function(value, { req }){    
-            return req.files[0];
-        })
-            .withMessage('Debe ingresar una imagen')
-            .bail()
-        .custom(function(value, { req }){    
-            const ext = path.extname(req.files[0].originalname);
-            const extValidas = [".jpg", ".jpeg", ".png", ".gif"];
-            return extValidas.includes(ext.toLowerCase());
+        .custom(function(value, { req }){
+            if(typeof req.files[0] != "undefined"){
+                const ext = path.extname(req.files[0].originalname);
+                const extValidas = [".jpg", ".jpeg", ".png", ".gif"];
+                return extValidas.includes(ext.toLowerCase());
+            }else{
+                return true;
+            }   
         })
         .withMessage('La imagen debe tener un fomato válido')
         .bail(),
@@ -62,4 +61,4 @@ productsValidator = [
 
 
 //----------* EXPORTS MIDDLEWARE *----------//
-module.exports = productsValidator;
+module.exports = editValidator;

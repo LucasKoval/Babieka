@@ -151,54 +151,87 @@ const productsController = {
     // Renderiza la vista Edición de artículo
     editForm: async (req, res) => { 
         const products = await db.Product.findAll({
-            include: ['category', 'color', 'description', 'discount', 'image', 'model', 'size', 'type']
+            include: ['discount', 'model', 'size']
         });
-        const product = products.find(product => product.id == req.params.id);     
+        const product = products.find(product => product.id == req.params.id); 
+        const models = await db.Model.findAll({
+            include: ['category', 'color', 'image', 'type']
+        })
+        const model = models.find(model => model.id == product.model_id);    
         const categories  = await db.Category.findAll();
         const types  = await db.Type.findAll();
         const sizes = await db.Size.findAll();
         const colors = await db.Color.findAll();
         const discounts = await db.Discount.findAll();
-        res.render('products/editProduct', { product, categories, types, sizes, colors, discounts });       
+        res.render('products/editProduct', { model, product, categories, types, sizes, colors, discounts });       
     },
 
     // Edita un artículo (PUT)
-    edit: async (req, res) => {       
+    edit: async (req, res) => {      
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            const products = await db.Product.findAll({
+                include: ['discount', 'model', 'size']
+            });
+            const product = products.find(product => product.id == req.params.id); 
+            const models = await db.Model.findAll({
+                include: ['category', 'color', 'image', 'type']
+            })
+            const model = models.find(model => model.id == product.model_id);  
+            const categories  = await db.Category.findAll();
+            const types  = await db.Type.findAll();
+            const sizes = await db.Size.findAll();
+            const colors = await db.Color.findAll();
+            const discounts = await db.Discount.findAll();
+            return res.render('products/editProduct', {
+                errors: errors.mapped(),
+                products: req.body,
+                categories,
+                model,
+                product,
+                types,
+                sizes,
+                colors,
+                discounts
+            })
+        }  
+
         const editedProduct = await db.Product.findByPk(req.params.id);
+        const editedModel = await db.Model.findByPk(editedProduct.model_id);
+
+        console.log('edited product ' + editedProduct.id)
+        console.log('edited model ' + editedModel.image_id)
+
         await db.Product.update({                 
-            type_id: req.body.type,
-            category_id : req.body.category,
             size_id: req.body.size,
-            color_id: req.body.color,
+            discount_id: req.body.discount,
             price: req.body.price,
             stock: req.body.stock
         },
         {where: {
             id: editedProduct.id
         }},
-        {include: ['category', 'color', 'description', 'discount', 'image', 'model', 'size', 'type']});
+        {include: ['discount', 'model', 'size']});
         
         await db.Model.update({
-            name: req.body.model
+            name: req.body.name,
+            category_id: req.body.category,
+            type_id: req.body.type,
+            description: req.body.description,
+            color_id: req.body.color,
         },
         {where: {
             id: editedProduct.model_id
-        }});
-
-        await db.Description.update({
-            text: req.body.description,
-        },
-        {where: {
-            id: editedProduct.description_id
-        }});
+        }},
+        {include:['category', 'color', 'image', 'type']});
+        
 
         await db.Image.update({
             name: req.files[0] ? req.files[0].filename : this.name
         },
         {where: {
-            id: editedProduct.image_id
+            id: editedModel.image_id
         }});
-
 
         res.redirect('/producto/'+ editedProduct.id);
     },
