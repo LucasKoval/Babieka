@@ -7,71 +7,51 @@
 
         <main class="d-flex fd-col">
         
-            <h1 class="lk-title-list">COLECCIÓN</h1>
-            <h2 class="lk-title-list">Fiesta</h2>
+            <h1 class="lk-title-list">PRODUCTOS DISPONIBLES</h1>
             <div class="lk-mainbox-list">
-                <% for (product of fiestaProducts) { %>
-                    <article class="lk-articlebox-list">
-                        <a href="/producto/<%= product.id %>">
-                            <div class="justify-center opac-img">
-                                <img src="/img/products/<%= product.model.image.name %>" alt="imagen de producto">
-                            </div>
-                            <div class="casual-index">
-                                <p class="marg-nonside-10 name-size"><%= product.model.name %></p>
-                                <p class="marg-0">[Talle - Stock]</p>
-                                <% for (size of sizes) { %>
-                                    <p class="talleVista">[<%= size.number %> - <%= product.stock %>]</p>
-                                <% } %>
-                                <p class="marg-nonside-10 price-size">$ <%= product.price %></p>
-                                <!-- <span class="marg-0">50 %OFF</span> -->
-                            </div>
-                        </a>
-                    </article>
-                <% } %>
-            </div>
-            
-            <h2 class="lk-title-list">Casual</h2>
-            <div class="lk-mainbox-list">
-                <% for (product of casualProducts) { %>
-                    <article class="lk-articlebox-list">
-                        <a href="/producto/<%= product.id %>">
-                            <div class="justify-center opac-img">
-                                <img src="/img/products/<%= product.model.image.name %>" alt="imagen de producto">
-                            </div>
-                            <div class="casual-index">
-                                <p class="marg-nonside-10 name-size"><%= product.model.name %></p>
-                                <p class="marg-0">[Talle - Stock]</p>
-                                <% for (size of sizes) { %>
-                                    <p class="talleVista">[<%= size.number %> - <%= product.stock %>]</p>
-                                <% } %>
-                                <p class="marg-nonside-10 price-size">$ <%= product.price %></p>
-                                <!-- <span class="marg-0">50 %OFF</span> -->
-                            </div>
-                        </a>
-                    </article>
-                <% } %>
-            </div>
-            
-            <h2 class="lk-title-list">Sale</h2>
-            <div class="lk-mainbox-list">
-                <% for (product of saleProducts) { %>
-                    <article class="lk-articlebox-list">
-                        <a href="/producto/<%= product.id %>">
-                            <div class="justify-center opac-img">
-                                <img src="/img/products/<%= product.model.image.name %>" alt="imagen de producto">
-                            </div>
-                            <div class="casual-index">
-                                <p class="marg-nonside-10 name-size"><%= product.model.name %></p>
-                                <p class="marg-0">[Talle - Stock]</p>
-                                <% for (size of sizes) { %>
-                                    <p class="talleVista">[<%= size.number %> - <%= product.stock %>]</p>
-                                <% } %>
-                                <p class="marg-nonside-10 price-size tachado">$ <%= product.price %></p>
-                                <span class="marg-0">Descuento: <%= product.discount.number %>%</span>
-                                <p class="marg-nonside-10 price-size">$ <%= product.price-((product.price*product.discount.number)/100) %></p>
-                            </div>
-                        </a>
-                    </article>
+                <% for (product of products) { %>
+                    <% if (product.model.category.name != 'Sale') { %>
+                        <article class="lk-articlebox-list">
+                            <a href="/producto/<%= product.id %>">
+                                <div class="justify-center opac-img">
+                                    <img src="/img/products/<%= product.model.image.name %>" alt="imagen de producto">
+                                </div>
+                                <div class="casual-index">
+                                    <p class="marg-nonside-10 name-size"><%= product.model.name %></p>
+                                    <p class="marg-nonside-10 name-size"><%= product.model.category.name %></p>
+                                    <button class="button-color-list" style="background-color: <%= product.model.color.hex %>" title="<%= product.model.color.name %>"></button>
+                                    <p class="marg-0">[Talle - Stock]</p>
+                                    <% for (size of sizes) { %>
+                                        <p class="talleVista">[<%= size.number %> - <%= product.stock %>]</p>
+                                    <% } %>
+                                    <p class="marg-nonside-10 price-size">$ <%= product.price %></p>
+                                    <!-- <span class="marg-0">50 %OFF</span> -->
+                                </div>
+                            </a>
+                        </article>
+                    <% } %>
+                
+                    <% if (product.model.category.name == 'Sale') { %>
+                        <article class="lk-articlebox-list">
+                            <a href="/producto/<%= product.id %>">
+                                <div class="justify-center opac-img">
+                                    <img src="/img/products/<%= product.model.image.name %>" alt="imagen de producto">
+                                </div>
+                                <div class="casual-index">
+                                    <p class="marg-nonside-10 name-size"><%= product.model.name %></p>
+                                    <p class="marg-nonside-10 name-size"><%= product.model.category.name %></p>
+                                    <button class="button-color-list" style="background-color: <%= product.model.color.hex %>" title="<%= product.model.color.name %>"></button>
+                                    <p class="marg-0">[Talle - Stock]</p>
+                                    <% for (size of sizes) { %>
+                                        <p class="talleVista">[<%= size.number %> - <%= product.stock %>]</p>
+                                    <% } %>
+                                    <!-- <p class="marg-nonside-10 price-size tachado">$ <%= product.price %></p>
+                                    <span class="marg-0">Descuento: <%= product.discount.number %>%</span> -->
+                                    <p class="marg-nonside-10 price-size">$ <%= product.price-((product.price*product.discount.number)/100) %></p>
+                                </div>
+                            </a>
+                        </article>
+                    <% } %>
                 <% } %>
             </div>
             

@@ -1,7 +1,7 @@
 //----------* REQUIRE'S *----------//
 const bcrypt = require('bcryptjs');
 const {check, validationResult, body} = require('express-validator');
-const db = require('../db/models');
+const db = require('../../db/models');
 
 
 //----------* USERS CONTROLLER *----------//
@@ -9,19 +9,18 @@ const usersController = {
     // Renderiza la vista Listado de Usuarios
     usersFullList: async (req, res) => {   
         const users = await db.User.findAll({
-            include: ['role']
+            attributes: ['id', 'first_name', 'last_name', 'email']
         });
-        const admin = users.filter((user) => {
-			return user.role.name == 'admin';
-		});
-		const client = users.filter((user) => {
-			return user.role.name == 'client';
-		});
-		res.render('users/usersFullList', {
-			adminUsers: admin,
-            clientUsers: client,
+		res.json({
+			meta: {
+                status: 'success',
+                count: users.length
+            },
+            data: {
+                users,
+            }
         });
-    },
+    }/* ,
     
     // Renderiza la vista Registro
     registerForm: async (req, res) => {   
@@ -190,7 +189,7 @@ const usersController = {
         req.session.destroy();
         res.clearCookie('user_Id');
         return res.redirect('/usuario/login');
-    }
+    } */
 };
 
 

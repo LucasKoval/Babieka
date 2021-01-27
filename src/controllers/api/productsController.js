@@ -1,5 +1,5 @@
 //----------* REQUIRE'S *----------//
-const db = require('../db/models');
+const db = require('../../db/models');
 const {check,validationResult,body} = require('express-validator');
 
 
@@ -31,7 +31,7 @@ const productsController = {
 			fiestaProducts: fiesta,
             casualProducts: casual
 		});
-    }, 
+    }/* , 
 
     // Renderiza la vista Sale
     sale: async (req, res) => {   
@@ -54,7 +54,7 @@ const productsController = {
     },
 
     // Renderiza la vista Listado Completo
-    productsFullList: async (req, res) => { 
+    productsFullList: async (req, res) => {   
         const products = await db.Product.findAll({
             include: [{
                 all: true,
@@ -63,13 +63,10 @@ const productsController = {
             order: [
                 ['id']
             ],
-            group: ['model.id']
-        });
-        const models = await db.Model.findAll({
-            include: ['color']
+            group: ['model.name']
         });
         const sizes = await db.Size.findAll();
-        /* const fiesta = await products.filter((product) => {
+        const fiesta = await products.filter((product) => {
 			return product.model.category.name == 'Fiesta';
 		});
 		const casual = await products.filter((product) => {
@@ -77,23 +74,17 @@ const productsController = {
         });
         const sale = await products.filter((product) => {
 			return product.model.category.name == 'Sale';
-        }); */
+		});
 		res.render('products/productsFullList', {
-			/* fiestaProducts: fiesta,
+			fiestaProducts: fiesta,
             casualProducts: casual,
-            saleProducts: sale, */
-            products,
-            models,
-            sizes
+            saleProducts: sale,
+            sizes: sizes
 		});
     },
 
     // Renderiza la vista Detalle de producto
-    detail: async (req, res) => {
-        const allModels = await db.Model.findAll({
-            include: ['color']
-        });
-        const allSizes = await db.Size.findAll();
+    detail: async (req, res) => {   
         const product = await db.Product.findByPk(req.params.id, {
             include: [{
                 all: true,
@@ -104,13 +95,7 @@ const productsController = {
             ],
             group: ['model.name']
         });
-        const models = allModels.filter((model) => {
-			return model.name == product.model.name
-        });
-        const sizes = allSizes.filter((size) => {
-			return size.number != product.size.number
-        });
-        res.render('products/productDetail', { product, models, sizes });  
+        res.render('products/productDetail', { product });  
     },
 
     // Renderiza la vista Nuevo artículo
@@ -149,11 +134,11 @@ const productsController = {
             name : req.body.name,
             description : req.body.description,
             color_id: req.body.color,
-            image_id: newImage.id /* || req.body.selectImage */
+            image_id: newImage.id
         },
         {include: ['category', 'color', 'image', 'type']});
         await db.Product.create({
-            model_id: newModel.id, /* || req.body.selectName */
+            model_id: newModel.id,
             size_id: req.body.size,
             discount_id: req.body.discount,
             stock: req.body.stock,
@@ -259,7 +244,7 @@ const productsController = {
             }
         });
         return res.redirect('/producto/listado');
-    }
+    } */
 };
 
 
