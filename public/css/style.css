@@ -28,6 +28,73 @@ textarea {
     font-family: 'Roboto', sans-serif;
 }
 
+.tooltip .tooltip-text {
+    visibility: hidden;
+    text-align: start;
+    padding: 1px 6px;
+    position: absolute;
+    right: 350px;
+    top: 380px;
+    z-index: 100;
+    background-color:var(--plata);
+    color:black;
+    border: 1px solid #FA1E1E;
+    border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
+    width: 200px;
+    list-style-type: circle;
+}
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+}
+
+.quantityButton {
+    font-size: 24px;
+    margin: 0 2px;
+    padding: 1px;
+    color: black;
+    background-color: white;
+}
+
+.quantityValue {
+    font-size: 20px;
+    text-align: center;
+    padding: 3px 10px;
+    width: 25px;
+    color: white;
+    background-color:var(--rojobbk);
+    font-weight: 500;
+    border-radius: 5px;
+    border: 0px solid white;
+}
+
+.button-color-detail {
+    border: 1px solid black;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.button-color-list {
+    border: 1px solid black;
+    width: 30px;
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+#button-size {
+    border: 1px solid black;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    background-color: var(--plata);
+    color: black;
+    font-weight: 600;
+    font-size: 14px;
+}
+
 .linea-med {
     text-decoration: none;
     background-image: linear-gradient(#FA1E1E,#FA1E1E);
@@ -67,8 +134,18 @@ textarea {
     font-family: 'Bebas Neue', cursive;
 }
 
-.font-size-12 {
+.font-size-13 {
     font-size: 13px;
+}
+
+.f-size-24 {
+    font-size: 24px;
+    margin: 30px 0 5px 0;
+}
+
+.f-size-40 {
+    font-size: 40px;
+    margin: 20px 0 0 0;
 }
 
 .marg-auto {
@@ -198,7 +275,9 @@ textarea {
     font-family: 'Roboto', sans-serif;
     color: #FA1E1E;
     font-size: 15px;
+    font-weight: 600;
 }
+
 
 
 /*=====================================================================*/
@@ -793,11 +872,6 @@ button{
 /*----------// DETAIL <MAIN> //----------*/
 .letraGrande{
     font-size:xx-large;
-    margin: 0 0;
-}
-
-.letra-del-precio {
-    font-size: x-large;
     margin: 0 0;
 }
 

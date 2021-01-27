@@ -183,7 +183,7 @@ VALUES ('Borcego'), ('Bota'), ('Botineta'), ('Mule'), ('Sandalia'), ('Zapato');
 
 -- [TABLA COLORES]
 INSERT INTO colors (name, hex)
-VALUES ('Blanco', '#FFFFFF'), ('Marron', '#804000'), ('Negro', '#000000'), ('Nude', '#EBC8B2'), ('Oro', '#E6BE00'), ('Plata', '#BEC2CB'), ('Rojo', '#FF0000');
+VALUES ('Blanco', '#FFFFFF'), ('Marron', '#AF601A'), ('Negro', '#000000'), ('Nude', '#EBC8B2'), ('Oro', '#F8C471' /* #FAD7A0 */), ('Plata', '#BEC2CB'), ('Rojo', '#FF0000');
 
 -- [TABLA IMAGENES]
 INSERT INTO images (name)

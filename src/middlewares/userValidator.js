@@ -7,7 +7,7 @@ const { User } = require('../db/models');
 
 //----------* MIDDLEWARE *----------//
 
-module.exports={
+module.exports = {
     register: [
         body('first_name')
             .notEmpty()
@@ -72,6 +72,7 @@ module.exports={
                 .withMessage('La imagen debe tener un fomato válido')
                 .bail()
     ],
+    
     edit: [
         body('first_name')
             .notEmpty()
