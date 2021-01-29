@@ -13,6 +13,8 @@
             <section class= "formulariologin">
                 <h1 class="h1-size">¡Registrate!</h1>
 
+                <ul id="errors"></ul>
+
                 <form action="/usuario/registro" method="POST" enctype="multipart/form-data">
                     <p><label for="first_name">Nombre : </label></p>
                     <p><input type="text" name="first_name" id="first_name" value="<%= typeof user == 'undefined' ? '' : user.first_name %>"></p>
@@ -48,12 +50,12 @@
                     <% } %>
                     <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.role == 'undefined' ? '' : errors.role.msg %></p>   
                     <p>    <!--// Imagen //-->
-                        <input type="file" name="image" accept="image/png, .jpeg, .jpg, image/gif"> 
+                        <input type="file" name="image" id="image" accept="image/png, .jpeg, .jpg, image/gif"> 
                         <input type="submit" value="Subir Imagen">  
                     </p>
                     <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.image == 'undefined' ? '' : errors.image.msg %></p>                  
     
-                    <button type="submit">Crear cuenta</button>
+                    <button type="submit" id="button">Crear cuenta</button>
                 </form>
     
             </section>
@@ -62,7 +64,7 @@
         
         <%- include('../partials/footer') %>    <!--// Footer //-->
         
-        <script src="/js/scripts.js" type="text/javascript"></script>
+        <script src="/js/validRegister.js" type="text/javascript"></script>
 
     </body>
 </html>
