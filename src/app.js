@@ -5,7 +5,8 @@ const express = require('express');
 const session = require('express-session');
 const logger = require('morgan');
 const path = require('path');
-const methodOverride =  require('method-override')
+const methodOverride =  require('method-override');
+const axios = require('axios');
 
 //----------* MIDDLEWARES REQUIRE *----------//
 const setAutoLog = require('./middlewares/setAutoLog');

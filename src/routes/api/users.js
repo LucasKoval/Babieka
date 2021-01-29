@@ -1,6 +1,8 @@
 //----------* REQUIRE'S *----------//
 const express = require('express');
 const router = express.Router();
+const axios = require('axios'); 
+const userResource = require('../../requests/usersResource');
 
 
 //----------* CONTROLLER & MIDDLEWARES REQUIRE *----------//
@@ -13,7 +15,11 @@ const adminMW = require('../../middlewares/adminMW');                       //->
 
 
 //----------* USERS ROUTES *----------//
-router.get('/listado', authMW, adminMW, usersController.usersFullList);                       //-> Mostrar listado de usuarios
+router.get('/listado', function(req, res, next) {
+    userResource.list().then(function(results){
+        console.log(results)
+})
+});                       //-> Mostrar listado de usuarios
 /* router.get('/registro', guestMW, usersController.registerForm);                               //-> Formulario de registro
 router.post('/registro', multer.any(), userValidator.register, usersController.createUser);   //-> Crear un usuario 
 router.get('/login', guestMW, usersController.loginForm);                                     //-> Formulario de inicio de sesión
