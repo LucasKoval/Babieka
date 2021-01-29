@@ -1,5 +1,5 @@
 const defaults = {
-    baseUrl: 1 /*pegar aca la url de la api */,
+    baseUrl: "localhost:3000/api/",
     timeout: 4000
 }
 
