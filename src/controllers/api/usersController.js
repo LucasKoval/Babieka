@@ -23,8 +23,8 @@ const usersController = {
     }/* ,
     
     // Renderiza la vista Registro
-    registerForm: async (req, res) => {   
-        const roles  = await db.Role.findAll();     
+    registerForm: async (req, res) => {
+        const roles  = await db.Role.findAll();
         return res.render('users/register',{roles});
     },
 
