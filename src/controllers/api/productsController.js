@@ -3,58 +3,10 @@ const db = require('../../db/models');
 const {check,validationResult,body} = require('express-validator');
 
 
-//----------* VARIABLE'S *----------//
-const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-
-
 //----------* PRODUCTS CONTROLLER *----------//
 const productsController = {
-    // Renderiza la vista Colección
-    list: async (req, res) => {   
-        const products = await db.Product.findAll({
-            include: [{
-                all: true,
-                nested: true
-            }],
-            order: [
-                ['id']
-            ],
-            group: ['model.name']
-        });
-        const fiesta = products.filter((product) => {
-			return product.model.category.name == 'Fiesta';
-		});
-		const casual = products.filter((product) => {
-			return product.model.category.name == 'Casual';
-        });
-		res.render('products/productsList', {
-			fiestaProducts: fiesta,
-            casualProducts: casual
-		});
-    }/* , 
-
-    // Renderiza la vista Sale
-    sale: async (req, res) => {   
-        const products = await db.Product.findAll({
-            include: [{
-                all: true,
-                nested: true
-            }],
-            order: [
-                ['id']
-            ],
-            group: ['model.name']
-        });
-        const sale = products.filter((product) => {
-			return product.model.category.name == 'Sale';
-		});
-		res.render('products/productsSale', {
-            saleProducts: sale
-		});
-    },
-
     // Renderiza la vista Listado Completo
-    productsFullList: async (req, res) => {   
+    list: async (req, res) => { 
         const products = await db.Product.findAll({
             include: [{
                 all: true,
@@ -63,24 +15,23 @@ const productsController = {
             order: [
                 ['id']
             ],
-            group: ['model.name']
+            group: ['model.id']
+        });
+        const models = await db.Model.findAll({
+            include: ['color']
         });
         const sizes = await db.Size.findAll();
-        const fiesta = await products.filter((product) => {
-			return product.model.category.name == 'Fiesta';
-		});
-		const casual = await products.filter((product) => {
-			return product.model.category.name == 'Casual';
+        res.json({
+			meta: {
+                status: 'success',
+                count: products.length
+            },
+            data: {
+                products,
+                models,
+                sizes
+            }
         });
-        const sale = await products.filter((product) => {
-			return product.model.category.name == 'Sale';
-		});
-		res.render('products/productsFullList', {
-			fiestaProducts: fiesta,
-            casualProducts: casual,
-            saleProducts: sale,
-            sizes: sizes
-		});
     },
 
     // Renderiza la vista Detalle de producto
@@ -95,18 +46,8 @@ const productsController = {
             ],
             group: ['model.name']
         });
-        res.render('products/productDetail', { product });  
-    },
-
-    // Renderiza la vista Nuevo artículo
-    createForm: async (req, res) => { 
-        const categories  = await db.Category.findAll();
-        const types  = await db.Type.findAll();
-        const sizes = await db.Size.findAll();
-        const colors = await db.Color.findAll();
-        const discounts = await db.Discount.findAll();
-        res.render('products/createProduct', { categories, types, sizes, colors, discounts });
-    },
+        res.json(product);  
+    }/* ,
     
     // Crea un artículo (POST)
     store: async (req, res) => {     
@@ -148,24 +89,6 @@ const productsController = {
         return res.redirect('/producto/listado');
     },
 
-    // Renderiza la vista Edición de artículo
-    editForm: async (req, res) => { 
-        const products = await db.Product.findAll({
-            include: ['discount', 'model', 'size']
-        });
-        const product = products.find(product => product.id == req.params.id); 
-        const models = await db.Model.findAll({
-            include: ['category', 'color', 'image', 'type']
-        })
-        const model = models.find(model => model.id == product.model_id);    
-        const categories  = await db.Category.findAll();
-        const types  = await db.Type.findAll();
-        const sizes = await db.Size.findAll();
-        const colors = await db.Color.findAll();
-        const discounts = await db.Discount.findAll();
-        res.render('products/editProduct', { model, product, categories, types, sizes, colors, discounts });       
-    },
-
     // Edita un artículo (PUT)
     edit: async (req, res) => {      
         const errors = validationResult(req);
@@ -198,9 +121,6 @@ const productsController = {
 
         const editedProduct = await db.Product.findByPk(req.params.id);
         const editedModel = await db.Model.findByPk(editedProduct.model_id);
-
-        console.log('edited product ' + editedProduct.id)
-        console.log('edited model ' + editedModel.image_id)
 
         await db.Product.update({                 
             size_id: req.body.size,
