@@ -4,20 +4,27 @@ const defaults = require('./default');
 
 
 //----------* VARIABLES *----------//
-const url = 'usuario/';
+const url = 'producto/';
 
 
-//----------* USERS RESOURCES *----------//
-const usersResource = {
+//----------* PRODUCTS RESOURCES *----------//
+const productsResource = {
     list: function () {
         return axios ({
             ...defaults,
             method: 'GET',
-            url: `${url}listado`
+            url: url
+        });
+    },
+    detail: function (id) {
+        return axios ({
+            ...defaults,
+            method: 'GET',
+            url: `${url}/${id}`
         });
     }
 };
 
 
 //----------* EXPORTS RESOURCE *----------//
-module.exports = usersResource;
+module.exports = productsResource;
