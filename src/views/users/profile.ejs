@@ -21,10 +21,18 @@
                     <button type="submit" class="cursor-hand">Editar mi perfil</button>
                 </form>
             </div>
-            <div class="centrar marg-20">
-                <form action="/usuario/eliminar?_method=DELETE" method="POST"> <!--// Botón Eliminar usuario //-->
-                    <button type="submit" class="cursor-hand">Eliminar mi perfil</button> 
-                </form>
+            <div class="centrar marg-20"><!--// Botón Eliminar usuario //-->
+                <button class="displayFlex cursor-hand">Eliminar mi perfil</button>
+                <aside class="modal">
+                    <div class="modal-content">
+                        ¿ Esta seguro que desea eliminar su perfil ?
+                        <form action="/usuario/eliminar?_method=DELETE" method="POST"> 
+                            <button type="submit" class="marg-nonside-10">Eliminar mi perfil</button> 
+                        </form>
+                        <button class="salir">Salir</button>
+                    </div> 
+                </aside>
+                
             </div>
 
             <div class="centrar marg-20">
@@ -35,6 +43,8 @@
         </div>
 
         <%- include('../partials/footer') %>   <!--// partial Footer //-->
+
+        <script src="/js/alertDelete.js" type="text/javascript"></script>
         
     </body>
 </html>
