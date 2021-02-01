@@ -1,7 +1,7 @@
 window.addEventListener('load', function() {
     //-> Variables Globales
     const errorsElement = document.querySelector("#frontErrors");
-    const button = document.querySelector("#ueButton");
+    const button = document.querySelector("#cpButton");
 
     button.addEventListener('click', function(event) {
         const errors = [];
