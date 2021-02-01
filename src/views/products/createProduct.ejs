@@ -10,6 +10,9 @@
             <section class= "formulario-upload">
                
                 <h1 class="h1-size marg-0 centrar">Nuevo artículo</h1>
+
+                <ul id="frontErrors"></ul>
+
                 <form action="/producto/crear" method="POST" enctype="multipart/form-data">    <!--// Formulario Nuevo Artículo //-->
                     
                     <label for="model"></label>    <!--// Nombre //-->
@@ -103,7 +106,7 @@
                     </p>
                     
                     <label for="price">Precio : </label>    <!--// Precio //-->
-                    <p><input type="text" name="price" id="price" placeholder="$5.000" value="<%= typeof products == 'undefined' ? '' : products.price %>"></p> 
+                    <p><input type="number" name="price" id="price" placeholder="$5.000" value="<%= typeof products == 'undefined' ? '' : products.price %>"></p> 
                     <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.price == 'undefined' ? '' : errors.price.msg %></p>   
 
                     <button type="submit">Crear artículo</button>    <!--// Botón Crear //-->
@@ -115,6 +118,8 @@
         </main>
         
         <%- include('../partials/footer') %>   <!--// partial Footer //-->
+
+        <script src="/js/createProductValidator.js" type="text/javascript"></script>
         
     </body>
 </html>

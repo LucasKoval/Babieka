@@ -1,7 +1,12 @@
 window.addEventListener('load', function() {
-    const form = document.querySelector(".edituser-form");
-    const errorsElement = document.querySelector("#errors")
-    const button = document.querySelector("#button")
+
+    //-> Variables Globales
+    const errorsElement = document.querySelector("#frontErrors");
+    const button = document.querySelector("#ueButton");
+
+    //-> Expresiones Regulares
+    const RegExpPass = /^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/; 
+    const RegExpEmail = /\S+@\S+\.\S+/;  
     
 
     button.addEventListener('click', function(event) {
@@ -18,7 +23,7 @@ window.addEventListener('load', function() {
         const lastName = document.querySelector("#last_name")
         if (lastName.value == "") {
             errors.push('Debe ingresar su apellido')
-        } else if(firstName.value.length < 2) {
+        } else if(lastName.value.length < 2) {
             errors.push("Su apellido debe tener al menos dos caractéres")
         }
 
@@ -26,15 +31,35 @@ window.addEventListener('load', function() {
         const email = document.querySelector("#email")
         if (email.value == "") {
             errors.push('Debe ingresar un e-mail')
+        } else if(!RegExpEmail.test(email)){
+            errors.push('La dirección de e-mail no es válida.')
+        }/*  else if (email == "") {
+                errors.push('El e-mail ya se encuentra registrado')  REVISAR!!
+            } */ ;
+
+
+        //Validación rol si usuario es admin?
+
+        //Validación imágen
+        const image = document.querySelector("#image").value;
+        const imageExt = image.split('.')[1];
+        const validExt = ['jpg', 'jpeg', 'png', 'gif'];
+        if (imageExt == undefined) {
+            errors.push('Debe cargar una imagen con uno de los siguientes formatos: JPG, JPEG, PNG, GIF.') ;
+        } else {
+            if (!(validExt.includes(imageExt.toLowerCase()))) {
+                errors.push('Formato de imagen invalido. [Permitidos: JPG, JPEG, PNG, GIF]')
+            }
         }
 
-        const password = document.querySelector("#password")
+        //Validación contraseña correcta
+        const password = document.querySelector("#password");
         if (password.value == "") {
-            errors.push('La constraseña debe existir')
-        } else if (password.value.length < 5) {
-            errors.push('La constraseña debe contener como mínimo 8 caracteres')
+            errors.push('Debe ingresar su contraseña')
         }
 
+
+        //Se comprueba si hay errores en la carga del formulario, se muestran si los hay.
         if (errors.length > 0) {
             errors.forEach(error => {
                 errorsElement.innerHTML += `<li><i class="fas fa-exclamation-circle"></i> ${error}</li>`
