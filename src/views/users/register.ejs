@@ -19,18 +19,22 @@
                     <p><label for="first_name">Nombre : </label></p>
                     <p><input type="text" name="first_name" id="first_name" value="<%= typeof user == 'undefined' ? '' : user.first_name %>"></p>
                     <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.first_name == 'undefined' ? '' : errors.first_name.msg %></p>
+                    <span class='error-msg err-first_name'></span>
 
                     <p><label for="last_name">Apellido : </label></p>
                     <p><input type="text" name="last_name" id="last_name" value="<%= typeof user == 'undefined' ? '' : user.last_name %>"></p>
                     <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.last_name == 'undefined' ? '' : errors.last_name.msg %></p>
+                    <span class='error-msg err-last_name'></span>
                     
                     <p><label for="email">Email : </label></p>
                     <p><input type="email" name="email" id="email" placeholder="Ej: maria@babieka.com" value="<%= typeof user == 'undefined' ? '' : user.email %>"></p>
                     <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.email == 'undefined' ? '' : errors.email.msg %></p>
+                    <span class='error-msg err-email'></span>
                     
                     <p><label for="password">Contraseña : </label></p>
                     <p><input type="password" name="password" id="password"></p>
                     <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.password == 'undefined' ? '' : errors.password.msg %></p>
+                    <span class='error-msg err-pass'></span>
                     
                     <p><label for="repeatpassword">Repita su contraseña : </label></p>
                     <p><input type="password" name="repeatpassword" id="repeatpassword"></p>
@@ -53,7 +57,9 @@
                         <input type="file" name="image" id="image" accept="image/png, .jpeg, .jpg, image/gif"> 
                         <input type="submit" value="Subir Imagen">  
                     </p>
-                    <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.image == 'undefined' ? '' : errors.image.msg %></p>                  
+                    <span class='error-msg err-image'></span> 
+                    <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.image == 'undefined' ? '' : errors.image.msg %></p>
+                                    
     
                     <button type="submit" id="button">Crear cuenta</button>
                 </form>
