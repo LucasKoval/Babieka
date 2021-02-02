@@ -5,15 +5,21 @@ window.addEventListener('load', function() {
 
     button.addEventListener('click', function(event) {
         //-> Variables Locales 
-        const first_name = document.querySelector("#first_name").value;
-        const last_name = document.querySelector("#last_name").value;
+        const firstName = document.querySelector("#first_name").value;
+        const lastName = document.querySelector("#last_name").value;
         const email = document.querySelector("#email").value;
         const password = document.querySelector("#password").value;
         const repeatpassword = document.querySelector("#repeatpassword").value;
         const image = document.querySelector("#image").value;
         const imageExt = image.split('.')[1];
         const validExt = ['jpg', 'jpeg', 'png', 'gif'];
+        const msgFirstName = document.querySelector(".err-first_name")
+        const msgLastName = document.querySelector(".err-last_name")
+        const msgEmail = document.querySelector(".err-email")
+        const msgPass = document.querySelector(".err-pass")
+        const msgImage = document.querySelector(".err-image")
         const errors = [];
+        const errorLog = [];
         showErrors.innerHTML = '';
         
         //-> Expresiones Regulares
@@ -21,54 +27,112 @@ window.addEventListener('load', function() {
         const RegExpEmail = /\S+@\S+\.\S+/;   //E-mails
 
         //-> Validación del Nombre
-        if (first_name == "") {
-            errors.push('Debe ingresar su nombre.')
-        } else if (first_name.length < 2) {
-            errors.push('El nombre debe tener como mínimo 2 letras.')
+        if (firstName == "") {
+            errors.firstName = {
+                msg: '<i class="fas fa-exclamation-circle"></i> Debe ingresar su nombre.'
+            }
+            errorLog.push('error')
+            msgFirstName.innerHTML = errors.firstName.msg
+        } else if (firstName.length < 2) {
+            errors.firstName = {
+                msg: '<i class="fas fa-exclamation-circle"></i> El nombre debe tener como mínimo 2 letras.'
+            }
+            errorLog.push('error')
+            msgFirstName.innerHTML = errors.firstName.msg
+        } else {
+            msgFirstName.innerHTML = ''
         }
 
+
         //-> Validación del Apellido
-        if (last_name == "") {
-            errors.push('Debe ingresar su apellido.')
-        } else if (last_name.length < 2) {
-            errors.push('El apellido debe tener como mínimo 2 letras.')
+        if (lastName == "") {
+            errors.lastName = {
+                msg: '<i class="fas fa-exclamation-circle"></i> Debe ingresar su apellido.'
+            }
+            errorLog.push('error')
+            msgLastName.innerHTML = errors.lastName.msg
+        } else if (lastName.length < 2) {
+            errors.lastName = {
+                msg: '<i class="fas fa-exclamation-circle"></i> El apellido debe tener como mínimo 2 letras.'
+            }
+            errorLog.push('error')
+            msgLastName.innerHTML = errors.lastName.msg
+        } else {
+            msgLastName.innerHTML = ''
         }
+
 
         //-> Validación del E-mail
         if (email == "") {
-            errors.push('Debe ingresar su dirección de e-mail.')
+            errors.email = {
+                msg: '<i class="fas fa-exclamation-circle"></i> Debe ingresar su dirección de e-mail.'
+            }
+            errorLog.push('error')
+            msgEmail.innerHTML = errors.email.msg
         } else if (!RegExpEmail.test(email)) {
-            errors.push('La dirección de e-mail no es válida.')
-            }/*  else if (email == "") {
-                errors.push('El e-mail ya se encuentra registrado')  REVISAR!!
-            } */   
+            errors.email = {
+                msg: '<i class="fas fa-exclamation-circle"></i> La dirección de e-mail no es válida.'
+            }
+            errorLog.push('error')
+            msgEmail.innerHTML = errors.email.msg
+            } else {
+                msgEmail.innerHTML = ''
+            }  
+
 
         //-> Validación de la Contraseña
         if (password == "") {
-            errors.push('Debe ingresar una constraseña.')
+            errors.password = {
+                msg: '<i class="fas fa-exclamation-circle"></i> Debe ingresar una constraseña.'
+            }
+            errorLog.push('error')
+            msgPass.innerHTML = errors.password.msg
         } else if (password.length < 8) {
-            errors.push('La constraseña debe tener como mínimo 8 caracteres.')
+            errors.password = {
+                msg: '<i class="fas fa-exclamation-circle"></i> La constraseña debe tener como mínimo 8 caracteres.'
+            }
+            errorLog.push('error')
+            msgPass.innerHTML = errors.password.msg
             } else if (!RegExpPass.test(password)) {
-                errors.push('La constraseña debe contener mayúscula, minúscula, un número y un caracter especial.')
-                } else if (repeatpassword != password) {
-                    errors.push('Las constraseñas no coinciden.')
+                errors.password = {
+                    msg: '<i class="fas fa-exclamation-circle"></i> La constraseña debe contener mayúscula, minúscula, un número y un caracter especial.'
                 }
+                errorLog.push('error')
+                msgPass.innerHTML = errors.password.msg
+                } else if (repeatpassword != password) {
+                    errors.password = {
+                        msg: '<i class="fas fa-exclamation-circle"></i> Las constraseñas no coinciden.'
+                    }
+                    errorLog.push('error')
+                    msgPass.innerHTML = errors.password.msg
+                    } else {
+                        msgPass.innerHTML = ''
+                    }
+
 
         //-> Validación de la Imagen
         if (imageExt == undefined) {
-            errors.push('Debe cargar una imagen con uno de los siguientes formatos: JPG, JPEG, PNG, GIF.') ;
-        } else {
-            if (!(validExt.includes(imageExt.toLowerCase()))) {
-                errors.push('Formato de imagen invalido. [Permitidos: JPG, JPEG, PNG, GIF]')
+            errors.image = {
+                msg: '<i class="fas fa-exclamation-circle"></i> Debe cargar una imagen con uno de los siguientes formatos: JPG, JPEG, PNG, GIF.'
             }
-        }
-        
+            errorLog.push('error')
+            msgImage.innerHTML = errors.image.msg
+        } else if (!(validExt.includes(imageExt.toLowerCase()))) {
+            errors.image = {
+                msg: '<i class="fas fa-exclamation-circle"></i> Formato de imagen invalido. [Permitidos: JPG, JPEG, PNG, GIF].'
+            }
+            errorLog.push('error')
+            msgImage.innerHTML = errors.image.msg
+            } else {
+                msgImage.innerHTML = ''
+            }
+
+        console.log(errorLog);
+        console.log(errors);
         //-> Comprobación y envio de Errores
-        if (errors.length > 0) {
-            errors.forEach(error => {
-                showErrors.innerHTML += `<li><i class="fas fa-exclamation-circle"></i> ${error}</li>`
-            })
+        if (errorLog.length > 0) {
             event.preventDefault()
-        }
+        }         
+        
     })
 })
