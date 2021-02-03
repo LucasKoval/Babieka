@@ -12,7 +12,7 @@ window.addEventListener('load', function() {
         const oldPassword = document.querySelector("#oldPassword");
 
         if (oldPassword.value == "") {
-            errors.push('La constraseña debe existir');
+            errors.push('Debe ingresar su contraseña actual');
         }
 
 
@@ -20,7 +20,7 @@ window.addEventListener('load', function() {
         const newPassword = document.querySelector("#newPassword");
         
         if (newPassword == "") {
-            errors.push('Debe ingresar una constraseña.');
+            errors.push('Debe ingresar una nueva constraseña.');
             } else if(newPassword.value == oldPassword.value){
                 errors.push('La constraseña debe ser distinta a la enterior');
                     } else if(newPassword.length < 8) {
