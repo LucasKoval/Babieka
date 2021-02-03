@@ -214,9 +214,6 @@ const productsController = {
         const editedProduct = await db.Product.findByPk(req.params.id);
         const editedModel = await db.Model.findByPk(editedProduct.model_id);
 
-        console.log('edited product ' + editedProduct.id)
-        console.log('edited model ' + editedModel.image_id)
-
         await db.Product.update({                 
             size_id: req.body.size,
             discount_id: req.body.discount,

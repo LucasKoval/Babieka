@@ -1,7 +1,7 @@
 window.addEventListener('load', function() {
     //-> Variables Globales
     const errorsElement = document.querySelector("#frontErrors");
-    const button = document.querySelector("#cpButton");
+    const button = document.querySelector("#button");
 
     button.addEventListener('click', function(event) {
         const errors = [];
@@ -11,7 +11,7 @@ window.addEventListener('load', function() {
         const modelName = document.querySelector("#name")
         if (modelName.value == "") {
             errors.push('Debe ingresar el nombre del artículo')
-        } else if(firstName.value.length < 5) {
+        } else if(modelName.value.length < 5) {
             errors.push("El nombre del artículo debe tener al menos cinco caractéres")
         }
 
@@ -19,7 +19,7 @@ window.addEventListener('load', function() {
         const description = document.querySelector("#description")
         if (description.value == "") {
             errors.push('Debe ingresar una descripción del artículo')
-        } else if(lastName.value.length < 20) {
+        } else if(description.value.length < 20) {
             errors.push("La descripción debe tener al menos veinte caractéres")
         }
 
