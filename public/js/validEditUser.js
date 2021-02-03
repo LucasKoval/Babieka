@@ -5,10 +5,8 @@ window.addEventListener('load', function() {
     const button = document.querySelector("#ueButton");
 
     //-> Expresiones Regulares
-    const RegExpPass = /^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/; 
     const RegExpEmail = /\S+@\S+\.\S+/;  
     
-
     button.addEventListener('click', function(event) {
         const errors = [];
         errorsElement.innerHTML = '';
