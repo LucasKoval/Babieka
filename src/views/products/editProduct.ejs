@@ -103,7 +103,7 @@
                     </p>
 
                     <label for="price">Precio : </label>    <!--// Precio //-->
-                    <p><input type="text" name="price" id="price" value="<%=product.price%>"></p>
+                    <p><input type="number" name="price" id="price" value="<%=product.price%>"></p>
                     <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.price == 'undefined' ? '' : errors.price.msg %></p>    
 
                     <button type="submit" id="button">Editar artículo</button>  <!--// Botón Editar producto //-->

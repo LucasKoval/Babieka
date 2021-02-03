@@ -113,9 +113,11 @@ const usersController = {
         // Verifica que no existan errores al enviar el formulario
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
+            const roles = await db.Role.findAll();
             return res.render('users/editUser', {
                 errors: errors.mapped(),
-                user : req.body
+                user : req.body,
+                roles
             })
         }
         
