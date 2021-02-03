@@ -79,24 +79,19 @@ window.addEventListener('load', function() {
             msgEmail.innerHTML = ''
         }
         
-        
         fetch("http://localhost:3000/api/usuario/listado")
         .then(function(respuesta){
             return respuesta.json();
         })
         .then(function(userInformation){
-        
-            console.log(email)
             userInformation.data.users.forEach( user => {
-                console.log(user.email)
                 if (user.email == email){
                     errors.email = {
                         msg: '<i class="fas fa-exclamation-circle"></i> El e-mail ya se encuentra registrado.'
                     }
                     errorLog.push('error')
                     msgEmail.innerHTML = errors.email.msg
-                } 
-        
+                }
             });
         })
         
@@ -148,12 +143,10 @@ window.addEventListener('load', function() {
                 msgImage.innerHTML = ''
             }
 
-        console.log(errorLog);
-        console.log(errors);
+
         //-> Comprobación y envio de Errores
         if (errorLog.length > 0) {
             event.preventDefault()
         }         
-        
     })
 })

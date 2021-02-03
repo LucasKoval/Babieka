@@ -69,19 +69,7 @@ const productsController = {
             include: ['color']
         });
         const sizes = await db.Size.findAll();
-        /* const fiesta = await products.filter((product) => {
-			return product.model.category.name == 'Fiesta';
-		});
-		const casual = await products.filter((product) => {
-			return product.model.category.name == 'Casual';
-        });
-        const sale = await products.filter((product) => {
-			return product.model.category.name == 'Sale';
-        }); */
 		res.render('products/productsFullList', {
-			/* fiestaProducts: fiesta,
-            casualProducts: casual,
-            saleProducts: sale, */
             products,
             models,
             sizes

@@ -1,6 +1,4 @@
 //----------* REQUIRE'S *----------//
-const bcrypt = require('bcryptjs');
-const {check, validationResult, body} = require('express-validator');
 const db = require('../../db/models');
 
 

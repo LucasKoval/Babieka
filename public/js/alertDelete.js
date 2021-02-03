@@ -25,7 +25,6 @@ window.addEventListener("load",function(){
         return  element.style.backdropFilter="none"
     }
 
-
     buttonFlex.addEventListener("click",function(){
         modalBlur(modal)
         modalBlock(alert)
