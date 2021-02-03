@@ -75,10 +75,31 @@ window.addEventListener('load', function() {
             }
             errorLog.push('error')
             msgEmail.innerHTML = errors.email.msg
-            } else {
-                msgEmail.innerHTML = ''
-            }  
-
+        } else {
+            msgEmail.innerHTML = ''
+        }
+        
+        
+        fetch("http://localhost:3000/api/usuario/listado")
+        .then(function(respuesta){
+            return respuesta.json();
+        })
+        .then(function(userInformation){
+        
+            console.log(email)
+            userInformation.data.users.forEach( user => {
+                console.log(user.email)
+                if (user.email == email){
+                    errors.email = {
+                        msg: '<i class="fas fa-exclamation-circle"></i> El e-mail ya se encuentra registrado.'
+                    }
+                    errorLog.push('error')
+                    msgEmail.innerHTML = errors.email.msg
+                } 
+        
+            });
+        })
+        
 
         //-> Validación de la Contraseña
         if (password == "") {

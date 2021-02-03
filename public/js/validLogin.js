@@ -40,7 +40,7 @@ window.addEventListener('load', function() {
             }
             errorLog.push('error')
             msgPass.innerHTML = errors.password.msg
-        } else if (password.length < 5) {
+        } else if (password.length < 8) {
             errors.password = {
                 msg: '<i class="fas fa-exclamation-circle"></i> La constraseña debe tener como mínimo 8 caracteres.'
             }

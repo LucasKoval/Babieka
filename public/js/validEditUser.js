@@ -27,15 +27,20 @@ window.addEventListener('load', function() {
             errors.push("Su apellido debe tener al menos dos caractéres")
         }
 
+        fetch("http://localhost:3000/api/usuario/listado")
+        .then(function(respuesta){
+            return respuesta.json();
+        })
+        .then(function(userInformation){
+            console.log(userInformation.data)
+        })
 
         const email = document.querySelector("#email")
         if (email.value == "") {
             errors.push('Debe ingresar un e-mail')
-        } else if(!RegExpEmail.test(email)){
+        } else if(!RegExpEmail.test(email.value)){
             errors.push('La dirección de e-mail no es válida.')
-        }/*  else if (email == "") {
-                errors.push('El e-mail ya se encuentra registrado')  REVISAR!!
-            } */ ;
+        } 
 
 
         //Validación rol si usuario es admin?
