@@ -50,7 +50,6 @@ window.addEventListener('load', function() {
 
         //-> Comprobación y envio de Errores
         if (errors.length > 0) {
-            console.log('ERRORES: ' + errors);
             errors.forEach(error => {
                 showErrors.innerHTML += `<li><i class="fas fa-exclamation-circle"></i> ${error}</li>`
             })

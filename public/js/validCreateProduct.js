@@ -47,7 +47,6 @@ window.addEventListener('load', function() {
             errors.push('Debe ingresar el precio del artículo')
         }
 
-
         //Se comprueba si hay errores en la carga del formulario, se muestran si los hay.
         if (errors.length > 0) {
             errors.forEach(error => {
@@ -56,5 +55,4 @@ window.addEventListener('load', function() {
             event.preventDefault()
         }
     })
-
 })

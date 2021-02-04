@@ -79,7 +79,8 @@ window.addEventListener('load', function() {
             msgEmail.innerHTML = ''
         }
         
-        //Consumo de api para chequear si el maill ya se encuentra registrado
+      
+        //Consumo de api para chequear si el mail ya se encuentra registrado
         fetch("http://localhost:3000/api/usuario/listado")
         .then(function(respuesta){
             return respuesta.json();
@@ -92,8 +93,7 @@ window.addEventListener('load', function() {
                     }
                     errorLog.push('error')
                     msgEmail.innerHTML = errors.email.msg
-                } 
-        
+                }
             });
         })
         
@@ -145,12 +145,10 @@ window.addEventListener('load', function() {
                 msgImage.innerHTML = ''
             }
 
-        console.log(errorLog);
-        console.log(errors);
+
         //-> Comprobación y envio de Errores
         if (errorLog.length > 0) {
             event.preventDefault()
         }         
-        
     })
 })
