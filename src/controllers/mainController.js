@@ -1,6 +1,7 @@
 //----------* REQUIRE'S *----------//
 const db = require('../db/models');
-
+const usersResource = require('../requests/usersResource');
+const productsResource = require('../requests/productsResource');
 
 //----------* VARIABLE'S *----------//
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -9,7 +10,13 @@ const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 //----------* MAIN CONTROLLER *----------//
 const mainController = {
     // Renderiza la Homepage
-    index: (req, res) => {        
+    index: (req, res, next) => {    
+        /* usersResource.list().then(response => {
+            console.log(response.data);
+        })
+        .catch(error => {
+            console.log(error.results); 
+        }) */
         res.render('index');
     },
 

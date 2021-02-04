@@ -5,7 +5,8 @@ const express = require('express');
 const session = require('express-session');
 const logger = require('morgan');
 const path = require('path');
-const methodOverride =  require('method-override')
+const methodOverride =  require('method-override');
+const axios = require('axios');
 
 //----------* MIDDLEWARES REQUIRE *----------//
 const setAutoLog = require('./middlewares/setAutoLog');
@@ -38,15 +39,18 @@ app.set('view engine', 'ejs');
 //----------* ROUTES REQUIRE *----------//
 const mainRouter = require('./routes/main');
 const usersRouter = require('./routes/users');
-const productRouter = require('./routes/products');
+const productsRouter = require('./routes/products');
 const cartRouter = require('./routes/cart');
+const apiUsersRouter = require('./routes/api/users');
+const apiProductsRouter = require('./routes/api/products');
 
 //----------* ROUTES USE() *----------//
-app.use('/', mainRouter);                //-> Home y rutas globales
-app.use('/usuario', usersRouter);        //-> Rutas de Usuarios
-app.use('/producto', productRouter);     //-> Rutas de Productos
-app.use('/carrito', cartRouter);         //-> Rutas del Carrito
-
+app.use('/', mainRouter);                      //-> Home y rutas globales
+app.use('/usuario', usersRouter);              //-> Rutas de Usuarios
+app.use('/producto', productsRouter);          //-> Rutas de Productos
+app.use('/carrito', cartRouter);               //-> Rutas del Carrito
+app.use('/api/usuario', apiUsersRouter);       //-> Rutas API de Usuarios
+app.use('/api/producto', apiProductsRouter);   //-> Rutas API de Productos
 
 //----------* CATCH 404 *----------//
 app.use((req, res, next) => next(createError(404)));

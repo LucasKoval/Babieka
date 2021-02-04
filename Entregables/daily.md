@@ -2,57 +2,65 @@
 <br>
 <P>
 
-## 28/12:
-- Se reúnen Lucas y Fede para terminar el diagrama de base de datos y hacer el script de la estructura de la misma. 
+## 20/1:
+- Nos reunimos para revisar las modificaciones a las validaciones de login y registro, funcionan correctamente. Realizamos la retro. Actualizamos el trello. Definimos las tareas y cronograma de trabajo del nuevo sprint. 
 </P>
 <br>
 <P>
 
-## 29/12:
-- Realizamos la retrospectiva, actualizamos el tablero de trabajo y decidimos cómo organizar las tareas del sprint.
-- Se arma de esta forma el cronograma de trabajo tentativo con fechas estimadas y las tareas a realizar por cada integrante y cuáles serán realizadas de modo grupal.
-- Ya que no recordamos cómo poblar la base de datos, acordamos investigarlo para realizarlo el lunes de la forma más óptima posible.
+## 21/1:
+- Nos reunimos para chequear que hayan sido correctamente modificados los modelos en base a las modificaciones a la base de datos. 
+- Se unifican las validaciones de usuarios en un solo archivo. 
+- Se encuentra una dificultad a la hora de editar usuarios como administrador, ya que si no se completan todos los campos rompe la vista. A pesar de los intentos por parte de todos los integrantes no se logra encontrar el problema y se acuerda consultarlo con los profesores. 
+- Acordamos las próximas tareas a realizar por cada uno.  
 </P>
 <br>
 <P>
 
-## 5/1:
-- Nos reunimos para evaluar cómo habíamos hecho la base de datos y cómo mejorarla a la luz del colearning del día de ayer.
-- Definimos crear más tablas para normalizar los productos, teniendo en cuenta que cada talle de un mismo producto debe tener un id específico.
-- Realizamos el nuevo diagrama y evaluamos qué modificaciones deberíamos realizar en la vista a la hora de cargar los productos.
+## 22/1:
+- Trabajamos de manera grupal, repasando lo realizado por cada uno, chequeando su funcionamiento y despejando las dudas con los profesores. 
+- Logramos arreglar el problema con el formulario de edición de usuario y el rol, y finalizar la validación de carga de producto. 
+- Acordamos realizar modificaciones en la edición del usuario, para hacer la misma más segura y realizar correctamente las validaciones. 
+- Se acuerda entonces requerir al usuario ingresar su contraseña para editar su perfil, y generar un formulario aparte para cambio de contraseña. 
 </P>
 <br>
 <P> 
 
-## 6/1:
-- Nos reunimos para compartir los comentarios de Gonza sobre las tablas de la base de datos, corregirla y poder comenzar con el armado de los modelos.
-- Decidimos normalizar datos extras de la base de datos, que se van repetir al generar un nuevo id por cada modelo en cada talle y color.
-- Decidimos agregar de los modelos de los que dispongamos fotos en otro color, dos colores por producto para poder luego generar interaccion con JS-Front con los botones de color del producto.
-- Agregamos al repositorio las imágenes nuevas.
-- Cargamos la base de datos completa con las modificaciones finales.
-- Completamos todos los modelos de Sequelize.
-- Acordamos resolver las relaciones de las tablas mañana.
+## 25/1:
+- Arreglamos de manera grupal el método de edición de usuarios del controlador. 
+- Chequeamos las implementaciones realizadas por cada uno y acordamos las siguientes tareas a realizar y los plazos de las mismas. 
+- Queda terminado el botón, formulario, rutas, validaciones y métodos de cambio de contraseña.
 </P>
 <br>
 <P>
 
-## 7/1:
-- Completamos de forma grupal los modelos de la base de datos, añadiendo las relaciones de cada tabla (queda configurado exitosamente).
-- Acordamos entonces seguir trabajando en los métodos que cada uno tiene asignado del controlador. 
+## 27/1:
+- Nos reunimos para generar grupalmente la api que comparte la información de mail e id de usuario, comprobamos su funcionamiento. 
+- Realizamos las validaciones del login desde el front de manera grupal. 
+-Revisamos nuevas modificaciones incluidas en la vista de listado. 
+-Acordamos realizar el consumo de apis de manera grupal el viernes por la mañana, luego de ver la clase correspondiente en playground. 
+- Dividimos las validaciones del front, y acordamos tenerlas resueltas para el viernes por la mañana también.
+- Para trabajar más cómodamente acordamos realizar un script para cada una de las validaciones de front, viendo luego si es posible unificarlos y de qué manera sería óptimo hacerlo. 
 </P>
 <br>
 <P>
 
-## 11/1:
-- Revisamos los cambios en cada método del controlador.
-- Revisamos y corregimos grupalmente errores logrando que quede funcionando correctamente el método de crear un artículo y borrarlo.
+## 28/1:
+- Realizamos nuevas implementaciones de apis usando axios para poder consumirlas pero no lo logramos. 
 </P>
 <br>
 <P>
 
-## 12/1:
-- Corregimos de manera grupal los errores en los distintos métodos y vistas y chequeamos el funcionamiento del CRUD.
-- Acordamos modificaciones que se realizarán a futuro en la base de datos y los modelos.
-- Queda pendiente solucionar el funcionamiento de las validaciones usando base de datos y promesas.
-- Queda pendiente además poder lograr que se muestre un sólo producto por modelo en las vistas de colección/sale/listado. 
+## 1/2:
+- Resolvemos de forma grupal algunos errores de validaciones. 
+- Evaluamos el funcionamiento de la página hasta el momento y proyectamos posibles mejoras en las vistas. 
+</P>
+
+
+## 3/2:
+- Nos reunimos para resolver grupalmente la validación de registro con uso de apis. Logramos resolverlo exitosamente usando fetch. 
+- Evaluamos grupalmente diferentes opciones de mejora de las vistas de index y listado de productos.
+- Chequeamos los entregables solicitados en el sprint para evitar errores en los archivos.
+- Repasamos grupalmente la daily y retro para adjuntarlas al repositorio. 
+- Realizamos un crud completo de usuario y de productos, probando todas las validaciones de back y front. Situamos los problemas a resolver para la entrega. 
 </P>

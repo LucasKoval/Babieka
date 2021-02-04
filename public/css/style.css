@@ -28,6 +28,53 @@ textarea {
     font-family: 'Roboto', sans-serif;
 }
 
+.quantityButton {
+    font-size: 24px;
+    margin: 0 2px;
+    padding: 1px;
+    color: black;
+    background-color: white;
+}
+
+.quantityValue {
+    font-size: 20px;
+    text-align: center;
+    padding: 3px 10px;
+    width: 25px;
+    color: white;
+    background-color:var(--rojobbk);
+    font-weight: 500;
+    border-radius: 5px;
+    border: 0px solid white;
+}
+
+.button-color-detail {
+    border: 1px solid black;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.button-color-list {
+    border: 1px solid black;
+    width: 30px;
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+#button-size {
+    border: 1px solid black;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    background-color: var(--plata);
+    color: black;
+    font-weight: 600;
+    font-size: 14px;
+}
+
 .linea-med {
     text-decoration: none;
     background-image: linear-gradient(#FA1E1E,#FA1E1E);
@@ -67,8 +114,18 @@ textarea {
     font-family: 'Bebas Neue', cursive;
 }
 
-.font-size-12 {
+.font-size-13 {
     font-size: 13px;
+}
+
+.f-size-24 {
+    font-size: 24px;
+    margin: 30px 0 5px 0;
+}
+
+.f-size-40 {
+    font-size: 40px;
+    margin: 20px 0 0 0;
 }
 
 .marg-auto {
@@ -198,8 +255,12 @@ textarea {
     font-family: 'Roboto', sans-serif;
     color: #FA1E1E;
     font-size: 15px;
+    font-weight: 600;
 }
 
+.error-msg {
+    color: red;
+}
 
 /*=====================================================================*/
 /**
@@ -796,11 +857,6 @@ button{
     margin: 0 0;
 }
 
-.letra-del-precio {
-    font-size: x-large;
-    margin: 0 0;
-}
-
 .main-det {
     display: flex;
     justify-content: center;
@@ -1071,6 +1127,37 @@ button{
 }
 
 
+.modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    backdrop-filter: blur(10px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+  } 
+  
+  .modal .modal-content{
+      font-family: 'Bebas Neue', cursive;
+      max-width: 640px;
+      border-radius: 5px;
+      border: 1px solid black;
+      padding: 10px;
+      background: rgb(241, 238, 238);
+      padding: 20px;
+      text-align: center;
+  }
+  
+  .modal .modal-content button{
+      display: block;
+      width: 200px;
+      margin: auto;
+      margin-top: 20px;
+  }
+  
+  
 /*----------// CREATE <MAIN> //----------*/
 
 

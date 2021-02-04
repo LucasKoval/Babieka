@@ -54,7 +54,7 @@ const productsController = {
     },
 
     // Renderiza la vista Listado Completo
-    productsFullList: async (req, res) => {   
+    productsFullList: async (req, res) => { 
         const products = await db.Product.findAll({
             include: [{
                 all: true,
@@ -63,28 +63,25 @@ const productsController = {
             order: [
                 ['id']
             ],
-            group: ['model.name']
+            group: ['model.id']
+        });
+        const models = await db.Model.findAll({
+            include: ['color']
         });
         const sizes = await db.Size.findAll();
-        const fiesta = await products.filter((product) => {
-			return product.model.category.name == 'Fiesta';
-		});
-		const casual = await products.filter((product) => {
-			return product.model.category.name == 'Casual';
-        });
-        const sale = await products.filter((product) => {
-			return product.model.category.name == 'Sale';
-		});
 		res.render('products/productsFullList', {
-			fiestaProducts: fiesta,
-            casualProducts: casual,
-            saleProducts: sale,
-            sizes: sizes
+            products,
+            models,
+            sizes
 		});
     },
 
     // Renderiza la vista Detalle de producto
-    detail: async (req, res) => {   
+    detail: async (req, res) => {
+        const allModels = await db.Model.findAll({
+            include: ['color']
+        });
+        const allSizes = await db.Size.findAll();
         const product = await db.Product.findByPk(req.params.id, {
             include: [{
                 all: true,
@@ -95,7 +92,13 @@ const productsController = {
             ],
             group: ['model.name']
         });
-        res.render('products/productDetail', { product });  
+        const models = allModels.filter((model) => {
+			return model.name == product.model.name
+        });
+        const sizes = allSizes.filter((size) => {
+			return size.number != product.size.number
+        });
+        res.render('products/productDetail', { product, models, sizes });  
     },
 
     // Renderiza la vista Nuevo artículo
@@ -198,9 +201,6 @@ const productsController = {
 
         const editedProduct = await db.Product.findByPk(req.params.id);
         const editedModel = await db.Model.findByPk(editedProduct.model_id);
-
-        console.log('edited product ' + editedProduct.id)
-        console.log('edited model ' + editedModel.image_id)
 
         await db.Product.update({                 
             size_id: req.body.size,

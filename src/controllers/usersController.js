@@ -49,9 +49,12 @@ const usersController = {
             last_name: req.body.last_name, 
             email: req.body.email,
             password: password,
-            role_id: req.body.role,
+            role_id: req.session.user && req.session.user.role.name == 'admin' ?  req.body.role : 5,
             image: req.files[0].filename
         })
+        if (req.session.user && req.session.user.role.name == 'admin') {
+            return res.redirect('/usuario/listado');
+        }
         return res.redirect('/usuario/login');
     },
 
@@ -106,6 +109,18 @@ const usersController = {
 
     // Edita el perfil de un Usuario (PUT)
     editProfile: async (req, res) => { 
+        
+        // Verifica que no existan errores al enviar el formulario
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            const roles = await db.Role.findAll();
+            return res.render('users/editUser', {
+                errors: errors.mapped(),
+                user : req.body,
+                roles
+            })
+        }
+        
         const passwordHashed = bcrypt.hashSync(req.body.password, 5);
         const editedUser = await db.User.findByPk(req.session.user.id, {
             include: ['role']
@@ -115,13 +130,43 @@ const usersController = {
             last_name: req.body.last_name,
             email: req.body.email,
             password: req.body.password ? passwordHashed : this.password,
-            image: req.files[0] ? req.files[0].filename : this.image,
-            role_id: editedUser.role_id != 5 ? req.body.role : this.role
+            image: req.files[0] ?  req.files[0].filename : this.image,
+            role_id: editedUser.role_id != 5 ?  req.body.role : this.role
         },
         {where: {
             id: editedUser.id
         }},
         {include: ['role']});
+        req.session.user = await db.User.findByPk(req.session.user.id, {
+            include: ['role']
+        });
+
+        res.redirect('/usuario/perfil');       
+    },
+
+    // Renderiza el formulario para cambiar la contraseña
+    changePassForm: async (req, res) => {    
+        return res.render('users/changePassword');
+    },
+
+    // Edita la contraseña de un Usuario
+    editPassword: async (req, res) => {   
+        // Verifica que no existan errores al enviar el formulario
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.render('users/changePassword', {
+                errors: errors.mapped()
+            })
+        }
+        
+        const passwordHashed = bcrypt.hashSync(req.body.newPassword, 5);
+        const editedUser = await db.User.findByPk(req.session.user.id);
+        await db.User.update({
+            password: passwordHashed
+        },
+        {where: {
+            id: editedUser.id
+        }});
         req.session.user = await db.User.findByPk(req.session.user.id, {
             include: ['role']
         });
