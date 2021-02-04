@@ -49,7 +49,7 @@ const usersController = {
             last_name: req.body.last_name, 
             email: req.body.email,
             password: password,
-            role_id: req.body.role,
+            role_id: req.session.user && req.session.user.role.name == 'admin' ?  req.body.role : 5,
             image: req.files[0].filename
         })
         if (req.session.user && req.session.user.role.name == 'admin') {

@@ -79,6 +79,8 @@ window.addEventListener('load', function() {
             msgEmail.innerHTML = ''
         }
         
+      
+        //Consumo de api para chequear si el mail ya se encuentra registrado
         fetch("http://localhost:3000/api/usuario/listado")
         .then(function(respuesta){
             return respuesta.json();
