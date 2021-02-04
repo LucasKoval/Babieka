@@ -11,12 +11,12 @@ const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 const mainController = {
     // Renderiza la Homepage
     index: (req, res, next) => {    
-        usersResource.list().then(results => {
-            console.log(results.data);
+        /* usersResource.list().then(response => {
+            console.log(response.data);
         })
         .catch(error => {
             console.log(error.results); 
-        })
+        }) */
         res.render('index');
     },
 

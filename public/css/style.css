@@ -28,26 +28,6 @@ textarea {
     font-family: 'Roboto', sans-serif;
 }
 
-.tooltip .tooltip-text {
-    visibility: hidden;
-    text-align: start;
-    padding: 1px 6px;
-    position: absolute;
-    right: 350px;
-    top: 380px;
-    z-index: 100;
-    background-color:var(--plata);
-    color:black;
-    border: 1px solid #FA1E1E;
-    border-radius: 5px;
-    font-family: 'Roboto', sans-serif;
-    width: 200px;
-    list-style-type: circle;
-}
-.tooltip:hover .tooltip-text {
-    visibility: visible;
-}
-
 .quantityButton {
     font-size: 24px;
     margin: 0 2px;
@@ -278,7 +258,9 @@ textarea {
     font-weight: 600;
 }
 
-
+.error-msg {
+    color: red;
+}
 
 /*=====================================================================*/
 /**

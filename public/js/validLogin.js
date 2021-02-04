@@ -7,31 +7,51 @@ window.addEventListener('load', function() {
         //-> Variables Locales 
         const email = document.querySelector("#email").value;
         const password = document.querySelector("#password").value;
+        const msgEmail = document.querySelector(".err-email")
+        const msgPass = document.querySelector(".err-pass")
         const errors = [];
+        const errorLog = [];
         showErrors.innerHTML = '';
 
         //-> Expresiones Regulares
         const RegExpEmail = /\S+@\S+\.\S+/;   //E-mails
 
-        //-> Validación del Nombre
+        //-> Validación del E-mail
         if (email == "") {
-            errors.push('Debe ingresar su dirección de e-mail.')
+            errors.email = {
+                msg: '<i class="fas fa-exclamation-circle"></i> Debe ingresar su dirección de e-mail.'
+            }
+            errorLog.push('error')
+            msgEmail.innerHTML = errors.email.msg
         } else if (!RegExpEmail.test(email)) {
-            errors.push('La dirección de e-mail no es válida.')
-        }
+            errors.email = {
+                msg: '<i class="fas fa-exclamation-circle"></i> La dirección de e-mail no es válida.'
+            }
+            errorLog.push('error')
+            msgEmail.innerHTML = errors.email.msg
+            } else {
+                msgEmail.innerHTML = ''
+            }
 
-        //-> Validación del Nombre
+        //-> Validación de la Contraseña
         if (password == "") {
-            errors.push('Debe ingresar su constraseña.')
+            errors.password = {
+                msg: '<i class="fas fa-exclamation-circle"></i> Debe ingresar una constraseña.'
+            }
+            errorLog.push('error')
+            msgPass.innerHTML = errors.password.msg
         } else if (password.length < 8) {
-            errors.push('La constraseña debe tener como mínimo 8 caracteres.')
-        }
+            errors.password = {
+                msg: '<i class="fas fa-exclamation-circle"></i> La constraseña debe tener como mínimo 8 caracteres.'
+            }
+            errorLog.push('error')
+            msgPass.innerHTML = errors.password.msg
+            } else {
+                msgPass.innerHTML = ''
+            }
 
         //-> Comprobación y envio de Errores
-        if (errors.length > 0) {
-            errors.forEach(error => {
-                showErrors.innerHTML += `<li><i class="fas fa-exclamation-circle"></i> ${error}</li>`
-            })
+        if (errorLog.length > 0) {
             event.preventDefault()
         }
     })
