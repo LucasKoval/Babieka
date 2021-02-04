@@ -54,10 +54,13 @@ module.exports = {
                 .withMessage('Debes repetir tu contraseña')
                 .bail(),
         body('role')
-                .notEmpty()
-                    .withMessage('Debes seleccionar un rol')
-                    .bail(),
-
+            .custom(function(value, {req}){
+                if (req.session.user){
+                     return value != undefined
+                }
+            })
+            .withMessage('Debes seleccionar un rol')
+            .bail(),
         body('image')
             .custom(function(value, { req }){
                 return req.files[0];
@@ -95,9 +98,20 @@ module.exports = {
             .isEmail()
                 .withMessage('El email ingresado debe ser válido')
                 .bail(),
+        body('role')
+        .custom(function(value, {req}){
+            if (req.session.user.role.name == 'admin'){
+                    return value != undefined
+            }
+        })
+        .withMessage('Debes seleccionar un rol')
+        .bail(),
         body('password')
             .notEmpty()
                 .withMessage('Debe ingresar su contraseña para poder editar sus datos')
+                .bail()
+            .isLength({min:8})
+                .withMessage('La contraseña debe tener como mínimo 8 caracteres')
                 .bail()
             .custom((value , {req} )=> {
                 return User.findOne({ 
@@ -109,6 +123,14 @@ module.exports = {
                     }
                 })
             })
+            /* Revisar para que el usuario pueda cambiar el mail y no de erronea la validac de la pass
+            .custom((value , {req} )=> {
+                return User.findByPk(req.session.user.id).then(user => {
+                    if (!bcrypt.compareSync(value, user.password)) {
+                    return Promise.reject('La contraseña ingresada es incorrecta');
+                    }
+                })
+            })*/
     ],
     
     login: [
