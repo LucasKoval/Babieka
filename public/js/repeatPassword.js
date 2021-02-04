@@ -20,19 +20,23 @@ window.addEventListener('load', function() {
         const newPassword = document.querySelector("#newPassword");
         
         if (newPassword == "") {
-            errors.push('Debe ingresar una constraseña.');
-            } else if(newPassword.value == oldPassword.value){
-                errors.push('La constraseña debe ser distinta a la enterior');
-                    } else if(newPassword.length < 8) {
-                        errors.push('La constraseña debe tener como mínimo 8 caracteres.');
-                            } else if (!RegExpPass.test(newPassword)) {
-                                errors.push('La constraseña debe contener mayúscula, minúscula, un número y un caracter especial.');
-                            } 
+            errors.push('Debe ingresar una nueva constraseña.');
+            } 
+        if(newPassword.value == oldPassword.value){
+            errors.push('La constraseña debe ser distinta a la enterior');
+                } else if(newPassword.length < 8) {
+                    errors.push('La constraseña debe tener como mínimo 8 caracteres.');
+                        } else if (!RegExpPass.test(newPassword)) {
+                            errors.push('La constraseña debe contener mayúscula, minúscula, un número y un caracter especial.');
+                        } 
 
 
         //Validacion de la repeticion de la nueva contraseña
         const repeatNewPassword = document.querySelector('#repeatNewPassword');
-
+        
+        if (repeatNewPassword == "") {
+            errors.push('Debe repetir la nueva contraseña.');
+            } 
         if(repeatNewPassword.value != newPassword.value){
             errors.push('Las constraseñas deben coincidir')
         }
