@@ -8,7 +8,8 @@ const apiUsersController = require('../../controllers/api/usersController');   /
 
 
 //----------* USERS ROUTES *----------//
-router.get('/listado', apiUsersController.list);   //-> Mostrar listado de usuarios   
+router.get('/', apiUsersController.list);        //-> Mostrar listado de usuarios
+router.get('/:id', apiUsersController.detail);   //-> Detalle de producto   
 
 
 //----------* EXPORTS ROUTER *----------//
