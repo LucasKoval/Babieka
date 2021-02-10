@@ -4,6 +4,7 @@ const db = require('../../db/models');
 
 //----------* PRODUCTS CONTROLLER *----------//
 const productsController = {
+    // URL: http://localhost:3000/api/producto/
     // Renderiza la vista Listado Completo
     list: async (req, res) => { 
         const products = await db.Product.findAll({
@@ -20,10 +21,22 @@ const productsController = {
             include: ['color']
         });
         const sizes = await db.Size.findAll();
+        const casual = products.filter((product) => {
+			return product.model.category.name == 'Casual';
+        });
+        const fiesta = products.filter((product) => {
+			return product.model.category.name == 'Fiesta';
+		});
+        const sale = products.filter((product) => {
+			return product.model.category.name == 'Sale';
+		});
         res.json({
 			meta: {
                 status: 'success',
-                count: products.length
+                count: products.length,
+                count_Category_Casual: casual.length,
+                count_Category_Fiesta: fiesta.length,
+                count_Category_Sale: sale.length
             },
             data: {
                 products,
@@ -33,6 +46,7 @@ const productsController = {
         });
     },
 
+    // URL: http://localhost:3000/api/producto/:id
     // Renderiza la vista Detalle de producto
     detail: async (req, res) => {   
         const product = await db.Product.findByPk(req.params.id, {
@@ -45,7 +59,22 @@ const productsController = {
             ],
             group: ['model.name']
         });
-        res.json(product);  
+        /* const productImg = await db.Product.findByPk(req.params.id, {
+            include: ['model'],
+            attributes: ['image']
+        }); */
+        /* const avatarImage = `public/img/products/${productImg.image}` */
+        const url = `http://localhost:3000/api/producto/${req.params.id}`
+        res.json({
+			product,
+            /* avatar: {
+                avatarImage
+            }, */
+            detail: {
+                url
+            }
+        });
+        /* res.json(product); */  
     }
 };
 
