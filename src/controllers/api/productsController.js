@@ -4,9 +4,10 @@ const db = require('../../db/models');
 
 //----------* PRODUCTS CONTROLLER *----------//
 const productsController = {
-    // Renderiza la vista Listado Completo
+    // URL: http://localhost:3030/api/products/
+    // Renderiza la vista Listado Completo de Productos
     list: async (req, res) => { 
-        const products = await db.Product.findAll({
+        const Allproducts = await db.Product.findAll({
             include: [{
                 all: true,
                 nested: true
@@ -14,26 +15,40 @@ const productsController = {
             order: [
                 ['id']
             ],
-            group: ['model.id']
+            /* group: ['model.id'] */
         });
-        const models = await db.Model.findAll({
-            include: ['color']
+        const products = Allproducts.map(product => {
+            return (
+                product.dataValues.urlImage = `http://localhost:3030/img/products/${product.model.image.name}`,
+                product.dataValues.urlDetail = `http://localhost:3030/api/products/${product.id}`,
+                product
+            )
         });
-        const sizes = await db.Size.findAll();
+        const casual = products.filter((product) => {
+			return product.model.category.name == 'Casual';
+        });
+        const fiesta = products.filter((product) => {
+			return product.model.category.name == 'Fiesta';
+		});
+        const sale = products.filter((product) => {
+			return product.model.category.name == 'Sale';
+		});
         res.json({
 			meta: {
                 status: 'success',
-                count: products.length
+                count: products.length,
+                count_Category_Casual: casual.length,
+                count_Category_Fiesta: fiesta.length,
+                count_Category_Sale: sale.length
             },
             data: {
-                products,
-                models,
-                sizes
+                products
             }
         });
     },
 
-    // Renderiza la vista Detalle de producto
+    // URL: http://localhost:3030/api/products/:id
+    // Renderiza la vista Detalle de Producto
     detail: async (req, res) => {   
         const product = await db.Product.findByPk(req.params.id, {
             include: [{
@@ -45,6 +60,8 @@ const productsController = {
             ],
             group: ['model.name']
         });
+        product.dataValues.urlImage = `http://localhost:3030/img/products/${product.model.image.name}`
+        product.dataValues.urlDetail = `http://localhost:3030/api/products/${req.params.id}`
         res.json(product);  
     }
 };
