@@ -6,6 +6,7 @@ const session = require('express-session');
 const logger = require('morgan');
 const path = require('path');
 const methodOverride =  require('method-override');
+const cors = require('cors');
 
 
 //----------* MIDDLEWARES REQUIRE *----------//
@@ -45,12 +46,12 @@ const apiUsersRouter = require('./routes/api/users');
 const apiProductsRouter = require('./routes/api/products');
 
 //----------* ROUTES USE() *----------//
-app.use('/', mainRouter);                      //-> Home y rutas globales
-app.use('/usuario', usersRouter);              //-> Rutas de Usuarios
-app.use('/producto', productsRouter);          //-> Rutas de Productos
-app.use('/carrito', cartRouter);               //-> Rutas del Carrito
-app.use('/api/users', apiUsersRouter);         //-> Rutas API de Usuarios
-app.use('/api/products', apiProductsRouter);   //-> Rutas API de Productos
+app.use('/', mainRouter);                              //-> Home y rutas globales
+app.use('/usuario', usersRouter);                      //-> Rutas de Usuarios
+app.use('/producto', productsRouter);                  //-> Rutas de Productos
+app.use('/carrito', cartRouter);                       //-> Rutas del Carrito
+app.use('/api/users', cors(), apiUsersRouter);         //-> Rutas API de Usuarios
+app.use('/api/products', cors(), apiProductsRouter);   //-> Rutas API de Productos
 
 
 //----------* CATCH 404 *----------//

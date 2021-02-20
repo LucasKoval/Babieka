@@ -4,7 +4,7 @@ const db = require('../../db/models');
 
 //----------* PRODUCTS CONTROLLER *----------//
 const productsController = {
-    // URL: http://localhost:3000/api/products/
+    // URL: http://localhost:3030/api/products/
     // Renderiza la vista Listado Completo de Productos
     list: async (req, res) => { 
         const Allproducts = await db.Product.findAll({
@@ -15,12 +15,12 @@ const productsController = {
             order: [
                 ['id']
             ],
-            group: ['model.id']
+            /* group: ['model.id'] */
         });
         const products = Allproducts.map(product => {
             return (
-                product.dataValues.urlImage = `http://localhost:3000/img/products/${product.model.image.name}`,
-                product.dataValues.urlDetail = `http://localhost:3000/api/products/${product.id}`,
+                product.dataValues.urlImage = `http://localhost:3030/img/products/${product.model.image.name}`,
+                product.dataValues.urlDetail = `http://localhost:3030/api/products/${product.id}`,
                 product
             )
         });
@@ -47,7 +47,7 @@ const productsController = {
         });
     },
 
-    // URL: http://localhost:3000/api/products/:id
+    // URL: http://localhost:3030/api/products/:id
     // Renderiza la vista Detalle de Producto
     detail: async (req, res) => {   
         const product = await db.Product.findByPk(req.params.id, {
@@ -60,8 +60,8 @@ const productsController = {
             ],
             group: ['model.name']
         });
-        product.dataValues.urlImage = `http://localhost:3000/img/products/${product.model.image.name}`
-        product.dataValues.urlDetail = `http://localhost:3000/api/products/${req.params.id}`
+        product.dataValues.urlImage = `http://localhost:3030/img/products/${product.model.image.name}`
+        product.dataValues.urlDetail = `http://localhost:3030/api/products/${req.params.id}`
         res.json(product);  
     }
 };
