@@ -8,8 +8,11 @@ const apiProductsController = require('../../controllers/api/productsController'
 
 
 //----------* PRODUCTS ROUTES *----------//
-router.get('/', apiProductsController.list);        //-> Listado Completo
-router.get('/:id', apiProductsController.detail);   //-> Detalle de producto                       
+router.get('/', apiProductsController.list);                //-> Listado Completo de Productos
+router.get('/list', apiProductsController.paginatedList);   //-> Listado Paginado de Productos
+router.get('/models', apiProductsController.modelList);     //-> Listado Completo de Modelos
+/* router.get('/models/list', apiProductsController.paginatedModelList); */   //-> Listado Paginado de Productos
+router.get('/:id', apiProductsController.detail);           //-> Detalle de Producto                       
 
 
 //----------* EXPORTS ROUTER *----------//
