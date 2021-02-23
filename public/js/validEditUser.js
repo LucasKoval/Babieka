@@ -25,7 +25,7 @@ window.addEventListener('load', function() {
             errors.push("Su apellido debe tener al menos dos caractéres")
         }
 
-        fetch("http://localhost:3000/api/usuario/listado")
+        fetch("http://localhost:3030/api/users/validUsers")
         .then(function(respuesta){
             return respuesta.json();
         })
