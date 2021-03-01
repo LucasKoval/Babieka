@@ -104,15 +104,14 @@ CREATE TABLE products (
 
 CREATE TABLE items (
 	id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-    user_id INT UNSIGNED NOT NULL,
-    product_id INT UNSIGNED NOT NULL,
-    model_name VARCHAR(255) NOT NULL,
-    model_description VARCHAR(255),
-    model_image VARCHAR(255),
-    unit_price INT UNSIGNED NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    description VARCHAR(255),
+    image VARCHAR(255),
+    price INT UNSIGNED NOT NULL,
     quantity INT UNSIGNED NOT NULL,
     subtotal INT UNSIGNED NOT NULL,
     status INT UNSIGNED NOT NULL,
+    user_id INT UNSIGNED NOT NULL,
     order_id INT UNSIGNED,
 	created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME ON UPDATE CURRENT_TIMESTAMP,
@@ -122,7 +121,6 @@ CREATE TABLE items (
 CREATE TABLE orders (
 	id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     user_id INT UNSIGNED NOT NULL,
-    order_number INT UNSIGNED,
     total INT UNSIGNED NOT NULL,
 	created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME ON UPDATE CURRENT_TIMESTAMP,
@@ -161,9 +159,6 @@ ALTER TABLE items
 ADD FOREIGN KEY (user_id) REFERENCES users(id);
 
 ALTER TABLE items
-ADD FOREIGN KEY (product_id) REFERENCES products(id);
-
-ALTER TABLE items
 ADD FOREIGN KEY (order_id) REFERENCES orders(id);
 -- }
 
@@ -171,7 +166,7 @@ ADD FOREIGN KEY (order_id) REFERENCES orders(id);
 
 -- [TABLA ROLES]
 INSERT INTO roles (value, name)
-VALUES (5, 'manager'), (10, 'admin'), (15, 'programmer'), (20, 'tester'), (25, 'client');
+VALUES (5, 'manager'), (10, 'admin'), (15, 'developer'), (20, 'tester'), (25, 'client');
 
 -- [TABLA CATEGORIAS]
 INSERT INTO categories (name)
@@ -183,7 +178,7 @@ VALUES ('Borcego'), ('Bota'), ('Botineta'), ('Mule'), ('Sandalia'), ('Zapato');
 
 -- [TABLA COLORES]
 INSERT INTO colors (name, hex)
-VALUES ('Blanco', '#FFFFFF'), ('Marron', '#AF601A'), ('Negro', '#000000'), ('Nude', '#EBC8B2'), ('Oro', '#F8C471' /* #FAD7A0 */), ('Plata', '#BEC2CB'), ('Rojo', '#FF0000');
+VALUES ('Blanco', '#FFFFFF'), ('Marron', '#AF601A'), ('Negro', '#000000'), ('Nude', '#EBC8B2'), ('Oro', '#F8C471'), ('Plata', '#BEC2CB'), ('Rojo', '#FF0000');
 
 -- [TABLA IMAGENES]
 INSERT INTO images (name)

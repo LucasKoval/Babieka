@@ -1,22 +1,16 @@
 module.exports = (sequelize, DataTypes) => {
     const alias = 'Item';
     const cols = {
-        user_id: {
-            type: DataTypes.INTEGER
-        },
-        product_id: {
-            type: DataTypes.INTEGER
-        },
-        model_name: {
+        name: {
             type: DataTypes.STRING
         },
-        model_description: {
+        description: {
             type: DataTypes.STRING
         },
-        model_image: {
+        image: {
             type: DataTypes.STRING
         },
-        unit_price: {
+        price: {
             type: DataTypes.INTEGER
         },
         quantity: {
@@ -26,6 +20,9 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER
         },
         status: {
+            type: DataTypes.INTEGER
+        },
+        user_id: {
             type: DataTypes.INTEGER
         },
         order_id: {
@@ -43,11 +40,6 @@ module.exports = (sequelize, DataTypes) => {
             foreignKey: 'user_id'
         });
 
-        Item.belongsTo(models.Product, {
-            as: 'product',
-            foreignKey: 'product_id'
-        });
-        
         Item.belongsTo(models.Order, {
             as: 'order',
             foreignKey: 'order_id'

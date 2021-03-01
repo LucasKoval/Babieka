@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/head', {title: 'Carrito'}) %>   <!--// partial Head //-->
+    <body>
+        
+        <%- include('../partials/header') %>   <!--// partial Header //-->
+
+        <main class="cart-mainbox">
+
+            <h1>Mis compras</h1>
+
+            <% if (purchasedItems && purchasedItems!="") { %>
+                <div>   <!--// Box grande //-->
+                    
+                    <section>   <!--// Box intermedio //-->
+                        <% for (product of purchasedItems) { %>
+                            <div class="cart-boxartic col-main">   
+                                <article class="new-artic col-artic">
+                                    <img src="/img/products/<%= product.image %>" alt="Imagen del artículo" class="cart-img">
+                                    <div class="new-subartic">
+                                        <p><%= product.name %></p>
+                                        <br>
+                                        <p><%= product.description %></p>
+                                    </div>
+                                </article>
+                                
+                                <div class="cart-boxsubartic col-precio">
+                                    <div>   <!--// Precio //-->
+                                        <p>$<%= product.subtotal %></p>
+                                    </div>
+                                </div>
+                            </div>
+                        <% } %>                 
+                    </section>
+                </div>
+            <% } else { %>
+                <h2> No realizaste ninguna compra aún </h2> 
+            <% } %>
+        </main>
+        
+        <%- include('../partials/footer') %>   <!--// partial Footer //-->
+        <script src="/js/scripts.js" type="text/javascript"></script> 
+    </body>
+</html>
