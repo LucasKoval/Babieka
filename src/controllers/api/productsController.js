@@ -33,10 +33,14 @@ const productsController = {
         const sale = products.filter((product) => {
             return product.model.category.name == 'Sale';
         });
+        const totalAmount = AllProducts.rows.reduce((acum, current) => {
+            return acum += Number(current.price)
+        }, 0);
         res.json({
             meta: {
                 status: 'success',
                 count: AllProducts.count,
+                totalAmount: totalAmount,
                 count_Category_Casual: casual.length,
                 count_Category_Fiesta: fiesta.length,
                 count_Category_Sale: sale.length

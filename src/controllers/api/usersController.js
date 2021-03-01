@@ -18,10 +18,30 @@ const usersController = {
                 user
             )
         });
+        const manager = users.filter((user) => {
+            return user.role.name == 'manager';
+        });
+        const admin = users.filter((user) => {
+            return user.role.name == 'admin';
+        });
+        const developer = users.filter((user) => {
+            return user.role.name == 'developer';
+        });
+        const tester = users.filter((user) => {
+            return user.role.name == 'tester';
+        });
+        const client = users.filter((user) => {
+            return user.role.name == 'client';
+        });
 		res.json({
 			meta: {
                 status: 'success',
-                count: allUsers.count
+                count: allUsers.count,
+                count_Role_Manager: manager.length,
+                count_Role_Admin: admin.length,
+                count_Role_Developer: developer.length,
+                count_Role_Tester: tester.length,
+                count_Role_Client: client.length
             },
             data: {
                 users
@@ -34,7 +54,8 @@ const usersController = {
     paginatedList: async (req, res) => {
         const page = Number(req.query.page) || 1;
         const allUsers = await db.User.findAndCountAll({
-            attributes: ['id', 'first_name', 'last_name', 'email', 'image', 'role_id'],
+            attributes: ['id', 'first_name', 'last_name', 'email', 'image'],
+            include: ['role'],
             limit: 4,
             offset: 4 * (page - 1)
         });
@@ -46,15 +67,30 @@ const usersController = {
                 user
             )
         });
+        const manager = users.filter((user) => {
+            return user.role.name == 'manager';
+        });
+        const admin = users.filter((user) => {
+            return user.role.name == 'admin';
+        });
+        const developer = users.filter((user) => {
+            return user.role.name == 'developer';
+        });
+        const tester = users.filter((user) => {
+            return user.role.name == 'tester';
+        });
+        const client = users.filter((user) => {
+            return user.role.name == 'client';
+        });
 		res.json({
 			meta: {
                 status: 'success',
                 count: allUsers.count,
-                /* count_Role_Manager: role_id.length,
-                count_Role_Admin: x.length,
-                count_Role_Programmer: x.length,
-                count_Role_Tester: x.length,
-                count_Role_Client: x.length, */
+                count_Role_Manager: manager.length,
+                count_Role_Admin: admin.length,
+                count_Role_Developer: developer.length,
+                count_Role_Tester: tester.length,
+                count_Role_Client: client.length,
                 totalPages: totalPages,
                 previousPage: page > 1 ? `http://localhost:3030/api/users/list?page=${page - 1}` : null,
                 currentPage: `http://localhost:3030/api/users/list?page=${page}`,
