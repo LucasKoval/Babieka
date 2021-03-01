@@ -8,97 +8,103 @@
         <main class="cart-mainbox">
 
             <h1>CARRITO</h1>
-            <div>   <!--// Box grande //-->
-                
-                <section class="cart-boxtitle col-main">    <!--// Box intermedio //-->
-                
-                    <div class="col-artic centrar">
-                        <p>Articulo</p>
-                    </div>
-                    <div class="cart-boxsubtitle col-precio">
-                        <p>Precio u.</p>
-                        <p>Cantidad</p>
-                        <p>Precio</p>
-                    </div>
 
-                </section>
-                
-                <section>   <!--// Box intermedio //-->
-                    <% let precioFinal = 0; %>
-                    <% let i=1; %>
-                    <% for (product of cartProducts) { %>
-                        <div class="cart-boxartic col-main">   
-                            <article class="new-artic col-artic">
-                                <img src="/img/products/<%= product.image %>" alt="Imagen del artículo" class="cart-img">
-                                <div class="new-subartic">
-                                    <p><%= product.name %></p>
-                                    <br>
-                                    <p><%= product.description %></p>
-                                </div>
-                            </article>
-                            
-                            <div class="cart-boxsubartic col-precio">
-                                <div>   <!--// Precio unitario //-->
-                                    <p>$<%= product.price %></p>
-                                </div>
-                                <div>   <!--// Botones de cantidad (agregar su propio archivos Js)//-->
-                                    <script>
-                                        a=1;
-                                    </script>   
-                                    <form action="" method="">
-                                        <a href="javascript:a--; updateA(a);"><i class="fas fa-minus icon-bord"></i></a> 
-                                        <input type="text" id="a" size="1" class="centrar"/>
-                                        <a href="javascript:a++; updateA(a);"><i class="fas fa-plus icon-bord"></i></a>
-                                    </form>
-                                    <script>
-                                        input_a = document.getElementById('a');
-                                        function updateA(){
-                                            input_a.value=a;
-                                        }
-                                        updateA();
-                                    </script>
-                                </div>
-                                <div>   <!--// Precio //-->
-                                    <p>$<%= product.price %></p>
+            <% if (cartItems && cartItems!="") { %>
+                <div>   <!--// Box grande //-->
+                    
+                    <section class="cart-boxtitle col-main">    <!--// Box intermedio //-->
+                    
+                        <div class="col-artic centrar">
+                            <p>Articulo</p>
+                        </div>
+                        <div class="cart-boxsubtitle col-precio">
+                            <p>Precio u.</p>
+                            <p>Cantidad</p>
+                            <p>Precio</p>
+                        </div>
+
+                    </section>
+                    
+                    <section>   <!--// Box intermedio //-->
+                        <% let precioFinal = 0; %>
+                        <% let i=1; %>
+                        <% for (product of cartItems) { %>
+                            <div class="cart-boxartic col-main">   
+                                <article class="new-artic col-artic">
+                                    <img src="/img/products/<%= product.image %>" alt="Imagen del artículo" class="cart-img">
+                                    <div class="new-subartic">
+                                        <p><%= product.name %></p>
+                                        <br>
+                                        <p><%= product.description %></p>
+                                    </div>
+                                </article>
+                                
+                                <div class="cart-boxsubartic col-precio">
+                                    <div>   <!--// Precio unitario //-->
+                                        <p>$<%= product.price %></p>
+                                    </div>
+                                    <div>   <!--// Botones de cantidad (agregar su propio archivos Js)//-->
+                                        <span>
+                                            <!--//<span id='decrease' class="quantityButton" onclick="decrease()"><i class="far fa-minus-square"></i></span>//-->
+                                            <input type='text' id="quantity" class="quantityValue" name="productsQuantity" value="<%= product.quantity %> ">
+                                            <!--//<span id='increase' class="quantityButton" onclick="increase()"><i class="far fa-plus-square"></i></span>//-->
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <form action="/carrito/<%=product.id%>/eliminar" method="POST"> 
+                                            <button type="submit" class="marg-nonside-10"><i class="fas fa-trash-alt"></i></button> 
+                                        </form>
+                                    </div>
+                                    <div>   <!--// Precio //-->
+                                        <p>$<%= product.subtotal %></p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <% precioFinal = i * product.price; %>
-                        <% i++; %>
-                    <% } %>
+                            <% precioFinal = precioFinal + product.subtotal; %>
+                            <% } %>                 
+                        </section>
 
-                </section>
-
-                <section class="cart-boxbuy col-main padd-20">   <!--// Box intermedio //-->
-                    <div class="cart-formbox">
-                        <div class="flexi">
-                            <p>Envío</p>
-                            <p>$600</p>
-                        </div>
-                        <div class="flexi-button">
-                            <form action="" method="POST">     
-                                <div><input type="text" id="code" name="code" placeholder="Código de descuento" class="cart-form"><input type="submit" value="Aplicar" class="cart-button"></div>
-                            </form>
-                        </div>
-                        <div class="flexi">
-                            <p>TOTAL</p>
-                            <p>$ <%= precioFinal+600 %></p>
-                        </div>
-                        <div class="flexi-button">
-                            <div>
-                                <form action="" method="POST">
-                                    <div><input type="submit" value="Finalizar compra" class="cart-button"></div>
+                    <section class="cart-boxbuy col-main padd-20">   <!--// Box intermedio //-->
+                        <div class="cart-formbox">
+                            <div class="flexi">
+                                <p>Envío</p>
+                                <% if ( precioFinal > 3000) { %>
+                                    <p>Envío gratis!</p>
+                                <% } else { %>  
+                                    <p>$600</p>
+                                <% } %> 
+                            </div>
+                            <div class="flexi-button">
+                                <form action="" method="POST">     
+                                    <div><input type="text" id="code" name="code" placeholder="Código de descuento" class="cart-form"><input type="submit" value="Aplicar" class="cart-button"></div>
                                 </form>
                             </div>
-                        </div>
-                    </div> 
-                </section>
-            
-            </div>
-
+                            <div class="flexi">
+                                <p>TOTAL</p>
+                                <% if ( precioFinal > 3000) { %>
+                                    <p> <%= precioFinal %> </p>
+                                <% } else { %>  
+                                    <p>$ <%= precioFinal+600 %></p>
+                                <% } %>
+                                
+                            </div>
+                            <div class="flexi-button">
+                                <div>
+                                    <form action="/carrito/finalizar-compra" method="POST">
+                                        <div><input type="submit" value="Finalizar compra" class="cart-button"></div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div> 
+                    </section>
+                
+                </div>
+            <% } else { %>
+                <h2> No hay productos en el carrito </h2> 
+            <% } %>
         </main>
         
         <%- include('../partials/footer') %>   <!--// partial Footer //-->
-        
+        <script src="/js/scripts.js" type="text/javascript"></script> 
     </body>
 </html>

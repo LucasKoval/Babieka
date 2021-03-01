@@ -10,8 +10,9 @@ const cors = require('cors');
 
 
 //----------* MIDDLEWARES REQUIRE *----------//
-const setAutoLog = require('./middlewares/setAutoLog');
-const setLocals = require('./middlewares/setLocals');
+const setAutoLog = require('./middlewares/setAutoLog');   //-> Si se marca recordar, pone en session al usuario de la cookie
+const setLocals = require('./middlewares/setLocals');     //-> Guarda en locals la info del usuario en session
+const authMW = require('./middlewares/authMW');          //-> Controla que el usuario esté logueado
 
 
 //----------* EXPRESS() *----------//
@@ -49,7 +50,7 @@ const apiProductsRouter = require('./routes/api/products');
 app.use('/', mainRouter);                              //-> Home y rutas globales
 app.use('/usuario', usersRouter);                      //-> Rutas de Usuarios
 app.use('/producto', productsRouter);                  //-> Rutas de Productos
-app.use('/carrito', cartRouter);                       //-> Rutas del Carrito
+app.use('/carrito',authMW, cartRouter);                       //-> Rutas del Carrito
 app.use('/api/users', cors(), apiUsersRouter);         //-> Rutas API de Usuarios
 app.use('/api/products', cors(), apiProductsRouter);   //-> Rutas API de Productos
 
