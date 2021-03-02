@@ -14,7 +14,8 @@ module.exports = async (req, res, next) => {
     return next();
 }
 
-/* module.exports = (req, res, next) => {
+/* Alternative code
+module.exports = (req, res, next) => {
     if (req.cookies.user_Id && !req.session.user) {
         db.User.findOne({
             where: {
@@ -28,4 +29,5 @@ module.exports = async (req, res, next) => {
         .catch(e => console.log(e));
     }
     return next();
-} */
+} 
+*/
