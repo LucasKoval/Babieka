@@ -8,9 +8,12 @@ module.exports = async (req, res, next) => {
         const users = await db.User.findAll({
             include: ['role']
         });
+
         const userFound = users.find(user => user.id == req.cookies.user_Id);
+
         req.session.user = userFound;
     }
+
     return next();
 }
 
@@ -28,6 +31,7 @@ module.exports = (req, res, next) => {
         })
         .catch(e => console.log(e));
     }
+    
     return next();
 } 
 */

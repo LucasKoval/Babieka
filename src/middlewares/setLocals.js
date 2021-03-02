@@ -4,5 +4,6 @@ module.exports = (req, res, next) => {
     if (req.session.user) {
         res.locals.loggedUser = req.session.user;
     }
+    
     return next();
 }

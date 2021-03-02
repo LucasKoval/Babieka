@@ -11,13 +11,11 @@ window.addEventListener('load', function() {
         const RegExpPass = /^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/; // Exprecion regular
 
         //Validacion de viejo contraseña
-        
         if (oldPassword.value == "") {
             errors.push('Debe ingresar su contraseña actual');
         }
 
         //Validacion de la nueva contraseña 
-        
         if (newPassword.value == "") {
             errors.push('Debe ingresar una nueva constraseña.');
             } else if(newPassword.value == oldPassword.value){
@@ -29,7 +27,6 @@ window.addEventListener('load', function() {
                             }   
 
         //Validacion de la repeticion de la nueva contraseña
-        
         if (repeatNewPassword.value == "") {
             errors.push('Escriba la nueva contraseña nuevamente');
         }
@@ -37,11 +34,12 @@ window.addEventListener('load', function() {
         if(repeatNewPassword.value != newPassword.value){
             errors.push('La constraseña ingresada deben coincidir con la nueva contraseña')
         }
+
         if (errors.length > 0) {
             errors.forEach(error => {
                 errorsElement.innerHTML += `<li><i class="fas fa-exclamation-circle"></i> ${error}</li>`
             })
             event.preventDefault()
         }
-    })
-})
+    });
+});

@@ -1,5 +1,4 @@
 window.addEventListener('load', function() {
-
     //-> Variables Globales
     const errorsElement = document.querySelector("#frontErrors");
     const button = document.querySelector("#ueButton");
@@ -40,9 +39,7 @@ window.addEventListener('load', function() {
             errors.push('La dirección de e-mail no es válida.')
         } 
 
-
         //Validación rol si usuario es admin?
-
         //Validación imágen
         const image = document.querySelector("#image").value;
         const imageExt = image.split('.')[1];
@@ -61,7 +58,6 @@ window.addEventListener('load', function() {
             errors.push('Debe ingresar su contraseña')
         }
 
-
         //Se comprueba si hay errores en la carga del formulario, se muestran si los hay.
         if (errors.length > 0) {
             errors.forEach(error => {
@@ -69,5 +65,5 @@ window.addEventListener('load', function() {
             })
             event.preventDefault()
         }
-    })
-})
+    });
+});
