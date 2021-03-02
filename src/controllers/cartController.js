@@ -1,30 +1,34 @@
 //----------* REQUIRE'S *----------//
-const helper = require('../helpers/helper');
 const db = require('../db/models');
-
-
-
-//----------* VARIABLE'S *----------//
-const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 
 //----------* MAIN CONTROLLER *----------//
 const cartController = {
-    // Agrega un articulo al Carrito.
+    // Renderiza la vista Carrito
+    cart: async (req, res) => {     
+        // Busca los productos correspondientes al usuario en sesión 
+        const cartItems =  await db.Item.findAll({where:{
+            user_id: req.session.user.id,
+            status: 0
+        }})
+
+		res.render('products/productCart', { cartItems }); 
+    },
     
+    // Agrega un Producto al Carrito
     addItem:  async (req, res) => {
-        //-- Buscar el articulo a cargar en el carrito por su "id" y guardarlo.
+        // Buscar el articulo a cargar en el carrito por su "id" y guardarlo
         const productToAdd = await db.Product.findByPk(req.params.id, {
             include: { 
                 all: true, 
-                nested: true}
-            });
-    
+                nested: true
+            }
+        });
        
         let quantity = req.body.productsQuantity;
        
-        //-- Crear un nuevo item con el "id" del usuario en session y los datos del producto a cargar.
-        //-- Completar los campos "status" = 0 y "order_id" = null.
+        // Crear un nuevo item con el "id" del usuario en session y los datos del producto a cargar
+        // Completar los campos "status" = 0 y "order_id" = null
         await db.Item.create({
             name: productToAdd.model.name,
             description: productToAdd.model.description,
@@ -37,37 +41,29 @@ const cartController = {
             order_id: null
         });
 
-        //-- Redireccionar a Coleccion o Carrito
+        // Redirecciona Carrito
         return res.redirect('/carrito');
     },
 
-    // Renderiza la vista Carrito
-    cart: async (req, res) => {     
-        //-- Busca los productos correspondientes al usuario en sesión 
-        const cartItems =  await db.Item.findAll({where:{
-            user_id: req.session.user.id,
-            status: 0
-        }})
-
-		res.render('products/productCart', {cartItems}); 
-    },
-
-    // Elimina un item del carrito
+    // Elimina un Producto del Carrito
     removeItem: async (req, res) => {
         await db.Item.destroy({
             where: {
                 id: req.params.id
             }
-        })
-        return res.redirect('/carrito')
+        });
+
+        return res.redirect('/carrito');
     },
 
-    // Procesa la commpra del artículo
+    // Procesa la Compra del Producto
     buyItem: async (req,res) => {
-        const itemsToBuy =  await db.Item.findAll({where:{
-            user_id: req.session.user.id,
-            status: 0
-        }})
+        const itemsToBuy =  await db.Item.findAll({
+            where:{
+                user_id: req.session.user.id,
+                status: 0
+            }
+        });
 
         let totalPrice = 0;
 
@@ -78,9 +74,9 @@ const cartController = {
         let newOrder = await db.Order.create({
             user_id: req.session.user.id,
             total: totalPrice
-        })
+        });
 
-        let orderId = newOrder.id
+        let orderId = newOrder.id;
 
         await db.Item.update({
             status: 1,
@@ -89,23 +85,27 @@ const cartController = {
         {where: {
             status: 0,
             user_id: req.session.user.id
-        }})
-        return res.redirect('/carrito/compra-finalizada')
+            }
+        });
+
+        return res.redirect('/carrito/compra-finalizada');
     },
 
-    // Renderiza la vista de la compra finalizada
+    // Renderiza la vista Compra Finalizada
     purchaseCompleted: (req,res) => {
-        return res.render('products/purchaseCompleted')
+        return res.render('products/purchaseCompleted');
     },
 
+    // Renderiza la vista Mis Compras
     myPurchases: async (req,res) => {
-        purchasedItems= await db.Item.findAll({
+        purchasedItems = await db.Item.findAll({
             where: {
                 status: 1,
                 user_id: req.session.user.id
             }
-        })
-        return res.render('products/myPurchases' , {purchasedItems})
+        });
+
+        return res.render('products/myPurchases', { purchasedItems });
     }
 };
 

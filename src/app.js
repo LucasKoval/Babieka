@@ -8,12 +8,10 @@ const path = require('path');
 const methodOverride =  require('method-override');
 const cors = require('cors');
 
-
 //----------* MIDDLEWARES REQUIRE *----------//
-const setAutoLog = require('./middlewares/setAutoLog');   //-> Si se marca recordar, pone en session al usuario de la cookie
+const setAutoLog = require('./middlewares/setAutoLog');   //-> Si se marca Recuerdame, pone en session al usuario de la cookie
 const setLocals = require('./middlewares/setLocals');     //-> Guarda en locals la info del usuario en session
-const authMW = require('./middlewares/authMW');          //-> Controla que el usuario esté logueado
-
+const authMW = require('./middlewares/authMW');           //-> Controla que el usuario esté logueado
 
 //----------* EXPRESS() *----------//
 const app = express();
@@ -43,16 +41,14 @@ const mainRouter = require('./routes/main');
 const usersRouter = require('./routes/users');
 const productsRouter = require('./routes/products');
 const cartRouter = require('./routes/cart');
-const apiUsersRouter = require('./routes/api/users');
-const apiProductsRouter = require('./routes/api/products');
+const apiRouter = require('./routes/api/api');
 
 //----------* ROUTES USE() *----------//
-app.use('/', mainRouter);                              //-> Home y rutas globales
-app.use('/usuario', usersRouter);                      //-> Rutas de Usuarios
-app.use('/producto', productsRouter);                  //-> Rutas de Productos
-app.use('/carrito',authMW, cartRouter);                       //-> Rutas del Carrito
-app.use('/api/users', cors(), apiUsersRouter);         //-> Rutas API de Usuarios
-app.use('/api/products', cors(), apiProductsRouter);   //-> Rutas API de Productos
+app.use('/', mainRouter);                 //-> Home y rutas globales
+app.use('/usuario', usersRouter);         //-> Rutas de Usuarios
+app.use('/producto', productsRouter);     //-> Rutas de Productos
+app.use('/carrito',authMW, cartRouter);   //-> Rutas del Carrito
+app.use('/api', cors(), apiRouter);       //-> Rutas de APIs
 
 
 //----------* CATCH 404 *----------//
@@ -60,11 +56,11 @@ app.use((req, res, next) => next(createError(404)));
 
 //----------* ERROR HANDLER *----------//
 app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
+  // Set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.path = req.path;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-  // render the error page
+  // Render the error page
   res.status(err.status || 500);
   res.render('error');
 });
