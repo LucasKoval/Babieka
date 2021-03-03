@@ -1,10 +1,10 @@
 window.addEventListener('load', function() {
-    //-> Variables Globales
+    // Variables Globales
     const showErrors = document.querySelector("#errors");
     const button = document.querySelector("#button");
     
     button.addEventListener('click', function(event) {
-        //-> Variables Locales 
+        // Variables Locales 
         const email = document.querySelector("#email").value;
         const password = document.querySelector("#password").value;
         const msgEmail = document.querySelector(".err-email")
@@ -13,10 +13,10 @@ window.addEventListener('load', function() {
         const errorLog = [];
         showErrors.innerHTML = '';
 
-        //-> Expresiones Regulares
+        // Expresiones Regulares
         const RegExpEmail = /\S+@\S+\.\S+/;   //E-mails
 
-        //-> Validación del E-mail
+        // Validación del E-mail
         if (email == "") {
             errors.email = {
                 msg: '<i class="fas fa-exclamation-circle"></i> Debe ingresar su dirección de e-mail.'
@@ -33,7 +33,7 @@ window.addEventListener('load', function() {
                 msgEmail.innerHTML = ''
             }
 
-        //-> Validación de la Contraseña
+        // Validación de la Contraseña
         if (password == "") {
             errors.password = {
                 msg: '<i class="fas fa-exclamation-circle"></i> Debe ingresar una constraseña.'
@@ -50,9 +50,9 @@ window.addEventListener('load', function() {
                 msgPass.innerHTML = ''
             }
 
-        //-> Comprobación y envio de Errores
+        // Comprobación y envio de Errores
         if (errorLog.length > 0) {
             event.preventDefault()
         }
-    })
-})
+    });
+});

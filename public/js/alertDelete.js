@@ -29,17 +29,17 @@ window.addEventListener("load",function(){
         modalBlur(modal)
         modalBlock(alert)
         displayFlex(modal)
-    })
+    });
 
     button.addEventListener("click",function(){
         displayNone(alert)
         modalNone(modal)
-    })
+    });
 
     window.addEventListener("keydown",function(e){
         if(e.charCode == 0){
             displayNone(alert)
             modalNone(modal)
         }
-    })
+    });
 })

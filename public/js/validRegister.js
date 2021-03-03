@@ -1,10 +1,10 @@
 window.addEventListener('load', function() {
-    //-> Variables Globales
+    // Variables Globales
     const showErrors = document.querySelector("#errors")
     const button = document.querySelector("#button")
 
     button.addEventListener('click', function(event) {
-        //-> Variables Locales 
+        // Variables Locales 
         const firstName = document.querySelector("#first_name").value;
         const lastName = document.querySelector("#last_name").value;
         const email = document.querySelector("#email").value;
@@ -22,11 +22,11 @@ window.addEventListener('load', function() {
         const errorLog = [];
         showErrors.innerHTML = '';
         
-        //-> Expresiones Regulares
+        // Expresiones Regulares
         const RegExpPass = /^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/;   //Passwords
         const RegExpEmail = /\S+@\S+\.\S+/;   //E-mails
 
-        //-> Validación del Nombre
+        // Validación del Nombre
         if (firstName == "") {
             errors.firstName = {
                 msg: '<i class="fas fa-exclamation-circle"></i> Debe ingresar su nombre.'
@@ -43,8 +43,7 @@ window.addEventListener('load', function() {
             msgFirstName.innerHTML = ''
         }
 
-
-        //-> Validación del Apellido
+        // Validación del Apellido
         if (lastName == "") {
             errors.lastName = {
                 msg: '<i class="fas fa-exclamation-circle"></i> Debe ingresar su apellido.'
@@ -61,8 +60,7 @@ window.addEventListener('load', function() {
             msgLastName.innerHTML = ''
         }
 
-
-        //-> Validación del E-mail
+        // Validación del E-mail
         if (email == "") {
             errors.email = {
                 msg: '<i class="fas fa-exclamation-circle"></i> Debe ingresar su dirección de e-mail.'
@@ -79,8 +77,7 @@ window.addEventListener('load', function() {
             msgEmail.innerHTML = ''
         }
         
-      
-        //Consumo de api para chequear si el mail ya se encuentra registrado
+        // Consumo de api para chequear si el mail ya se encuentra registrado
         fetch("http://localhost:3030/api/users/validUsers")
         .then(function(respuesta){
             return respuesta.json();
@@ -97,8 +94,7 @@ window.addEventListener('load', function() {
             });
         })
         
-
-        //-> Validación de la Contraseña
+        // Validación de la Contraseña
         if (password == "") {
             errors.password = {
                 msg: '<i class="fas fa-exclamation-circle"></i> Debe ingresar una constraseña.'
@@ -127,8 +123,7 @@ window.addEventListener('load', function() {
                         msgPass.innerHTML = ''
                     }
 
-
-        //-> Validación de la Imagen
+        // Validación de la Imagen
         if (imageExt == undefined) {
             errors.image = {
                 msg: '<i class="fas fa-exclamation-circle"></i> Debe cargar una imagen con uno de los siguientes formatos: JPG, JPEG, PNG, GIF.'
@@ -145,10 +140,9 @@ window.addEventListener('load', function() {
                 msgImage.innerHTML = ''
             }
 
-
-        //-> Comprobación y envio de Errores
+        // Comprobación y envio de Errores
         if (errorLog.length > 0) {
             event.preventDefault()
         }         
-    })
-})
+    });
+});

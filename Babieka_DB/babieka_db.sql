@@ -276,8 +276,13 @@ VALUES (0), (10), (15), (20), (25), (30), (40), (50), (60), (70), (75);
 INSERT INTO users (role_id, first_name, last_name, email, password, image)
 VALUES 
     (2, 'Julieta', 'Retamoza', 'juli@email.com', '$2a$05$7x4o7IpX04bwr.1aSiKNyOzWakhY1sSUtrzvbacOUO5A0CmEST9c2', 'image-1608491509126.png'),
+<<<<<<< HEAD
 	(2, 'Lucas', 'Koval', 'lucas@email.com', '$2a$05$7/CTO0L3YOSHrN.JaDCxA.KW6H9sHphdOEfZSvWUx7FXF0uXKczSi', 'image-1608491464279.png'),
 	(2, 'Federico', 'Gomez', 'fede@email.com', '$2a$05$rdZV/vA.drJsLuS2zbwIeuBytj3/FXNcPPG8Risrdq0z6DRwYaEtG', 'image-1608491558165.png'),
+=======
+	(2, 'Lucas', 'Koval', 'lucas@email.com', '$2a$05$8plHp1PWbVEjTU5Ax5biHedvSd.rtuJ114.9vfHr0/3DOnTObECsu', 'image-1608491464279.png'),
+	(2, 'Federico', 'Gomez', 'fede@email.com', '$2a$05$1rX5hP2rJSFpWJ7JVp8M/uoXGP6Aqmnl3Vv0K8rHSdfdNDmY8h/c.', 'image-1608491558165.png'),
+>>>>>>> df260f1146f93d006f3eb4722280c93c2fe5f515
     (2, 'Profe', 'DH', 'profe@email.com', '$2a$05$LsqDf8A0LmjP3mdyf7vRIu/rIqkj8E/74uy8OcakxcIN.bJ2FIX1O', 'image-1608694620529.png'),
 	(5, 'Stephen', 'King', 'king@email.com', '$2a$05$I6V2.iab2ci7sCq8ywAPEePa3OvgcgVKPOMsYMT0zsrJLvJXtuEkC', 'image-1608491725297.jpg'),
 	(5, 'Maria Elena', 'Fuseneco', 'mariaelena@email.com', '$2a$05$9JpBKD5dU4sKBHocKoFzReBPVLCjz53Ij/S1B4veP1lEc5RtfzVkS', 'image-1608637331149.jpg'),
