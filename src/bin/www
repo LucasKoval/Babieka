@@ -5,16 +5,14 @@
  */
 
 const app = require('../app');
-const debug = require('debug')('nuevobabieka:server');
+const debug = require('debug')('baseapphtml:server');
 const http = require('http');
 
 /**
  * Get port from environment and store in Express.
  */
 
-/* app.listen(process.env.PORT || 3030, () => {
-  console.log('Server running on: http://localhost:3030/');
-}) */
+
 const port = normalizePort(process.env.PORT || '3030');
 app.set('port', port);
 
