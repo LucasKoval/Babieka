@@ -277,12 +277,23 @@ INSERT INTO users (role_id, first_name, last_name, email, password, image)
 VALUES 
     (2, 'Julieta', 'Retamoza', 'juli@email.com', '$2a$05$7x4o7IpX04bwr.1aSiKNyOzWakhY1sSUtrzvbacOUO5A0CmEST9c2', 'image-1608491509126.png'),
 	(2, 'Lucas', 'Koval', 'lucas@email.com', '$2a$05$7/CTO0L3YOSHrN.JaDCxA.KW6H9sHphdOEfZSvWUx7FXF0uXKczSi', 'image-1608491464279.png'),
-	(2, 'Federico', 'Gomez', 'fede@email.com', '$2a$05$1rX5hP2rJSFpWJ7JVp8M/uoXGP6Aqmnl3Vv0K8rHSdfdNDmY8h/c.', 'image-1608491558165.png'),
+	(2, 'Federico', 'Gomez', 'fede@email.com', '$2a$05$rdZV/vA.drJsLuS2zbwIeuBytj3/FXNcPPG8Risrdq0z6DRwYaEtG', 'image-1608491558165.png'),
     (2, 'Profe', 'DH', 'profe@email.com', '$2a$05$LsqDf8A0LmjP3mdyf7vRIu/rIqkj8E/74uy8OcakxcIN.bJ2FIX1O', 'image-1608694620529.png'),
-	(5, 'Stephen', 'King', 'king@email.com', '$2a$05$doqw8BLnk3z2A.nQ7H9D.e9XBjmNvbR26tYfEVUWgeHu6560Az4fS', 'image-1608491725297.jpg'),
-	(5, 'Maria Elena', 'Fuseneco', 'mariaelena@email.com', '$2a$05$DCdZkDjFXScL9P/ip8UD0uY5M5xNFX0BJgwpRDIRFgETMBLNeoMOS', 'image-1608637331149.jpg'),
-    (5, 'Cosme', 'Fulanito', 'cosme@email.com', '$2a$05$LOGlgX9hEcSqyvGa1ZFmgOVrEqf00MAePsKA.tvKTO8wpyYZjI4Ce', 'image-1608491620495.jpg'),
-	(5, 'Cookie', 'Maliciosa', 'cookie@email.com', '$2a$05$gj.zapK2wpXreuQwFCiCieqsTcVt90ge1.R3.NomwwOprEsYbpoWC', 'image-1608765985166.jpg');
+	(5, 'Stephen', 'King', 'king@email.com', '$2a$05$I6V2.iab2ci7sCq8ywAPEePa3OvgcgVKPOMsYMT0zsrJLvJXtuEkC', 'image-1608491725297.jpg'),
+	(5, 'Maria Elena', 'Fuseneco', 'mariaelena@email.com', '$2a$05$9JpBKD5dU4sKBHocKoFzReBPVLCjz53Ij/S1B4veP1lEc5RtfzVkS', 'image-1608637331149.jpg'),
+    (5, 'Cosme', 'Fulanito', 'cosme@email.com', '$2a$05$T5qxRVDTwYCTVUVpePCRKOXFUuZpRirc7yGvk5uzpGBsuwawWun8y', 'image-1608491620495.jpg'),
+	(5, 'Cookie', 'Maliciosa', 'cookie@email.com', '$2a$05$dvQoI3sk0B75DWWNVkSiIOX2X688BKt7kI49aofZdEc3N.qVQ4xKm', 'image-1608765985166.jpg'),
+    (1, 'Fernado', 'Silva', 'ferchu@email.com', '$2a$05$PCxGK2dijvmSOKb1fd1WIujiel7xCnc2wcPQqzr/HbVc8YVklf3gW', 'image-1608491509126.png'),
+    (4, 'Gonzalo', 'Zevallos', 'gonza@email.com', '$2a$05$enpH.Xz/ETwhNI0PPqrH6uKj2qBoho0sxLj9pdHcWnwszDhBq8EFS', 'image-1608491509126.png'),
+    (4, 'Pablo', 'Bacchetta', 'pol@email.com', '$2a$05$aiwYHPkKe9izBS2PvZnDx.F9OzukZEYs8wx6AojGjQLkW4E11eOfG', 'image-1608491509126.png'),
+    (3, 'Manuel', 'Perez', 'manuelito@email.com', '$2a$05$3zE/DY5gUi0ZO0Mujx7VPeiRaykpXAomA.CF20yHAXdI2WHlpql8C', 'image-1608491509126.png'),
+    (5, 'Marta', 'Sanchez', 'marti@email.com', '$2a$05$MWG3dBma9NqZC0MNMvxnPONG2f/6wx6SPHdvH0petwDBQKtOmO81i', 'image-1608491725297.jpg'),
+    (5, 'Laura', 'Pascal', 'lau@email.com', '$2a$05$T3dLCbfobiCtKEdA6hBCQ.Pm.2rpUTu2weTPAP7GmXEYXCm8orniy', 'image-1608491725297.jpg'),
+    (5, 'Carlos', 'Gonzales', 'carlox@email.com', '$2a$05$Fu29ME1OuMfOAptnid0DuOfx/113Aq.628Ml.GCpyjBv3nYasQxWa', 'image-1608491725297.jpg'),
+    (5, 'Ramon', 'Sevilla', 'rambo@email.com', '$2a$05$9zpq.3Rd6XqG5mfVzmo13.e7cxcYW7nUzGaXbq2h/V11zjnWAdrNm', 'image-1608491725297.jpg'),
+    (5, 'Mario', 'Luna', 'marianito@email.com', '$2a$05$dBbQG2Ti0jLmgzUiDlFTNerjhT8JAof.u3Byh2LNeNxIP8C9myfrm', 'image-1608491725297.jpg'),
+    (5, 'Gabriela', 'Sastre', 'gabi@email.com', '$2a$05$5uJqccyNv2/zMsFeRl7HfeFSoDjMRixR44c138PUsBJ4NYVOAmvMW', 'image-1608491725297.jpg');
+    
 
 -- [TABLA PRODUCTOS]
 INSERT INTO products (model_id, size_id, discount_id, stock, price)
