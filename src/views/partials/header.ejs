@@ -57,7 +57,8 @@
                         <ul>
                             <% if (loggedUser) { %>
                                 <li class="cursor-arrow"><a href="" class="font-roboto font-size-13">Hola <%= loggedUser.first_name %>!</a></li> 
-                                <li><a href="/usuario/perfil" class="linea-izq">Perfil</a></li>    
+                                <li><a href="/usuario/perfil" class="linea-izq">Perfil</a></li>
+                                <li><a href="/carrito/mis-compras" class="linea-izq">Mis Compras</a></li>    
                                 <li><a href="/usuario/logout" class="linea-izq">Cerrar sesión</a></li>
                             <% } else {%>
                                 <li><a href="/usuario/login" class="linea-izq">Ingresá</a></li>    
