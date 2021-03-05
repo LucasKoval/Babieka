@@ -20,8 +20,8 @@ const mainController = {
             }],
             order: [
                 ['id']
-            ],
-            group: ['model.id']
+            ]/* ,
+            group: ['model.id'] */
         });
 
         const productFound = products.filter(product => {
