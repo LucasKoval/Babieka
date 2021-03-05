@@ -275,15 +275,19 @@ VALUES (0), (10), (15), (20), (25), (30), (40), (50), (60), (70), (75);
 -- [TABLA USUARIOS]
 INSERT INTO users (role_id, first_name, last_name, email, password, image)
 VALUES 
-    (2, 'Julieta', 'Retamoza', 'juli@email.com', '$2a$05$7x4o7IpX04bwr.1aSiKNyOzWakhY1sSUtrzvbacOUO5A0CmEST9c2', 'image-1608491509126.png'),
-	(2, 'Lucas', 'Koval', 'lucas@email.com', '$2a$05$8plHp1PWbVEjTU5Ax5biHedvSd.rtuJ114.9vfHr0/3DOnTObECsu', 'image-1608491464279.png'),
-	(2, 'Federico', 'Gomez', 'fede@email.com', '$2a$05$1rX5hP2rJSFpWJ7JVp8M/uoXGP6Aqmnl3Vv0K8rHSdfdNDmY8h/c.', 'image-1608491558165.png'),
-    (2, 'Profe', 'DH', 'profe@email.com', '$2a$05$LsqDf8A0LmjP3mdyf7vRIu/rIqkj8E/74uy8OcakxcIN.bJ2FIX1O', 'image-1608694620529.png'),
-	(5, 'Stephen', 'King', 'king@email.com', '$2a$05$doqw8BLnk3z2A.nQ7H9D.e9XBjmNvbR26tYfEVUWgeHu6560Az4fS', 'image-1608491725297.jpg'),
-	(5, 'Maria Elena', 'Fuseneco', 'mariaelena@email.com', '$2a$05$DCdZkDjFXScL9P/ip8UD0uY5M5xNFX0BJgwpRDIRFgETMBLNeoMOS', 'image-1608637331149.jpg'),
-    (5, 'Cosme', 'Fulanito', 'cosme@email.com', '$2a$05$LOGlgX9hEcSqyvGa1ZFmgOVrEqf00MAePsKA.tvKTO8wpyYZjI4Ce', 'image-1608491620495.jpg'),
-	(5, 'Cookie', 'Maliciosa', 'cookie@email.com', '$2a$05$gj.zapK2wpXreuQwFCiCieqsTcVt90ge1.R3.NomwwOprEsYbpoWC', 'image-1608765985166.jpg');
-
+    (1, 'Elon', 'Musk', 'elon@email.com', '$2a$05$XXnakNYGdDejgoSGqleQy.RczPO9mNh2deqbcN5j8mZhSThoThsze', 'img_elon.jpg'),
+    (2, 'Julieta', 'Retamoza', 'juli@email.com', '$2a$05$7x4o7IpX04bwr.1aSiKNyOzWakhY1sSUtrzvbacOUO5A0CmEST9c2', 'img_admin-user.png'),
+	(2, 'Lucas', 'Koval', 'lucas@email.com', '$2a$05$8plHp1PWbVEjTU5Ax5biHedvSd.rtuJ114.9vfHr0/3DOnTObECsu', 'img_admin-user.png'),
+	(2, 'Federico', 'Gomez', 'fede@email.com', '$2a$05$1rX5hP2rJSFpWJ7JVp8M/uoXGP6Aqmnl3Vv0K8rHSdfdNDmY8h/c.', 'img_admin-user.png'),
+    (2, 'Profe', 'DH', 'profe@email.com', '$2a$05$LsqDf8A0LmjP3mdyf7vRIu/rIqkj8E/74uy8OcakxcIN.bJ2FIX1O', 'img_admin-user.png'),
+    (3, 'Sammie', 'Lee', 'sammie@email.com', '$2a$05$XXnakNYGdDejgoSGqleQy.RczPO9mNh2deqbcN5j8mZhSThoThsze', 'img_it-user.jpg'),
+    (3, 'Lautaro', 'Barandiaran', 'lauti@email.com', '$2a$05$XXnakNYGdDejgoSGqleQy.RczPO9mNh2deqbcN5j8mZhSThoThsze', 'img_it-user.jpg'),
+	(3, 'Juan', 'Pravata', 'juan@email.com', '$2a$05$XXnakNYGdDejgoSGqleQy.RczPO9mNh2deqbcN5j8mZhSThoThsze', 'img_it-user.jpg'),
+    (3, 'Manuel', 'Perez', 'manuelito@email.com', '$2a$05$XXnakNYGdDejgoSGqleQy.RczPO9mNh2deqbcN5j8mZhSThoThsze', 'img_it-user.jpg'),
+    (4, 'Gonzalo', 'Zevallos', 'gonza@email.com', '$2a$05$XXnakNYGdDejgoSGqleQy.RczPO9mNh2deqbcN5j8mZhSThoThsze', 'img_it-user.jpg'),
+    (4, 'Pablo', 'Bacchetta', 'pol@email.com', '$2a$05$XXnakNYGdDejgoSGqleQy.RczPO9mNh2deqbcN5j8mZhSThoThsze', 'img_it-user.jpg'),
+    (5, 'Stephen', 'King', 'king@email.com', '$2a$05$XXnakNYGdDejgoSGqleQy.RczPO9mNh2deqbcN5j8mZhSThoThsze', 'img_king.jpg');
+    
 -- [TABLA PRODUCTOS]
 INSERT INTO products (model_id, size_id, discount_id, stock, price)
 VALUES
