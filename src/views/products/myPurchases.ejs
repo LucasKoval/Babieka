@@ -7,11 +7,12 @@
 
         <main class="cart-mainbox">
 
-            <h1>Mis compras</h1>
+            
 
             <% if (purchasedItems && purchasedItems!="") { %>
                 <div>   <!--// Box grande //-->
-                    
+                    <h1>Mis compras</h1>
+
                     <section>   <!--// Box intermedio //-->
                         <% for (product of purchasedItems) { %>
                             <div class="cart-boxartic col-main">   
@@ -34,11 +35,18 @@
                     </section>
                 </div>
             <% } else { %>
-                <h2> No realizaste ninguna compra aún </h2> 
+                <div>
+                    <div class="justify-center">
+                        <img src="/img/imag_empty-cart_2.png" alt="Carrito vacío" class="centrar width-40">
+                    </div>
+                    <h2 class="centrar padd-70"> No has realizado ninguna compra </h2>
+                </div>
             <% } %>
         </main>
         
         <%- include('../partials/footer') %>   <!--// partial Footer //-->
+
         <script src="/js/scripts.js" type="text/javascript"></script> 
+
     </body>
 </html>
