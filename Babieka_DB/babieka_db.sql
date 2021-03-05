@@ -555,12 +555,12 @@ VALUES
     -- [TABLA ITEMS]
 INSERT INTO items (name, description, image, price, quantity, subtotal, status, user_id, order_id)
 VALUES 
-    ('Sandalia Barbie', 'Sandalia de fiesta con plataforma alta. Capellada de cuero con detalle reptil, y taco forrado en el mismo material. La suela es de material rigido sintetico, con tope de goma en el taco. Plataforma de 5 cm de alto y 11 cm de taco.', 'img_Barbie.jpg', 7000, 3, 21000, 1, 13, 1),
-    ('Sandalia Bella', 'Sandalia de fiesta con plataforma alta. Capellada de cuero con detalle reptil, y taco forrado en el mismo material. La suela es de material rigido sintetico, con tope de goma en el taco. Plataforma de 5 cm de alto y 11 cm de taco.', 'img_Bella.jpg', 7000, 1, 7000, 1, 13, 1),
-    ('Borcego Fresno', 'Borcego de cuero con detalles de tachas, hebilla y cierres laterales. Plataforma de goma de 5cm.', 'img_Fresno.jpg', 7000, 2, 14000, 1, 6, 2),
-    ('Bota Texas', 'Bota texana confeccionada en cuero reptil, con detalle de herrajes y tachas. El interior esta forrado en tela y material simil cuero. Su suela y taco son de goma con antideslizante, altura del taco 4 cm.', 'img_Texas.jpg', 6000, 1, 6000, 1, 14, 3),
-    ('Sandalia Barbie', 'Sandalia de fiesta con plataforma alta. Capellada de cuero con detalle reptil, y taco forrado en el mismo material. La suela es de material rigido sintetico, con tope de goma en el taco. Plataforma de 5 cm de alto y 11 cm de taco.', 'img_Barbie.jpg', 7000, 1, 7000, 1, 14, 3),
-    ('Bota Tijuana', 'Bota Texana de cuero, con detalle de flecos. El interior esta forrado en tela y material simil cuero. Su suela y taco son de goma con antideslizante, altura del taco 4 cm.', 6000, 2, 12000, 1, 14, 3);
+    ('Sandalia Barbie', 'Sandalia de fiesta con plataforma alta. Capellada de cuero con detalle reptil, y taco forrado en el mismo material. La suela es de material rigido sintetico, con tope de goma en el taco. Plataforma de 5 cm de alto y 11 cm de taco.', 'img_Barbie.jpg', 7000, 3, 21000, 1, 13, NULL),
+    ('Sandalia Bella', 'Sandalia de fiesta con plataforma alta. Capellada de cuero con detalle reptil, y taco forrado en el mismo material. La suela es de material rigido sintetico, con tope de goma en el taco. Plataforma de 5 cm de alto y 11 cm de taco.', 'img_Bella.jpg', 7000, 1, 7000, 1, 13, NULL),
+    ('Borcego Fresno', 'Borcego de cuero con detalles de tachas, hebilla y cierres laterales. Plataforma de goma de 5cm.', 'img_Fresno.jpg', 7000, 2, 14000, 1, 6, NULL),
+    ('Bota Texas', 'Bota texana confeccionada en cuero reptil, con detalle de herrajes y tachas. El interior esta forrado en tela y material simil cuero. Su suela y taco son de goma con antideslizante, altura del taco 4 cm.', 'img_Texas.jpg', 6000, 1, 6000, 1, 14, NULL),
+    ('Sandalia Barbie', 'Sandalia de fiesta con plataforma alta. Capellada de cuero con detalle reptil, y taco forrado en el mismo material. La suela es de material rigido sintetico, con tope de goma en el taco. Plataforma de 5 cm de alto y 11 cm de taco.', 'img_Barbie.jpg', 7000, 1, 7000, 1, 14, NULL),
+    ('Bota Tijuana', 'Bota Texana de cuero, con detalle de flecos. El interior esta forrado en tela y material simil cuero. Su suela y taco son de goma con antideslizante, altura del taco 4 cm.', 'img_Tijuana.jpg', 6000, 2, 12000, 1, 14, NULL);
 
 
 -- [TABLA ORDERS]
