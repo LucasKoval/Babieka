@@ -53,7 +53,7 @@
 
                         <div>   
                             <p class="f-size-24">Descripción</p>    <!--// Descripcion //-->
-                            <p><%= product.model.description %></p>
+                            <p class="mt-0"><%= product.model.description %></p>
                         </div>
 
                         <div>    
@@ -63,8 +63,7 @@
                             <span>
                                 <span id='decrease' class="quantityButton" onclick="decrease()"><i class="far fa-minus-square"></i></span>
                                 <input type='text' id="quantity" class="quantityValue" name="productsQuantity" value="1">
-                                <span id='increase' class="quantityButton" onclick="increase()"><i class="far fa-plus-square"></i></span>
-                                <!--//<input type="number" id="productsQuantity" class="quantityValue" name="productsQuantity">//-->
+                                <span id='increase' class="quantityButton" onclick="increase()"><i class="far fa-plus-square"></i></span><!--  -->
                             </span>
                         </div>
                                 
@@ -103,6 +102,7 @@
         <%- include('../partials/footer') %>   <!--// partial Footer //-->
 
         <script src="/js/alertDelete.js" type="text/javascript"></script>
+
         <script src="/js/scripts.js" type="text/javascript"></script>
 
     </body>
