@@ -6,6 +6,7 @@
         <%- include('../partials/header') %>   <!--// partial Header //-->
         
         <div style="margin-top: 40px;">
+            
             <div class="centrar marg-nonside">
                 <h1 class="font-bebas"><%= loggedUser.first_name %>  <%= loggedUser.last_name %></h1>
                 <img src="/img/users/<%= loggedUser.image %>" width="20%">
@@ -21,8 +22,15 @@
                     <button type="submit" class="cursor-hand">Editar mi perfil</button>
                 </form>
             </div>
+
+            <div class="centrar marg-20">
+                <form action="/usuario/change-password" method="GET"> <!--// Botón cambiar contraseña //-->
+                    <button type="submit" class="cursor-hand">Cambiar mi contraseña</button> 
+                </form>
+            </div>
+
             <div class="centrar marg-20"><!--// Botón Eliminar usuario //-->
-                <button class="displayFlex cursor-hand">Eliminar mi perfil</button>
+                <button class="displayFlex cursor-hand">Eliminar perfil</button>
                 <aside class="modal">
                     <div class="modal-content">
                         ¿ Esta seguro que desea eliminar su perfil ?
@@ -32,14 +40,8 @@
                         <button class="salir">Salir</button>
                     </div> 
                 </aside>
-                
             </div>
-
-            <div class="centrar marg-20">
-                <form action="/usuario/change-password" method="GET"> <!--// Botón cambiar contraseña //-->
-                    <button type="submit" class="cursor-hand">Cambiar mi contraseña</button> 
-                </form>
-            </div>
+            
         </div>
 
         <%- include('../partials/footer') %>   <!--// partial Footer //-->
