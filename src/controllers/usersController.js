@@ -12,8 +12,20 @@ const usersController = {
             include: ['role']
         });
 
+        const manager = users.filter((user) => {
+			return user.role.name == 'manager';
+		});
+
         const admin = users.filter((user) => {
 			return user.role.name == 'admin';
+		});
+
+        const developer = users.filter((user) => {
+			return user.role.name == 'developer';
+		});
+
+		const tester = users.filter((user) => {
+			return user.role.name == 'tester';
 		});
 
 		const client = users.filter((user) => {
@@ -21,8 +33,11 @@ const usersController = {
 		});
 
 		res.render('users/usersFullList', {
+            manager: manager,
 			adminUsers: admin,
-            clientUsers: client,
+            developerUsers: developer,
+            testerUsers: tester,
+            clientUsers: client
         });
     },
     
