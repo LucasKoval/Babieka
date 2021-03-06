@@ -15,7 +15,9 @@ const productsController = {
             order: [
                 ['id']
             ],
-            group: ['model.name']
+            group: [
+                ['model.name']
+            ]
         });
 
         const fiesta = products.filter((product) => {
@@ -41,8 +43,8 @@ const productsController = {
             }],
             order: [
                 ['id']
-            ],
-            group: ['model.name']
+            ]/* ,
+            group: ['model.name'] */
         });
 
         const sale = products.filter((product) => {
