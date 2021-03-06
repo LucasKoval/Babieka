@@ -8,7 +8,7 @@ const productsController = {
     // Renderiza la vista Colección
     list: async (req, res) => {   
         try {
-            const products = await db.Product.findAndCountAll({
+            const products = await db.Product.findAll({
                 include: [{
                     all: true,
                     nested: true
@@ -18,12 +18,12 @@ const productsController = {
                 ],
                 group: ['model.id']
             });
-
-            const fiesta = products.rows.filter((product) => {
+            
+            const fiesta = products.filter((product) => {
                 return product.model.category.name == 'Fiesta';
             });
     
-            const casual = products.rows.filter((product) => {
+            const casual = products.filter((product) => {
                 return product.model.category.name == 'Casual';
             });
     

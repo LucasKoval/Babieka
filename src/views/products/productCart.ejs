@@ -46,9 +46,9 @@
                                     </div>
                                     <div>   <!--// Botones de cantidad (agregar su propio archivos Js)//-->
                                         <span>
-                                            <!--//<span id='decrease' class="quantityButton" onclick="decrease()"><i class="far fa-minus-square"></i></span>//-->
-                                            <input type='text' id="quantity" class="quantityValue" name="productsQuantity" value="<%= product.quantity %> ">
-                                            <!--//<span id='increase' class="quantityButton" onclick="increase()"><i class="far fa-plus-square"></i></span>//-->
+                                            <!-- <span id='decrease' class="quantityButton" onclick="decrease()" style="co"><i class="far fa-minus-square"></i></span> -->
+                                            <input type='text' id="quantity" class="quantityValue button-trash" name="productsQuantity" value="<%= product.quantity %> ">
+                                            <!-- <span id='increase' class="quantityButton" onclick="increase()"><i class="far fa-plus-square"></i></span> -->
                                         </span>
                                     </div>
                                     <div>
@@ -79,6 +79,7 @@
                                 <form>     
                                     <div>
                                         <input type="text" id="discountCode" name="discountCode" placeholder="Código de descuento" class="cart-form"><div class="popup" onclick="discountCode()"><input type="button" onclick="discountCode()" value="Aplicar" class="cart-button popup">
+                                        <span class="popuptext" id="myPopupEmpty">Introduce un código de descuento</span>
                                         <span class="popuptext" id="myPopupBad">¡ Código incorrecto !</span>
                                         <span class="popuptext" id="myPopupGood">¡ Felicitaciones ! <img src="/img/toast.gif" alt="" style="padding: 0; width: 100%;"></span>
                                         </div>
@@ -93,9 +94,6 @@
                                 <% } else { %>  
                                     <p class="total-size" id="finalPrice">$ <%= precioFinal+600 %></p>
                                 <% } %>
-                                <!-- <div class="popup" onclick="myFunction()">Click me!
-                                    <span class="popuptext" id="myPopup">Popup text...</span>
-                                </div> -->
                             </div>
                             <div class="flexi-button">
                                 <div>
