@@ -206,12 +206,24 @@ const usersController = {
     // Elimina al Usuario en session (DELETE)
     delete: async (req, res) => {   
         try {
+            await db.Item.destroy({
+                where: {
+                    user_id: req.session.user.id
+                }
+            });
+
+            await db.Order.destroy({
+                where: {
+                    user_id: req.session.user.id
+                }
+            });
+
             await db.User.destroy({
                 where: {
                     id: req.session.user.id
                 }
             });
-    
+
             req.session.destroy();
     
             res.clearCookie('user_Id');
