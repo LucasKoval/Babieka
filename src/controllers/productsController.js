@@ -8,6 +8,8 @@ const productsController = {
     // Renderiza la vista Colección
     list: async (req, res) => {   
         try {
+            const allModels = await db.Model.findAll();
+
             const products = await db.Product.findAll({
                 include: [{
                     all: true,
@@ -21,6 +23,10 @@ const productsController = {
                 ]
             });
 
+            /* const models = allModels.filter((model) => {
+                return model.name == product.model.name
+            }); */
+
             const fiesta = products.filter((product) => {
                 return product.model.category.name == 'Fiesta';
             });
@@ -31,7 +37,8 @@ const productsController = {
     
             res.render('products/productsList', {
                 fiestaProducts: fiesta,
-                casualProducts: casual
+                casualProducts: casual,
+                allModels
             });
 
         } catch (error) {
