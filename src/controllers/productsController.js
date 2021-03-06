@@ -8,9 +8,7 @@ const productsController = {
     // Renderiza la vista Colección
     list: async (req, res) => {   
         try {
-            const allModels = await db.Model.findAll();
-
-            const products = await db.Product.findAll({
+            const products = await db.Product.findAndCountAll({
                 include: [{
                     all: true,
                     nested: true
@@ -18,27 +16,20 @@ const productsController = {
                 order: [
                     ['id']
                 ],
-                group: [
-                    ['model.name']
-                ]
+                group: ['model.id']
             });
 
-            /* const models = allModels.filter((model) => {
-                return model.name == product.model.name
-            }); */
-
-            const fiesta = products.filter((product) => {
+            const fiesta = products.rows.filter((product) => {
                 return product.model.category.name == 'Fiesta';
             });
     
-            const casual = products.filter((product) => {
+            const casual = products.rows.filter((product) => {
                 return product.model.category.name == 'Casual';
             });
     
             res.render('products/productsList', {
                 fiestaProducts: fiesta,
-                casualProducts: casual,
-                allModels
+                casualProducts: casual
             });
 
         } catch (error) {
