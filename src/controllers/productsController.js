@@ -37,19 +37,6 @@ const productsController = {
         } catch (error) {
             console.log('Error al buscar el listado de Coleccion.');
         }
-        
-        /* const fiesta = products.filter((product) => {
-			return product.model.category.name == 'Fiesta';
-		});
-
-		const casual = products.filter((product) => {
-			return product.model.category.name == 'Casual';
-        });
-
-		res.render('products/productsList', {
-			fiestaProducts: fiesta,
-            casualProducts: casual
-		}); */
     }, 
 
     // Renderiza la vista Sale
@@ -62,8 +49,8 @@ const productsController = {
                 }],
                 order: [
                     ['id']
-                ]/* ,
-                group: ['model.name'] */
+                ],
+                group: ['model.name']
             });
     
             const sale = products.filter((product) => {
@@ -73,6 +60,7 @@ const productsController = {
             res.render('products/productsSale', {
                 saleProducts: sale
             });
+
         } catch (error) {
             console.log('Error al buscar el listado de Sale.');
         }        
@@ -103,6 +91,7 @@ const productsController = {
                 models,
                 sizes
             });
+
         } catch (error) {
             console.log('Error al buscar el listado completo de productos.');
         }        
@@ -137,6 +126,7 @@ const productsController = {
             });
     
             res.render('products/productDetail', { product, models, sizes });
+            
         } catch (error) {
             console.log('Error al buscar el detalle del producto.');
         }  
