@@ -7,20 +7,39 @@ const {check,validationResult,body} = require('express-validator');
 const productsController = {
     // Renderiza la vista Colección
     list: async (req, res) => {   
-        const products = await db.Product.findAll({
-            include: [{
-                all: true,
-                nested: true
-            }],
-            order: [
-                ['id']
-            ],
-            group: [
-                ['model.name']
-            ]
-        });
+        try {
+            const products = await db.Product.findAll({
+                include: [{
+                    all: true,
+                    nested: true
+                }],
+                order: [
+                    ['id']
+                ],
+                group: [
+                    ['model.name']
+                ]
+            });
 
-        const fiesta = products.filter((product) => {
+            const fiesta = products.filter((product) => {
+                return product.model.category.name == 'Fiesta';
+            });
+    
+            const casual = products.filter((product) => {
+                return product.model.category.name == 'Casual';
+            });
+    
+            res.render('products/productsList', {
+                fiestaProducts: fiesta,
+                casualProducts: casual
+            });
+
+        } catch (error) {
+            console.log('Error al buscar la lista de productos.');
+        }
+        
+
+        /* const fiesta = products.filter((product) => {
 			return product.model.category.name == 'Fiesta';
 		});
 
@@ -31,7 +50,7 @@ const productsController = {
 		res.render('products/productsList', {
 			fiestaProducts: fiesta,
             casualProducts: casual
-		});
+		}); */
     }, 
 
     // Renderiza la vista Sale
