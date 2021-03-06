@@ -35,10 +35,9 @@ const productsController = {
             });
 
         } catch (error) {
-            console.log('Error al buscar la lista de productos.');
+            console.log('Error al buscar el listado de Coleccion.');
         }
         
-
         /* const fiesta = products.filter((product) => {
 			return product.model.category.name == 'Fiesta';
 		});
@@ -54,81 +53,93 @@ const productsController = {
     }, 
 
     // Renderiza la vista Sale
-    sale: async (req, res) => {   
-        const products = await db.Product.findAll({
-            include: [{
-                all: true,
-                nested: true
-            }],
-            order: [
-                ['id']
-            ]/* ,
-            group: ['model.name'] */
-        });
-
-        const sale = products.filter((product) => {
-			return product.model.category.name == 'Sale';
-		});
-
-		res.render('products/productsSale', {
-            saleProducts: sale
-		});
+    sale: async (req, res) => {
+        try {
+            const products = await db.Product.findAll({
+                include: [{
+                    all: true,
+                    nested: true
+                }],
+                order: [
+                    ['id']
+                ]/* ,
+                group: ['model.name'] */
+            });
+    
+            const sale = products.filter((product) => {
+                return product.model.category.name == 'Sale';
+            });
+    
+            res.render('products/productsSale', {
+                saleProducts: sale
+            });
+        } catch (error) {
+            console.log('Error al buscar el listado de Sale.');
+        }        
     },
 
     // Renderiza la vista Listado Completo
     productsFullList: async (req, res) => { 
-        const products = await db.Product.findAll({
-            include: [{
-                all: true,
-                nested: true
-            }],
-            order: [
-                ['id']
-            ],
-            group: ['model.id']
-        });
-
-        const models = await db.Model.findAll({
-            include: ['color']
-        });
-
-        const sizes = await db.Size.findAll();
-
-		res.render('products/productsFullList', {
-            products,
-            models,
-            sizes
-		});
+        try {
+            const products = await db.Product.findAll({
+                include: [{
+                    all: true,
+                    nested: true
+                }],
+                order: [
+                    ['id']
+                ],
+                group: ['model.id']
+            });
+    
+            const models = await db.Model.findAll({
+                include: ['color']
+            });
+    
+            const sizes = await db.Size.findAll();
+    
+            res.render('products/productsFullList', {
+                products,
+                models,
+                sizes
+            });
+        } catch (error) {
+            console.log('Error al buscar el listado completo de productos.');
+        }        
     },
 
     // Renderiza la vista Detalle de Producto
     detail: async (req, res) => {
-        const allModels = await db.Model.findAll({
-            include: ['color']
-        });
-
-        const allSizes = await db.Size.findAll();
-
-        const product = await db.Product.findByPk(req.params.id, {
-            include: [{
-                all: true,
-                nested: true
-            }],
-            order: [
-                ['id']
-            ]/* ,
-            group: ['model.name'] */
-        });
-
-        const models = allModels.filter((model) => {
-			return model.name == product.model.name
-        });
-
-        const sizes = allSizes.filter((size) => {
-			return size.number != product.size.number
-        });
-
-        res.render('products/productDetail', { product, models, sizes });  
+        try {
+            const allModels = await db.Model.findAll({
+                include: ['color']
+            });
+    
+            const allSizes = await db.Size.findAll();
+    
+            const product = await db.Product.findByPk(req.params.id, {
+                include: [{
+                    all: true,
+                    nested: true
+                }],
+                order: [
+                    ['id']
+                ],
+                group: ['model.name']
+            });
+    
+            const models = allModels.filter((model) => {
+                return model.name == product.model.name
+            });
+    
+            const sizes = allSizes.filter((size) => {
+                return size.number != product.size.number
+            });
+    
+            res.render('products/productDetail', { product, models, sizes });
+        } catch (error) {
+            console.log('Error al buscar el detalle del producto.');
+        }  
     },
 
     // Renderiza la vista Nuevo Producto
