@@ -26,3 +26,14 @@ function discountCode(){
     }
 };
 //************************/
+
+// Cambio de imagenes
+function changeImg(id, img_1, img_2) {
+    image = document.getElementById(id);
+    if (image.src == img_2) {
+        image.src = img_1;
+    } else {
+        image.src = img_2;
+    }
+}
+//************************/
