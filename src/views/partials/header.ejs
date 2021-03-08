@@ -54,7 +54,7 @@
                     <% } else {%>
                         <li><a href="" class="space"><i class="far fa-user-circle"></i></a>
                     <% } %>
-                        <ul>
+                        <ul class="nav-bar-disblock">
                             <% if (loggedUser) { %>
                                 <li class="cursor-arrow"><a href="" class="font-roboto font-size-13">Hola <%= loggedUser.first_name %>!</a></li> 
                                 <li><a href="/usuario/perfil" class="linea-izq">Perfil</a></li>
@@ -73,5 +73,6 @@
         </div>
 
     </nav>
+    <script src="/js/navBar.js" type="text/javascript"></script>
     
 </header>

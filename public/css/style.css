@@ -133,6 +133,11 @@ textarea {
     margin: 20px 0 0 0;
 }
 
+.t-shadow {
+    text-shadow: 2px 2px 6px lightgray;
+    font-size: 46px!important;
+}
+
 .marg-auto {
     margin: auto;
 }
@@ -469,7 +474,7 @@ main article {
 
 main img {
     width: 70%;
-    background-color: #fafafa;
+    background-color: white;
     padding: 20px;
 }
 
@@ -834,12 +839,16 @@ button{
     margin: 80px 0;
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: space-evenly;
 }
 
 .lk-articlebox-list {
     margin: 20px 10px;
     width: 23%;
+    border-radius: 15px;
+    background-color: white;
+    box-shadow: -6px -6px 15px grey;
+    padding-bottom: 15px;
 }
 
 /*----------// LIST MEDIA QUERIES //----------*/
@@ -942,12 +951,16 @@ button{
 .borde-general {
     margin: 4%;
 }
-.aspecto{
-    object-fit: contain;
-}
+
 .margin-auto{
     margin: auto;
 }
+.aspecto{
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}
+
 
 
 /*----------// DETAIL MEDIA QUERIES //----------*/
@@ -979,7 +992,7 @@ button{
     }
     .aspecto{
         object-fit: contain;
-        width: 90%;
+        width: 100%;
     }
 }
 
@@ -1015,10 +1028,15 @@ button{
 .cart-boxtitle {
     display: flex;
     margin: auto;
+    box-shadow: 0px 5px 15px grey;
+    border-radius: 10px;
+    padding: 15px 0px;
+    margin-bottom: 40px;
 }
 .cart-boxsubtitle {
     display: flex;
     justify-content: space-around;
+    padding: 0px 0px 0px 30px;
 }
 .cart-boxtitle p {
     font-size: 24px;
@@ -1031,6 +1049,8 @@ button{
     margin: 20px auto;
     border: 5px solid #fafafa;
     background-color: white;
+    border-radius: 25px;
+    box-shadow: -10px 10px 15px grey;
 }
 .cart-boxsubartic {
     display: flex;
@@ -1094,7 +1114,10 @@ button{
 .cart-formbox {
     width: 30%;
     background-color: white;
-    border-radius: 5px;
+    border-radius: 15px;
+    margin-top: 30px;
+    box-shadow: -8px -8px 15px grey;
+    margin-bottom: 30px;
 }
 
 /*----------// CART MEDIA QUERIES //----------*/
@@ -1245,64 +1268,9 @@ button{
 
 
 /*=====================================================================*/
-/*
-
-.buscar-caja { 
-    position: absolute;
-    transform: translate(0%, -30%);
-    background:#FA1E1E;
-    height: 20px;
-    border-radius: 40px;
-    padding: 1px;
+.style-select-detail{
+    font-family: 'Bebas Neue', cursive;
+    font-size: 18px;
+    width: 45%;
+    text-align: center;
 }
-   
-.buscar-caja:hover > .buscar-txt {
-    width: 250px;
-    padding: 0 6px;
-}
-   
-.buscar-caja:hover > .buscar-btn {
-    background: white;
-    color: black;
-}
-   
-.buscar-btn {
-    
-    float: right;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: white;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    transition: 0.4s;
-    color:black;
-    cursor: pointer;
-}
-   
-.buscar-btn > i {
-    font-size: large;
-}
-   
-.buscar-txt {
-    border: none;
-    background: none;
-    outline: none;
-    float: right;
-    padding: 0;
-    color: white;
-    font-size: 10px;
-    transition: 0.4s;
-    line-height: 20px;
-    width: 1px;
-    font-family: 'Roboto', sans-serif;
-    
-}
-.space2{
-    margin: 10px 0 10px 0;
-   
-} 
-
-*/ 
