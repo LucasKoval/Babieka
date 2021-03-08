@@ -7,8 +7,6 @@
 
         <main class="cart-mainbox">
 
-            
-
             <% if (cartItems && cartItems!="") { %>
                 <div>   <!--// Box grande //-->
                     <h1>CARRITO</h1>
@@ -18,10 +16,12 @@
                             <p>Articulo</p>
                         </div>
                         <div class="cart-boxsubtitle col-precio">
+                            <p>Color</p>
+                            <p>Talle</p>
                             <p>Precio u.</p>
                             <p>Cantidad</p>
+                            <p>Subtotal</p>
                             <p>Eliminar</p>
-                            <p>Precio</p>
                         </div>
 
                     </section>
@@ -34,16 +34,32 @@
                                 <article class="new-artic col-artic">
                                     <img src="/img/products/<%= product.image %>" alt="Imagen del artículo" class="cart-img">
                                     <div class="new-subartic">
-                                        <p><%= product.name %></p>
+                                        <p class="name-size"><%= product.name %></p>
                                         <br>
                                         <p><%= product.description %></p>
                                     </div>
                                 </article>
                                 
                                 <div class="cart-boxsubartic col-precio">
-                                    <div>   <!--// Precio unitario //-->
-                                        <p class="name-size">$<%= product.price %></p>
+                                    <div>   <!--// Color //-->
+                                        <p class="name-size"><%= product.color %></p>
                                     </div>
+                                    
+                                    <div>   <!--// Talle //-->
+                                        <p class="name-size"><%= product.size %></p>
+                                    </div>
+                                   
+                                    <div>   <!--// Precio unitario // -->
+                                        <% if (product.category == 'Sale') { %>
+                                            <p class="name-size tachado">$ <%= product.price %></p>
+                                            <p class="name-size">$ <%= product.price-((product.price*30)/100) %></p>
+                                        <% } %>
+
+                                        <% if (product.category != 'Sale') { %>
+                                            <p class="name-size">$ <%= product.price %></p>
+                                        <% } %>
+                                    </div>
+                                    
                                     <div>   <!--// Botones de cantidad (agregar su propio archivos Js)//-->
                                         <span>
                                             <!-- <span id='decrease' class="quantityButton" onclick="decrease()" style="co"><i class="far fa-minus-square"></i></span> -->
@@ -51,13 +67,15 @@
                                             <!-- <span id='increase' class="quantityButton" onclick="increase()"><i class="far fa-plus-square"></i></span> -->
                                         </span>
                                     </div>
+                                    
+                                    <div>   <!--// Precio //-->
+                                        <p class="total-size">$<%= product.subtotal %></p>
+                                    </div>
+
                                     <div>
                                         <form action="/carrito/<%=product.id%>/eliminar" method="POST"> 
                                             <button type="submit" class="marg-nonside-10 button-trash"><i class="fas fa-trash-alt"></i></button> 
                                         </form>
-                                    </div>
-                                    <div>   <!--// Precio //-->
-                                        <p class="name-size">$<%= product.subtotal %></p>
                                     </div>
                                 </div>
                             </div>
@@ -69,7 +87,7 @@
                         <div class="cart-formbox">
                             <div class="flexi">
                                 <p class="name-size">Envío</p>
-                                <% if ( precioFinal > 5000) { %>
+                                <% if ( precioFinal >= 6000) { %>
                                     <p class="name-size">Envío gratis!</p>
                                 <% } else { %>  
                                     <p class="name-size">$600</p>
@@ -89,10 +107,10 @@
                             </div>
                             <div class="flexi">
                                 <p class="name-size">TOTAL</p>
-                                <% if ( precioFinal > 5000) { %>
+                                <% if ( precioFinal >= 6000) { %>
                                     <p class="total-size" id="finalPrice">$ <%= precioFinal %> </p>
                                 <% } else { %>  
-                                    <p class="total-size" id="finalPrice">$ <%= precioFinal+600 %></p>
+                                    <p class="total-size" id="finalPrice">$ <%= precioFinal + 600 %></p>
                                 <% } %>
                             </div>
                             <div class="flexi-button">
