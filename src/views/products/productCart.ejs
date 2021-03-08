@@ -9,7 +9,7 @@
 
             <% if (cartItems && cartItems!="") { %>
                 <div>   <!--// Box grande //-->
-                    <h1>CARRITO</h1>
+                    <h1 class="t-shadow">MI CARRITO</h1>
                     <section class="cart-boxtitle col-main">    <!--// Box intermedio //-->
                     
                         <div class="col-artic centrar">
@@ -63,7 +63,7 @@
                                     <div>   <!--// Botones de cantidad (agregar su propio archivos Js)//-->
                                         <span>
                                             <!-- <span id='decrease' class="quantityButton" onclick="decrease()" style="co"><i class="far fa-minus-square"></i></span> -->
-                                            <input type='text' id="quantity" class="quantityValue button-trash" name="productsQuantity" value="<%= product.quantity %> ">
+                                            <input type='text' id="quantity" class="quantityValue button-trash" name="productsQuantity" value="<%= product.quantity %>" readonly>
                                             <!-- <span id='increase' class="quantityButton" onclick="increase()"><i class="far fa-plus-square"></i></span> -->
                                         </span>
                                     </div>

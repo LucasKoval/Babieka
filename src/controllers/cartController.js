@@ -29,13 +29,11 @@ const cartController = {
        
         // Crear un nuevo item con el "id" del usuario en session y los datos del producto a cargar
         // Completar los campos "status" = 0 y "order_id" = null
-        console.log("talle que entra = "+req.body.size)
-        console.log("el color que entra es = "+req.body.color)
 
         await db.Item.create({
             name: productToAdd.model.name,
-            color: productToAdd.model.color.name,
-            size: productToAdd.size.number,
+            color: req.body.color,
+            size: req.body.size,
             category: productToAdd.model.category.name,
             description: productToAdd.model.description,
             image: productToAdd.model.image.name,
