@@ -16,7 +16,7 @@ const productsController = {
                 order: [
                     ['id']
                 ],
-                group: ['model.id']
+                group: ['model_id']
             });
             
             const fiesta = products.filter((product) => {
