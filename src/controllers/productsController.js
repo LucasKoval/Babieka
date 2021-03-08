@@ -33,7 +33,7 @@ const productsController = {
             });
 
         } catch (error) {
-            console.log('Error al buscar el listado de Coleccion.');
+            console.log(error);
         }
     }, 
 
@@ -47,8 +47,8 @@ const productsController = {
                 }],
                 order: [
                     ['id']
-                ],
-                group: ['model.name']
+                ]/* ,
+                group: ['model.name'] */
             });
     
             const sale = products.filter((product) => {
