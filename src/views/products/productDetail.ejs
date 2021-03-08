@@ -8,12 +8,11 @@
         <main class="mainUs width-100">
             
             <div class="main-det borde-general">       
+            
+                <div class="cen-1 ">
+                        <img class = "aspecto width-100 " src="/img/products/<%= product.model.image.name %>" alt="Imagen del artículo">
+                </div>    
                 
-                <div class="cen-1">
-                    <div>
-                            <img class = "aspecto width-100" src="/img/products/<%= product.model.image.name %>" alt="Imagen del artículo">
-                    </div>    
-                </div>
                 
                 <form action="/carrito/<%=product.id%>/agregar" method="POST">
                     <div class="cen-2 columna margin-auto">   <!--// Descripcion y opciones del artículo //-->
@@ -30,26 +29,25 @@
                             <p class="f-size-40" id="price">$ <%= product.price %></p>
                         <% } %>
                         
-                        <div>
-                            <p class="f-size-24" >Colores Disponibles</p>   <!--// Botón de colores a seleccionar //-->
-                        </div>
-                        <div class="sinborde">
-                            <form action="">
-                                <% for (model of models) { %>
-                                    <button class="button-color-detail" style="background-color: <%= model.color.hex %>" title="<%= model.color.name %>"></button>
-                                <% } %>
-                            </form>
-                        </div>
                         
-                        <p class="f-size-24" >Talles disponibles</p>    <!--// Botón Talles a seleccionar //-->
-                        <div class="sinborde">
-                            <form action="" class="boton3">
-                                <button id="button-size"><%= product.size.number %></button>
-                                <% for (size of sizes) { %>
-                                    <button class="button-color-detail"><%= size.number %></button>
-                                <% } %>
-                            </form>
-                        </div>
+                        <label for="color"><p class="f-size-24" >Colores Disponibles</p>  </label> <!--// Botón Colores a seleccionar //-->
+                        <select name="color" class="style-select-detail">
+                            <% for (model of models) { %>
+                                        <option style="color: <%= model.color.hex %>" value="<%= model.color.id %>"><%= model.color.name %></option>
+                                    <% } %> 
+                        </select>
+
+
+
+
+                        <label for="size"><p class="f-size-24" >Talles disponibles</p>  </label> <!--// Botón Talles a seleccionar //-->
+                        <select name="size" class="style-select-detail">
+                            <option value="<%= product.size.id %>"selected><%= product.size.number %></option>
+                            <% for (size of sizes) { %>
+                                        <option value="<%= size.id %>"><%= size.number  %></option>
+                                    <% } %> 
+                        </select>
+
 
                         <div>   
                             <p class="f-size-24">Descripción</p>    <!--// Descripcion //-->
