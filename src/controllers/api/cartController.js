@@ -41,6 +41,40 @@ const productsController = {
         });
     },
 
+    // Últimos 5 Productos agregados al carrito - http://localhost:3030/api/cart/lastAdded
+    lastAdded: async (req, res) => {
+        const purchasedProducts = await db.Item.findAll({
+            include: ['user'],
+            where: {
+                status: 1,
+            }
+        });
+        
+        const lastAdded=[];
+
+        for(let i=1; i < 6 ; i++){
+            lastAdded.push(purchasedProducts[purchasedProducts.length - i])
+        }
+
+        console.log(lastAdded)
+
+        const products = lastAdded.map(product => {
+            return (
+                product.dataValues.urlImage = `http://localhost:3030/img/products/${product.image}`,
+                product
+            )
+        });
+
+        res.json({
+            meta: {
+                status: 'success'
+            },
+            data: {
+                products
+            }
+        });
+    },
+
     // Estadisticas de Usuario - http://localhost:3030/api/cart/users/:id
     userStats: async (req, res) => { 
         const user = await db.User.findByPk(req.params.id, {
