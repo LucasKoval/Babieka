@@ -32,6 +32,10 @@ a {
 textarea {
     font-family: 'Roboto', sans-serif;
 }
+  
+.cartIcon:hover {
+    color: var(--rojobbk);
+}
 
 .quantityButton {
     font-size: 24px;
@@ -120,7 +124,7 @@ textarea {
 }
 
 .font-size-13 {
-    font-size: 13px;
+    font-size: 13px!important;
 }
 
 .f-size-24 {
@@ -338,17 +342,38 @@ ul, ol {
     text-decoration:none;
     padding:5px 6px;
     display:block;
+    font-size: 18px;
+}
+
+.menuNavBar {
+    display:none;
+    position:absolute;
+    min-width: 100px!important;
+    background-color: white;
+    border-bottom: 1px solid var(--rojobbk);
+    border-left: 1px solid var(--rojobbk);
+    border-right: 1px solid var(--rojobbk);
+    border-radius: 4px!important;
 }
 
 .nav li ul {
     display:none;
     position:absolute;
     min-width:70px;
+    background-color: white;
+    border-bottom: 1px solid var(--rojobbk);
+    border-left: 1px solid var(--rojobbk);
+    border-right: 1px solid var(--rojobbk);
+    border-radius: 3px;
 }
 
 .nav li:hover > ul {
     display:block;
     background-color: #fafafa;
+}
+
+d-block {
+    display:block;
 }
 
 .nav li ul li {
@@ -445,10 +470,9 @@ footer img {
 #copyright {
     color: #FA1E1E;
     background-color: white;
-    display: flex;
+    text-align: center;
     align-items: center;
     padding: 4px;
-    border-bottom: 1px solid black;
 }
 
 /*----------// MEDIA QUERIES //----------*/
@@ -462,7 +486,7 @@ footer img {
 
 main {
     font-family: 'Bebas Neue', cursive;
-    background-color: #fafafa;
+    background-color: white;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -486,8 +510,17 @@ main h1 {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-evenly;
     box-sizing: border-box;
+    margin-bottom: 20px;
+    margin-top: 30px;
+}
+
+.main-block-alt {
+    width: 23%;
+    border-radius: 15px;
+    background-color: white;
+    box-shadow: -6px -6px 15px lightgrey;
 }
 
 .casual-index {
@@ -524,7 +557,7 @@ main h1 {
     }
     
     .main-box-3 {
-        width: 30%;
+        width: 23%;
         display: flex;
         flex-wrap: wrap;
         padding: 0;
@@ -712,6 +745,7 @@ button{
     width: max-content;
     display: flex;
     flex-direction: column;
+    border-radius: 7px;
 }
 
 .formulario-upload {
@@ -720,6 +754,7 @@ button{
     border: 2px solid #FA1E1E;
     display: flex;
     flex-direction: column;
+    border-radius: 7px;
 }
 
 .loginmain {
