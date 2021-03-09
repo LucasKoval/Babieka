@@ -847,7 +847,7 @@ button{
     width: 23%;
     border-radius: 15px;
     background-color: white;
-    box-shadow: -6px -6px 15px grey;
+    box-shadow: -6px -6px 15px lightgrey;
     padding-bottom: 15px;
 }
 
@@ -1028,15 +1028,15 @@ button{
 .cart-boxtitle {
     display: flex;
     margin: auto;
-    box-shadow: 0px 5px 15px grey;
+    /* box-shadow: 0px 5px 15px var(--rojobbk); */
     border-radius: 10px;
     padding: 15px 0px;
-    margin-bottom: 40px;
+    /* margin-bottom: 40px; */
 }
 .cart-boxsubtitle {
     display: flex;
     justify-content: space-around;
-    padding: 0px 0px 0px 30px;
+    padding: 0px 0px 0px 10px;
 }
 .cart-boxtitle p {
     font-size: 24px;
@@ -1050,7 +1050,7 @@ button{
     border: 5px solid #fafafa;
     background-color: white;
     border-radius: 25px;
-    box-shadow: -10px 10px 15px grey;
+    box-shadow: -10px 10px 15px lightgrey;
 }
 .cart-boxsubartic {
     display: flex;
@@ -1116,7 +1116,7 @@ button{
     background-color: white;
     border-radius: 15px;
     margin-top: 30px;
-    box-shadow: -8px -8px 15px grey;
+    box-shadow: -8px -8px 15px lightgrey;
     margin-bottom: 30px;
 }
 

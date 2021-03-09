@@ -50,12 +50,11 @@
                                     </div>
                                    
                                     <div>   <!--// Precio unitario // -->
-                                        <% if (product.category == 'Sale') { %>
+                                        
+                                        <% if (product.price != product.subtotal / product.quantity) { %>
                                             <p class="name-size tachado">$ <%= product.price %></p>
-                                            <p class="name-size">$ <%= product.price-((product.price*30)/100) %></p>
-                                        <% } %>
-
-                                        <% if (product.category != 'Sale') { %>
+                                            <p class="name-size">$ <%= product.subtotal / product.quantity %></p>
+                                        <% } else { %>
                                             <p class="name-size">$ <%= product.price %></p>
                                         <% } %>
                                     </div>

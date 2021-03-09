@@ -35,7 +35,7 @@ const productsController = {
         } catch (error) {
             console.log(error);
         }
-    }, 
+    },
 
     // Renderiza la vista Sale
     sale: async (req, res) => {
@@ -47,8 +47,8 @@ const productsController = {
                 }],
                 order: [
                     ['id']
-                ]/* ,
-                group: ['model.name'] */
+                ],
+                group: ['model.name']
             });
     
             const sale = products.filter((product) => {
