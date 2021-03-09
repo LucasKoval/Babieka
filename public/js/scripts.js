@@ -37,3 +37,16 @@ function changeImg(id, img_1, img_2) {
     }
 }
 //************************/
+
+// Burger
+window.addEventListener('load', () => {
+
+    const burgerButton = document.querySelector('#boton-menu');
+    const barraNav = document.querySelector('#barra-nav1');
+
+    burgerButton.addEventListener('click', () => {
+        barraNav.classList.toggle('d-block');
+    });
+})
+
+//************************/
