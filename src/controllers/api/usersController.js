@@ -51,11 +51,11 @@ const usersController = {
         const allUsers = await db.User.findAndCountAll({
             attributes: ['id', 'first_name', 'last_name', 'email', 'image'],
             include: ['role'],
-            limit: 10,
-            offset: 10 * (page - 1)
+            limit: 5,
+            offset: 5 * (page - 1)
         });
 
-        const totalPages = Math.ceil(allUsers.count / 10);
+        const totalPages = Math.ceil(allUsers.count / 5);
 
         const users = allUsers.rows.map(user => {
             return (

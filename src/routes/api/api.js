@@ -28,6 +28,7 @@ router.get('/products/:id', apiProductsController.detail);                      
 router.get('/cart/orders', apiCartController.orderList);          //-> Listado de Ordenes de compra emitidas
 router.get('/cart/items', apiCartController.purchasedProducts);   //-> Listado de Productos comprados
 router.get('/cart/users/:id', apiCartController.userStats);       //-> Estadisticas de Usuario
+router.get('/cart/lastAdded', apiCartController.lastAdded);       //-> Últimos 5 productos agregados al carrito
 
 
 //----------* EXPORTS ROUTER *----------//
