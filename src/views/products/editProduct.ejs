@@ -87,7 +87,7 @@
                     <label for="stock">Stock : </label>    <!--// Stock //-->
                     <p><input type="number" name="stock" id="stock" value="<%=product.stock%>"></p>
                     <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.stock == 'undefined' ? '' : errors.stock.msg %></p>
-
+                    <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.image == 'undefined' ? '' : errors.image.msg %></p>
                     <p>
                         <label for="discount">Descuento : </label>    <!--// El Discount //-->
                         <select name="discount">   

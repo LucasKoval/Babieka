@@ -30,13 +30,11 @@ window.addEventListener('load', function() {
         }
 
         //-> Validación de la Imagen
-        if (imageExt == undefined) {
-            errors.push('Debe cargar una imagen con uno de los siguientes formatos: JPG, JPEG, PNG, GIF.') ;
-        } else {
-            if (!(validExt.includes(imageExt.toLowerCase()))) {
-                errors.push('Formato de imagen invalido. [Permitidos: JPG, JPEG, PNG, GIF]')
-            }
+    
+        if (!(validExt.includes(imageExt.toLowerCase()))) {
+            errors.push('Formato de imagen invalido. [Permitidos: JPG, JPEG, PNG, GIF]')
         }
+    
         
         //-> Validación del Stock
         if (stock < 1) {

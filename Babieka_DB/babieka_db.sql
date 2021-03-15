@@ -302,7 +302,7 @@ VALUES
     (1, 'Elon', 'Musk', 'elon@email.com', '$2a$05$XXnakNYGdDejgoSGqleQy.RczPO9mNh2deqbcN5j8mZhSThoThsze', 'img_elon.jpg'),
     (2, 'Julieta', 'Retamoza', 'juli@email.com', '$2a$05$7x4o7IpX04bwr.1aSiKNyOzWakhY1sSUtrzvbacOUO5A0CmEST9c2', 'img_user_admin.png'),
 	(2, 'Lucas', 'Koval', 'lucas@email.com', '$2a$05$8plHp1PWbVEjTU5Ax5biHedvSd.rtuJ114.9vfHr0/3DOnTObECsu', 'img_user_admin.png'),
-	(2, 'Federico', 'Gomez', 'fede@email.com', '$2a$05$1rX5hP2rJSFpWJ7JVp8M/uoXGP6Aqmnl3Vv0K8rHSdfdNDmY8h/c.', 'img_user_admin.png'),
+	(2, 'Federico', 'Gomez', 'fede@email.com', '$2a$05$EiqLkN7zYASOEGSWJxuF2OjHuRpeL/0GyD7IxGsvcqaeSLx5q/DO6', 'img_user_admin.png'),
     (2, 'Profe', 'DH', 'profe@email.com', '$2a$05$LsqDf8A0LmjP3mdyf7vRIu/rIqkj8E/74uy8OcakxcIN.bJ2FIX1O', 'img_user_admin.png'),
     (3, 'Sammie', 'Lee', 'sammie@email.com', '$2a$05$XXnakNYGdDejgoSGqleQy.RczPO9mNh2deqbcN5j8mZhSThoThsze', 'img_user_it.jpg'),
     (3, 'Lautaro', 'Barandiaran', 'lauti@email.com', '$2a$05$XXnakNYGdDejgoSGqleQy.RczPO9mNh2deqbcN5j8mZhSThoThsze', 'img_user_it.jpg'),
