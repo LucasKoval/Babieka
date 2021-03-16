@@ -21,8 +21,8 @@ const mainController = {
                 }],
                 order: [
                     ['id']
-                ],
-                group: ['model.id']
+                ]/* ,
+                group: ['model.id'] */
             });
     
             const productFound = products.filter(product => {
@@ -30,8 +30,9 @@ const mainController = {
             });
     
             res.render('products/searchResults', { productFound	});
+
         }catch (error) {
-            console.log('Error al realizar la busqueda.');
+            console.log(`ERROR: ${error}`);
         }
     },
     
