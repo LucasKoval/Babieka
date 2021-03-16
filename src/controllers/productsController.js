@@ -15,8 +15,8 @@ const productsController = {
                 }],
                 order: [
                     ['id']
-                ],
-                group: ['model_id']
+                ]/* ,
+                group: ['model_id'] */
             });
             
             const fiesta = products.filter((product) => {
@@ -47,8 +47,8 @@ const productsController = {
                 }],
                 order: [
                     ['id']
-                ],
-                group: ['model.name']
+                ]/* ,
+                group: ['model.name'] */
             });
     
             const sale = products.filter((product) => {
@@ -74,8 +74,8 @@ const productsController = {
                 }],
                 order: [
                     ['id']
-                ],
-                group: ['model.id']
+                ]/* ,
+                group: ['model.id'] */
             });
     
             const models = await db.Model.findAll({
@@ -111,8 +111,8 @@ const productsController = {
                 }],
                 order: [
                     ['id']
-                ],
-                group: ['model.name']
+                ]/* ,
+                group: ['model.name'] */
             });
     
             const models = allModels.filter((model) => {
