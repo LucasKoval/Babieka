@@ -91,13 +91,13 @@ module.exports = {
                 .bail(),
         body('image')
             .custom(function(value, { req }){
-                if(typeof req.files[0] != "undefined"){
+                if (typeof req.files[0] == "undefined"){
+                    return true;
+                } else if (typeof req.files[0] != "undefined"){
                     const ext = path.extname(req.files[0].originalname);
                     const extValidas = [".jpg", ".jpeg", ".png", ".gif"];
                     return extValidas.includes(ext.toLowerCase());
-                }else{
-                    return true;
-                }   
+                }
             })
             .withMessage('La imagen debe tener un fomato válido')
             .bail(),
