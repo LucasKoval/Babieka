@@ -33,7 +33,7 @@ const productsController = {
             });
 
         } catch (error) {
-            console.log(error);
+            console.log(`ERROR: ${error}`);
         }
     },
 
@@ -60,7 +60,7 @@ const productsController = {
             });
 
         } catch (error) {
-            console.log('Error al buscar el listado de Sale.');
+            console.log(`ERROR: ${error}`);
         }        
     },
 
@@ -91,7 +91,7 @@ const productsController = {
             });
 
         } catch (error) {
-            console.log('Error al buscar el listado completo de productos.');
+            console.log(`ERROR: ${error}`);
         }        
     },
 
@@ -126,167 +126,192 @@ const productsController = {
             res.render('products/productDetail', { product, models, sizes });
             
         } catch (error) {
-            console.log('Error al buscar el detalle del producto.');
+            console.log(`ERROR: ${error}`);
         }  
     },
 
     // Renderiza la vista Nuevo Producto
-    createForm: async (req, res) => { 
-        const categories  = await db.Category.findAll();
-        const types  = await db.Type.findAll();
-        const sizes = await db.Size.findAll();
-        const colors = await db.Color.findAll();
-        const discounts = await db.Discount.findAll();
-
-        res.render('products/createProduct', { categories, types, sizes, colors, discounts });
+    createForm: async (req, res) => {
+        try {
+            const categories  = await db.Category.findAll();
+            const types  = await db.Type.findAll();
+            const sizes = await db.Size.findAll();
+            const colors = await db.Color.findAll();
+            const discounts = await db.Discount.findAll();
+    
+            res.render('products/createProduct', { categories, types, sizes, colors, discounts });
+            
+        } catch (error) {
+            console.log(`ERROR: ${error}`);
+        }        
     },
     
     // Crea un Producto (POST)
-    store: async (req, res) => {     
-        const errors = validationResult(req);
+    store: async (req, res) => {
+        try {
+            const errors = validationResult(req);
 
-        if (!errors.isEmpty()) {
-            const categories  = await db.Category.findAll();
-            const types  = await db.Type.findAll();
-            const sizes = await db.Size.findAll();
-            const colors = await db.Color.findAll();
-            const discounts = await db.Discount.findAll();
-            return res.render('products/createProduct', {
-                errors: errors.mapped(),
-                products : req.body,
-                categories,
-                types,
-                sizes,
-                colors,
-                discounts
-            });
+            if (!errors.isEmpty()) {
+                const categories  = await db.Category.findAll();
+                const types  = await db.Type.findAll();
+                const sizes = await db.Size.findAll();
+                const colors = await db.Color.findAll();
+                const discounts = await db.Discount.findAll();
+                return res.render('products/createProduct', {
+                    errors: errors.mapped(),
+                    products : req.body,
+                    categories,
+                    types,
+                    sizes,
+                    colors,
+                    discounts
+                });
+            }
+    
+            const newImage = await db.Image.create({name: req.files[0].filename});
+    
+            const newModel = await db.Model.create({
+                category_id: req.body.category,
+                type_id: req.body.type,
+                name : req.body.name,
+                description : req.body.description,
+                color_id: req.body.color,
+                image_id: newImage.id
+            },
+            {include: ['category', 'color', 'image', 'type']});
+    
+            await db.Product.create({
+                model_id: newModel.id,
+                size_id: req.body.size,
+                discount_id: req.body.discount,
+                stock: req.body.stock,
+                price: req.body.price
+            },
+            {include: ['discount', 'model', 'size']});
+    
+            return res.redirect('/producto/listado');
+
+        } catch (error) {
+            console.log(`ERROR: ${error}`);
         }
-
-        const newImage = await db.Image.create({name: req.files[0].filename});
-
-        const newModel = await db.Model.create({
-            category_id: req.body.category,
-            type_id: req.body.type,
-            name : req.body.name,
-            description : req.body.description,
-            color_id: req.body.color,
-            image_id: newImage.id
-        },
-        {include: ['category', 'color', 'image', 'type']});
-
-        await db.Product.create({
-            model_id: newModel.id,
-            size_id: req.body.size,
-            discount_id: req.body.discount,
-            stock: req.body.stock,
-            price: req.body.price
-        },
-        {include: ['discount', 'model', 'size']});
-
-        return res.redirect('/producto/listado');
     },
 
     // Renderiza la vista Edición de Producto
-    editForm: async (req, res) => { 
-        const products = await db.Product.findAll({
-            include: ['discount', 'model', 'size']
-        });
-
-        const product = products.find(product => product.id == req.params.id);
-
-        const models = await db.Model.findAll({
-            include: ['category', 'color', 'image', 'type']
-        });
-
-        const model = models.find(model => model.id == product.model_id);    
-        const categories  = await db.Category.findAll();
-        const types  = await db.Type.findAll();
-        const sizes = await db.Size.findAll();
-        const colors = await db.Color.findAll();
-        const discounts = await db.Discount.findAll();
-
-        res.render('products/editProduct', { model, product, categories, types, sizes, colors, discounts });       
-    },
-
-    // Edita un Producto (PUT)
-    edit: async (req, res) => {      
-        const errors = validationResult(req);
-
-        if (!errors.isEmpty()) {
+    editForm: async (req, res) => {
+        try {
             const products = await db.Product.findAll({
                 include: ['discount', 'model', 'size']
             });
-            const product = products.find(product => product.id == req.params.id); 
-
+    
+            const product = products.find(product => product.id == req.params.id);
+    
             const models = await db.Model.findAll({
                 include: ['category', 'color', 'image', 'type']
             });
-
-            const model = models.find(model => model.id == product.model_id);  
+    
+            const model = models.find(model => model.id == product.model_id);    
             const categories  = await db.Category.findAll();
             const types  = await db.Type.findAll();
             const sizes = await db.Size.findAll();
             const colors = await db.Color.findAll();
             const discounts = await db.Discount.findAll();
+    
+            res.render('products/editProduct', { model, product, categories, types, sizes, colors, discounts });
 
-            return res.render('products/editProduct', {
-                errors: errors.mapped(),
-                products: req.body,
-                categories,
-                model,
-                product,
-                types,
-                sizes,
-                colors,
-                discounts
-            });
-        }  
+        } catch (error) {
+            console.log(`ERROR: ${error}`);
+        }
+    },
 
-        const editedProduct = await db.Product.findByPk(req.params.id);
-        const editedModel = await db.Model.findByPk(editedProduct.model_id);
+    // Edita un Producto (PUT)
+    edit: async (req, res) => {
+        try {
+            const errors = validationResult(req);
 
-        await db.Product.update({                 
-            size_id: req.body.size,
-            discount_id: req.body.discount,
-            price: req.body.price,
-            stock: req.body.stock
-        },
-        {where: {
-            id: editedProduct.id
-        }},
-        {include: ['discount', 'model', 'size']});
-        
-        await db.Model.update({
-            name: req.body.name,
-            category_id: req.body.category,
-            type_id: req.body.type,
-            description: req.body.description,
-            color_id: req.body.color,
-        },
-        {where: {
-            id: editedProduct.model_id
-        }},
-        {include:['category', 'color', 'image', 'type']});
-        
-        await db.Image.update({
-            name: req.files[0] ? req.files[0].filename : this.name
-        },
-        {where: {
-            id: editedModel.image_id
-        }});
+            if (!errors.isEmpty()) {
+                const products = await db.Product.findAll({
+                    include: ['discount', 'model', 'size']
+                });
+                const product = products.find(product => product.id == req.params.id); 
+    
+                const models = await db.Model.findAll({
+                    include: ['category', 'color', 'image', 'type']
+                });
+    
+                const model = models.find(model => model.id == product.model_id);  
+                const categories  = await db.Category.findAll();
+                const types  = await db.Type.findAll();
+                const sizes = await db.Size.findAll();
+                const colors = await db.Color.findAll();
+                const discounts = await db.Discount.findAll();
+    
+                return res.render('products/editProduct', {
+                    errors: errors.mapped(),
+                    products: req.body,
+                    categories,
+                    model,
+                    product,
+                    types,
+                    sizes,
+                    colors,
+                    discounts
+                });
+            }  
+    
+            const editedProduct = await db.Product.findByPk(req.params.id);
+            const editedModel = await db.Model.findByPk(editedProduct.model_id);
+    
+            await db.Product.update({                 
+                size_id: req.body.size,
+                discount_id: req.body.discount,
+                price: req.body.price,
+                stock: req.body.stock
+            },
+            {where: {
+                id: editedProduct.id
+            }},
+            {include: ['discount', 'model', 'size']});
+            
+            await db.Model.update({
+                name: req.body.name,
+                category_id: req.body.category,
+                type_id: req.body.type,
+                description: req.body.description,
+                color_id: req.body.color,
+            },
+            {where: {
+                id: editedProduct.model_id
+            }},
+            {include:['category', 'color', 'image', 'type']});
+            
+            await db.Image.update({
+                name: req.files[0] ? req.files[0].filename : this.name
+            },
+            {where: {
+                id: editedModel.image_id
+            }});
+    
+            res.redirect('/producto/'+ editedProduct.id);
 
-        res.redirect('/producto/'+ editedProduct.id);
+        } catch (error) {
+            console.log(`ERROR: ${error}`);
+        }
     },
 
     //Elimina un Producto (DELETE)
-    delete: async (req, res) => {   
-        await db.Product.destroy({
-            where: {
-                id: req.params.id
-            }
-        });
-        
-        return res.redirect('/producto/listado');
+    delete: async (req, res) => {
+        try {
+            await db.Product.destroy({
+                where: {
+                    id: req.params.id
+                }
+            });
+            
+            return res.redirect('/producto/listado');
+            
+        } catch (error) {
+            console.log(`ERROR: ${error}`);
+        }
     }
 };
 
