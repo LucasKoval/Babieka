@@ -141,8 +141,7 @@ const productsController = {
                 }],
                 order: [
                     ['id']
-                ],
-                group: ['model.id']
+                ]
             });
     
             const products = allProducts.rows.map(product => {
@@ -194,7 +193,6 @@ const productsController = {
                 order: [
                     ['id']
                 ],
-                group: ['model.id'],
                 limit: 6,
                 offset: 6 * (page - 1)                        
             });
@@ -251,8 +249,7 @@ const productsController = {
                 }],
                 order: [
                     ['id']
-                ],
-                group: ['model.name']
+                ]
             });
             
             product.dataValues.urlImage = `https://babieka.herokuapp.com/img/products/${product.model.image.name}`;
