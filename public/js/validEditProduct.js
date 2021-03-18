@@ -30,7 +30,10 @@ window.addEventListener('load', function() {
         }
 
         //-> Validación de la Imagen
+<<<<<<< HEAD
     
+=======
+>>>>>>> 89ddc32def299038b3257b2abc69fc7ebe259344
         if (!(validExt.includes(imageExt.toLowerCase()))) {
             errors.push('Formato de imagen invalido. [Permitidos: JPG, JPEG, PNG, GIF]')
         }

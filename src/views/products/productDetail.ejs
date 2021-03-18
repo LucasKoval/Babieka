@@ -60,26 +60,7 @@
                             </span>
                         </div>
                                 
-                        <% if (loggedUser && loggedUser.role.name == 'admin') { %>
-                            <div>   <!--// Botón Editar //-->
-                                <form action="" method="GET">
-                                    <a href="/producto/<%=product.id%>/editar"><button type="button" class="boton5">Editar artículo</button></a>
-                                </form>
-                            </div>
-                            <div class="marg-20"></div>
-                            <div>   <!--// Botón Eliminar producto //-->
-                                <button class="displayFlex marg-nonside-10">Eliminar articulo</button>
-                                <aside class="modal">
-                                    <div class="modal-content">
-                                        ¿ Esta seguro que desea eliminar este articulo ?
-                                        <form action="/producto/<%=product.id%>/eliminar?_method=DELETE" method="POST"> 
-                                            <button type="submit" class="marg-nonside-10">Eliminar artículo</button> 
-                                        </form>
-                                        <button class="salir">Salir</button>
-                                    </div> 
-                                </aside>
-                            </div>
-                        <% } else {%>
+                        <% if (loggedUser && loggedUser.role.name == 'client') { %>
                             <div>   <!--// Botón Comprar //-->
                                 <button type="submit" class="boton5">Agregar al carrito</button>
                             </div>
@@ -87,6 +68,28 @@
                             
                     </div>
                 </form>
+                <div class="">
+                    <% if (loggedUser && loggedUser.role.name == 'admin') { %>
+                        <div>   <!--// Botón Editar //-->
+                            <form action="" method="GET">
+                                <a href="/producto/<%=product.id%>/editar"><button type="button" class="boton5">Editar artículo</button></a>
+                            </form>
+                        </div>
+                        <div class="marg-20"></div>
+                        <div>   <!--// Botón Eliminar producto //-->
+                            <button class="displayFlex marg-nonside-10">Eliminar articulo</button>
+                            <aside class="modal">
+                                <div class="modal-content">
+                                    ¿ Esta seguro que desea eliminar este articulo ?
+                                    <form action="/producto/<%=product.id%>/eliminar?_method=DELETE" method="POST"> 
+                                        <button type="submit" class="marg-nonside-10">Eliminar artículo</button> 
+                                    </form>
+                                    <button class="salir">Salir</button>
+                                </div> 
+                            </aside>
+                        </div>
+                    <% } %>
+                </div>
 
             </div> 
     
