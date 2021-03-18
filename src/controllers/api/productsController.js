@@ -197,6 +197,8 @@ const productsController = {
                 offset: 6 * (page - 1)                        
             });
 
+            const totalPages = Math.ceil(allProducts.count / 6);
+
             const products = allProducts.rows.map(product => {
                 return (
                     product.dataValues.urlImage = `https://babieka.herokuapp.com/img/products/${product.model.image.name}`,
@@ -204,8 +206,6 @@ const productsController = {
                     product
                 )
             });
-
-            const totalPages = Math.ceil(allProducts.count.length / 6);
 
             const casual = products.filter((product) => {
                 return product.model.category.name == 'Casual';
