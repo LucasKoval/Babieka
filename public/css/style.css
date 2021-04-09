@@ -210,7 +210,14 @@ textarea {
     display: flex;
     flex-wrap: wrap;
 }
-
+.high-15{
+    height: 10%;
+    display: flex;
+    margin:3% 0 3% 0;
+}
+.marg-5px{
+    margin: 5px;
+}
 .fd-col {
     flex-direction: column;
 }
@@ -1306,6 +1313,6 @@ button{
 .style-select-detail{
     font-family: 'Bebas Neue', cursive;
     font-size: 18px;
-    width: 45%;
+    width: 15%;
     text-align: center;
 }

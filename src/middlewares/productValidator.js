@@ -91,7 +91,6 @@ module.exports = {
                 .bail(),
         body('image')
             .custom(function(value, { req }){
-<<<<<<< HEAD
                 if(typeof req.files[0] == "undefined"){
                     return true;
                 }else if(typeof req.files[0] != "undefined"){
@@ -100,16 +99,6 @@ module.exports = {
                     return extValidas.includes(ext.toLowerCase());
                 }   
             }) 
-=======
-                if (typeof req.files[0] == "undefined"){
-                    return true;
-                } else if (typeof req.files[0] != "undefined"){
-                    const ext = path.extname(req.files[0].originalname);
-                    const extValidas = [".jpg", ".jpeg", ".png", ".gif"];
-                    return extValidas.includes(ext.toLowerCase());
-                }
-            })
->>>>>>> 89ddc32def299038b3257b2abc69fc7ebe259344
             .withMessage('La imagen debe tener un fomato válido')
             .bail(),
         body('stock')
