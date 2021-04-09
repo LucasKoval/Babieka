@@ -210,7 +210,14 @@ textarea {
   display: flex;
   flex-wrap: wrap;
 }
-
+.high-15{
+    height: 10%;
+    display: flex;
+    margin:3% 0 3% 0;
+}
+.marg-5px{
+    margin: 5px;
+}
 .fd-col {
   flex-direction: column;
 }
@@ -1283,9 +1290,17 @@ button {
 /*----------// EDIT <MAIN> //----------*/
 
 /*=====================================================================*/
+<<<<<<< HEAD
+.style-select-detail{
+    font-family: 'Bebas Neue', cursive;
+    font-size: 18px;
+    width: 15%;
+    text-align: center;
+=======
 .style-select-detail {
   font-family: "Bebas Neue", cursive;
   font-size: 18px;
   width: 45%;
   text-align: center;
+>>>>>>> 970196b63be20a8b0cbd2ac564388c3c37c3e73e
 }

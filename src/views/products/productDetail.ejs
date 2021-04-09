@@ -9,90 +9,89 @@
             
             <div class="main-det borde-general">       
             
-                <div class="cen-1 ">
+                <div class="cen-1 marg-20">
                     <img class = "aspecto width-100" src="/img/products/<%= product.model.image.name %>" alt="Imagen del artículo">
                 </div>    
-                
-                <form action="/carrito/<%=product.id%>/agregar" method="POST">
-                    <div class="cen-2 columna margin-auto">   <!--// Descripcion y opciones del artículo //-->
-                        
-                        <% if (product.model.category.name == 'Sale') { %>
-                            <p class="f-size-40"><%= product.model.name %></p>
-                            <!-- <p class="f-size-24">Modelo #<%= product.model.id %> - Artículo #<%= product.id %></p> -->
-                            <p class="marg-0 price-size tachado">$ <%= product.price %></p>
-                            <span class="marg-0"><%= product.discount.number %> %OFF</span>
-                            <p class="marg-0 price-size">$ <%= product.price-((product.price*product.discount.number)/100) %></p>
-                        <% } else { %>
-                            <p class="f-size-40"><%= product.model.name %></p>
-                            <!-- <p class="f-size-24">Modelo #<%= product.model.id %> - Artículo #<%= product.id %></p> -->
-                            <p class="f-size-40" id="price">$ <%= product.price %></p>
-                        <% } %>
-                        
-                        <label for="color"><p class="f-size-24" >Colores Disponibles</p>  </label> <!--// Botón Colores a seleccionar //-->
-                        
-                        <select name="color" class="style-select-detail">
-                            <% for (model of models) { %>
-                                <option style="color: <%= model.color.hex %>" value="<%= model.color.name %>"><%= model.color.name %></a></option>
-                            <% } %>
-                        </select>
-
-                        <label for="size"><p class="f-size-24" >Talles disponibles</p>  </label> <!--// Botón Talles a seleccionar //-->
-                        <select name="size" class="style-select-detail">
-                            <option value="<%= product.size.number %>"selected><%= product.size.number %></option>
-                            <% for (size of sizes) { %>
-                                <option value="<%= size.number %>"><%= size.number %></option>
-                            <% } %> 
-                        </select>
-
-                        <div>   
-                            <p class="f-size-24">Descripción</p>    <!--// Descripcion //-->
-                            <p class="mt-0"><%= product.model.description %></p>
-                        </div>
-
-                        <div>    
-                            <p class="f-size-24" >Cantidad</p>   <!--// Botón cantidad (agregar su propio archivos Js)//-->
-                        </div>        
-                        <div class="main-det columna sinborde">        
-                            <span>
-                                <span id='decrease' class="quantityButton" onclick="decrease()"><i class="far fa-minus-square"></i></span>
-                                <input type='text' id="quantity" class="quantityValue" name="productsQuantity" value="1">
-                                <span id='increase' class="quantityButton" onclick="increase()"><i class="far fa-plus-square"></i></span><!--  -->
-                            </span>
-                        </div>
-                                
-                        <% if (loggedUser && loggedUser.role.name == 'client') { %>
-                            <div>   <!--// Botón Comprar //-->
-                                <button type="submit" class="boton5">Agregar al carrito</button>
-                            </div>
-                        <% } %>
+                    <div class="cen-2 columna marg-20">   <!--// Descripcion y opciones del artículo //-->
+                        <form action="/carrito/<%=product.id%>/agregar" method="POST">
                             
-                    </div>
-                </form>
-                <div class="">
-                    <% if (loggedUser && loggedUser.role.name == 'admin') { %>
-                        <div>   <!--// Botón Editar //-->
-                            <form action="" method="GET">
-                                <a href="/producto/<%=product.id%>/editar"><button type="button" class="boton5">Editar artículo</button></a>
-                            </form>
-                        </div>
-                        <div class="marg-20"></div>
-                        <div>   <!--// Botón Eliminar producto //-->
-                            <button class="displayFlex marg-nonside-10">Eliminar articulo</button>
-                            <aside class="modal">
-                                <div class="modal-content">
-                                    ¿ Esta seguro que desea eliminar este articulo ?
-                                    <form action="/producto/<%=product.id%>/eliminar?_method=DELETE" method="POST"> 
-                                        <button type="submit" class="marg-nonside-10">Eliminar artículo</button> 
-                                    </form>
-                                    <button class="salir">Salir</button>
-                                </div> 
-                            </aside>
-                        </div>
-                    <% } %>
-                </div>
+                            <% if (product.model.category.name == 'Sale') { %>
+                                <p class="f-size-40"><%= product.model.name %></p>
+                                <!-- <p class="f-size-24">Modelo #<%= product.model.id %> - Artículo #<%= product.id %></p> -->
+                                <p class="marg-0 price-size tachado">$ <%= product.price %></p>
+                                <span class="marg-0"><%= product.discount.number %> %OFF</span>
+                                <p class="marg-0 price-size">$ <%= product.price-((product.price*product.discount.number)/100) %></p>
+                            <% } else { %>
+                                <p class="f-size-40"><%= product.model.name %></p>
+                                <!-- <p class="f-size-24">Modelo #<%= product.model.id %> - Artículo #<%= product.id %></p> -->
+                                <p class="f-size-40" id="price">$ <%= product.price %></p>
+                            <% } %>
+                            
+                            <label for="color"><p class="f-size-24" >Colores Disponibles</p>  </label> <!--// Botón Colores a seleccionar //-->
+                            
+                            <select name="color" class="style-select-detail">
+                                <% for (model of models) { %>
+                                    <option style="color: <%= model.color.hex %>" value="<%= model.color.name %>"><%= model.color.name %></a></option>
+                                <% } %>
+                            </select>
 
-            </div> 
-    
+                            <label for="size"><p class="f-size-24" >Talles disponibles</p>  </label> <!--// Botón Talles a seleccionar //-->
+                            <select name="size" class="style-select-detail">
+                                <option value="<%= product.size.number %>"selected><%= product.size.number %></option>
+                                <% for (size of sizes) { %>
+                                    <option value="<%= size.number %>"><%= size.number %></option>
+                                <% } %> 
+                            </select>
+
+                            <div>   
+                                <p class="f-size-24">Descripción</p>    <!--// Descripcion //-->
+                                <p class="mt-0"><%= product.model.description %></p>
+                            </div>
+
+                            <div>    
+                                <p class="f-size-24" >Cantidad</p>   <!--// Botón cantidad (agregar su propio archivos Js)//-->
+                            </div>        
+                            <div class="main-det columna sinborde">        
+                                <span>
+                                    <span id='decrease' class="quantityButton" onclick="decrease()"><i class="far fa-minus-square"></i></span>
+                                    <input type='text' id="quantity" class="quantityValue" name="productsQuantity" value="1">
+                                    <span id='increase' class="quantityButton" onclick="increase()"><i class="far fa-plus-square"></i></span><!--  -->
+                                </span>
+                            </div>
+                                    
+                            <% if (loggedUser && loggedUser.role.name == 'client') { %>
+                                <div>   <!--// Botón Comprar //-->
+                                    <button type="submit" class="boton5">Agregar al carrito</button>
+                                </div>
+                            <% } %>
+                                
+                        
+                        </form>
+                        <div class="high-15">
+                            <% if (loggedUser && loggedUser.role.name == 'admin') { %>
+                                <div>   <!--// Botón Editar //-->
+                                    <form action="" method="GET">
+                                        <a href="/producto/<%=product.id%>/editar"><button type="button" class="boton5">Editar artículo</button></a>
+                                    </form>
+                                </div>
+                                <div class="marg-20"></div>
+                                <div>   <!--// Botón Eliminar producto //-->
+                                    <button class="displayFlex marg-5px">Eliminar articulo</button>
+                                    <aside class="modal">
+                                        <div class="modal-content">
+                                            ¿ Esta seguro que desea eliminar este articulo ?
+                                            <form action="/producto/<%=product.id%>/eliminar?_method=DELETE" method="POST"> 
+                                                <button type="submit" class="marg-nonside-10">Eliminar artículo</button> 
+                                            </form>
+                                            <button class="salir">Salir</button>
+                                        </div> 
+                                    </aside>
+                            <% } %>
+                            </div>
+                        </div>
+
+                    </div> 
+            </div>
         </main>
         
         <%- include('../partials/footer') %>   <!--// partial Footer //-->
