@@ -44,13 +44,11 @@ window.addEventListener('load', function() {
         const image = document.querySelector("#image").value;
         const imageExt = image.split('.')[1];
         const validExt = ['jpg', 'jpeg', 'png', 'gif'];
-        if (imageExt == undefined) {
-            errors.push('Debe cargar una imagen con uno de los siguientes formatos: JPG, JPEG, PNG, GIF.') ;
-        } else {
-            if (!(validExt.includes(imageExt.toLowerCase()))) {
-                errors.push('Formato de imagen invalido. [Permitidos: JPG, JPEG, PNG, GIF]')
-            }
+        
+        if (!(validExt.includes(imageExt.toLowerCase()))) {
+            errors.push('Formato de imagen invalido. [Permitidos: JPG, JPEG, PNG, GIF]')
         }
+        
 
         //Validación contraseña correcta
         const password = document.querySelector("#password");

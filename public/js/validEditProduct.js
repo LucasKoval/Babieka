@@ -33,6 +33,7 @@ window.addEventListener('load', function() {
         if (!(validExt.includes(imageExt.toLowerCase()))) {
             errors.push('Formato de imagen invalido. [Permitidos: JPG, JPEG, PNG, GIF]')
         }
+    
         
         //-> Validación del Stock
         if (stock < 1) {
